@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\iconfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\iconfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,15 +58,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\App.xaml.cs",
-              "RelativeDocumentMoniker": "Avisen\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\App.xaml.cs",
-              "RelativeToolTip": "Avisen\\App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "IconFont.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\IconFont.cs",
+              "RelativeDocumentMoniker": "Avisen\\IconFont.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\IconFont.cs",
+              "RelativeToolTip": "Avisen\\IconFont.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T03:00:09.812Z",
+              "WhenOpened": "2025-01-16T21:32:06.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Styles.xaml",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Resources\\Styles\\Styles.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Resources\\Styles\\Styles.xaml",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Resources\\Styles\\Styles.xaml",
+              "RelativeToolTip": "Avisen\\Resources\\Styles\\Styles.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-16T21:08:12.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "Avisen\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\MauiProgram.cs",
+              "RelativeToolTip": "Avisen\\MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T20:05:26.01Z",
               "EditorCaption": ""
             },
             {
@@ -73,7 +103,7 @@
               "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml",
               "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Views\\Login.xaml",
               "RelativeToolTip": "Avisen\\Views\\Login.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-01-16T02:57:41.156Z",
               "EditorCaption": ""
@@ -81,25 +111,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Avisen",
-              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen.csproj",
-              "RelativeDocumentMoniker": "Avisen\\Avisen.csproj",
-              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen.csproj",
-              "RelativeToolTip": "Avisen\\Avisen.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-16T02:56:28.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\MainPage.xaml",
               "RelativeDocumentMoniker": "Avisen\\MainPage.xaml",
               "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\MainPage.xaml",
               "RelativeToolTip": "Avisen\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-01-16T02:55:49.031Z",
               "EditorCaption": ""

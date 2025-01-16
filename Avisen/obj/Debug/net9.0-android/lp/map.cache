@@ -95,14 +95,6 @@ Xamarin.KotlinX.Coroutines.Core.dll
 Xamarin.KotlinX.Coroutines.Core.Jvm.dll
 Xamarin.KotlinX.Serialization.Core.dll
 Xamarin.KotlinX.Serialization.Core.Jvm.dll
-GoogleGson.aar
-Jsr305Binding.aar
-Microsoft.Maui.Controls.aar
-maui.aar
-Microsoft.Maui.aar
-Microsoft.Maui.Essentials.aar
-Xamarin.Google.Crypto.Tink.Android.aar
-Xamarin.Google.ErrorProne.Annotations.aar
 androidx.versionedparcelable.versionedparcelable.aar
 androidx.tracing.tracing.aar
 androidx.startup.startup-runtime.aar
@@ -167,3 +159,11 @@ androidx.exifinterface.exifinterface.aar
 androidx.browser.browser.aar
 gifdecoder.aar
 glide.aar
+GoogleGson.aar
+Jsr305Binding.aar
+Microsoft.Maui.Controls.aar
+maui.aar
+Microsoft.Maui.aar
+Microsoft.Maui.Essentials.aar
+Xamarin.Google.Crypto.Tink.Android.aar
+Xamarin.Google.ErrorProne.Annotations.aar
