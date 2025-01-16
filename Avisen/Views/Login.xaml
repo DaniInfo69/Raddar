@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Avisen.Views.Login"
+             Title="Login">
+
+    <Grid RowDefinitions=".3*, .7*">
+        <Image Aspect="AspectFill" Source="fondo_prueba1.png"/>
+    </Grid>
+        
+
+</ContentPage>
