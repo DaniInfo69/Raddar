@@ -26,7 +26,7 @@
     <!--GoogleFonts-->
     <Style TargetType="Label" x:Key="MaterialIcon">
         <Setter Property="FontFamily" Value="MaterialIcon"/>
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontSize" Value="60"/>
     </Style>
     
     <Style TargetType="Button">

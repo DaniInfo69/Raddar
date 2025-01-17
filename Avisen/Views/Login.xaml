@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.Login"
-             Title="Login"
-             xmlns:models="crl-namespace:IconFont">
+             Title="Login">
 
     <Grid RowDefinitions=".3*, .7*">
-        <Image Aspect="AspectFill" Source="fondo_prueba1.png"/>
+        <Image Aspect="AspectFill" Source="fondoprueba1.png"/>
         <Grid BackgroundColor="Aqua"  Opacity=".9"/>
         <Grid ColumnDefinitions="*,*">
             <Image 
@@ -36,20 +36,15 @@
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     WidthRequest="60"/>
-                    <Image HorizontalOptions="Center">
-                        <!--<Image.Source>
-                            <FontImageSource
-                                FontFamily="FontAwesomeFreeSolid"
-                                Glyph="&$xf0e0;"
-                                Size="44"
-                                Color="#4F3F9b"/>
-                        </Image.Source>-->
-                    </Image>
+                    <Label 
+                        Text="{x:Static local:IconFont.Archive}" 
+                        Style="{StaticResource MaterialIcon}"
+                        TextColor="Black"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
                 </Grid>
-                <Label Text="{x:Static models:Icons.HomeIcon}" Style="{x:StaticResource MaterialIcon}"/>
             </VerticalStackLayout>
         </Grid>
     </Grid>
-
-
 </ContentPage>

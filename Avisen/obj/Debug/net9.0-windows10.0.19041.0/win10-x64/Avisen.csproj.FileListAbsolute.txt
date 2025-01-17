@@ -71,7 +71,6 @@ C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png
-C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\fondo_prueba1.scale-100.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauiimage.stamp
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauiimage.outputs
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.AssemblyInfoInputs.cache
@@ -142,7 +141,6 @@ C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\dotnet_bot.scale-150.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\dotnet_bot.scale-200.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\dotnet_bot.scale-400.png
-C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\fondo_prueba1.scale-100.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_prueba1.scale-100.png
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\CoreMessagingXP.dll
@@ -479,3 +477,8 @@ C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\Font-Awesome-5-Free-Solid-900.otf
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\Font-Awesome-5-Free-Solid-900.otf.gz
 C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\MaterialIcons-Regular.ttf
+C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Font-Awesome-5-Free-Solid-900.otf
+C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Font-Awesome-5-Free-Solid-900.otf.gz
+C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\MaterialIcons-Regular.ttf
+C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\fondoprueba1.scale-100.png
+C:\Users\parae\OneDrive\Escritorio\Programas\MAUI\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\fondoprueba1.scale-100.png
