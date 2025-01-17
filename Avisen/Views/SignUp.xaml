@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Avisen"
+             x:Class="Avisen.Views.SignUp"
+             Title="SignUp">
+    <Grid RowDefinitions=".3*, .7*">
+        <!-- Imagen de fondo -->
+        <Image Aspect="AspectFill" Source="fondoprueba1.png" />
+        <Image Aspect="AspectFill" Source="fondoprueba1.png" />
+        <Grid BackgroundColor="Aqua" Opacity=".9" />
+
+        <!-- Logo -->
+        <Grid ColumnDefinitions="*,*">
+            <Image 
+                Aspect="AspectFit"
+                HeightRequest="120"
+                Source="logo_prueba1.png" />
+        </Grid>
+
+        <!-- Contenido principal -->
+        <Grid Grid.Row="1">
+            <RoundRectangle Margin="-5, -30, -5, -2"
+                            CornerRadius="30,30,0,0"
+                            Fill="#f8f8f8" />
+
+            <VerticalStackLayout>
+                <Label
+                    Padding="25,0,0,0"
+                    FontAttributes="Bold"
+                    FontFamily="Bold"
+                    FontSize="Medium"
+                    Text="Crea tu cuenta!"
+                    TextColor="#2D2D2D" />
+
+                <!-- Campo de Usuario -->
+                <Grid Margin="0,30,0,0" ColumnDefinitions="0.2*, 0.8*">
+                    <Border BackgroundColor="#EDEBF6"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Label 
+                            Text="{x:Static local:IconFont.Person}" 
+                            Style="{StaticResource MaterialIcon}"
+                            TextColor="Black"
+                            FontSize="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Entry Grid.Column="1"
+                           Placeholder="USUARIO"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="16"/>
+                </Grid>
+
+                <!-- Campo de email -->
+                <Grid Margin="0,30,0,0" ColumnDefinitions="0.2*, 0.8*">
+                    <Border BackgroundColor="#EDEBF6"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Label 
+                            Text="{x:Static local:IconFont.Mail}" 
+                            Style="{StaticResource MaterialIcon}"
+                            TextColor="Black"
+                            FontSize="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Entry Grid.Column="1"
+                           Placeholder="EMAIL"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="16"/>
+                </Grid>
+
+                <!-- Campo de contraseña -->
+                <Grid Margin="0,30,0,0" ColumnDefinitions="0.2*, 0.8*">
+                    <Border BackgroundColor="#EDEBF6"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Label 
+                            Text="{x:Static local:IconFont.Lock}" 
+                            Style="{StaticResource MaterialIcon}"
+                            TextColor="Black"
+                            FontSize="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Entry Grid.Column="1"
+                           Placeholder="PASSWORD"
+                           IsPassword="true"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="16"/>
+                </Grid>
+
+                <!-- Botón Crear Cuenta -->
+                <Button                   
+                    Margin="0,60,0,0"
+                    BackgroundColor="#4F3F9B"
+                    HeightRequest="60"
+                    WidthRequest="350"
+                    Text="Crear Cuenta"
+                    TextColor="White"
+                    FontSize="16"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

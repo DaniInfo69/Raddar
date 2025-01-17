@@ -11,7 +11,7 @@ namespace Avisen
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new Login());
+            return new Window(new SignUp());
         }
     }
 }
