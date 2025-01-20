@@ -22,7 +22,7 @@
         <Grid Grid.Row="1">
             <RoundRectangle Margin="-5, -30, -5, -2"
                             CornerRadius="30,30,0,0"
-                            Fill="#f8f8f8" />
+                            Fill="#f6f6f6" />
 
             <VerticalStackLayout>
                 <Label
@@ -35,7 +35,7 @@
 
                 <!-- Campo de Usuario -->
                 <Grid Margin="0,30,0,0" ColumnDefinitions="0.2*, 0.8*">
-                    <Border BackgroundColor="#EDEBF6"
+                    <Border BackgroundColor="#f6f6f6"
                             StrokeThickness="0"
                             StrokeShape="RoundRectangle 30,30,30,30"
                             HeightRequest="60"
@@ -78,6 +78,7 @@
                            Placeholder="EMAIL"
                            VerticalOptions="Center"
                            TextColor="Black"
+                           BackgroundColor="Black"
                            FontSize="16"/>
                 </Grid>
 

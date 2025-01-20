@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen\\views\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\avisen\\avisen\\avisen\\views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignUp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\SignUp.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T05:04:42.98Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -42,15 +67,41 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\App.xaml.cs",
+              "RelativeToolTip": "Avisen\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T04:58:07.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SignUp.xaml",
-              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml",
-              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml",
-              "RelativeToolTip": "Avisen\\Views\\SignUp.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA0AAAAAAAAAA==",
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\Login.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\Login.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T04:50:25.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\Login.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Avisen\\Avisen\\Avisen\\Views\\Login.xaml",
+              "RelativeToolTip": "Avisen\\Views\\Login.xaml",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAkwGsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-17T02:02:11.352Z",
+              "WhenOpened": "2025-01-20T01:56:18.056Z",
               "EditorCaption": ""
             }
           ]
