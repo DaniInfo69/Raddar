@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.SignUp"
+             NavigationPage.HasNavigationBar="False"
              Title="SignUp">
     <Grid RowDefinitions=".3*, .7*">
         <!-- Imagen de fondo -->
@@ -35,7 +36,7 @@
 
                 <!-- Campo de Usuario -->
                 <Grid Margin="0,30,0,0" ColumnDefinitions="0.2*, 0.8*">
-                    <Border BackgroundColor="#f6f6f6"
+                    <Border BackgroundColor="#EDEBF6"
                             StrokeThickness="0"
                             StrokeShape="RoundRectangle 30,30,30,30"
                             HeightRequest="60"
@@ -54,6 +55,7 @@
                            Placeholder="USUARIO"
                            VerticalOptions="Center"
                            TextColor="Black"
+                           BackgroundColor="#fcfcfc"
                            FontSize="16"/>
                 </Grid>
 
@@ -78,7 +80,7 @@
                            Placeholder="EMAIL"
                            VerticalOptions="Center"
                            TextColor="Black"
-                           BackgroundColor="Black"
+                           BackgroundColor="#fcfcfc"
                            FontSize="16"/>
                 </Grid>
 
@@ -104,18 +106,18 @@
                            IsPassword="true"
                            VerticalOptions="Center"
                            TextColor="Black"
+                           BackgroundColor="#fcfcfc"
                            FontSize="16"/>
                 </Grid>
 
                 <!-- Botón Crear Cuenta -->
                 <Button                   
                     Margin="0,60,0,0"
-                    BackgroundColor="#4F3F9B"
+                    BackgroundColor="#58fcea"
                     HeightRequest="60"
                     WidthRequest="350"
                     Text="Crear Cuenta"
-                    TextColor="White"
-                    FontSize="16"/>
+                    TextColor="Black"/>
             </VerticalStackLayout>
         </Grid>
     </Grid>

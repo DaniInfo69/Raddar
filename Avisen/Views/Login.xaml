@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.Login"
+             NavigationPage.HasNavigationBar="False"
              Title="Login">
 
     <Grid RowDefinitions=".3*, .7*">
@@ -88,6 +89,8 @@
                 </Grid>
 
                 <Button
+                    x:Name="LoginHome"
+                    Clicked="LoginHome_Clicked"
                     Margin="0,20,0,0"
                     BackgroundColor="#58fcea"
                     HeightRequest="60"

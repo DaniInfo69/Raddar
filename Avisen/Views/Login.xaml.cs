@@ -11,5 +11,10 @@ namespace Avisen.Views
         {
             await Navigation.PushAsync(new SignUp());
         }
+
+        private async void LoginHome_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Home());
+        }
     }
 }
