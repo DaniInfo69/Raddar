@@ -14,7 +14,7 @@ namespace Avisen.Views
 
         private async void LoginHome_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Home());
+            await Shell.Current.GoToAsync("//Home");
         }
     }
 }

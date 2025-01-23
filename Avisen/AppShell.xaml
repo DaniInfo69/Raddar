@@ -3,13 +3,35 @@
     x:Class="Avisen.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Avisen"
-    Shell.FlyoutBehavior="Flyout"
+    xmlns:views="clr-namespace:Avisen.Views"
     Title="Avisen">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
+    <FlyoutItem>
+        <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate views:Login}"
+            Route="Login" />
+    </FlyoutItem>
+
+
+    <FlyoutItem>
+        <ShellContent
+            Title="SignUp"
+            ContentTemplate="{DataTemplate views:SignUp}"
+            Route="SignUp" />
+    </FlyoutItem>
+    
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:Home}"
+            Route="Home" />
+
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate views:Settings}"
+            Route="Settings" />
+    </TabBar>
+    
 </Shell>

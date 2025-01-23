@@ -60,6 +60,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Login.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Login.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Login.xaml
 
+[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/Settings.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Settings.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Settings.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Settings.xaml
+
 [C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/SignUp.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.SignUp.xaml

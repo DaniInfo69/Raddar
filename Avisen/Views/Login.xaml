@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.Login"
+             Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              Title="Login">
-
+    <ScrollView>
     <Grid RowDefinitions=".3*, .7*">
         <Image Aspect="AspectFill" Source="fondoprueba1.png"/>
         <Grid BackgroundColor="Aqua"  Opacity=".9"/>
@@ -121,4 +122,5 @@
             </VerticalStackLayout>
         </Grid>
     </Grid>
+    </ScrollView>
 </ContentPage>

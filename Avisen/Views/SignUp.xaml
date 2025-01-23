@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.SignUp"
              NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
              Title="SignUp">
+    
     <Grid RowDefinitions=".3*, .7*">
         <!-- Imagen de fondo -->
         <Image Aspect="AspectFill" Source="fondoprueba1.png" />
