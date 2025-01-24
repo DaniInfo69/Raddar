@@ -32,6 +32,11 @@
             Title="Settings"
             ContentTemplate="{DataTemplate views:Settings}"
             Route="Settings" />
+
+        <ShellContent
+            Title="UserProfile"
+            ContentTemplate="{DataTemplate views:UserProfile}"
+            Route="UserProfile" />
     </TabBar>
     
 </Shell>
