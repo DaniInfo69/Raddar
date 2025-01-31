@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Una herramienta generó este código.
-    Se generó desde C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\Platforms\Android\AndroidManifest.xml
+    Se generó desde C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\Platforms\Android\AndroidManifest.xml
     Los cambios realizados en este archivo pueden generar un comportamiento incorrecto y se perderán si
     se regenera el contenido.
 -->
@@ -9,9 +9,20 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <!-- required user acces -->
   <permission android:name="com.companyname.avisen.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature" />
   <uses-permission android:name="com.companyname.avisen.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+  <queries>
+    <!-- Needs to be explicitly declared on Android R+ -->
+    <package android:name="com.google.android.apps.maps" />
+  </queries>
   <application android:name="crc64be4a4d0745143da3.MainApplication" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/appicon" android:label="Avisen" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDEy8LnN1mgiy4hHa7W7TC9Jf_ywbYt3XA" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
     <activity android:name="crc64be4a4d0745143da3.MainActivity" android:configChanges="density|orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:exported="true" android:launchMode="singleTop" android:theme="@style/Maui.SplashTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -49,5 +60,6 @@
     </receiver>
     <uses-library android:name="androidx.window.extensions" android:required="false" />
     <uses-library android:name="androidx.window.sidecar" android:required="false" />
+    <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
   </application>
 </manifest>

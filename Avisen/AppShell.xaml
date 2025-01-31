@@ -29,6 +29,11 @@
             Route="Home" />
 
         <ShellContent
+            Title="Map"
+            ContentTemplate="{DataTemplate views:Map}"
+            Route="Map" />
+        
+        <ShellContent
             Title="Settings"
             ContentTemplate="{DataTemplate views:Settings}"
             Route="Settings" />
