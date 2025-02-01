@@ -8,7 +8,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Avisen
-build_property.ProjectDir = C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\
+build_property.ProjectDir = C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTAotOptimizerEnabled = true
@@ -22,67 +22,73 @@ build_property.CsWinRTUseWindowsUIXamlProjections = false
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/App.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/AppShell.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/MainPage.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Resources/Styles/Colors.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Resources/Styles/Styles.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/Home.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Home.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Home.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Home.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Home.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/Login.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Login.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Login.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Login.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Login.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/Map.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Map.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Map.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Map.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Map.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/Settings.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Promociones.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Promociones.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Promociones.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Promociones.xaml
+
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Settings.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Settings.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Settings.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Settings.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/SignUp.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/SignUp.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.SignUp.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\SignUp.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\SignUp.xaml
 
-[C:/Users/Pc/Desktop/Programacion/Avisen/Avisen/Views/UserProfile.xaml]
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/UserProfile.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.UserProfile.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\UserProfile.xaml
