@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Avisen.Views.Promociones"
              xmlns:local="clr-namespace:Avisen"
+             BackgroundColor="Black"
              Title="Promociones">
     <ScrollView>
         
@@ -21,15 +22,76 @@
 
 
             <!--Promoción 1-->
+            
+                <!--Recuadro de la imagen e imagen-->
                 <BoxView Grid.Column="1"
-                         Color="Blue" Margin="0,0,0,10" />
+                         Color="#1E1F21" Margin="0,0,0,10" />                     
+
+                <Rectangle Fill="#28292B"
+                           WidthRequest="155"
+                           HeightRequest="160"
+                           Margin="10,0,0,10"
+                           Stroke="Black"
+                           StrokeThickness="3"
+                           RadiusX="30"
+                           RadiusY="10"
+                           HorizontalOptions="Start"/>
+
+                <Image Source="dotnet_bot.png"
+                       HorizontalOptions="Start"
+                       HeightRequest="100"
+                       Margin="10,0,0,0"/>
             
-                <Label Grid.Column="1"
-                       Text="Promo 1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
             
+                 <!--Información de la promoción-->
             
+                <StackLayout Orientation="Vertical">
+                    
+                    <Label Grid.Column="1"
+                       Text="Tenis Jordan 1 CMFT"
+                       Padding="175,20,0,0"
+                       FontSize="18"/>
+
+                    <Label Grid.Column="1" Padding="175,10,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="$ 2300 " FontSize="23" TextColor="Green"/>
+                                <Span Text="mxn" FontSize="15" TextColor="White"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Column="1" Padding="175,10,0,0" FontSize="15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Vendido en: " />
+                                <Span Text="Nike" FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Button
+                        Margin="170,15,0,0" 
+                        Text="Ir a la oferta"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="LightSeaGreen"
+                        HeightRequest="45"
+                        WidthRequest="190">
+                            <Button.ImageSource>
+                                <FontImageSource  
+                                    Glyph="{x:Static local:IconFont.Arrow_outward}"
+                                    FontFamily="MaterialIcon"
+                                    Color="White"
+                                    Size="30" />
+                            </Button.ImageSource>
+                    </Button>
+
+
+                </StackLayout>
+
+
 
             <!--Promoción 2-->
                 <BoxView Grid.Row="1"
@@ -41,6 +103,8 @@
                        Text="Row 0, Column 1"
                        HorizontalOptions="Center"
                        VerticalOptions="Center" />
+            
+            
             
 
             <!--Promoción 3-->
