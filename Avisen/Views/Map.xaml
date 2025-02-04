@@ -4,6 +4,7 @@
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              x:Class="Avisen.Views.Map"
+             Shell.NavBarIsVisible="False"
              Title="Map">
 
     <maps:Map 
@@ -11,6 +12,7 @@
         MapType="Street"
         IsShowingUser="true"
         IsTrafficEnabled="True"
-        IsScrollEnabled="True">
+        IsScrollEnabled="True"
+        IsZoomEnabled="True">
     </maps:Map>
 </ContentPage>
