@@ -14,6 +14,7 @@
                 <RowDefinition Height="200" />
                 <RowDefinition Height="200" />
                 <RowDefinition Height="200" />
+                <RowDefinition Height="200" />
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
@@ -25,43 +26,50 @@
             
                 <!--Recuadro de la imagen e imagen-->
                 <BoxView Grid.Column="1"
-                         Color="#1E1F21" Margin="0,0,0,10" />                     
+                         Color="#1E1F21" Margin="0,0,0,10" />
 
-                <Rectangle Fill="#28292B"
-                           WidthRequest="155"
-                           HeightRequest="160"
-                           Margin="10,0,0,10"
-                           Stroke="Black"
-                           StrokeThickness="3"
-                           RadiusX="30"
-                           RadiusY="10"
-                           HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" 
+                          WidthRequest="155"
+                          HeightRequest="160"
+                          Margin="-200,0,0,10">
 
-                <Image Source="dotnet_bot.png"
-                       HorizontalOptions="Start"
-                       HeightRequest="100"
-                       Margin="10,0,0,0"/>
-            
-            
-                 <!--Información de la promoción-->
+
+                    <Rectangle Fill="#28292B"
+                               Stroke="Black"
+                               StrokeThickness="3"
+                               RadiusX="30"
+                               RadiusY="10"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"/>
+
+                    <Image Source="sneakers.png"
+                            Aspect="AspectFit"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="120"
+                            WidthRequest="120"/>
+                    </Grid>
+
+
+            <!--Información de la promoción-->
             
                 <StackLayout Orientation="Vertical">
                     
                     <Label Grid.Column="1"
                        Text="Tenis Jordan 1 CMFT"
-                       Padding="175,20,0,0"
+                       Padding="175,5,0,0"
                        FontSize="18"/>
 
-                    <Label Grid.Column="1" Padding="175,10,0,0">
+                    <Label Grid.Column="1" Padding="175,5,0,0">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="$ 2300 " FontSize="23" TextColor="Green"/>
+                                <Span Text="$ 2,300 " FontSize="20" TextColor="Green"/>
                                 <Span Text="mxn" FontSize="15" TextColor="White"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
 
-                    <Label Grid.Column="1" Padding="175,10,0,0" FontSize="15">
+                    <Label Grid.Column="1" Padding="175,5,0,0" FontSize="15">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Vendido en: " />
@@ -71,14 +79,15 @@
                     </Label>
 
                     <Button
-                        Margin="170,15,0,0" 
+                        Margin="170,10,0,0" 
                         Text="Ir a la oferta"
                         FontSize="18"
                         FontAttributes="Bold"
                         TextColor="White"
                         BackgroundColor="LightSeaGreen"
-                        HeightRequest="45"
+                        HeightRequest="40"
                         WidthRequest="190">
+                        
                             <Button.ImageSource>
                                 <FontImageSource  
                                     Glyph="{x:Static local:IconFont.Arrow_outward}"
@@ -94,41 +103,324 @@
 
 
             <!--Promoción 2-->
+            
                 <BoxView Grid.Row="1"
                          Grid.Column="1"
-                         Color="Blue" Margin="0,0,0,10" />
-            
-                <Label Grid.Row="1" 
-                       Grid.Column="1"
-                       Text="Row 0, Column 1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-            
-            
-            
+                         Color="#1E1F21" Margin="0,0,0,10" />
+
+                <Grid Grid.Column="1"
+                      Grid.Row="1"
+                      WidthRequest="155"
+                      HeightRequest="160"
+                      Margin="-200,0,0,10">
+
+
+                    <Rectangle Fill="#28292B"
+                               Stroke="Black"
+                               StrokeThickness="3"
+                               RadiusX="30"
+                               RadiusY="10"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"/>
+
+                    <Image Source="laptop.png"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="120"
+                           WidthRequest="120"/>
+                </Grid>
+
+
+                <!--Información de la promoción-->
+
+                <StackLayout Orientation="Vertical" Grid.Row="1">
+
+                    <Label 
+                           Text="Gaming Laptop - Asus Rog Strix Hero 2"
+                           Padding="175,5,0,0"
+                           FontSize="18"/>
+
+                    <Label Padding="175,5,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="$ 20,000 " FontSize="20" TextColor="Green"/>
+                                <Span Text="mxn" FontSize="15" TextColor="White"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Padding="175,5,0,0" FontSize="15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Vendido en: " />
+                                <Span Text="Coppel" FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Button
+                        Margin="170,10,0,0" 
+                        Text="Ir a la oferta"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="LightSeaGreen"
+                        HeightRequest="40"
+                        WidthRequest="190">
+                        
+                        <Button.ImageSource>
+                            <FontImageSource  
+                                Glyph="{x:Static local:IconFont.Arrow_outward}"
+                                FontFamily="MaterialIcon"
+                                Color="White"
+                                Size="30" />
+                        </Button.ImageSource>
+                    </Button>
+
+
+                </StackLayout>
+
+
+
 
             <!--Promoción 3-->
-                <BoxView Grid.Row="2"
-                         Grid.Column="1"
-                         Color="Blue" Margin="0,0,0,10" />
 
-                <Label Grid.Row="2" 
-                       Grid.Column="1"
-                       Text="Row 0, Column 1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-            
+            <BoxView Grid.Row="2"
+                     Grid.Column="1"
+                     Color="#1E1F21" Margin="0,0,0,10" />
+
+                <Grid Grid.Column="1"
+                  Grid.Row="2"
+                  WidthRequest="155"
+                  HeightRequest="160"
+                  Margin="-200,0,0,10">
+
+
+                    <Rectangle Fill="#28292B"
+                               Stroke="Black"
+                               StrokeThickness="3"
+                               RadiusX="30"
+                               RadiusY="10"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"/>
+
+                    <Image Source="cajetas.jpeg"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="120"
+                           WidthRequest="120"/>
+                </Grid>
+
+
+            <!--Información de la promoción-->
+
+            <StackLayout Orientation="Vertical" Grid.Row="2">
+
+                <Label 
+                    Text="Paquete de cajetas Lugo 3x2"
+                    Padding="175,5,0,0"
+                    FontSize="18"/>
+
+                <Label Padding="175,5,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="$ 200 " FontSize="20" TextColor="Green"/>
+                            <Span Text="mxn" FontSize="15" TextColor="White"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Padding="175,5,0,0" FontSize="15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Vendido en: " />
+                            <Span Text="Cajetas Lugo" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button
+                    Margin="170,10,0,0" 
+                    Text="Ir a la oferta"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="LightSeaGreen"
+                    HeightRequest="40"
+                    WidthRequest="190">
+                    
+                    <Button.ImageSource>
+                        <FontImageSource  
+                            Glyph="{x:Static local:IconFont.Arrow_outward}"
+                            FontFamily="MaterialIcon"
+                            Color="White"
+                            Size="30" />
+                    </Button.ImageSource>
+                </Button>
+
+
+            </StackLayout>
+
 
             <!--Promoción 4-->
-                <BoxView Grid.Row="3"
-                         Grid.Column="1"
-                         Color="Blue" Margin="0,0,0,10" />
+            <BoxView Grid.Row="3"
+                     Grid.Column="1"
+                     Color="#1E1F21" Margin="0,0,0,10" />
 
-                <Label Grid.Row="3" 
-                       Grid.Column="1"
-                       Text="Row 0, Column 1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+                <Grid Grid.Column="1"
+                      Grid.Row="3"
+                      WidthRequest="155"
+                      HeightRequest="160"
+                      Margin="-200,0,0,10">
+
+
+                    <Rectangle Fill="#28292B"
+                               Stroke="Black"
+                               StrokeThickness="3"
+                               RadiusX="30"
+                               RadiusY="10"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"/>
+
+                    <Image Source="rosca_tacos.jpeg"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="120"
+                           WidthRequest="120"/>
+                </Grid>
+
+
+            <!--Información de la promoción-->
+
+            <StackLayout Orientation="Vertical" Grid.Row="3">
+
+                <Label 
+                    Text="Rosca de 60 tacos"
+                    Padding="175,5,0,0"
+                    FontSize="18"/>
+
+                <Label Padding="175,5,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="$ 600 " FontSize="20" TextColor="Green"/>
+                            <Span Text="mxn" FontSize="15" TextColor="White"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Padding="175,5,0,0" FontSize="15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Vendido en: " />
+                            <Span Text="Tacos Leo" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button
+                    Margin="170,10,0,0" 
+                    Text="Ir a la oferta"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="LightSeaGreen"
+                    HeightRequest="40"
+                    WidthRequest="190">
+
+                    <Button.ImageSource>
+                        <FontImageSource  
+                            Glyph="{x:Static local:IconFont.Arrow_outward}"
+                            FontFamily="MaterialIcon"
+                            Color="White"
+                            Size="30" />
+                    </Button.ImageSource>
+                </Button>
+
+
+            </StackLayout>
+
+            <!--Promoción 5-->
+            
+            <BoxView Grid.Row="4"
+                     Grid.Column="1"
+                     Color="#1E1F21" Margin="0,0,0,10" />
+
+                <Grid Grid.Column="1"
+                      Grid.Row="4"
+                      WidthRequest="155"
+                      HeightRequest="160"
+                      Margin="-200,0,0,10">
+
+
+                    <Rectangle Fill="#28292B"
+                               Stroke="Black"
+                               StrokeThickness="3"
+                               RadiusX="30"
+                               RadiusY="10"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"/>
+
+                    <Image Source="iphone15.jpg"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="120"
+                           WidthRequest="120"/>
+                </Grid>
+
+
+            <!--Información de la promoción-->
+
+            <StackLayout Orientation="Vertical" Grid.Row="4">
+
+                <Label 
+                    Text="Apple iPhone 15 Pro Max 256gb / 8gb e-SIM Negro"
+                    Padding="175,5,0,0"
+                    FontSize="18"/>
+
+                <Label Padding="175,5,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="$ 18,000 " FontSize="20" TextColor="Green"/>
+                            <Span Text="mxn" FontSize="15" TextColor="White"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Padding="175,5,0,0" FontSize="15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Vendido en: " />
+                            <Span Text="Genius-Phone" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button
+                    Margin="170,10,0,0" 
+                    Text="Ir a la oferta"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="LightSeaGreen"
+                    HeightRequest="40"
+                    WidthRequest="190">
+
+                    <Button.ImageSource>
+                        <FontImageSource  
+                            Glyph="{x:Static local:IconFont.Arrow_outward}"
+                            FontFamily="MaterialIcon"
+                            Color="White"
+                            Size="30" />
+                    </Button.ImageSource>
+                </Button>
+
+
+            </StackLayout>
+
         </Grid>
     </ScrollView>
 </ContentPage>

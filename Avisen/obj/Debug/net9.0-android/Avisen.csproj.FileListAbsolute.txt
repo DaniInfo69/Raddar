@@ -4831,3 +4831,8 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\src\mono\com\google\android\gms\tasks\OnFailureListenerImplementor.java
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\src\mono\com\google\android\gms\tasks\OnSuccessListenerImplementor.java
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\src\mono\com\google\android\gms\tasks\OnTokenCanceledListenerImplementor.java
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\cajetas.jpeg
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\iphone15.jpg
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\laptop.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\rosca_tacos.jpeg
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\sneakers.png

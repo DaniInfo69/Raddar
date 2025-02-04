@@ -39,7 +39,7 @@
             Route="Settings" />
 
         <ShellContent
-            Title="UserProfile"
+            Title="Perfil"
             ContentTemplate="{DataTemplate views:UserProfile}"
             Route="UserProfile" />
 
