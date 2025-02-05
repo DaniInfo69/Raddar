@@ -43,10 +43,6 @@
             ContentTemplate="{DataTemplate views:UserProfile}"
             Route="UserProfile" />
 
-        <ShellContent
-            Title="Promociones"
-            ContentTemplate="{DataTemplate views:Promociones}"
-            Route="Promociones" />
     </TabBar>
     
 </Shell>
