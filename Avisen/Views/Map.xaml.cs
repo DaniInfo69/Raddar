@@ -10,6 +10,8 @@ public partial class Map : ContentPage
     private Location userLocation;
     private List<Negocio> negocios;
     private NegocioService negocioService;
+    public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
+
 
     public Map()
     {
@@ -80,6 +82,11 @@ public partial class Map : ContentPage
 
     private void ShowPromotionAlert(Negocio negocio)
     {
+        if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
+        {
+            OfertasVistas.Add(negocio); // Guardar la oferta real
+        }
+
         var promotionPin = new Pin
         {
             Label = negocio.Nombre,
@@ -88,14 +95,14 @@ public partial class Map : ContentPage
             Location = negocio.Ubicacion
         };
 
-        // Asignar el evento de clic al Pin
         promotionPin.MarkerClicked += (s, e) =>
         {
             DisplayPromotionDetails(negocio);
         };
 
-        map.Pins.Add(promotionPin); // Agregar el Pin al mapa
+        map.Pins.Add(promotionPin);
     }
+
 
     private async void DisplayPromotionDetails(Negocio negocio)
     {

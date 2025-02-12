@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Avisen
+﻿namespace Avisen
 {
     public class Promocion
     {
@@ -12,5 +6,6 @@ namespace Avisen
         public string Descripcion { get; set; }  // Descripción de la promoción
         public decimal Precio { get; set; }      // Precio de la promoción
         public DateTime Vigencia { get; set; }   // Fecha de vigencia de la promoción
+        public string ImagenUrl { get; set; }    // URL de la imagen de la promoción
     }
 }

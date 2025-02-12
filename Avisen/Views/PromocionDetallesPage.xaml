@@ -2,20 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Avisen.Views.PromocionDetallesPage"
-             Title="Detalles de la Promoción">
+             Title="Detalles de la Promoción"
+             BackgroundColor="#F5EBDC">
+    <!-- Color de fondo beige claro -->
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Nombre del negocio -->
             <Label x:Name="NombreNegocioLabel"
-                   FontSize="20"
+                   FontSize="22"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center" 
-                   Padding="0,0,0,0"/>
-            <Label x:Name="PromocionesLabel"
+                   TextColor="#19535F" 
+                    HorizontalOptions="Center" />
+
+            <!-- Imagen de la promoción con bordes redondeados y sombra -->
+                <Frame Padding="0"
+                   HasShadow="True"
+                   BorderColor="#19535F"
+                   CornerRadius="10"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center">
+                    <Image x:Name="PromocionImagen"
+                       HeightRequest="200"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center"/>
+                </Frame>
+
+                <!-- Descripción de la promoción -->
+                <Label x:Name="PromocionesLabel"
                    FontSize="18"
-                   LineBreakMode="WordWrap" 
-                   Padding="0,30,0,0"/>
-            <Button Text="Cerrar"
-                    Clicked="CerrarModal" />
+                   TextColor="#602020" 
+                    LineBreakMode="WordWrap"
+                   Padding="10,0,10,0"/>
+
+                    <!-- Botón estilizado -->
+                    <Button Text="Cerrar"
+                    Clicked="CerrarModal"
+                    BackgroundColor="#19535F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    Padding="10"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -20,7 +20,8 @@ public class NegocioService
                         Nombre = "2x1 en Refrescos",
                         Descripcion = "Disfruta de 2x1 en Refrescos Coca-Cola.",
                         Precio = 25, 
-                        Vigencia = DateTime.Now.AddDays(7) // Vigencia de 7 días
+                        Vigencia = DateTime.Now.AddDays(7), // Vigencia de 7 días
+                        ImagenUrl = "refrescos.jpg"
                     }
                 }
             },
@@ -35,7 +36,8 @@ public class NegocioService
                         Nombre = "Descuento del 20% en Papel Higiénico",
                         Descripcion = "Descuento del 20% en todos los papeles higiénicos",
                         Precio = 15, // Descuento aplicado
-                        Vigencia = DateTime.Now.AddDays(15) // Vigencia de 15 días
+                        Vigencia = DateTime.Now.AddDays(15), // Vigencia de 15 días
+                        ImagenUrl = "papel.jpeg"
                     }
                 }
             },
@@ -51,7 +53,8 @@ public class NegocioService
                         Nombre = "Descuento del 10% para estudiantes foráneos",
                         Descripcion = "Descuento del 10% en la membresía mensual, solo para estudiantes foraneos",
                         Precio = 220, // Descuento aplicado
-                        Vigencia = DateTime.Now.AddDays(15) // Vigencia de 15 días
+                        Vigencia = DateTime.Now.AddDays(15), // Vigencia de 15 días
+                        ImagenUrl = "cityfit.jpeg"
                     }
                 }
             },
@@ -67,7 +70,8 @@ public class NegocioService
                         Nombre = "Descuento del 15% En botellas Bacardi",
                         Descripcion = "Descuento del 15% en todas las botellas marca 'Bacardi'",
                         Precio = 0, // Descuento aplicado
-                        Vigencia = DateTime.Now.AddDays(15) // Vigencia de 15 días
+                        Vigencia = DateTime.Now.AddDays(15), // Vigencia de 15 días
+                        ImagenUrl = "bacardi.png"
                     }
                 }
             },

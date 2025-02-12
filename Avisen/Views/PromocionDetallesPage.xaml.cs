@@ -8,7 +8,19 @@ public partial class PromocionDetallesPage : ContentPage
 
         // Mostrar los detalles del negocio
         NombreNegocioLabel.Text = negocio.Nombre;
-        PromocionesLabel.Text = ObtenerDetallesPromociones(negocio);
+
+        // Si hay promociones, mostrar la imagen de la primera promoción
+        if (negocio.Promociones.Count > 0)
+        {
+            var promocion = negocio.Promociones[0]; // Tomamos la primera promoción
+            PromocionesLabel.Text = ObtenerDetallesPromociones(negocio);
+            PromocionImagen.Source = promocion.ImagenUrl;
+        }
+        else
+        {
+            PromocionesLabel.Text = "No hay promociones disponibles.";
+            PromocionImagen.IsVisible = false;
+        }
     }
 
     private string ObtenerDetallesPromociones(Negocio negocio)
@@ -26,6 +38,6 @@ public partial class PromocionDetallesPage : ContentPage
 
     private async void CerrarModal(object sender, EventArgs e)
     {
-        await Navigation.PopModalAsync(); // Cerrar la página modal
+        await Navigation.PopModalAsync();
     }
 }
