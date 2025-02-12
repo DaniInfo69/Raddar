@@ -16,22 +16,22 @@ public final class R {
 		public static final int layout_dodgeInsetEdges = 0x7f0302c6;
 		public static final int layout_insetEdge = 0x7f0302d0;
 		public static final int layout_keyline = 0x7f0302d1;
-		public static final int statusBarBackground = 0x7f030433;
+		public static final int statusBarBackground = 0x7f030434;
 	}
 	public static final class id {
 		public static final int bottom = 0x7f080063;
 		public static final int end = 0x7f0800bc;
 		public static final int left = 0x7f0800fb;
-		public static final int none = 0x7f080156;
-		public static final int right = 0x7f080187;
-		public static final int start = 0x7f0801c4;
-		public static final int top = 0x7f0801f3;
+		public static final int none = 0x7f080157;
+		public static final int right = 0x7f080188;
+		public static final int start = 0x7f0801c5;
+		public static final int top = 0x7f0801f4;
 	}
 	public static final class style {
-		public static final int Widget_Support_CoordinatorLayout = 0x7f100467;
+		public static final int Widget_Support_CoordinatorLayout = 0x7f100468;
 	}
 	public static final class styleable {
-		public static final int[] CoordinatorLayout = new int[] { 0x7f030282, 0x7f030433 };
+		public static final int[] CoordinatorLayout = new int[] { 0x7f030282, 0x7f030434 };
 		public static final int CoordinatorLayout_keylines = 0;
 		public static final int CoordinatorLayout_statusBarBackground = 1;
 		public static final int[] CoordinatorLayout_Layout = new int[] { 0x010100b3, 0x7f030293, 0x7f030294, 0x7f030295, 0x7f0302c6, 0x7f0302d0, 0x7f0302d1 };

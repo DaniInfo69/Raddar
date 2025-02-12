@@ -66,6 +66,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Map.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Map.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Map.xaml
 
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/PromocionDetallesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.PromocionDetallesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PromocionDetallesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PromocionDetallesPage.xaml
+
 [C:/Users/jardi/OneDrive/Escritorio/Proyecto Avisen/Avisen/Avisen/Views/Settings.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.Settings.xaml

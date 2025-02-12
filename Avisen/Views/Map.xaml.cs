@@ -99,17 +99,8 @@ public partial class Map : ContentPage
 
     private async void DisplayPromotionDetails(Negocio negocio)
     {
-        // Crear un mensaje con los detalles de todas las promociones del negocio
-        string mensaje = $"Promociones en {negocio.Nombre}:\n\n";
-        foreach (var promocion in negocio.Promociones)
-        {
-            mensaje += $"**{promocion.Nombre}**\n";
-            mensaje += $"{promocion.Descripcion}\n";
-            mensaje += $"Precio: {(promocion.Precio == 0 ? "Oferta especial" : $"${promocion.Precio}")}\n";
-            mensaje += $"Vigencia: {promocion.Vigencia.ToShortDateString()}\n\n";
-        }
-
-        // Mostrar el mensaje en una alerta
-        await DisplayAlert("Detalles de la Promoción", mensaje, "Ver promoción", "Cerrar");
+        var detallesPage = new PromocionDetallesPage(negocio); // Crear la página
+        await Navigation.PushModalAsync(detallesPage); // Mostrar la página modal
     }
+
 }

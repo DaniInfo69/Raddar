@@ -7,12 +7,13 @@
              Shell.NavBarIsVisible="False"
              Title="Map">
 
-    <maps:Map 
+        <maps:Map 
         x:Name="map"
         MapType="Street"
         IsShowingUser="true"
         IsTrafficEnabled="True"
         IsScrollEnabled="True"
         IsZoomEnabled="True">
-    </maps:Map>
+        </maps:Map>
+
 </ContentPage>
