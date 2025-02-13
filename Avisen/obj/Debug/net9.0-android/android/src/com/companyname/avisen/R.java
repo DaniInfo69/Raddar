@@ -11999,9 +11999,10 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f0700ff;
     public static final int papel=0x7f070100;
     public static final int refrescos=0x7f070101;
-    public static final int test_level_drawable=0x7f070102;
-    public static final int tooltip_frame_dark=0x7f070103;
-    public static final int tooltip_frame_light=0x7f070104;
+    public static final int splash=0x7f070102;
+    public static final int test_level_drawable=0x7f070103;
+    public static final int tooltip_frame_dark=0x7f070104;
+    public static final int tooltip_frame_light=0x7f070105;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

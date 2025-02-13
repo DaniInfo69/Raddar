@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Home.xaml",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAIwBgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-13T22:44:52.959Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "Avisen\\Views\\Map.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:45.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:45.654Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "Avisen\\Views\\PromocionDetallesPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:43.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:43.777Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "Avisen\\Views\\Settings.xaml",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:36.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:36.693Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "Avisen\\Views\\SignUp.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:34.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:34.585Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "Avisen\\Views\\UserProfile.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:32.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:32.511Z"
             },
             {
               "$type": "Document",
@@ -132,8 +127,7 @@
               "RelativeToolTip": "Avisen\\MainPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:25.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T22:44:25.651Z"
             },
             {
               "$type": "Document",
@@ -145,8 +139,7 @@
               "RelativeToolTip": "Avisen\\Views\\Login.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T21:30:20.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T21:30:20.867Z"
             }
           ]
         }

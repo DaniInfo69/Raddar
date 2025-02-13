@@ -24,12 +24,8 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-<<<<<<< HEAD
 _nugetassetsfilehash=20e5baf6ba15a647b75baf792e70413a43d148255233a37079ceeddc377478c1
-=======
-_nugetassetsfilehash=aa1ff410efde44517f1e0534e39a92b6fb0f4a793f32c0d5f226d1b5b175061f
->>>>>>> master
 typemapkind=strings-asm
 androidmanifestplaceholders=
-projectfullpath=c:\users\pc\desktop\programacion\avisen\avisen\avisen.csproj
+projectfullpath=c:\users\jardi\onedrive\escritorio\proyecto avisen\avisen\avisen\avisen.csproj
 androidusedesignerassembly=true
