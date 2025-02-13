@@ -5,16 +5,17 @@
              x:Class="Avisen.Views.Login"
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
              Title="Login">
     <ScrollView>
     <Grid RowDefinitions=".3*, .7*">
-        <Image Aspect="AspectFill" Source="fondoprueba1.png"/>
-            <Grid BackgroundColor="#0aa59b"  Opacity=".9"/>
+        <Image Aspect="AspectFill" Source="fondo3.png"/>
+            <Grid BackgroundColor="Gainsboro"  Opacity=".85"/>
         <Grid ColumnDefinitions="*,*">
             <Image 
             Aspect="AspectFit"
-            HeightRequest="120"
-            Source="logo_prueba1.png"/>
+            HeightRequest="150"
+            Source="logo.png"/>
         </Grid>
 
         <!--Contenido principal-->

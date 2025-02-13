@@ -5267,3 +5267,7 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\assets\x86_64\zh-Hant\Microsoft.Maui.Controls.resources.dll
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\assets\x86_64\zh-HK\Microsoft.Maui.Controls.resources.dll
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\android\assets\x86_64\_Microsoft.Android.Resource.Designer.dll
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\logo.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\fondo.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\fondo2.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Avisen\Avisen\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\fondo3.jpg
