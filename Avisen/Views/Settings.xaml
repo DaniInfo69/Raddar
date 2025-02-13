@@ -2,13 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Avisen.Views.Settings"
-             BackgroundColor="BlueViolet"
              Shell.NavBarIsVisible="False"
              Title="Settings">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <Grid RowDefinitions=".1*, .8*">
+            <Grid BackgroundColor="#0aa59b"  Opacity=".9"/>
+
+            <!--Contenido principal-->
+            <Grid  Grid.Row="1">
+                <RoundRectangle Margin="-5, -30, -5, -2"
+                            CornerRadius="30,30,0,0"
+                            Fill="#f0ebdc"/>
+                <VerticalStackLayout Padding="20">
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        FontSize="Title"
+                        Text="Ajustes"
+                        TextColor="Black"/>
+                    <BoxView HeightRequest="1" BackgroundColor="Gray"/>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0" Text="Modo Obscuro" FontSize="Medium" VerticalTextAlignment="Center"/>
+                        <Switch Grid.Column="1" IsToggled="{Binding IsDarkMode}"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" BackgroundColor="Gray"/>
+
+                    <Label Text="Distancia entre ofertas (km)" FontSize="Medium" Margin="0,20,0,0"/>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Entry Grid.Column="0" Keyboard="Numeric" Text="{Binding OfferDistance}" Placeholder="Introduce la distancia en km"/>
+                        <Button Grid.Column="1" Text="OK" VerticalOptions="Center" Clicked="OnSaveOfferDistanceClicked"/>
+                    </Grid>
+                    <BoxView HeightRequest="1" BackgroundColor="Gray"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>
