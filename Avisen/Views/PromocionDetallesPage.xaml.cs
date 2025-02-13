@@ -13,7 +13,7 @@ public partial class PromocionDetallesPage : ContentPage
         if (negocio.Promociones.Count > 0)
         {
             var promocion = negocio.Promociones[0]; // Tomamos la primera promoción
-            PromocionesLabel.Text = ObtenerDetallesPromociones(negocio);
+            PromocionesLabel.FormattedText = ObtenerDetallesPromociones(negocio);
             PromocionImagen.Source = promocion.ImagenUrl;
         }
         else
@@ -23,17 +23,47 @@ public partial class PromocionDetallesPage : ContentPage
         }
     }
 
-    private string ObtenerDetallesPromociones(Negocio negocio)
+    private FormattedString ObtenerDetallesPromociones(Negocio negocio)
     {
-        string mensaje = "";
+        var formattedString = new FormattedString();
+
         foreach (var promocion in negocio.Promociones)
         {
-            mensaje += $"**{promocion.Nombre}**\n";
-            mensaje += $"{promocion.Descripcion}\n";
-            mensaje += $"Precio: {(promocion.Precio == 0 ? "Oferta especial" : $"${promocion.Precio}")}\n";
-            mensaje += $"Vigencia: {promocion.Vigencia.ToShortDateString()}\n\n";
+            // Nombre en negritas
+            formattedString.Spans.Add(new Span
+            {
+                Text = promocion.Nombre + "\n\n",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 18,
+                TextColor = Color.FromArgb("#19535F"),
+            });
+
+            // Descripción normal
+            formattedString.Spans.Add(new Span
+            {
+                Text = promocion.Descripcion + "\n\n",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#602020") // Color rojo oscuro
+            });
+
+            // Precio
+            formattedString.Spans.Add(new Span
+            {
+                Text = $"Precio: {(promocion.Precio == 0 ? "Oferta especial" : $"${promocion.Precio} mxn")}\n",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
+            });
+
+            // Vigencia
+            formattedString.Spans.Add(new Span
+            {
+                Text = $"Vigencia: {promocion.Vigencia.ToShortDateString()}\n\n",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
+            });
         }
-        return mensaje;
+
+        return formattedString;
     }
 
     private async void CerrarModal(object sender, EventArgs e)

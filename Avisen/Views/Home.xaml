@@ -3,19 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Avisen.Views.Home"
              Title="Home"
-             BackgroundColor="Black">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5EBDC">
+    <!-- Color de fondo beige claro -->
 
     <ScrollView>
-        <StackLayout Padding="10">
-            <Label Text="Ofertas Vistas" FontSize="24" TextColor="White" HorizontalOptions="Center"/>
+        <StackLayout Padding="20">
+            <!-- Título -->
+            <Label Text="Ofertas Vistas" 
+                   FontSize="24"
+                   Padding="10"
+                   TextColor="#19535F" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <!-- Lista de ofertas -->
             <CollectionView ItemsSource="{Binding OfertasReales}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#1E1F21" Padding="10" CornerRadius="10">
-                            <StackLayout Orientation="Vertical" Spacing="5">
-                                <Label Text="{Binding Nombre}" FontSize="20" TextColor="White" FontAttributes="Bold"/>
-                                <Label Text="{Binding Descripcion}" FontSize="16" TextColor="LightGreen"/>
-                                <Button Text="Ver Oferta" BackgroundColor="LightSeaGreen" TextColor="White"
+                        <Frame BackgroundColor="White" 
+                               Padding="10" 
+                               CornerRadius="10"
+                               BorderColor="#19535F"
+                               HasShadow="True"
+                               Margin="0,0,0,15">
+                            <!-- Margen inferior para separar ofertas -->
+                            <StackLayout Orientation="Vertical" Spacing="10">
+                                <!-- Nombre del negocio -->
+                                <Label Text="{Binding Nombre}" 
+                                       FontSize="20" 
+                                       TextColor="#19535F" 
+                                       FontAttributes="Bold"/>
+
+                                <!-- Descripción de la promoción -->
+                                <Label Text="{Binding promocion.Descripcion}" 
+                                       FontSize="18" 
+                                       TextColor="#602020"/>
+
+                                <!-- Botón de ver oferta -->
+                                <Button Text="Ver Oferta" 
+                                        BackgroundColor="#19535F" 
+                                        TextColor="White"
+                                        CornerRadius="25"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
                                         CommandParameter="{Binding .}"
                                         Clicked="OnVerOfertaClicked"/>
                             </StackLayout>
@@ -25,5 +56,4 @@
             </CollectionView>
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

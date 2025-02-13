@@ -1,51 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Avisen"
              x:Class="Avisen.Views.PromocionDetallesPage"
              Title="Detalles de la Promoción"
              BackgroundColor="#F5EBDC">
     <!-- Color de fondo beige claro -->
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
             <!-- Nombre del negocio -->
             <Label x:Name="NombreNegocioLabel"
-                   FontSize="22"
+                   FontSize="26"
                    FontAttributes="Bold"
                    TextColor="#19535F" 
-                    HorizontalOptions="Center" />
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="0,10,0,20" />
 
             <!-- Imagen de la promoción con bordes redondeados y sombra -->
-                <Frame Padding="0"
-                   HasShadow="True"
-                   BorderColor="#19535F"
-                   CornerRadius="10"
-                   BackgroundColor="Transparent"
-                   HorizontalOptions="Center">
-                    <Image x:Name="PromocionImagen"
+            <Border Stroke="#19535F"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 15"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Padding="0">
+                <Image x:Name="PromocionImagen"
                        HeightRequest="200"
                        Aspect="AspectFill"
-                       HorizontalOptions="Center"/>
-                </Frame>
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Border>
 
-                <!-- Descripción de la promoción -->
-                <Label x:Name="PromocionesLabel"
-                   FontSize="18"
-                   TextColor="#602020" 
-                    LineBreakMode="WordWrap"
-                   Padding="10,0,10,0"/>
+            <!-- Contenedor para los detalles de la oferta -->
+            <Border Stroke="#19535F"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 15"
+                    BackgroundColor="White"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <!-- Título de la sección -->
+                    <Label Text="Detalles de la Oferta"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#19535F" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
 
-                    <!-- Botón estilizado -->
-                    <Button Text="Cerrar"
+                    <!-- Descripción de la promoción -->
+                    <Label x:Name="PromocionesLabel"
+                           FontSize="18"
+                           TextColor="#602020" 
+                           LineBreakMode="WordWrap"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Botón estilizado con icono -->
+            <Button Text="Cerrar"
                     Clicked="CerrarModal"
-                    BackgroundColor="#19535F"
+                    BackgroundColor="#19535F" 
                     TextColor="White"
                     CornerRadius="25"
                     FontAttributes="Bold"
-                    Padding="10"
+                    FontSize="18"
+                    Padding="20,10"
                     HorizontalOptions="Center"
-                    WidthRequest="150"/>
+                    WidthRequest="200">
+                <Button.ImageSource>
+                    <FontImageSource
+                        Glyph="{x:Static local:IconFont.Close}"
+                        Color="White"
+                        FontFamily="MaterialIcon"
+                        Size="24" />
+                </Button.ImageSource>
+            </Button>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -2,6 +2,7 @@ using Microsoft.Maui.Devices.Sensors;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Avisen.Views;
 
@@ -10,8 +11,9 @@ public partial class Map : ContentPage
     private Location userLocation;
     private List<Negocio> negocios;
     private NegocioService negocioService;
-    public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
+    private bool isUpdatingLocation; // Bandera para controlar la actualización de la ubicación
 
+    public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
 
     public Map()
     {
@@ -20,6 +22,44 @@ public partial class Map : ContentPage
         CargarNegocios(); // Carga los datos asíncronamente
         MoveToUserLocation();
         map.PropertyChanged += OnMapPropertyChanged;
+
+        // Iniciar la actualización continua de la ubicación
+        StartLocationUpdates();
+    }
+
+    private async void StartLocationUpdates()
+    {
+        isUpdatingLocation = true;
+
+        while (isUpdatingLocation)
+        {
+            await GetUserLocationAsync(); // Obtener la ubicación actual
+            await Task.Delay(5000); // Esperar 5 segundos antes de la próxima actualización
+        }
+    }
+
+    private async Task GetUserLocationAsync()
+    {
+        try
+        {
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best));
+
+            if (location != null)
+            {
+                userLocation = new Location(location.Latitude, location.Longitude);
+                CheckForPromotions(); // Verificar promociones cercanas
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener la ubicación: {ex.Message}");
+        }
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        isUpdatingLocation = false; // Detener la actualización de la ubicación
     }
 
     private async void CargarNegocios()
@@ -60,7 +100,7 @@ public partial class Map : ContentPage
         foreach (var negocio in negocios)
         {
             var distance = userLocation.CalculateDistance(negocio.Ubicacion, DistanceUnits.Kilometers);
-            if (distance <= 0.1) // 500 metros de radio
+            if (distance <= 0.1) // 100 metros de radio
             {
                 // Verificar si el Pin ya existe para evitar duplicados
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
@@ -103,11 +143,9 @@ public partial class Map : ContentPage
         map.Pins.Add(promotionPin);
     }
 
-
     private async void DisplayPromotionDetails(Negocio negocio)
     {
         var detallesPage = new PromocionDetallesPage(negocio); // Crear la página
         await Navigation.PushModalAsync(detallesPage); // Mostrar la página modal
     }
-
 }

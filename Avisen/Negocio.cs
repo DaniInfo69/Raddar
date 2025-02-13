@@ -12,4 +12,5 @@ namespace Avisen
         public Location Ubicacion { get; set; }          // Ubicación del negocio
         public List<Promocion> Promociones { get; set; } // Lista de promociones
     }
+
 }
