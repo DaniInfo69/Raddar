@@ -2,124 +2,138 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Avisen"
+             Shell.NavBarIsVisible="False"
              x:Class="Avisen.Views.UserProfile"
              BackgroundColor="#f6f6f6"
              Title="UserProfile">
-    <VerticalStackLayout Spacing="0">
-
-        <!-- Foto y nombre del usuario -->
-        <Grid HeightRequest="350"
-              BackgroundColor="#EEF2FF">
-
-            <Ellipse 
-                Fill="Gray"
-                HeightRequest="150"
-                WidthRequest="150"
-                HorizontalOptions="Center"
-                VerticalOptions="Start"
-                Margin="0,50,0,0" />
 
 
-            <Label  
-                 Text="{x:Static local:IconFont.Person}" 
-                Style="{StaticResource MaterialIcon}"
-                FontSize="100"
-                TextColor="White"
-                HorizontalOptions="Center"
-                Margin="0,70,0,0" />
+    <ScrollView>
+        <Grid RowDefinitions=".1*, .8*">
+            <Grid BackgroundColor="#0aa59b"  Opacity=".9"/>
+
+            <!--Contenido principal-->
+            <Grid  Grid.Row="1">
+                <RoundRectangle Margin="-5, -30, -5, -2"
+                            CornerRadius="30,30,0,0"
+                            Fill="#f0ebdc"/>
+                <VerticalStackLayout Spacing="0">
+
+                    <!-- Foto y nombre del usuario -->
+                    <Grid HeightRequest="300">
+
+                        <Ellipse 
+                            Fill="Gray"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Start"
+                            Margin="0,50,0,0" />
 
 
-            <Label 
-                Text="Nombre del usuario"
-                FontSize="24"
-                FontAttributes="Bold"
-                TextColor="#2D2D2D"
-                HorizontalOptions="Center"
-                VerticalOptions="End"
-                Margin="0,0,0,80" />
+                        <Label  
+                            Text="{x:Static local:IconFont.Person}" 
+                            Style="{StaticResource MaterialIcon}"
+                            FontSize="100"
+                            TextColor="#fcf9ed"
+                            HorizontalOptions="Center"
+                            Margin="0,70,0,0" />
 
+
+                        <Label 
+                            Text="Nombre del usuario"
+                            FontSize="24"
+                            FontAttributes="Bold"
+                            TextColor="#2D2D2D"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            Margin="0,0,0,40"/>
+
+                    </Grid>
+
+                    <!-- Opciones del perfil -->
+                    <Grid Padding="20">
+                        <RoundRectangle 
+                            CornerRadius="30,30,30,30"
+                            Fill="#f5f3ed"
+                            Margin="-10,0,-10,0" />
+
+
+                        <VerticalStackLayout Margin="0,10,20,0" Spacing="15">
+                            <!-- Botón de Editar Información -->
+                            <Button 
+                                Text="   Editar Información               >"
+                                FontSize="18"
+                                TextColor="#2D2D2D"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                HeightRequest="50">
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        Glyph="{x:Static local:IconFont.Info_outline}"
+                                        FontFamily="MaterialIcon"
+                                        Color="#BFCFFF"
+                                        Size="30" />
+                                </Button.ImageSource>
+                            </Button>
+
+                            <!-- Botón de Editar Historial de promociones -->
+                            <Button 
+                                Text="  Historial de Promociones     >"
+                                FontSize="18"
+                                TextColor="#2D2D2D"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                HeightRequest="50">
+                                <Button.ImageSource>
+                                    <FontImageSource                                
+                                        Glyph="{x:Static local:IconFont.Ads_click}"
+                                        FontFamily="MaterialIcon"
+                                        Color="#BFCFFF"
+                                        Size="30" />
+                                </Button.ImageSource>
+                            </Button>
+
+                            <!-- Botón de Métodos de pago -->
+                            <Button 
+                                Text="  Métodos de Pago                  >"
+                                FontSize="18"
+                                TextColor="#2D2D2D"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                HeightRequest="50">
+                                <Button.ImageSource>
+                                    <FontImageSource                                
+                                        Glyph="{x:Static local:IconFont.Wallet}"
+                                        FontFamily="MaterialIcon"
+                                        Color="#BFCFFF"
+                                        Size="30" />
+                                </Button.ImageSource>
+                            </Button>
+
+
+                            <!-- Botón de Cerrar Sesión -->
+                            <Button 
+                                Text="  Cerrar Sesión                         >"
+                                FontSize="18"
+                                TextColor="#2D2D2D"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                HeightRequest="50">
+                                <Button.ImageSource>
+                                    <FontImageSource                                
+                                        Glyph="{x:Static local:IconFont.Exit_to_app}"
+                                        FontFamily="MaterialIcon"
+                                        Color="#BFCFFF"
+                                        Size="30" />
+                                </Button.ImageSource>
+                            </Button>
+
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
         </Grid>
+    </ScrollView>
 
-        <!-- Opciones del perfil -->
-        <Grid BackgroundColor="White" Padding="20">
-            <RoundRectangle 
-                CornerRadius="30,30,0,0"
-                Fill="White"
-                Margin="-10,0,-10,0" />
-
-
-            <VerticalStackLayout Margin="0,10,20,0" Spacing="15">
-                <!-- Botón de Editar Información -->
-                <Button 
-                    Text="   Editar Información               >"
-                    FontSize="18"
-                    TextColor="#2D2D2D"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Start"
-                    HeightRequest="50">
-                    <Button.ImageSource>
-                        <FontImageSource
-                            Glyph="{x:Static local:IconFont.Info_outline}"
-                            FontFamily="MaterialIcon"
-                            Color="#BFCFFF"
-                            Size="30" />
-                    </Button.ImageSource>
-                </Button>
-
-                <!-- Botón de Editar Historial de promociones -->
-                <Button 
-                        Text="  Historial de Promociones     >"
-                        FontSize="18"
-                        TextColor="#2D2D2D"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Start"
-                        HeightRequest="50">
-                    <Button.ImageSource>
-                        <FontImageSource                                
-                                Glyph="{x:Static local:IconFont.Ads_click}"
-                                FontFamily="MaterialIcon"
-                                Color="#BFCFFF"
-                                Size="30" />
-                    </Button.ImageSource>
-                </Button>
-
-
-                <!-- Botón de Métodos de pago -->
-                <Button 
-                        Text="  Métodos de Pago                  >"
-                        FontSize="18"
-                        TextColor="#2D2D2D"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Start"
-                        HeightRequest="50">
-                    <Button.ImageSource>
-                        <FontImageSource                                
-                            Glyph="{x:Static local:IconFont.Wallet}"
-                            FontFamily="MaterialIcon"
-                            Color="#BFCFFF"
-                            Size="30" />
-                    </Button.ImageSource>
-                </Button>
-
-
-                <!-- Botón de Cerrar Sesión -->
-                <Button 
-                        Text="  Cerrar Sesión                         >"
-                        FontSize="18"
-                        TextColor="#2D2D2D"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Start"
-                        HeightRequest="50">
-                    <Button.ImageSource>
-                        <FontImageSource                                
-                            Glyph="{x:Static local:IconFont.Exit_to_app}"
-                            FontFamily="MaterialIcon"
-                            Color="#BFCFFF"
-                            Size="30" />
-                    </Button.ImageSource>
-                </Button>
-
-            </VerticalStackLayout>
-        </Grid>
-    </VerticalStackLayout>
 </ContentPage>
