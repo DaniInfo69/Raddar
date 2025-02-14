@@ -1,38 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\",
+  "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\map.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\promociondetallespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\promociondetallespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto avisen\\avisen\\avisen\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,104 +18,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Home.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Home.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Home.xaml",
-              "ViewState": "AgIAABMAAAAAAAAAAAAIwBgAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:52.959Z",
+              "Title": "Map.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAADwv2oAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T01:55:26.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Map.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Map.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Map.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Map.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:45.654Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PromocionDetallesPage.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\PromocionDetallesPage.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\PromocionDetallesPage.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\PromocionDetallesPage.xaml",
-              "RelativeToolTip": "Avisen\\Views\\PromocionDetallesPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:43.777Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Settings.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Settings.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Settings.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Settings.xaml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:36.693Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SignUp.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\SignUp.xaml",
-              "RelativeToolTip": "Avisen\\Views\\SignUp.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:34.585Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserProfile.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\UserProfile.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\UserProfile.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\UserProfile.xaml",
-              "RelativeToolTip": "Avisen\\Views\\UserProfile.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:32.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\MainPage.xaml",
-              "RelativeDocumentMoniker": "Avisen\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\MainPage.xaml",
-              "RelativeToolTip": "Avisen\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T22:44:25.651Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Login.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Avisen\\Avisen\\Avisen\\Views\\Login.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Login.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Title": "Map.xaml",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml",
+              "RelativeToolTip": "Avisen\\Views\\Map.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T21:30:20.867Z"
+              "WhenOpened": "2025-02-14T01:20:37.72Z"
             }
           ]
         }

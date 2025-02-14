@@ -11,30 +11,27 @@ public partial class Map : ContentPage
     private Location userLocation;
     private List<Negocio> negocios;
     private NegocioService negocioService;
-    private bool isUpdatingLocation; // Bandera para controlar la actualización de la ubicación
+    private bool isUpdatingLocation;
 
     public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
 
     public Map()
     {
         InitializeComponent();
-        negocioService = new NegocioService(); // Inicializa el servicio
-        CargarNegocios(); // Carga los datos asíncronamente
+        negocioService = new NegocioService();
+        CargarNegocios();
         MoveToUserLocation();
         map.PropertyChanged += OnMapPropertyChanged;
-
-        // Iniciar la actualización continua de la ubicación
         StartLocationUpdates();
     }
 
     private async void StartLocationUpdates()
     {
         isUpdatingLocation = true;
-
         while (isUpdatingLocation)
         {
-            await GetUserLocationAsync(); // Obtener la ubicación actual
-            await Task.Delay(5000); // Esperar 5 segundos antes de la próxima actualización
+            await GetUserLocationAsync();
+            await Task.Delay(30000);
         }
     }
 
@@ -43,29 +40,36 @@ public partial class Map : ContentPage
         try
         {
             var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best));
-
             if (location != null)
             {
                 userLocation = new Location(location.Latitude, location.Longitude);
-                CheckForPromotions(); // Verificar promociones cercanas
+                CheckForPromotions();
             }
+        }
+        catch (FeatureNotEnabledException)
+        {
+            await DisplayAlert("Ubicación desactivada", "Por favor activa el GPS para continuar.", "OK");
+        }
+        catch (PermissionException)
+        {
+            await DisplayAlert("Permiso de ubicación denegado", "Por favor concede permisos de ubicación para continuar.", "OK");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al obtener la ubicación: {ex.Message}");
+            await DisplayAlert("Error", $"Error al obtener la ubicación: {ex.Message}", "OK");
         }
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-        isUpdatingLocation = false; // Detener la actualización de la ubicación
+        isUpdatingLocation = false;
     }
 
     private async void CargarNegocios()
     {
-        negocios = await negocioService.ObtenerNegociosAsync(); // Obtiene los datos asíncronamente
-        CheckForPromotions(); // Verifica promociones después de cargar los datos
+        negocios = await negocioService.ObtenerNegociosAsync();
+        CheckForPromotions();
     }
 
     private async void MoveToUserLocation()
@@ -73,11 +77,10 @@ public partial class Map : ContentPage
         try
         {
             var location = await Geolocation.GetLastKnownLocationAsync();
-
             if (location != null)
             {
                 userLocation = new Location(location.Latitude, location.Longitude);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromMiles(0.5))); // Zoom más cercano
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromMiles(0.5)));
                 CheckForPromotions();
             }
         }
@@ -97,20 +100,24 @@ public partial class Map : ContentPage
 
     private void CheckForPromotions()
     {
+        if (userLocation == null)
+        {
+            DisplayAlert("GPS no disponible", "No se puede verificar promociones porque el GPS no está activado o no se pudo obtener la ubicación.", "OK");
+            return;
+        }
+
         foreach (var negocio in negocios)
         {
             var distance = userLocation.CalculateDistance(negocio.Ubicacion, DistanceUnits.Kilometers);
-            if (distance <= 0.1) // 100 metros de radio
+            if (distance <= 0.1)
             {
-                // Verificar si el Pin ya existe para evitar duplicados
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
                 {
-                    ShowPromotionAlert(negocio); // Agregar el Pin al mapa
+                    ShowPromotionAlert(negocio);
                 }
             }
             else
             {
-                // Si el negocio no está dentro del radio, eliminar su Pin (opcional)
                 var pinToRemove = map.Pins.FirstOrDefault(pin => pin.Label == negocio.Nombre);
                 if (pinToRemove != null)
                 {
@@ -124,7 +131,7 @@ public partial class Map : ContentPage
     {
         if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
         {
-            OfertasVistas.Add(negocio); // Guardar la oferta real
+            OfertasVistas.Add(negocio);
         }
 
         var promotionPin = new Pin
@@ -135,17 +142,13 @@ public partial class Map : ContentPage
             Location = negocio.Ubicacion
         };
 
-        promotionPin.MarkerClicked += (s, e) =>
-        {
-            DisplayPromotionDetails(negocio);
-        };
-
+        promotionPin.MarkerClicked += (s, e) => DisplayPromotionDetails(negocio);
         map.Pins.Add(promotionPin);
     }
 
     private async void DisplayPromotionDetails(Negocio negocio)
     {
-        var detallesPage = new PromocionDetallesPage(negocio); // Crear la página
-        await Navigation.PushModalAsync(detallesPage); // Mostrar la página modal
+        var detallesPage = new PromocionDetallesPage(negocio);
+        await Navigation.PushModalAsync(detallesPage);
     }
 }

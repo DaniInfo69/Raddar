@@ -109,7 +109,6 @@ public class MonoPackageManager_Resources {
 		"Xamarin.GooglePlayServices.Tasks.dll",
 		"Xamarin.Jetbrains.Annotations.dll",
 		"Xamarin.Kotlin.StdLib.dll",
-		"Xamarin.Kotlin.StdLib.Common.dll",
 		"Xamarin.KotlinX.AtomicFU.dll",
 		"Xamarin.KotlinX.AtomicFU.Jvm.dll",
 		"Xamarin.KotlinX.Coroutines.Android.dll",
