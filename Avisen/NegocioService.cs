@@ -28,7 +28,7 @@ public class NegocioService
             new Negocio
             {
                 Nombre = "Kiosko",
-                Ubicacion = new Location(19.879929414954702, -103.589659371905),
+                Ubicacion = new Location(19.555361902817438, -103.37452754302113),
                 Promociones = new List<Promocion>
                 {
                     new Promocion

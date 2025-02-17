@@ -6,7 +6,7 @@
              Title="Settings">
     <ScrollView>
         <Grid RowDefinitions=".1*, .8*">
-            <Grid BackgroundColor="#0aa59b"  Opacity=".9"/>
+            <Grid BackgroundColor="#0aa59b"/>
 
             <!--Contenido principal-->
             <Grid  Grid.Row="1">

@@ -4,13 +4,12 @@
              xmlns:local="clr-namespace:Avisen"
              Shell.NavBarIsVisible="False"
              x:Class="Avisen.Views.UserProfile"
-             BackgroundColor="#f6f6f6"
              Title="UserProfile">
 
 
     <ScrollView>
         <Grid RowDefinitions=".1*, .8*">
-            <Grid BackgroundColor="#0aa59b"  Opacity=".9"/>
+            <Grid BackgroundColor="#0aa59b"/>
 
             <!--Contenido principal-->
             <Grid  Grid.Row="1">

@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\negocioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\negocioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\home.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\map.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,71 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NegocioService.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\NegocioService.cs",
-              "RelativeDocumentMoniker": "Avisen\\NegocioService.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\NegocioService.cs",
-              "RelativeToolTip": "Avisen\\NegocioService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T02:25:45.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Home.xaml.cs",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Home.xaml.cs",
-              "RelativeToolTip": "Avisen\\Views\\Home.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T02:22:20.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Home.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Home.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Home.xaml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:21:53.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Map.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml.cs",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml.cs",
-              "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAADwv2oAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T01:55:26.673Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Map.xaml",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Map.xaml",
-              "RelativeToolTip": "Avisen\\Views\\Map.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T01:20:37.72Z",
-              "EditorCaption": ""
             }
           ]
         }

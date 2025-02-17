@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ybr4zuUh7K0=",
+  "dgSpecHash": "YUQoJT29tKA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Avisen.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Pc\\.nuget\\packages\\communitytoolkit.maui\\11.0.0\\communitytoolkit.maui.11.0.0.nupkg.sha512",
-    "C:\\Users\\Pc\\.nuget\\packages\\communitytoolkit.maui.core\\11.0.0\\communitytoolkit.maui.core.11.0.0.nupkg.sha512",
+    "C:\\Users\\Pc\\.nuget\\packages\\communitytoolkit.maui\\11.1.0\\communitytoolkit.maui.11.1.0.nupkg.sha512",
+    "C:\\Users\\Pc\\.nuget\\packages\\communitytoolkit.maui.core\\11.1.0\\communitytoolkit.maui.core.11.1.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\googlegson\\2.11.0.5\\googlegson.2.11.0.5.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0\\microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",

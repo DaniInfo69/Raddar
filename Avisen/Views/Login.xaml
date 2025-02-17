@@ -2,11 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Avisen"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Avisen.Views.Login"
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White"
              Title="Login">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#0aa59b" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
+    
     <ScrollView>
     <Grid RowDefinitions=".3*, .7*">
         <Image Aspect="AspectFill" Source="fondo3.png"/>

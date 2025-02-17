@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Behaviors;
+using CommunityToolkit.Maui.Core;
 using System.Collections.ObjectModel;
 
 namespace Avisen.Views;
