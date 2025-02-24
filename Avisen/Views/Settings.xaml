@@ -11,7 +11,7 @@
             <Grid BackgroundColor="#0aa59b" />
 
             <!--  Contenido principal  -->
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Grid.Column="2">
                 <RoundRectangle
                     Margin="-5,-30,-5,-2"
                     CornerRadius="30,30,0,0"
@@ -19,8 +19,9 @@
 
                 <VerticalStackLayout>
                     <Grid Padding="20">
+
                         <RoundRectangle
-                            Margin="0,0,0,0"
+                            Margin="0,0,0,10"
                             CornerRadius="30,30,30,30"
                             Fill="#f5f3ed" />
 
@@ -36,19 +37,23 @@
 
 
 
-                            <Grid ColumnDefinitions="Auto, *">
+                            <Grid ColumnDefinitions="Auto, *, Auto">
 
                                 <Label
                                     Grid.Column="0"
+                                    FontSize="35"
+                                    HorizontalOptions="Center"
                                     Style="{StaticResource MaterialIcon}"
                                     Text="{x:Static local:IconFont.Dark_mode}"
-                                    TextColor="#BFCFFF" />
+                                    TextColor="#BFCFFF"
+                                    VerticalOptions="Center" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Medium"
+                                    HorizontalOptions="Center"
                                     Text="Modo Obscuro"
                                     TextColor="#2D2D2D"
-                                    VerticalTextAlignment="Center" />
+                                    VerticalOptions="Center" />
                                 <Switch Grid.Column="2" IsToggled="{Binding IsDarkMode}" />
                             </Grid>
 
@@ -58,23 +63,26 @@
                             <Grid ColumnDefinitions="Auto, *, Auto">
                                 <Label
                                     Grid.Column="0"
+                                    FontSize="35"
+                                    HorizontalOptions="Center"
                                     Style="{StaticResource MaterialIcon}"
                                     Text="{x:Static local:IconFont.Expand}"
-                                    TextColor="#BFCFFF" />
+                                    TextColor="#BFCFFF"
+                                    VerticalOptions="Center" />
                                 <Label
                                     Grid.Column="1"
-                                    Margin="0,20,0,0"
                                     FontSize="Medium"
-                                    Text="Distancia de Rastreo (KM)"
-                                    TextColor="#2D2D2D" />
-                                <Entry
-                                    Grid.Column="2"
                                     HorizontalOptions="Center"
-                                    IsEnabled="False"
-                                    Keyboard="Numeric"
-                                    Text="{Binding OfferDistance}"
+                                    Text="Distancia de Rastreo (KM):"
                                     TextColor="#2D2D2D"
                                     VerticalOptions="Center" />
+                                <Entry
+                                    Grid.Column="2"
+                                    FontSize="20"
+                                    IsEnabled="False"
+                                    Keyboard="Numeric"
+                                    Text="{Binding SliderOfferDistanceValue}"
+                                    TextColor="#2D2D2D" />
                             </Grid>
 
                             <Slider
@@ -84,37 +92,45 @@
                                 Minimum="1"
                                 MinimumTrackColor="#0aa59b"
                                 ThumbColor="#0aa59b"
+                                ValueChanged="OnSliderOfferDistanceValueChanged"
                                 VerticalOptions="Center"
                                 Value="{Binding SliderOfferDistanceValue}" />
-                            <!--  ValueChanged="OnSliderOfferDistanceValueChanged"  -->
 
                             <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
 
                             <Grid ColumnDefinitions="Auto, *, Auto">
                                 <Label
                                     Grid.Column="0"
+                                    FontSize="35"
+                                    HorizontalOptions="Center"
                                     Style="{StaticResource MaterialIcon}"
                                     Text="{x:Static local:IconFont.Update}"
-                                    TextColor="#BFCFFF" />
+                                    TextColor="#BFCFFF"
+                                    VerticalOptions="Center" />
                                 <Label
                                     Grid.Column="1"
-                                    Margin="0,20,0,0"
+                                    Margin="1,1,0,0"
                                     FontSize="Medium"
-                                    Text="Frecuencia de actualización"
-                                    TextColor="#2D2D2D" />
+                                    HorizontalOptions="Center"
+                                    Text="Frecuencia de actualización (Seg):"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="Center" />
                                 <Entry
                                     Grid.Column="2"
+                                    FontSize="20"
                                     HorizontalOptions="Center"
                                     IsEnabled="False"
                                     Keyboard="Numeric"
                                     Text="{Binding SliderFrequencyValue}"
                                     TextColor="#2D2D2D"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
 
                             <Slider
                                 HorizontalOptions="FillAndExpand"
-                                Maximum="180"
+                                Maximum="150"
                                 MaximumTrackColor="Black"
                                 Minimum="15"
                                 MinimumTrackColor="#0aa59b"
@@ -129,11 +145,23 @@
                                 HeightRequest="5" />
 
                             <Button
+                                x:Name="saveButton"
                                 BackgroundColor="#0aa59b"
                                 Clicked="OnSavePreferences"
                                 CornerRadius="30"
+                                FontSize="18"
+                                IsEnabled="False"
                                 Text="Guardar"
-                                VerticalOptions="End" />
+                                VerticalOptions="End">
+
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="MaterialIcon"
+                                        Glyph="{x:Static local:IconFont.Save}"
+                                        Size="30"
+                                        Color="#BFCFFF" />
+                                </Button.ImageSource>
+                            </Button>
 
                         </VerticalStackLayout>
 

@@ -1,64 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Avisen.Views.Home"
-             Title="Home"
-             Shell.NavBarIsVisible="False">
+<ContentPage
+    x:Class="Avisen.Views.Home"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home"
+    Shell.NavBarIsVisible="False">
 
 
     <ScrollView>
         <Grid RowDefinitions=".1*, .8*">
-            <Grid BackgroundColor="#0aa59b"/>
+            <Grid BackgroundColor="#0aa59b" />
 
-            <!--Contenido principal-->
-            <Grid  Grid.Row="1">
-                <RoundRectangle Margin="-5, -30, -5, -2"
-                                CornerRadius="30,30,0,0"
-                                Fill="#f0ebdc"/>
+            <!--  Contenido principal  -->
+            <Grid Grid.Row="1">
+                <RoundRectangle
+                    Margin="-5,-30,-5,-2"
+                    CornerRadius="30,30,0,0"
+                    Fill="#f0ebdc" />
                 <StackLayout Padding="20">
-                    <!-- Título -->
-                    <Label Text="Ofertas Vistas" 
-                           FontSize="24"
-                           Padding="10"
-                           TextColor="#19535F" 
-                           FontAttributes="Bold" 
-                           HorizontalOptions="Center"/>
+                    <!--  Título  -->
+                    <Label
+                        Padding="10"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        Text="Ofertas Vistas"
+                        TextColor="#19535F" />
 
-                    <!-- Lista de ofertas -->
+                    <!--  Lista de ofertas  -->
                     <CollectionView ItemsSource="{Binding OfertasReales}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Border BackgroundColor="White" 
-                                        Padding="10" 
-                                        Stroke="#19535F"
-                                        StrokeThickness="1"
-                                        Margin="0,0,0,15">
+                                <Border
+                                    Margin="0,0,0,15"
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    Stroke="#19535F"
+                                    StrokeThickness="1">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="10"/>
+                                        <RoundRectangle CornerRadius="10" />
                                     </Border.StrokeShape>
 
-                                    <!-- Margen inferior para separar ofertas -->
+                                    <!--  Margen inferior para separar ofertas  -->
                                     <VerticalStackLayout Spacing="10">
-                                        <!-- Nombre del negocio -->
-                                        <Label Text="{Binding Nombre}" 
-                                               FontSize="20" 
-                                               TextColor="#19535F" 
-                                               FontAttributes="Bold"/>
+                                        <!--  Nombre del negocio  -->
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            Text="{Binding Nombre}"
+                                            TextColor="#19535F" />
 
-                                        <!-- Descripción de la promoción -->
-                                        <Label Text="{Binding promocion.Descripcion}" 
-                                               FontSize="18" 
-                                               TextColor="#602020"/>
+                                        <!--  Descripción de la promoción  -->
+                                        <Label
+                                            FontSize="18"
+                                            Text="{Binding promocion.Descripcion}"
+                                            TextColor="#602020" />
 
-                                        <!-- Botón de ver oferta -->
-                                        <Button Text="Ver Oferta" 
-                                                BackgroundColor="#19535F" 
-                                                TextColor="White"
-                                                CornerRadius="25"
-                                                FontAttributes="Bold"
-                                                FontSize="18"
-                                                CommandParameter="{Binding .}"
-                                                Clicked="OnVerOfertaClicked"/>
+                                        <!--  Botón de ver oferta  -->
+                                        <Button
+                                            BackgroundColor="#19535F"
+                                            Clicked="OnVerOfertaClicked"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="25"
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            Text="Ver Oferta"
+                                            TextColor="White" />
                                     </VerticalStackLayout>
                                 </Border>
                             </DataTemplate>
@@ -66,6 +73,13 @@
                     </CollectionView>
                 </StackLayout>
             </Grid>
+            <Label
+                Grid.Column="1"
+                FontSize="Medium"
+                HorizontalOptions="Center"
+                Text="{Binding UpdateFrequency}"
+                TextColor="#2D2D2D"
+                VerticalOptions="Center" />
         </Grid>
     </ScrollView>
 </ContentPage>

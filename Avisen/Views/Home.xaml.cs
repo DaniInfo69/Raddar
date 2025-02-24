@@ -1,36 +1,54 @@
-using CommunityToolkit.Maui.Behaviors;
-using CommunityToolkit.Maui.Core;
 using System.Collections.ObjectModel;
 
-namespace Avisen.Views;
-
-public partial class Home : ContentPage
+namespace Avisen.Views
 {
-    public ObservableCollection<Negocio> OfertasReales { get; set; }
-
-    public Home()
+    public partial class Home : ContentPage
     {
-        InitializeComponent();
-        OfertasReales = new ObservableCollection<Negocio>(Map.OfertasVistas);
-        BindingContext = this;
-    }
+        public ObservableCollection<Negocio> OfertasReales { get; set; }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        OfertasReales.Clear();
-        foreach (var oferta in Map.OfertasVistas)
+        public Home()
         {
-            OfertasReales.Add(oferta);
+            InitializeComponent();
+            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            OfertasReales = new ObservableCollection<Negocio>(Map.OfertasVistas);
+            BindingContext = this;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Actualizar UpdateFrequency cuando se accede a la página
+            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+
+            OfertasReales.Clear();
+            foreach (var oferta in Map.OfertasVistas)
+            {
+                OfertasReales.Add(oferta);
+            }
+        }
+
+        private async void OnVerOfertaClicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Negocio negocio)
+            {
+                await Navigation.PushModalAsync(new PromocionDetallesPage(negocio));
+            }
+        }
+
+        private double _UpdateFrequency;
+
+        public double UpdateFrequency
+        {
+            get => _UpdateFrequency;
+            set
+            {
+                if (_UpdateFrequency != value)
+                {
+                    _UpdateFrequency = value;
+                    OnPropertyChanged();
+                }
+            }
         }
     }
-
-    private async void OnVerOfertaClicked(object sender, EventArgs e)
-    {
-        if (sender is Button button && button.CommandParameter is Negocio negocio)
-        {
-            await Navigation.PushModalAsync(new PromocionDetallesPage(negocio));
-        }
-    }
-
 }
