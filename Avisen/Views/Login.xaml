@@ -1,121 +1,127 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Avisen"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="Avisen.Views.Login"
-             Shell.NavBarIsVisible="False"
-             NavigationPage.HasNavigationBar="False"
-             Title="Login">
+<ContentPage
+    x:Class="Avisen.Views.Login"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Login"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
 
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#0aa59b" StatusBarStyle="Default" />
     </ContentPage.Behaviors>
-    
+
     <ScrollView>
-    <Grid RowDefinitions=".3*, .7*">
-        <Image Aspect="AspectFill" Source="fondo3.png"/>
-            <Grid BackgroundColor="Gainsboro"  Opacity=".85"/>
-        <Grid ColumnDefinitions="*,*">
-            <Image 
-            Aspect="AspectFit"
-            HeightRequest="150"
-            Source="logo.png"/>
-        </Grid>
+        <Grid RowDefinitions=".3*, .7*">
+            <Image Aspect="AspectFill" Source="fondo3.png" />
+            <Grid BackgroundColor="Gainsboro" Opacity=".85" />
+            <Grid ColumnDefinitions="*,*">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="150"
+                    Source="logo.png" />
+            </Grid>
 
-            <!--Contenido principal-->
-            <Grid  Grid.Row="1">
-                <RoundRectangle Margin="-5, -30, -5, -2"
-                                CornerRadius="30,30,0,0"
-                                Fill="#f0ebdc"/>
+            <!--  Contenido principal  -->
+            <Grid Grid.Row="1">
+                <RoundRectangle
+                    Margin="-5,-30,-5,-2"
+                    CornerRadius="30,30,0,0"
+                    Fill="#f0ebdc" />
                 <VerticalStackLayout>
-                    <Label 
-                            HorizontalTextAlignment="Center"
-                            FontSize="22"
-                            Text="Inicia sesión para continuar"
-                            TextColor="#A3A3A4"/>
+                    <Label
+                        FontSize="22"
+                        HorizontalTextAlignment="Center"
+                        Text="Inicia sesión para continuar"
+                        TextColor="#A3A3A4" />
 
-                    <!--Campo de EMAIL-->
+                    <!--  Campo de EMAIL  -->
                     <Grid Margin="0,30,0,0" ColumnDefinitions=".2*, .8*">
-                        <Border BackgroundColor="#fcf9ed"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 30,30,30,30"
+                        <Border
+                            BackgroundColor="#fcf9ed"
                             HeightRequest="60"
-                            WidthRequest="60"
                             HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                                Text="{x:Static local:IconFont.Mail}" 
-                                Style="{StaticResource MaterialIcon}"
-                                TextColor="Black"
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            StrokeThickness="0"
+                            VerticalOptions="Center"
+                            WidthRequest="60">
+                            <Label
                                 FontSize="32"
                                 HorizontalOptions="Center"
+                                Style="{StaticResource MaterialIcon}"
+                                Text="{x:Static local:IconFont.Mail}"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Border>
-                        <Entry Grid.Column="1"
-                            Placeholder="EMAIL"
-                            VerticalOptions="Center"
-                            HeightRequest="60"
-                            WidthRequest="300"
-                            TextColor="Black"
+                        <Entry
+                            Grid.Column="1"
                             BackgroundColor="#f5f3ed"
-                            FontSize="16"/>
+                            FontSize="16"
+                            HeightRequest="60"
+                            Placeholder="EMAIL"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            WidthRequest="300" />
                     </Grid>
 
-                    <!--Campo Contraseña-->
+                    <!--  Campo Contraseña  -->
                     <Grid Margin="0,30,0,0" ColumnDefinitions=".2*, .8*">
-                        <Border BackgroundColor="#fcf9ed"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 30,30,30,30"
+                        <Border
+                            BackgroundColor="#fcf9ed"
                             HeightRequest="60"
-                            WidthRequest="60"
                             HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                            Text="{x:Static local:IconFont.Lock}" 
-                            Style="{StaticResource MaterialIcon}"
-                            TextColor="Black"
-                            FontSize="32"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center" />
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            StrokeThickness="0"
+                            VerticalOptions="Center"
+                            WidthRequest="60">
+                            <Label
+                                FontSize="32"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource MaterialIcon}"
+                                Text="{x:Static local:IconFont.Lock}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
                         </Border>
-                        <Entry Grid.Column="1"
-                           Placeholder="PASSWORD"
-                           IsPassword="true"
-                           HeightRequest="60"
-                           WidthRequest="300"
-                           VerticalOptions="Center"
-                           BackgroundColor="#f5f3ed"
-                           TextColor="Black"
-                           FontSize="16"/>
+                        <Entry
+                            Grid.Column="1"
+                            BackgroundColor="#f5f3ed"
+                            FontSize="16"
+                            HeightRequest="60"
+                            IsPassword="true"
+                            Placeholder="PASSWORD"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            WidthRequest="300" />
                     </Grid>
 
                     <Button
                         x:Name="LoginHome"
-                        Clicked="LoginHome_Clicked"
                         Margin="0,20,0,0"
                         BackgroundColor="#0bb8ac"
+                        Clicked="LoginHome_Clicked"
                         HeightRequest="60"
-                        WidthRequest="350"
                         Text="Iniciar Sesión"
-                        TextColor="Black"/>
+                        TextColor="Black"
+                        WidthRequest="350" />
 
                     <Label
                         Margin="0,20,0,-10"
                         HorizontalOptions="Center"
                         Text="¿Olvidaste tu contraseña?"
                         TextColor="#dc5a4b"
-                        TextDecorations="Underline"/>
+                        TextDecorations="Underline" />
 
                     <Button
                         x:Name="CreateAccount"
-                        Clicked="CreateAccount_Clicked"
                         Margin="0,20,0,0"
                         BackgroundColor="#0cccc0"
+                        Clicked="CreateAccount_Clicked"
                         HeightRequest="60"
-                        WidthRequest="350"
                         Text="Crear cuenta"
-                        TextColor="Black"/>
+                        TextColor="Black"
+                        WidthRequest="350" />
 
 
                 </VerticalStackLayout>
