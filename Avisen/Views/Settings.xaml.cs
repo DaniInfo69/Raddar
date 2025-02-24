@@ -1,41 +1,84 @@
-namespace Avisen.Views;
-
-public partial class Settings : ContentPage
+using System.Text.RegularExpressions;
+using Microsoft.Maui.Controls;
+namespace Avisen.Views
 {
-    public Settings()
+    public partial class Settings : ContentPage
     {
-        InitializeComponent();
-        BindingContext = this;
-        IsDarkMode = Preferences.Get("IsDarkMode", false);
-        OfferDistance = Preferences.Get("OfferDistance", 0.0);
-    }
-
-    private bool _isDarkMode;
-    public bool IsDarkMode
-    {
-        get => _isDarkMode;
-        set
+        public Settings()
         {
-            _isDarkMode = value;
-            OnPropertyChanged();
-            Preferences.Set("IsDarkMode", value);
+            InitializeComponent();
+            BindingContext = this;
+            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            IsDarkMode = Preferences.Get("IsDarkMode", false);
+            OfferDistance = Preferences.Get("OfferDistance", 0.0);
+            SliderFrequencyValue = Preferences.Get("SliderFrequencyValue", 15.0);
         }
-    }
 
-    private double _offerDistance;
-    public double OfferDistance
-    {
-        get => _offerDistance;
-        set
+        private bool _isDarkMode;
+        public bool IsDarkMode
         {
-            _offerDistance = value;
-            OnPropertyChanged();
+            get => _isDarkMode;
+            set
+            {
+                _isDarkMode = value;
+                OnPropertyChanged();
+                Preferences.Set("IsDarkMode", value);
+            }
         }
-    }
 
-    private void OnSaveOfferDistanceClicked(object sender, EventArgs e)
-    {
-        Preferences.Set("OfferDistance", OfferDistance);
-        DisplayAlert("Guardado", "La distancia entre ofertas ha sido guardada.", "OK");
+        private double _offerDistance;
+        public double OfferDistance
+        {
+            get => _offerDistance;
+            set
+            {
+                _offerDistance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _UpdateFrequency;
+
+        public double UpdateFrequency
+        {
+            get => _UpdateFrequency;
+            set
+            {
+                _UpdateFrequency = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void OnSavePreferences(object sender, EventArgs e)
+        {
+            try
+            {
+                Preferences.Set("OfferDistance", OfferDistance);
+                Preferences.Set("UpdateFrequency", SliderFrequencyValue);
+                Preferences.Set("SliderFrequencyValue", SliderFrequencyValue);
+                DisplayAlert("Guardado", "Se ha guardado correctamente", "OK");
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", "" + ex + "", "OK");
+            }
+        }
+
+        private double _sliderFrequencyValue;
+        public double SliderFrequencyValue
+        {
+            get => _sliderFrequencyValue;
+            set
+            {
+                _sliderFrequencyValue = Math.Round(value);
+                OnPropertyChanged();
+            }
+        }
+
+        private void OnSliderFrequencyValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderFrequencyValue = Math.Round(e.NewValue);
+        }
+
     }
 }

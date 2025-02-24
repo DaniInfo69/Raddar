@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\avisen\\avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\userprofile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,25 +34,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Settings.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml.cs",
-              "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml.cs",
-              "RelativeToolTip": "Avisen\\Views\\Settings.xaml.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAkAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T23:57:39.564Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Settings.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml",
               "RelativeToolTip": "Avisen\\Views\\Settings.xaml",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-23T22:46:25.616Z",
               "EditorCaption": ""
@@ -60,12 +48,24 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Settings.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\Settings.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\Settings.xaml.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAmwE8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T23:57:39.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserProfile.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\UserProfile.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\UserProfile.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Views\\UserProfile.xaml",
               "RelativeToolTip": "Avisen\\Views\\UserProfile.xaml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-23T22:46:26.998Z"
             }

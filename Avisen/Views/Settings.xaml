@@ -20,7 +20,7 @@
                 <VerticalStackLayout>
                     <Grid Padding="20">
                         <RoundRectangle
-                            Margin="-10,0,-10,0"
+                            Margin="0,0,0,0"
                             CornerRadius="30,30,30,30"
                             Fill="#f5f3ed" />
 
@@ -55,7 +55,7 @@
                             <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
 
 
-                            <Grid ColumnDefinitions="Auto, *">
+                            <Grid ColumnDefinitions="Auto, *, Auto">
                                 <Label
                                     Grid.Column="0"
                                     Style="{StaticResource MaterialIcon}"
@@ -67,16 +67,26 @@
                                     FontSize="Medium"
                                     Text="Distancia de Rastreo (KM)"
                                     TextColor="#2D2D2D" />
-
+                                <Entry
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    IsEnabled="False"
+                                    Keyboard="Numeric"
+                                    Text="{Binding OfferDistance}"
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="Center" />
                             </Grid>
 
-                            <Entry
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Keyboard="Numeric"
-                                Placeholder="Introduce la distancia en km"
-                                Text="{Binding OfferDistance}"
-                                TextColor="#2D2D2D" />
+                            <Slider
+                                HorizontalOptions="FillAndExpand"
+                                Maximum="5"
+                                MaximumTrackColor="Black"
+                                Minimum="1"
+                                MinimumTrackColor="#0aa59b"
+                                ThumbColor="#0aa59b"
+                                VerticalOptions="Center"
+                                Value="{Binding SliderOfferDistanceValue}" />
+                            <!--  ValueChanged="OnSliderOfferDistanceValueChanged"  -->
 
                             <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
 
@@ -92,22 +102,41 @@
                                     FontSize="Medium"
                                     Text="Frecuencia de actualización"
                                     TextColor="#2D2D2D" />
-
+                                <Entry
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    IsEnabled="False"
+                                    Keyboard="Numeric"
+                                    Text="{Binding SliderFrequencyValue}"
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="Center" />
                             </Grid>
 
-                            <Entry
-                                Keyboard="Numeric"
-                                Placeholder="Introduce la frecuencia en segundos"
-                                Text="{Binding Frequency}"
-                                TextColor="#2D2D2D" />
+                            <Slider
+                                HorizontalOptions="FillAndExpand"
+                                Maximum="180"
+                                MaximumTrackColor="Black"
+                                Minimum="15"
+                                MinimumTrackColor="#0aa59b"
+                                ThumbColor="#0aa59b"
+                                ValueChanged="OnSliderFrequencyValueChanged"
+                                VerticalOptions="Center"
+                                Value="{Binding SliderFrequencyValue}" />
 
-                            <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
+                            <BoxView
+                                Margin="0,0,0,10"
+                                BackgroundColor="#f0ebdc"
+                                HeightRequest="5" />
+
                             <Button
-                                Clicked="OnSaveOfferDistanceClicked"
+                                BackgroundColor="#0aa59b"
+                                Clicked="OnSavePreferences"
+                                CornerRadius="30"
                                 Text="Guardar"
-                                VerticalOptions="End" 
-                                BackgroundColor="#0aa59b"/>
+                                VerticalOptions="End" />
+
                         </VerticalStackLayout>
+
 
                     </Grid>
 
