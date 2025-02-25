@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Avisen</ApplicationTitle>
+		<ApplicationTitle>Raddar</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.avisen</ApplicationId>
