@@ -32,45 +32,64 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                                    Margin="0,0,0,15"
-                                    Padding="10"
-                                    BackgroundColor="White"
-                                    Stroke="#19535F"
-                                    StrokeThickness="1">
+                Margin="0,0,0,15"
+                Padding="10"
+                BackgroundColor="White"
+                Stroke="#19535F"
+                StrokeThickness="1">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="10" />
+                                        <RoundRectangle />
                                     </Border.StrokeShape>
 
-                                    <!--  Margen inferior para separar ofertas  -->
-                                    <VerticalStackLayout Spacing="10">
-                                        <!--  Nombre del negocio  -->
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="{Binding Nombre}"
-                                            TextColor="#19535F" />
+                                    <Grid RowDefinitions="Auto, Auto"
+                      ColumnDefinitions="2*, 3*">
 
-                                        <!--  Descripción de la promoción  -->
-                                        <Label
-                                            FontSize="18"
-                                            Text="{Binding promocion.Descripcion}"
-                                            TextColor="#602020" />
+                                        <!--  Marco alrededor de la imagen  -->
+                                        <Border Grid.Row="0" Grid.Column="0"
+                        Stroke="#19535F"
+                        StrokeThickness="2"
+                        Padding="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle />
+                                            </Border.StrokeShape>
+                                            <Image Source="{Binding ImagenUrl}"
+                            HeightRequest="100"
+                            Aspect="AspectFill"/>
+                                        </Border>
 
-                                        <!--  Botón de ver oferta  -->
-                                        <Button
-                                            BackgroundColor="#19535F"
-                                            Clicked="OnVerOfertaClicked"
-                                            CommandParameter="{Binding .}"
-                                            CornerRadius="25"
-                                            FontAttributes="Bold"
-                                            FontSize="18"
-                                            Text="Ver Oferta"
-                                            TextColor="White" />
-                                    </VerticalStackLayout>
+                                        <!--  Nombre del negocio y descripción  -->
+                                        <VerticalStackLayout Grid.Row="0" Grid.Column="1"
+                        Padding="10"
+                        VerticalOptions="Center">
+                                            <Label FontAttributes="Bold"
+                            FontSize="20"
+                            Text="{Binding Nombre}"
+                            TextColor="#19535F"/>
+                                            <Label FontSize="16"
+                            Text="{Binding promocion.Descripcion}"
+                            TextColor="#602020"/>
+                                        </VerticalStackLayout>
+
+                                        <!--  Botón de ver oferta expandido  -->
+                                        <Button Grid.Row="1" Grid.ColumnSpan="2"
+                        BackgroundColor="#19535F"
+                        Clicked="OnVerOfertaClicked"
+                        CommandParameter="{Binding .}"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Ver Oferta"
+                        TextColor="White"
+                        HorizontalOptions="Fill"
+                        Margin="5"/>
+                                    </Grid>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
+
                 </StackLayout>
             </Grid>
             <Label

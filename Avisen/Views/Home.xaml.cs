@@ -50,5 +50,6 @@ namespace Avisen.Views
                 }
             }
         }
+
     }
 }

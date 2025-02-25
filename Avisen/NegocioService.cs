@@ -11,6 +11,7 @@ public class NegocioService
         {
             new Negocio
             {
+                ImagenUrl = "refrescos.jpg",
                 Nombre = "Abarrotes Julia",
                 Ubicacion = new Location(19.880369374817423, -103.59103956571073),
                 Promociones = new List<Promocion>
@@ -27,6 +28,7 @@ public class NegocioService
             },
             new Negocio
             {
+                ImagenUrl = "papel.jpeg",
                 Nombre = "Kiosko",
                 Ubicacion = new Location(19.555361902817438, -103.37452754302113),
                 Promociones = new List<Promocion>
@@ -44,6 +46,7 @@ public class NegocioService
 
             new Negocio
             {
+                ImagenUrl = "cityfit.jpeg",
                 Nombre = "CityFit Sayula",
                 Ubicacion = new Location(19.88686583735017, -103.60270578446118),
                 Promociones = new List<Promocion>
@@ -61,6 +64,7 @@ public class NegocioService
 
             new Negocio
             {
+                ImagenUrl = "bacardi.png",
                 Nombre = "Distrito Tequila",
                 Ubicacion = new Location(19.883480034830285, -103.5968782830671),
                 Promociones = new List<Promocion>
