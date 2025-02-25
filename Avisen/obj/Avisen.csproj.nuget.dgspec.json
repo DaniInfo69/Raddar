@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Avisen.csproj": {}
+    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Avisen.csproj": {
+    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Avisen.csproj",
+        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
         "projectName": "Avisen",
-        "projectPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\Avisen.csproj",
+        "projectPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Avisen\\Avisen\\obj\\",
+        "outputPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
