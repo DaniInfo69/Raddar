@@ -1,8 +1,5 @@
-using Microsoft.Maui.Devices.Sensors;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Avisen.Views;
 
@@ -21,7 +18,6 @@ public partial class Map : ContentPage
         negocioService = new NegocioService();
         CargarNegocios();
         MoveToUserLocation();
-        map.PropertyChanged += OnMapPropertyChanged;
         StartLocationUpdates();
     }
 
@@ -31,7 +27,7 @@ public partial class Map : ContentPage
         while (isUpdatingLocation)
         {
             await GetUserLocationAsync();
-            await Task.Delay(30000);
+            await Task.Delay(10000);
         }
     }
 
@@ -90,13 +86,6 @@ public partial class Map : ContentPage
         }
     }
 
-    private void OnMapPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-    {
-        if (e.PropertyName == nameof(map.IsShowingUser) && map.IsShowingUser)
-        {
-            MoveToUserLocation();
-        }
-    }
 
     private void CheckForPromotions()
     {
