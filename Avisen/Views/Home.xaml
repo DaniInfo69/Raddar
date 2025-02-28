@@ -6,99 +6,113 @@
     Title="Home"
     Shell.NavBarIsVisible="False">
 
-
     <ScrollView>
         <Grid RowDefinitions=".1*, .8*">
             <Grid BackgroundColor="#0aa59b" />
 
-            <!--  Contenido principal  -->
+            <!-- Contenido principal -->
             <Grid Grid.Row="1">
                 <RoundRectangle
                     Margin="-5,-30,-5,-2"
                     CornerRadius="30,30,0,0"
                     Fill="#f0ebdc" />
                 <StackLayout Padding="20">
-                    <!--  Título  -->
-                    <Label
-                        Padding="10"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        HorizontalOptions="Center"
-                        Text="Ofertas Vistas"
-                        TextColor="#19535F" />
+                    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                        <!-- Título centrado en la primera fila -->
+                        <Label Grid.Row="0" Grid.ColumnSpan="2"
+                               FontAttributes="Bold"
+                               FontSize="24"
+                               Text="Ofertas"
+                               TextColor="#19535F"
+                               HorizontalOptions="Center"
+                               Margin="0,10,0,0" />
 
-                    <!--  Lista de ofertas  -->
+                        <!-- Picker abajo del título en la segunda fila -->
+                        <Picker Grid.Row="1" Grid.Column="1"
+                                x:Name="FiltroPicker"
+                                Title="Filtrar Por"
+                                TitleColor="Black"
+                                TextColor="#19535F"
+                                FontSize="16"
+                                HorizontalOptions="End"
+                                Margin="0,5,10,0"
+                                WidthRequest="140">
+                            <Picker.Items>
+                                <x:String>Ofertas Vistas</x:String>
+                                <x:String>Ofertas Cercanas</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+
+                    <!-- Lista de ofertas -->
                     <CollectionView ItemsSource="{Binding OfertasReales}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                Margin="0,0,0,15"
-                Padding="10"
-                BackgroundColor="White"
-                Stroke="#19535F"
-                StrokeThickness="1">
+                                    Margin="0,0,0,15"
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    Stroke="#19535F"
+                                    StrokeThickness="1">
                                     <Border.StrokeShape>
                                         <RoundRectangle />
                                     </Border.StrokeShape>
 
-                                    <Grid RowDefinitions="Auto, Auto"
-                      ColumnDefinitions="2*, 3*">
-
-                                        <!--  Marco alrededor de la imagen  -->
+                                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="2*, 3*">
+                                        <!-- Marco alrededor de la imagen -->
                                         <Border Grid.Row="0" Grid.Column="0"
-                        Stroke="#19535F"
-                        StrokeThickness="2"
-                        Padding="3"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
+                                                Stroke="#19535F"
+                                                StrokeThickness="2"
+                                                Padding="3"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center">
                                             <Border.StrokeShape>
                                                 <RoundRectangle />
                                             </Border.StrokeShape>
                                             <Image Source="{Binding ImagenUrl}"
-                            HeightRequest="100"
-                            Aspect="AspectFill"/>
+                                                   HeightRequest="100"
+                                                   Aspect="AspectFill"/>
                                         </Border>
 
-                                        <!--  Nombre del negocio y descripción  -->
+                                        <!-- Nombre del negocio y descripción -->
                                         <VerticalStackLayout Grid.Row="0" Grid.Column="1"
-                        Padding="10"
-                        VerticalOptions="Center">
+                                                             Padding="10"
+                                                             VerticalOptions="Center">
                                             <Label FontAttributes="Bold"
-                            FontSize="20"
-                            Text="{Binding Nombre}"
-                            TextColor="#19535F"/>
+                                                   FontSize="20"
+                                                   Text="{Binding Nombre}"
+                                                   TextColor="#19535F"/>
                                             <Label FontSize="16"
-                            Text="{Binding promocion.Descripcion}"
-                            TextColor="#602020"/>
+                                                   Text="{Binding promocion.Descripcion}"
+                                                   TextColor="#602020"/>
                                         </VerticalStackLayout>
 
-                                        <!--  Botón de ver oferta expandido  -->
+                                        <!-- Botón de ver oferta expandido -->
                                         <Button Grid.Row="1" Grid.ColumnSpan="2"
-                        BackgroundColor="#19535F"
-                        Clicked="OnVerOfertaClicked"
-                        CommandParameter="{Binding .}"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        Text="Ver Oferta"
-                        TextColor="White"
-                        HorizontalOptions="Fill"
-                        Margin="5"/>
+                                                BackgroundColor="#19535F"
+                                                Clicked="OnVerOfertaClicked"
+                                                CommandParameter="{Binding}"
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                                Text="Ver Oferta"
+                                                TextColor="White"
+                                                HorizontalOptions="Fill"
+                                                Margin="5"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
-
                 </StackLayout>
             </Grid>
-            <Label
-                Grid.Column="1"
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                Text="{Binding UpdateFrequency}"
-                TextColor="#2D2D2D"
-                VerticalOptions="Center" />
+
+            <Label Grid.Column="1"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   Text="{Binding UpdateFrequency}"
+                   TextColor="#2D2D2D"
+                   VerticalOptions="Center" />
         </Grid>
     </ScrollView>
 </ContentPage>
+
