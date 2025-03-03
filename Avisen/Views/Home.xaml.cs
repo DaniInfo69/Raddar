@@ -10,6 +10,11 @@ namespace Avisen.Views
         {
             InitializeComponent();
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            if (UpdateFrequency == 0.0)
+                Preferences.Set("UpdateFrequency", 15.0);
+
+            SeeHour = string.Empty; // Inicializar con una cadena vacía
+            LoadSeeHour();
             OfertasReales = new ObservableCollection<Negocio>(Map.OfertasVistas);
             BindingContext = this;
         }
@@ -20,6 +25,7 @@ namespace Avisen.Views
 
             // Actualizar UpdateFrequency cuando se accede a la página
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            LoadSeeHour();
 
             OfertasReales.Clear();
             foreach (var oferta in Map.OfertasVistas)
@@ -50,6 +56,27 @@ namespace Avisen.Views
                 }
             }
         }
+
+        private string _SeeHour;
+        public string SeeHour
+        {
+            get => _SeeHour;
+            set
+            {
+                if (_SeeHour != value)
+                {
+                    _SeeHour = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private async void LoadSeeHour()
+        {
+            // Obtener la hora guardada desde SecureStorage
+            SeeHour = await SecureStorage.GetAsync("lastLoadDataTime") ?? "No se ha ejecutado LoadData";
+        }
+
 
     }
 }

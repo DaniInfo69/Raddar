@@ -105,11 +105,16 @@
                     </CollectionView>
                 </StackLayout>
             </Grid>
-
             <Label Grid.Column="1"
                    FontSize="Medium"
                    HorizontalOptions="Center"
                    Text="{Binding UpdateFrequency}"
+                   TextColor="#2D2D2D"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   Text="{Binding SeeHour}"
                    TextColor="#2D2D2D"
                    VerticalOptions="Center" />
         </Grid>
