@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\",
+  "WorkspaceRootPath": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\parae\\onedrive\\escritorio\\programas\\maui\\raddar\\avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,28 +34,78 @@
       "DocumentGroups": [
         {
           "DockedWidth": 355,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "Settings.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\Settings.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T02:47:05.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Settings.xaml",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Settings.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Settings.xaml",
+              "RelativeToolTip": "Avisen\\Views\\Settings.xaml",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAJ4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-03T02:46:56.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Map.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAYwI8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T23:03:08.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Map.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Map.xaml",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Map.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Map.xaml",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Map.xaml",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -56,24 +114,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Home.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Home.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml.cs",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml.cs",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Home.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAQwB4AAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T23:02:25.291Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Home.xaml",
-              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml",
+              "DocumentMoniker": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Home.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
-              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml",
+              "ToolTip": "C:\\Users\\parae\\OneDrive\\Escritorio\\Programas\\MAUI\\Raddar\\Avisen\\Views\\Home.xaml",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml",
               "ViewState": "AgIAAFUAAAAAAAAAAAAIwFwAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",

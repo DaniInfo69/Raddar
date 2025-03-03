@@ -9,36 +9,80 @@ public partial class Map : ContentPage
     private List<Negocio> negocios;
     private NegocioService negocioService;
     private bool isUpdatingLocation;
+    private int updateDelayFrequency = 1000;
 
     public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
 
     public Map()
     {
         InitializeComponent();
+        UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         negocioService = new NegocioService();
-        CargarNegocios();
-        MoveToUserLocation();
+        LoadData();
         StartLocationUpdates();
+    }
+
+    private double _UpdateFrequency;
+
+    public double UpdateFrequency
+    {
+        get => _UpdateFrequency;
+        set
+        {
+            _UpdateFrequency = value;
+            OnPropertyChanged();
+        }
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        // Actualizar UpdateFrequency cuando se accede a la página
+        UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+
+
     }
 
     private async void StartLocationUpdates()
     {
         isUpdatingLocation = true;
+
+
+
         while (isUpdatingLocation)
         {
-            await GetUserLocationAsync();
-            await Task.Delay(10000);
+            // Leer el dato lastLoadDataTime desde SecureStorage
+            var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
+            DateTime lastLoadDataTime;
+            int frequency = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
+
+            if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
+            {
+                var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
+
+                if (timeSinceLastLoad.TotalSeconds >= 60)
+                {
+                    LoadData();
+                }
+            }
+
+            await DisplayAlert("DelayUpdateFrequency", frequency.ToString(), "OK");
+            await UpdateUserLocationAsync();
+            await Task.Delay(frequency);
         }
     }
 
-    private async Task GetUserLocationAsync()
+    private async Task UpdateUserLocationAsync()
     {
         try
         {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best));
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
+                ?? await Geolocation.GetLastKnownLocationAsync();
+            await DisplayAlert("gps", "gps", "OK");
             if (location != null)
             {
                 userLocation = new Location(location.Latitude, location.Longitude);
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromMiles(0.5)));
                 CheckForPromotions();
             }
         }
@@ -62,30 +106,23 @@ public partial class Map : ContentPage
         isUpdatingLocation = false;
     }
 
-    private async void CargarNegocios()
-    {
-        negocios = await negocioService.ObtenerNegociosAsync();
-        CheckForPromotions();
-    }
-
-    private async void MoveToUserLocation()
+    private async void LoadData()
     {
         try
         {
-            var location = await Geolocation.GetLastKnownLocationAsync();
-            if (location != null)
-            {
-                userLocation = new Location(location.Latitude, location.Longitude);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromMiles(0.5)));
-                CheckForPromotions();
-            }
+            negocios = await negocioService.ObtenerNegociosAsync();
+            await DisplayAlert("api", "api", "OK");
+            // Guardar la hora en que LoadData se ejecuta correctamente en SecureStorage
+            var currentTime = DateTime.Now.ToString("o"); // Formato de cadena ISO 8601
+            await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
+            return;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al obtener la ubicación: {ex.Message}");
+            await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
         }
-    }
 
+    }
 
     private void CheckForPromotions()
     {
