@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAAwHgAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAwHgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-04T20:13:26.318Z",
               "EditorCaption": ""
@@ -61,10 +61,9 @@
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAuwFsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAwF8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T02:54:11.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T02:54:11.791Z"
             },
             {
               "$type": "Document",
@@ -74,7 +73,7 @@
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Raddar\\Raddar\\Avisen\\Views\\Home.xaml",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-03T02:53:22.518Z"
             }
