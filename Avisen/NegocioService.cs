@@ -30,7 +30,7 @@ public class NegocioService
             {
                 ImagenUrl = "papel.jpeg",
                 Nombre = "Kiosko",
-                Ubicacion = new Location(19.555361902817438, -103.37452754302113),
+                Ubicacion = new Location(19.879923510547776, -103.5896499459833),
                 Promociones = new List<Promocion>
                 {
                     new Promocion
@@ -48,7 +48,7 @@ public class NegocioService
             {
                 ImagenUrl = "cityfit.jpeg",
                 Nombre = "CityFit Sayula",
-                Ubicacion = new Location(19.88686583735017, -103.60270578446118),
+                Ubicacion = new Location(19.88683988956111, -103.60272264082673),
                 Promociones = new List<Promocion>
                 {
                     new Promocion
@@ -66,7 +66,7 @@ public class NegocioService
             {
                 ImagenUrl = "bacardi.png",
                 Nombre = "Distrito Tequila",
-                Ubicacion = new Location(19.883480034830285, -103.5968782830671),
+                Ubicacion = new Location(19.883462302819858, -103.59687278247942),
                 Promociones = new List<Promocion>
                 {
                     new Promocion
