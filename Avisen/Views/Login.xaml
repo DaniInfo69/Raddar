@@ -56,6 +56,7 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="EmailEntry"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
@@ -85,6 +86,7 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="PasswordEntry"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
