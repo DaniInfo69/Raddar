@@ -1,4 +1,4 @@
-﻿using Avisen;
+﻿using Avisen.Models;
 
 public class NegocioService
 {

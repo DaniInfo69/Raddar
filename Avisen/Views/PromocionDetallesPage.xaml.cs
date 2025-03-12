@@ -1,3 +1,5 @@
+using Avisen.Models;
+
 namespace Avisen.Views;
 
 public partial class PromocionDetallesPage : ContentPage

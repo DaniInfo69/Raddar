@@ -1,4 +1,4 @@
-﻿namespace Avisen
+﻿namespace Avisen.Models
 {
     public class Promocion
     {

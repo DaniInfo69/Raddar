@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Avisen.Models;
 using Microsoft.Maui.Storage;
 
 namespace Avisen.Views
