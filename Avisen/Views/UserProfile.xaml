@@ -118,6 +118,7 @@
                             <Button
                                 x:Name="ExitSession"
                                 BackgroundColor="Transparent"
+                                Clicked="ExitSession_Clicked"
                                 FontSize="18"
                                 HeightRequest="50"
                                 HorizontalOptions="Start"
