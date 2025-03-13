@@ -42,14 +42,15 @@
 
 
                         <Label
+                            x:Name="lblUserName"
                             Margin="0,0,0,40"
                             FontAttributes="Bold"
                             FontSize="24"
                             HorizontalOptions="Center"
-                            Text="Nombre del usuario"
+                            Text="Nombre del Usuario"
                             TextColor="#2D2D2D"
                             VerticalOptions="End" />
-
+                        <!--  nombredelusuario  -->
                     </Grid>
 
                     <!--  Opciones del perfil  -->
@@ -115,6 +116,7 @@
 
                             <!--  Botón de Cerrar Sesión  -->
                             <Button
+                                x:Name="ExitSession"
                                 BackgroundColor="Transparent"
                                 FontSize="18"
                                 HeightRequest="50"

@@ -19,40 +19,46 @@ namespace Avisen.Views
         {
             try
             {
-                // URL de la API
                 var url = "https://napi-production.up.railway.app/api/usuario/login";
 
-                // Crear el cliente HTTP
                 using var httpClient = new HttpClient();
 
-                // Crear el cuerpo de la solicitud (JSON)
                 var jsonRequest = new
                 {
                     email = "usuario@ejemplo.com",
                     contraseña = "contra123"
                 };
 
-                // Serializar el cuerpo a JSON
                 var content = new StringContent(JsonSerializer.Serialize(jsonRequest), Encoding.UTF8, "application/json");
-
-                // Enviar la solicitud POST
                 var response = await httpClient.PostAsync(url, content);
-
-                // Leer la respuesta
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                // Validar y procesar la respuesta
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
 
-                    // Mostrar el mensaje y el AccessToken
-                    var message = jsonResponse.GetProperty("message").GetString();
                     var accessToken = jsonResponse.GetProperty("accessToken").GetString();
+                    await SecureStorage.SetAsync("AccessToken", accessToken);
 
-                    await DisplayAlert("Éxito", $"{message}\nAccessToken: {accessToken}", "OK");
+                    var refreshToken = jsonResponse.GetProperty("refreshToken").GetString();
+                    await SecureStorage.SetAsync("RefreshToken", refreshToken);
+                    await DisplayAlert("AccessToken", accessToken, "OK");
 
-                    // Navegar a la página principal
+
+                    var user = jsonResponse.GetProperty("user");
+                    var userData = new
+                    {
+                        idUsuario = user.GetProperty("idusuario").GetInt32(),
+                        email = user.GetProperty("email").GetString(),
+                        nombreCliente = user.GetProperty("nombrecliente").GetString(),
+                        rolIdRol = user.GetProperty("rol_idrol").GetInt32(),
+                        rol = user.GetProperty("rol").GetString()
+                    };
+                    await DisplayAlert("Nombre", userData.nombreCliente, "OK");
+
+                    await SecureStorage.SetAsync("UserData", JsonSerializer.Serialize(userData));
+                    await DisplayAlert("UserData JSON", JsonSerializer.Serialize(userData), "OK");
+
                     await Shell.Current.GoToAsync("//Home");
                 }
                 else
@@ -63,7 +69,6 @@ namespace Avisen.Views
             catch (Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "OK");
-
             }
         }
     }

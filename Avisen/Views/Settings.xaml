@@ -112,8 +112,8 @@
                                     Margin="1,1,0,0"
                                     FontSize="Medium"
                                     HorizontalOptions="Center"
-                                    Text="Frecuencia de actualización (Seg):"
                                     HorizontalTextAlignment="Center"
+                                    Text="Frecuencia de actualización (Seg):"
                                     TextColor="#2D2D2D"
                                     VerticalOptions="Center" />
                                 <Entry

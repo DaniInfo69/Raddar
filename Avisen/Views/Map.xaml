@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
-             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-             x:Class="Avisen.Views.Map"
-             Shell.NavBarIsVisible="False"
-             Title="Map">
+<ContentPage
+    x:Class="Avisen.Views.Map"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+    xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+    Title="Map"
+    Shell.NavBarIsVisible="False">
 
-        <maps:Map 
+    <maps:Map
         x:Name="map"
-        MapType="Street"
+        IsScrollEnabled="True"
         IsShowingUser="true"
         IsTrafficEnabled="True"
-        IsScrollEnabled="True"
-        IsZoomEnabled="True">
-        </maps:Map>
+        IsZoomEnabled="True"
+        MapType="Street" />
 
 </ContentPage>
