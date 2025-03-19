@@ -1,57 +1,53 @@
 using System.Text;
 using System.Text.Json;
+using Avisen.Services;
+using Microsoft.Maui.Storage;
 
 namespace Avisen.Views
 {
     public partial class Login : ContentPage
     {
+        private readonly ApiService apiService = new ApiService(); // Servicio para manejo de API
+        private readonly TokenService tokenService; // Servicio para manejo de tokens
+
         public Login()
         {
             InitializeComponent();
+            tokenService = new TokenService(this); // Pasar el contexto actual para usar Dispatcher
         }
 
-        protected async  override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+
             try
             {
-                // Verificar si el AccessToken está almacenado
-                var existingAccessToken = await SecureStorage.GetAsync("AccessToken");
-                var refreshToken = await SecureStorage.GetAsync("RefreshToken");
+                // Recuperar tokens almacenados
+                var existingAccessToken = await tokenService.GetAccessTokenAsync();
+                var refreshToken = await tokenService.GetRefreshTokenAsync();
 
                 if (!string.IsNullOrEmpty(existingAccessToken) && !string.IsNullOrEmpty(refreshToken))
                 {
-                    // Si hay un token almacenado, solicitar un nuevo AccessToken usando la API
-                    var url = "https://napi-production.up.railway.app/api/usuario/refresh-token";
-
-                    using var httpClient = new HttpClient();
-                    var jsonRequest = new
-                    {
-                        refreshToken = refreshToken
-                    };
-
-                    var content = new StringContent(JsonSerializer.Serialize(jsonRequest), Encoding.UTF8, "application/json");
-                    var response = await httpClient.PostAsync(url, content);
-                    var responseContent = await response.Content.ReadAsStringAsync();
+                    // Refrescar el token si es necesario
+                    var jsonRequest = new { refreshToken = refreshToken };
+                    var response = await apiService.PostAsync("refresh-token", jsonRequest);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                        var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                        var newAccessToken = jsonResponse.GetProperty("accessToken").GetString();
 
                         // Guardar el nuevo AccessToken
-                        var newAccessToken = jsonResponse.GetProperty("accessToken").GetString();
-                        await SecureStorage.SetAsync("AccessToken", newAccessToken);
+                        await tokenService.SetAccessTokenAsync(newAccessToken, TimeSpan.FromMinutes(15));
 
                         // Navegar a Home
                         await Shell.Current.GoToAsync("//Home");
                     }
                     else
                     {
-                        // Manejar errores en la solicitud
                         await DisplayAlert("Error", "No se pudo refrescar el token. Por favor, inicie sesión nuevamente.", "OK");
                     }
                 }
-                // Si no hay tokens almacenados, no ocurre nada.
             }
             catch (Exception ex)
             {
@@ -68,32 +64,26 @@ namespace Avisen.Views
         {
             try
             {
-                var url = "https://napi-production.up.railway.app/api/usuario/login";
-
-                using var httpClient = new HttpClient();
-
                 var jsonRequest = new
                 {
-                    email = "usuario@ejemplo.com",
-                    contraseña = "contra123"
+                    email = "usuario@ejemplo.com", // Esto debería venir de entradas de usuario
+                    contraseña = "contra123"       // Esto también debe provenir de entradas
                 };
 
-                var content = new StringContent(JsonSerializer.Serialize(jsonRequest), Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(url, content);
-                var responseContent = await response.Content.ReadAsStringAsync();
+                var response = await apiService.PostAsync("login", jsonRequest);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                    var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
 
+                    // Guardar tokens
                     var accessToken = jsonResponse.GetProperty("accessToken").GetString();
-                    await SecureStorage.SetAsync("AccessToken", accessToken);
+                    await tokenService.SetAccessTokenAsync(accessToken, TimeSpan.FromMinutes(15));
 
                     var refreshToken = jsonResponse.GetProperty("refreshToken").GetString();
-                    await SecureStorage.SetAsync("RefreshToken", refreshToken);
-                    await DisplayAlert("AccessToken", accessToken, "OK");
+                    await tokenService.SetRefreshTokenAsync(refreshToken, TimeSpan.FromDays(7));
 
-
+                    // Guardar datos del usuario
                     var user = jsonResponse.GetProperty("user");
                     var userData = new
                     {
@@ -103,15 +93,14 @@ namespace Avisen.Views
                         rolIdRol = user.GetProperty("rol_idrol").GetInt32(),
                         rol = user.GetProperty("rol").GetString()
                     };
-                    await DisplayAlert("Nombre", userData.nombreCliente, "OK");
-
                     await SecureStorage.SetAsync("UserData", JsonSerializer.Serialize(userData));
-                    await DisplayAlert("UserData JSON", JsonSerializer.Serialize(userData), "OK");
 
+                    // Navegar a Home
                     await Shell.Current.GoToAsync("//Home");
                 }
                 else
                 {
+                    var responseContent = await response.Content.ReadAsStringAsync();
                     await DisplayAlert("Error", $"Error en el login.\nResponse: {responseContent}", "OK");
                 }
             }

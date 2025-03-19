@@ -29045,7 +29045,8 @@
       "Microsoft.Maui.Controls.Maps >= 9.0.40",
       "Microsoft.Maui.Maps >= 9.0.40",
       "Microsoft.NET.ILLink.Tasks >= 9.0.1",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "Xamarin.AndroidX.Browser >= 1.8.0.8"
     ],
     "net9.0-ios18.1": [
       "CommunityToolkit.Maui >= 11.1.0",
@@ -29170,6 +29171,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "Xamarin.AndroidX.Browser": {
+            "target": "Package",
+            "version": "[1.8.0.8, )"
           }
         },
         "imports": [
