@@ -114,7 +114,7 @@
                                                         TextColor="#19535F" />
                                                     <Label
                                                         FontSize="16"
-                                                        Text="{Binding Promocion.Descripcion}"
+                                                        Text="{Binding Descripcion}"
                                                         TextColor="#602020" />
                                                 </VerticalStackLayout>
 

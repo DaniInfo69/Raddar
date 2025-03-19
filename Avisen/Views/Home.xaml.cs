@@ -9,7 +9,7 @@ namespace Avisen.Views
         public ObservableCollection<Negocio> OfertasReales { get; set; }
         public ObservableCollection<Negocio> OfertasActuales { get; set; }
 
-        public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas" };
+        public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
 
         private string _selectedFilter;
@@ -92,15 +92,25 @@ namespace Avisen.Views
         }
 
 
+
         private void UpdateCollectionView()
         {
+            OfertasReales.Clear();
+
             if (SelectedFilter == "Ofertas Vistas")
             {
-                OfertasList.ItemsSource = OfertasReales;
+                foreach (var oferta in Map.OfertasVistas)
+                    OfertasReales.Add(oferta);
             }
             else if (SelectedFilter == "Ofertas Cercanas")
             {
-                OfertasList.ItemsSource = OfertasActuales;
+                foreach (var oferta in Map.OfertasActuales)
+                    OfertasReales.Add(oferta);
+            }
+            else if (SelectedFilter == "Todas las Ofertas")
+            {
+                foreach (var oferta in Map.TodasLasOfertas)
+                    OfertasReales.Add(oferta);
             }
         }
 
@@ -126,6 +136,10 @@ namespace Avisen.Views
             else if (FiltroPicker.SelectedIndex == 1)
             {
                 SelectedFilter = "Ofertas Cercanas";
+            }
+            else if (FiltroPicker.SelectedIndex == 2)
+            {
+                SelectedFilter = "Todas las Ofertas";
             }
         }
     }

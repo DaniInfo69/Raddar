@@ -51,15 +51,32 @@ public partial class PromocionDetallesPage : ContentPage
             // Precio
             formattedString.Spans.Add(new Span
             {
-                Text = $"Precio: {(promocion.Precio == 0 ? "Oferta especial" : $"${promocion.Precio} mxn")}\n",
+                Text = $"Precio: {(promocion.Precio == null ? "Oferta especial" : $"${promocion.Precio} mxn")}\n",
                 FontSize = 16,
                 TextColor = Color.FromArgb("#19535F") // Color verde oscuro
             });
 
-            // Vigencia
+
+            // Vigencia Inicio
             formattedString.Spans.Add(new Span
             {
-                Text = $"Vigencia: {promocion.Vigencia.ToShortDateString()}\n\n",
+                Text = $"Vigencia: {promocion.VigenciaInicio.ToShortDateString()}\n\n",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
+            });
+            
+            // Vigencia Fin
+            formattedString.Spans.Add(new Span
+            {
+                Text = $"Vigencia fin: {promocion.VigenciaFin.ToShortDateString()}\n\n",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
+            });
+
+            // Tipo de promoción
+            formattedString.Spans.Add(new Span
+            {
+                Text = $"Tipo de promoción: {promocion.Tipo}\n\n",
                 FontSize = 16,
                 TextColor = Color.FromArgb("#19535F") // Color verde oscuro
             });

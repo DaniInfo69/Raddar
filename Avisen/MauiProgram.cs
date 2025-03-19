@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using Avisen.Services;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 
 namespace Avisen
@@ -19,6 +20,8 @@ namespace Avisen
                     fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcon");
                 })
                 .UseMauiMaps();
+
+            builder.Services.AddSingleton<NegocioService, ApiService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

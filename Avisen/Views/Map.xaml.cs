@@ -1,4 +1,5 @@
 using Avisen.Models;
+using Avisen.Services;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Diagnostics;
@@ -9,18 +10,19 @@ public partial class Map : ContentPage
 {
     private Location userLocation;
     private List<Negocio> negocios;
-    private NegocioService negocioService;
+    private readonly NegocioService negocioService;
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
 
     public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
     public static List<Negocio> OfertasActuales = new List<Negocio>();
+    public static List<Negocio> TodasLasOfertas = new List<Negocio>();
 
-    public Map()
+    public Map(NegocioService negocioService)
     {
         InitializeComponent();
+        this.negocioService = negocioService;
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
-        negocioService = new NegocioService();
         LoadData();
         StartLocationUpdates();
     }
@@ -99,6 +101,8 @@ public partial class Map : ContentPage
             negocios = await negocioService.ObtenerNegociosAsync();
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
+            TodasLasOfertas.Clear();
+            TodasLasOfertas.AddRange(negocios);
         }
         catch (Exception ex)
         {

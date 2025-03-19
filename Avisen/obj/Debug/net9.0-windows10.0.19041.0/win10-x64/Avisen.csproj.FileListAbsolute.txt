@@ -1450,3 +1450,18 @@ C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\obj\Debug\net9.0-windows10.0.1904
 C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\Pc\Desktop\Programacion\Avisen\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.csproj.AssemblyReference.cache
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauifont.inputs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauisplash.inputs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauimanifest.stamp
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.i.cs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.cs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\XamlTypeInfo.g.cs
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.dll
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\refint\Avisen.dll
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.pdb
