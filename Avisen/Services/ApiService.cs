@@ -7,11 +7,15 @@ namespace Avisen.Services
 {
     public class ApiService
     {
-        private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly HttpClient httpClient;
 
-        public ApiService()
+        // Inicializador estático para configurar HttpClient una sola vez
+        static ApiService()
         {
-            httpClient.BaseAddress = new Uri("https://dapi-production-ca9b.up.railway.app/api/usuario/");
+            httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("https://dapi-production-ca9b.up.railway.app/api/")
+            };
         }
 
         public async Task<HttpResponseMessage> PostAsync(string endpoint, object jsonRequest)

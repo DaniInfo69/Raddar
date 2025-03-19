@@ -1,10 +1,13 @@
 using System.Text;
 using System.Text.Json;
+using Avisen.Services;
 
 namespace Avisen.Views;
 
 public partial class UserProfile : ContentPage
 {
+    private readonly ApiService apiService = new ApiService();
+
     public UserProfile()
     {
         InitializeComponent();
@@ -64,39 +67,25 @@ public partial class UserProfile : ContentPage
                 return;
             }
 
-            var url = "https://napi-production.up.railway.app/api/usuario/logout";
-
-            using var httpClient = new HttpClient();
-
-            var jsonRequest = new
-            {
-                refreshToken = refreshToken
-            };
-
-            var content = new StringContent(
-                JsonSerializer.Serialize(jsonRequest),
-                Encoding.UTF8,
-                "application/json");
-
-            // Realizar la solicitud POST a la API
-            var response = await httpClient.PostAsync(url, content);
+            // Crear la solicitud a la API para cerrar sesión
+            var jsonRequest = new { refreshToken = refreshToken };
+            var response = await apiService.PostAsync("usuario/logout", jsonRequest);
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
+                // Éxito: cerrar sesión y limpiar almacenamiento seguro
                 await DisplayAlert("Éxito", "Sesión cerrada exitosamente.", "OK");
 
-                // Eliminar todos los datos almacenados en SecureStorage
                 SecureStorage.Remove("UserData");
                 SecureStorage.Remove("AccessToken");
                 SecureStorage.Remove("RefreshToken");
 
-                // Redirigir al usuario a la página de inicio de sesión
+                // Redirigir al usuario a la pantalla de inicio de sesión
                 await Shell.Current.GoToAsync("//Login");
             }
             else
             {
-                // Si la API devuelve un error, muestra el mensaje
+                // Si la API devuelve un error
                 var responseContent = await response.Content.ReadAsStringAsync();
                 await DisplayAlert("Error", $"No se pudo cerrar sesión.\nRespuesta: {responseContent}", "OK");
             }
@@ -106,7 +95,6 @@ public partial class UserProfile : ContentPage
             // Manejo de errores
             Console.WriteLine($"Error al cerrar sesión: {ex.Message}");
             await DisplayAlert("Error", "Hubo un problema al cerrar sesión. Intenta nuevamente.", "OK");
-
         }
     }
 }

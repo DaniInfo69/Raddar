@@ -22,6 +22,8 @@ namespace Avisen.Views
 
             try
             {
+                Overlay.IsVisible = true;
+
                 // Recuperar tokens almacenados
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
                 var refreshToken = await tokenService.GetRefreshTokenAsync();
@@ -30,7 +32,7 @@ namespace Avisen.Views
                 {
                     // Refrescar el token si es necesario
                     var jsonRequest = new { refreshToken = refreshToken };
-                    var response = await apiService.PostAsync("refresh-token", jsonRequest);
+                    var response = await apiService.PostAsync("usuario/refresh-token", jsonRequest);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -53,6 +55,10 @@ namespace Avisen.Views
             {
                 await DisplayAlert("Error", ex.Message, "OK");
             }
+            finally
+            {
+                Overlay.IsVisible = false;
+            }
         }
 
         private async void CreateAccount_Clicked(object sender, EventArgs e)
@@ -70,7 +76,7 @@ namespace Avisen.Views
                     contraseña = "contra123"       // Esto también debe provenir de entradas
                 };
 
-                var response = await apiService.PostAsync("login", jsonRequest);
+                var response = await apiService.PostAsync("usuario/login", jsonRequest);
 
                 if (response.IsSuccessStatusCode)
                 {
