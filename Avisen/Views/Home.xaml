@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Avisen.Views.Home"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Home"
-    Padding="0"
-    Shell.NavBarIsVisible="False">
-    <!--  Eliminamos padding adicional  -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Avisen.Views.Home"
+             xmlns:local="clr-namespace:Avisen"
+             Title="Home"
+             Padding="0"
+             Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto, *">
-        <!--  Encabezado  -->
+
+        <!-- Header -->
         <Grid
             Grid.Row="0"
             Padding="30"
@@ -28,7 +27,7 @@
             </HorizontalStackLayout>
         </Grid>
 
-        <!--  Contenido principal  -->
+        <!-- Main Content -->
         <Grid Grid.Row="1">
             <Border
                 Margin="0,-30,0,0"
@@ -36,111 +35,124 @@
                 BackgroundColor="#f0ebdc"
                 StrokeThickness="0"
                 VerticalOptions="FillAndExpand">
-                <!--  Permite que ocupe toda la pantalla  -->
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="30,30,0,0" />
                 </Border.StrokeShape>
 
-                <ScrollView>
-                    <VerticalStackLayout>
-                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                <AbsoluteLayout>
+
+                    <!-- Contenido principal -->
+                    <VerticalStackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                        <Grid ColumnDefinitions="*, Auto" Margin="0,0,0,10" VerticalOptions="Center">
+                            <!-- Título -->
                             <Label
-                                Grid.Row="0"
-                                Grid.ColumnSpan="2"
-                                Margin="0,10,0,0"
+                                Grid.Column="0"
+                                Padding="80,0,0,0"
                                 FontAttributes="Bold"
                                 FontSize="24"
                                 HorizontalOptions="Center"
-                                Text="Ofertas"
+                                Text="Ofertas"                             
                                 TextColor="#19535F" />
-                            <Picker
-                                x:Name="FiltroPicker"
-                                Title="Filtrar Por"
-                                Grid.Row="1"
+
+                            <!-- Botón de Filtrar -->
+                            <Button
                                 Grid.Column="1"
-                                Margin="0,5,10,0"
-                                FontSize="16"
-                                HorizontalOptions="End"
-                                ItemsSource="{Binding Filters}"
-                                SelectedItem="{Binding SelectedFilter}"
+                                Text="Filtrar"
+                                FontSize="18"
                                 TextColor="#19535F"
-                                TitleColor="Black"
-                                WidthRequest="140" />
+                                BackgroundColor="#d1e7dd"
+                                CornerRadius="20"
+                                Padding="10"
+                                Clicked="OnFiltrarTapped"
+                                HorizontalOptions="End">
+
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="MaterialIcon"
+                                        Glyph="{x:Static local:IconFont.List_alt}"
+                                        Size="25"
+                                        Color="#19535F" />
+                                </Button.ImageSource>
+
+                            </Button>
                         </Grid>
 
-                        <!--  Lista de ofertas con scroll  -->
-                        <ScrollView HeightRequest="500">
-                            <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border
-                                            Margin="0,0,0,15"
-                                            Padding="10"
-                                            BackgroundColor="White"
-                                            Stroke="#19535F"
-                                            StrokeThickness="1">
-                                            <Border.StrokeShape>
-                                                <RoundRectangle />
-                                            </Border.StrokeShape>
+                        <!-- Lista estilo tarjetas -->
+                        <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                        Margin="0,0,0,10"
+                                        Padding="10"
+                                        BorderColor="#CCCCCC"
+                                        CornerRadius="8"
+                                        HasShadow="False"
+                                        BackgroundColor="White">
 
-                                            <Grid ColumnDefinitions="2*, 3*" RowDefinitions="Auto, Auto">
-                                                <Border
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Padding="3"
-                                                    HorizontalOptions="Center"
-                                                    Stroke="#19535F"
-                                                    StrokeThickness="2"
-                                                    VerticalOptions="Center">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle />
-                                                    </Border.StrokeShape>
-                                                    <Image
-                                                        Aspect="AspectFill"
-                                                        HeightRequest="100"
-                                                        Source="{Binding ImagenUrl}" />
-                                                </Border>
+                                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
+                                            <!-- Logo o imagen -->
+                                            <Image
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"
+                                                Source="{Binding ImagenUrl}"
+                                                WidthRequest="50"
+                                                HeightRequest="50"
+                                                Aspect="AspectFit"
+                                                Margin="0,0,10,0" />
 
-                                                <VerticalStackLayout
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Padding="10"
-                                                    VerticalOptions="Center">
-                                                    <Label
-                                                        FontAttributes="Bold"
-                                                        FontSize="20"
-                                                        Text="{Binding Nombre}"
-                                                        TextColor="#19535F" />
-                                                    <Label
-                                                        FontSize="16"
-                                                        Text="{Binding Descripcion}"
-                                                        TextColor="#602020" />
-                                                </VerticalStackLayout>
+                                            <!-- Título -->
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="{Binding Nombre}"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                TextColor="#19535F" />
 
-                                                <Button
-                                                    Grid.Row="1"
-                                                    Grid.ColumnSpan="2"
-                                                    Margin="5"
-                                                    BackgroundColor="#19535F"
-                                                    Clicked="OnVerOfertaClicked"
-                                                    CommandParameter="{Binding}"
-                                                    FontAttributes="Bold"
-                                                    FontSize="18"
-                                                    HorizontalOptions="Fill"
-                                                    Text="Ver Oferta"
-                                                    TextColor="White" />
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </ScrollView>
+                                            <!-- Subtítulo / Descripción -->
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Text="{Binding Descripcion}"
+                                                FontSize="14"
+                                                TextColor="Gray" />
+                                        </Grid>
 
+                                        <!-- Acción al tocar la tarjeta -->
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}"
+                                                CommandParameter="{Binding}" />
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </VerticalStackLayout>
-                </ScrollView>
+
+                    <!-- Popup del filtro encima de todo -->
+                    <ContentView x:Name="FiltroPopup" IsVisible="False" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" ZIndex="99">
+                        <Frame x:Name="PopupFrame" BackgroundColor="White" Padding="20" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="250">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="Filtrar por:" FontSize="18" FontAttributes="Bold" TextColor="#19535F" HorizontalOptions="Center"/>
+                                <Picker
+                                    x:Name="FiltroPicker"
+                                    Title="Selecciona una opción"
+                                    ItemsSource="{Binding Filters}"
+                                    SelectedItem="{Binding SelectedFilter}"
+                                    TitleColor="#19535F"
+                                    TextColor="#19535F"
+                                    WidthRequest="200" />
+                                <Button Text="Aplicar" Clicked="OnCerrarFiltroTapped" BackgroundColor="#0aa59b" TextColor="White" CornerRadius="10"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </ContentView>
+
+                </AbsoluteLayout>
+
             </Border>
         </Grid>
+
     </Grid>
 </ContentPage>
-

@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Avisen.Models;
 using Microsoft.Maui.Storage;
 
@@ -10,7 +11,6 @@ namespace Avisen.Views
         public ObservableCollection<Negocio> OfertasActuales { get; set; }
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
-
 
         private string _selectedFilter;
         public string SelectedFilter
@@ -55,6 +55,9 @@ namespace Avisen.Views
             }
         }
 
+        // Comando que usará la tarjeta para navegar
+        public ICommand TapCommand { get; set; }
+
         public Home()
         {
             InitializeComponent();
@@ -68,9 +71,11 @@ namespace Avisen.Views
             // Filtro por defecto
             SelectedFilter = "Ofertas Vistas";
 
+            // Inicializamos el comando para el tap
+            TapCommand = new Command<Negocio>(async (negocio) => await NavigateToDetalle(negocio));
+
             BindingContext = this;
         }
-
 
         protected override void OnAppearing()
         {
@@ -87,11 +92,8 @@ namespace Avisen.Views
             foreach (var oferta in Map.OfertasActuales)
                 OfertasActuales.Add(oferta);
 
-            // Asegurar que se actualice la vista con el filtro correcto
             UpdateCollectionView();
         }
-
-
 
         private void UpdateCollectionView()
         {
@@ -114,9 +116,10 @@ namespace Avisen.Views
             }
         }
 
-        private async void OnVerOfertaClicked(object sender, EventArgs e)
+        // Nueva navegación directa desde el tap de la tarjeta
+        private async Task NavigateToDetalle(Negocio negocio)
         {
-            if (sender is Button button && button.CommandParameter is Negocio negocio)
+            if (negocio != null)
             {
                 await Navigation.PushModalAsync(new PromocionDetallesPage(negocio));
             }
@@ -127,20 +130,21 @@ namespace Avisen.Views
             SeeHour = await SecureStorage.GetAsync("lastLoadDataTime") ?? "No se ha ejecutado LoadData";
         }
 
-        private void FiltroPicker_SelectedIndexChanged(object sender, EventArgs e)
+
+        private async void OnFiltrarTapped(object sender, EventArgs e)
         {
-            if (FiltroPicker.SelectedIndex == 0)
-            {
-                SelectedFilter = "Ofertas Vistas";
-            }
-            else if (FiltroPicker.SelectedIndex == 1)
-            {
-                SelectedFilter = "Ofertas Cercanas";
-            }
-            else if (FiltroPicker.SelectedIndex == 2)
-            {
-                SelectedFilter = "Todas las Ofertas";
-            }
+            FiltroPopup.IsVisible = true;
+            await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
+            await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
         }
+
+        private async void OnCerrarFiltroTapped(object sender, EventArgs e)
+        {
+            await PopupFrame.ScaleTo(0.8, 200, Easing.CubicIn);
+            await PopupFrame.FadeTo(0, 200, Easing.CubicOut);
+            FiltroPopup.IsVisible = false;
+        }
+
+
     }
 }
