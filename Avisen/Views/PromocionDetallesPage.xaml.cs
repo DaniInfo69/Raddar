@@ -10,7 +10,7 @@ public partial class PromocionDetallesPage : ContentPage
 
         // Mostrar los detalles del negocio
         NombreNegocioLabel.Text = negocio.Nombre;
-        DescripcionNegocioLabel.Text = negocio.Descripcion; 
+        DescripcionNegocioLabel.Text = negocio.Descripcion;
 
         // Si hay promociones, mostrar la imagen de la primera promoción
         if (negocio.Promociones.Count > 0)
@@ -119,5 +119,18 @@ public partial class PromocionDetallesPage : ContentPage
         await DisplayAlert("Oferta", "Aquí puedes redirigir a la oferta específica.", "OK");
     }
 
+    private void OnHeartTapped(object sender, EventArgs e)
+    {
+        if (HeartAnimation.IsAnimationEnabled)
+        {
+            HeartAnimation.Progress = TimeSpan.FromMilliseconds(0); // Reinicia la animación correctamente
+            HeartAnimation.IsAnimationEnabled = false;
+        }
+        else
+        {
+            HeartAnimation.Progress = TimeSpan.FromMilliseconds(1100);
+            HeartAnimation.IsAnimationEnabled = true;
+        }
+    }
 
 }

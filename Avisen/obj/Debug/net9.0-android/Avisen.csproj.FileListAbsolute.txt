@@ -9115,3 +9115,4 @@ C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\android\
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\android\src\crc648e35430423bd4943\SKGLTextureViewRenderer.java
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\android\src\crc648e35430423bd4943\SKGLTextureView_InternalRenderer.java
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\android\src\crc648e35430423bd4943\SKSurfaceView.java
+C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\obj\Debug\net9.0-android\assets\heart.json
