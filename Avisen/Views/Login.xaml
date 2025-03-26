@@ -137,9 +137,11 @@
             IsVisible="False"
             Opacity="0.5">
             <Label
-                FontSize="24"
+                x:Name="LabelLoading"
+                FontSize="100"
                 HorizontalOptions="Center"
-                Text="Procesando..."
+                Style="{StaticResource MaterialIcon}"
+                Text="{x:Static local:IconFont.Hourglass_top}"
                 TextColor="White"
                 VerticalOptions="Center" />
         </Grid>

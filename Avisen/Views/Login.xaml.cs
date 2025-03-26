@@ -23,10 +23,12 @@ namespace Avisen.Views
             try
             {
                 Overlay.IsVisible = true;
-
+                LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
                 // Recuperar tokens almacenados
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
                 var refreshToken = await tokenService.GetRefreshTokenAsync();
+                LabelLoading.ScaleTo(1.7, 1000, Easing.BounceIn);
+                await LabelLoading.RotateTo(180, 1200, Easing.CubicInOut); // Luego realiza la animación
 
                 if (!string.IsNullOrEmpty(existingAccessToken) && !string.IsNullOrEmpty(refreshToken))
                 {
@@ -70,6 +72,8 @@ namespace Avisen.Views
         {
             try
             {
+                Overlay.IsVisible = true;
+                LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
                 var jsonRequest = new
                 {
                     email = "usuario@ejemplo.com", // Esto debería venir de entradas de usuario
@@ -80,6 +84,8 @@ namespace Avisen.Views
 
                 if (response.IsSuccessStatusCode)
                 {
+                    LabelLoading.ScaleTo(1.7, 1200, Easing.BounceIn);
+                    await LabelLoading.RotateTo(180, 1500, Easing.CubicInOut);
                     var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
 
                     // Guardar tokens
@@ -113,6 +119,10 @@ namespace Avisen.Views
             catch (Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "OK");
+            }
+            finally
+            {
+                Overlay.IsVisible = false;
             }
         }
     }
