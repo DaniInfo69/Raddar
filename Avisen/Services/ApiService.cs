@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using Avisen.Models;
 using System.Net.Http.Json;
+using System.Diagnostics;
 
 namespace Avisen.Services
 {
@@ -69,5 +70,38 @@ namespace Avisen.Services
                 return new List<Promocion>();
             }
         }
+
+
+        public async Task<List<Matriz>> ObtenerMatricesConPromocionesAsync()
+        {
+            try
+            {
+                var matrices = await httpClient.GetFromJsonAsync<List<Matriz>>("matriz") ?? new List<Matriz>();
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
+                var promociones = await ObtenerPromocionesAsync();
+
+                foreach (var matriz in matrices)
+                {
+                    // Buscar la empresa que tiene esta matriz como su sede
+                    var empresa = empresas.FirstOrDefault(e => e.matriz_idmatriz == matriz.idmatriz);
+                    matriz.DescripcionEmpresa = empresa?.Descripcion ?? "Sin descripción";
+
+                    // Obtener promociones de la empresa asociada a la matriz
+                    matriz.Promociones = promociones.Where(p => p.empresa_idempresa == empresa?.idempresa).ToList();
+
+                    Console.WriteLine($"Matriz: {matriz.Nombre}, Empresa: {empresa?.Nombre}, Descripción: {matriz.DescripcionEmpresa}, Ubicación: {matriz.Ubicacion}");
+                    Console.WriteLine($"Matriz: {matriz.Nombre} tiene {matriz.Promociones.Count} promociones.");
+                }
+
+                return matrices;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en ObtenerMatricesConPromocionesAsync: {ex.Message}");
+                return new List<Matriz>();
+            }
+        }
+
+
     }
 }

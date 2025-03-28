@@ -90,7 +90,8 @@
                                         HasShadow="False"
                                         BackgroundColor="White">
 
-                                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
+                                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto">
+
                                             <!-- Logo o imagen -->
                                             <Image
                                                 Grid.RowSpan="2"
@@ -114,9 +115,25 @@
                                             <Label
                                                 Grid.Row="1"
                                                 Grid.Column="1"
-                                                Text="{Binding Descripcion}"
+                                                Text="{Binding DescripcionEmpresa}"
                                                 FontSize="14"
                                                 TextColor="Gray" />
+
+                                            <!-- Lista de promociones -->
+                                            <CollectionView
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                ItemsSource="{Binding Promociones}"
+                                                HeightRequest="40">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label 
+                                                            Text="{Binding Nombre}" 
+                                                            FontSize="14" 
+                                                            TextColor="DarkBlue" />
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
                                         </Grid>
 
                                         <!-- Acción al tocar la tarjeta -->

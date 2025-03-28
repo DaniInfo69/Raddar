@@ -6,5 +6,6 @@ namespace Avisen.Services
     {
         Task<List<Negocio>> ObtenerNegociosAsync();
         Task<List<Promocion>> ObtenerPromocionesAsync();
+        Task<List<Matriz>> ObtenerMatricesConPromocionesAsync();
     }
 }

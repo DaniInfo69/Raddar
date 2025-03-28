@@ -7,8 +7,8 @@ namespace Avisen.Views
 {
     public partial class Home : ContentPage
     {
-        public ObservableCollection<Negocio> OfertasReales { get; set; }
-        public ObservableCollection<Negocio> OfertasActuales { get; set; }
+        public ObservableCollection<Matriz> OfertasReales { get; set; }
+        public ObservableCollection<Matriz> OfertasActuales { get; set; }
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
@@ -65,14 +65,14 @@ namespace Avisen.Views
             SeeHour = string.Empty;
             LoadSeeHour();
 
-            OfertasReales = new ObservableCollection<Negocio>(Map.OfertasVistas);
-            OfertasActuales = new ObservableCollection<Negocio>(Map.OfertasActuales);
+            OfertasReales = new ObservableCollection<Matriz>(Map.OfertasVistas);
+            OfertasActuales = new ObservableCollection<Matriz>(Map.OfertasActuales);
 
             // Filtro por defecto
             SelectedFilter = "Ofertas Vistas";
 
             // Inicializamos el comando para el tap
-            TapCommand = new Command<Negocio>(async (negocio) => await NavigateToDetalle(negocio));
+            TapCommand = new Command<Matriz>(async (negocio) => await NavigateToDetalle(negocio));
 
             BindingContext = this;
         }
@@ -85,13 +85,6 @@ namespace Avisen.Views
 
             OfertasReales.Clear();
             OfertasActuales.Clear();
-
-            foreach (var oferta in Map.OfertasVistas)
-                OfertasReales.Add(oferta);
-
-            foreach (var oferta in Map.OfertasActuales)
-                OfertasActuales.Add(oferta);
-
             UpdateCollectionView();
         }
 
@@ -101,7 +94,7 @@ namespace Avisen.Views
 
             if (SelectedFilter == "Ofertas Vistas")
             {
-                foreach (var oferta in Map.OfertasVistas)
+                foreach (var oferta in Map.OfertasVistas )
                     OfertasReales.Add(oferta);
             }
             else if (SelectedFilter == "Ofertas Cercanas")
@@ -117,7 +110,7 @@ namespace Avisen.Views
         }
 
         // Nueva navegación directa desde el tap de la tarjeta
-        private async Task NavigateToDetalle(Negocio negocio)
+        private async Task NavigateToDetalle(Matriz negocio)
         {
             if (negocio != null)
             {

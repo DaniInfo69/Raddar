@@ -4,13 +4,13 @@ namespace Avisen.Views;
 
 public partial class PromocionDetallesPage : ContentPage
 {
-    public PromocionDetallesPage(Negocio negocio)
+    public PromocionDetallesPage(Matriz negocio)
     {
         InitializeComponent();
 
         // Mostrar los detalles del negocio
         NombreNegocioLabel.Text = negocio.Nombre;
-        DescripcionNegocioLabel.Text = negocio.Descripcion;
+        DescripcionNegocioLabel.Text = negocio.DescripcionEmpresa;
 
         // Si hay promociones, mostrar la imagen de la primera promoción
         if (negocio.Promociones.Count > 0)
@@ -28,7 +28,7 @@ public partial class PromocionDetallesPage : ContentPage
         }
     }
 
-    private FormattedString ObtenerDetallesPromociones(Negocio negocio)
+    private FormattedString ObtenerDetallesPromociones(Matriz negocio)
     {
         var formattedString = new FormattedString();
 
@@ -71,7 +71,7 @@ public partial class PromocionDetallesPage : ContentPage
         return formattedString;
     }
 
-    private FormattedString ObtenerVigenciaI(Negocio negocio)
+    private FormattedString ObtenerVigenciaI(Matriz negocio)
     {
         var formattedString = new FormattedString();
 
@@ -89,7 +89,7 @@ public partial class PromocionDetallesPage : ContentPage
         return formattedString;
     }
 
-    private FormattedString ObtenerVigenciaF(Negocio negocio)
+    private FormattedString ObtenerVigenciaF(Matriz negocio)
     {
         var formattedString = new FormattedString();
 

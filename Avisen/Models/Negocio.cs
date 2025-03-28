@@ -4,6 +4,8 @@ namespace Avisen.Models
     public class Negocio
     {
         public int idempresa { get; set; }
+        public int usuario_idusuario { get; set; }
+        public int matriz_idmatriz {  get; set; }
         public string ImagenUrl { get; set; }
         public string Nombre { get; set; }               // Nombre del negocio
         public string Descripcion { get; set; }

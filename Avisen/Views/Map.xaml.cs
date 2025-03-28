@@ -9,14 +9,14 @@ namespace Avisen.Views;
 public partial class Map : ContentPage
 {
     private Location userLocation;
-    private List<Negocio> negocios;
+    private List<Matriz> negocios;
     private readonly NegocioService negocioService;
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
 
-    public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
-    public static List<Negocio> OfertasActuales = new List<Negocio>();
-    public static List<Negocio> TodasLasOfertas = new List<Negocio>();
+    public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
+    public static List<Matriz> OfertasActuales = new List<Matriz>();
+    public static List<Matriz> TodasLasOfertas = new List<Matriz>();
 
     public Map(NegocioService negocioService)
     {
@@ -88,17 +88,18 @@ public partial class Map : ContentPage
         }
     }
 
+
     //protected override void OnDisappearing()
     //{
-      //  base.OnDisappearing();
-       // isUpdatingLocation = false;
+    //  base.OnDisappearing();
+    // isUpdatingLocation = false;
     //}
 
     private async void LoadData()
     {
         try
         {
-            negocios = await negocioService.ObtenerNegociosAsync();
+            negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
             TodasLasOfertas.Clear();
@@ -107,6 +108,8 @@ public partial class Map : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
+
+            Console.WriteLine("Error", $"Error al cargar datos: {ex.Message}", "OK");
         }
     }
 
@@ -118,11 +121,12 @@ public partial class Map : ContentPage
             return;
         }
 
-        var negociosEnRango = new List<Negocio>();
+        var negociosEnRango = new List<Matriz>();
 
         foreach (var negocio in negocios)
         {
-            var distance = userLocation.CalculateDistance(negocio.Ubicacion, DistanceUnits.Kilometers);
+            var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
+
             if (distance <= 0.1)
             {
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
@@ -163,7 +167,7 @@ public partial class Map : ContentPage
         }
     }
 
-    private void ShowPromotionAlert(Negocio negocio)
+    private void ShowPromotionAlert(Matriz negocio)
     {
         if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
         {
@@ -175,14 +179,14 @@ public partial class Map : ContentPage
             Label = negocio.Nombre,
             Address = "¡Oferta!",
             Type = PinType.Place,
-            Location = negocio.Ubicacion
+            Location = negocio.Location
         };
 
         promotionPin.MarkerClicked += (s, e) => DisplayPromotionDetails(negocio);
         map.Pins.Add(promotionPin);
     }
 
-    private async void DisplayPromotionDetails(Negocio negocio)
+    private async void DisplayPromotionDetails(Matriz negocio)
     {
         var detallesPage = new PromocionDetallesPage(negocio);
         await Navigation.PushModalAsync(detallesPage);
