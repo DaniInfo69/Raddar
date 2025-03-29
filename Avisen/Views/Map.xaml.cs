@@ -131,6 +131,8 @@ public partial class Map : ContentPage
             {
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
                 {
+                    Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.2));
+
                     ShowPromotionAlert(negocio);
                 }
                 if (!OfertasActuales.Contains(negocio))

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Una herramienta generó este código.
-    Se generó desde C:\Users\jardi\OneDrive\Escritorio\Residencias Raddar\Raddar\Avisen\Platforms\Android\AndroidManifest.xml
+    Se generó desde C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\Platforms\Android\AndroidManifest.xml
     Los cambios realizados en este archivo pueden generar un comportamiento incorrecto y se perderán si
     se regenera el contenido.
     -->
@@ -9,6 +9,7 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.VIBRATE" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:name="crc64be4a4d0745143da3.MainApplication" android:label="Raddar" android:debuggable="true" android:extractNativeLibs="true">
