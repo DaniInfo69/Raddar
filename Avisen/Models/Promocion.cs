@@ -3,12 +3,16 @@
     public class Promocion
     {
         public int empresa_idempresa { get; set; }
-        public string Nombre { get; set; }       // Nombre de la promoción
-        public string Descripcion { get; set; }  // Descripción de la promoción
-        public string Precio { get; set; }      // Precio de la promoción
-        public DateTime VigenciaInicio { get; set; }  // Fecha de inicio
-        public DateTime VigenciaFin { get; set; }     // Fecha de fin
-        public string Tipo { get; set; }  // Tipo de promoción
-        public string ImagenUrl { get; set; }    // URL de la imagen de la promoción
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public string Precio { get; set; }
+        public DateTime VigenciaInicio { get; set; }
+        public DateTime VigenciaFin { get; set; }
+        public string Tipo { get; set; }
+        public string ImagenUrl { get; set; }
+
+        public string NombreEmpresa { get; set; }
+        public string DescripcionEmpresa { get; set; }
+
     }
 }

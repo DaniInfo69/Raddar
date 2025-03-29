@@ -4,110 +4,63 @@ namespace Avisen.Views;
 
 public partial class PromocionDetallesPage : ContentPage
 {
-    public PromocionDetallesPage(Matriz negocio)
+    public PromocionDetallesPage(Promocion promocion)
     {
         InitializeComponent();
 
-        // Mostrar los detalles del negocio
-        NombreNegocioLabel.Text = negocio.Nombre;
-        DescripcionNegocioLabel.Text = negocio.DescripcionEmpresa;
+        // Configuramos el BindingContext con la promoción
+        BindingContext = promocion;
 
-        // Si hay promociones, mostrar la imagen de la primera promoción
-        if (negocio.Promociones.Count > 0)
-        {
-            var promocion = negocio.Promociones[0]; // Tomamos la primera promoción
-            PromocionesLabel.FormattedText = ObtenerDetallesPromociones(negocio);
-            VigenciaLabel.FormattedText = ObtenerVigenciaI(negocio);
-            VigenciaLabel2.FormattedText = ObtenerVigenciaF(negocio);
-            PromocionImagen.Source = promocion.ImagenUrl;
-        }
-        else
-        {
-            PromocionesLabel.Text = "No hay promociones disponibles.";
-            PromocionImagen.IsVisible = false;
-        }
+        // Mostramos los detalles directamente desde el Binding
+        PromocionesLabel.FormattedText = ObtenerDetallesPromocion(promocion);
+        VigenciaLabel.Text = promocion.VigenciaInicio.ToShortDateString();
+        VigenciaLabel2.Text = promocion.VigenciaFin.ToShortDateString();
+
+        // Opcional: Si necesitas el nombre de la empresa, podrías pasarlo como parámetro adicional
+        // NombreNegocioLabel.Text = nombreEmpresa;
     }
 
-    private FormattedString ObtenerDetallesPromociones(Matriz negocio)
+    private FormattedString ObtenerDetallesPromocion(Promocion promocion)
     {
         var formattedString = new FormattedString();
 
-        foreach (var promocion in negocio.Promociones)
+        // Nombre en negritas
+        formattedString.Spans.Add(new Span
         {
-            // Nombre en negritas
-            formattedString.Spans.Add(new Span
-            {
-                Text = promocion.Nombre + "\n\n",
-                FontAttributes = FontAttributes.Bold,
-                FontSize = 18,
-                TextColor = Color.FromArgb("#19535F"),
-            });
+            Text = promocion.Nombre + "\n\n",
+            FontAttributes = FontAttributes.Bold,
+            FontSize = 18,
+            TextColor = Color.FromArgb("#19535F"),
+        });
 
-            // Descripción normal
-            formattedString.Spans.Add(new Span
-            {
-                Text = promocion.Descripcion + "\n\n",
-                FontSize = 16,
-                TextColor = Color.FromArgb("#602020") // Color rojo oscuro
-            });
+        // Descripción normal
+        formattedString.Spans.Add(new Span
+        {
+            Text = promocion.Descripcion + "\n\n",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#602020")
+        });
 
-            // Precio
-            formattedString.Spans.Add(new Span
-            {
-                Text = $"Precio: {(promocion.Precio == null ? "Oferta especial" : $"${promocion.Precio} mxn")}\n\n",
-                FontSize = 16,
-                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
-            });
+        // Precio
+        formattedString.Spans.Add(new Span
+        {
+            Text = $"Precio: {(promocion.Precio == null ? "Oferta especial" : $"${promocion.Precio} mxn")}\n\n",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#19535F")
+        });
 
-            // Tipo de promoción
-            formattedString.Spans.Add(new Span
-            {
-                Text = $"Tipo de promoción: {promocion.Tipo}\n",
-                FontSize = 16,
-                TextColor = Color.FromArgb("#19535F") // Color verde oscuro
-            });
-        }
+        // Tipo de promoción
+        formattedString.Spans.Add(new Span
+        {
+            Text = $"Tipo de promoción: {promocion.Tipo}",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#19535F")
+        });
 
         return formattedString;
     }
 
-    private FormattedString ObtenerVigenciaI(Matriz negocio)
-    {
-        var formattedString = new FormattedString();
-
-        foreach (var promocion in negocio.Promociones)
-        {
-
-            formattedString.Spans.Add(new Span
-            {
-                Text = promocion.VigenciaInicio.ToShortDateString(),
-                FontSize = 16,
-                TextColor = Color.FromArgb("#19535F")
-            });
-        }
-
-        return formattedString;
-    }
-
-    private FormattedString ObtenerVigenciaF(Matriz negocio)
-    {
-        var formattedString = new FormattedString();
-
-        foreach (var promocion in negocio.Promociones)
-        {
-
-            formattedString.Spans.Add(new Span
-            {
-                Text = promocion.VigenciaFin.ToShortDateString(),
-                FontSize = 16,
-                TextColor = Color.FromArgb("#19535F")
-            });
-        }
-
-        return formattedString;
-    }
-
-
+    // Mantenemos los mismos métodos de eventos
     private async void CerrarModal(object sender, EventArgs e)
     {
         await Navigation.PopModalAsync();
@@ -115,7 +68,6 @@ public partial class PromocionDetallesPage : ContentPage
 
     private async void IrAOfertaClicked(object sender, EventArgs e)
     {
-        // Aquí podrías redirigir a una URL, abrir un navegador o llevar a una nueva página dentro de la app
         await DisplayAlert("Oferta", "Aquí puedes redirigir a la oferta específica.", "OK");
     }
 
@@ -123,7 +75,7 @@ public partial class PromocionDetallesPage : ContentPage
     {
         if (HeartAnimation.IsAnimationEnabled)
         {
-            HeartAnimation.Progress = TimeSpan.FromMilliseconds(0); // Reinicia la animación correctamente
+            HeartAnimation.Progress = TimeSpan.FromMilliseconds(0);
             HeartAnimation.IsAnimationEnabled = false;
         }
         else
@@ -132,5 +84,4 @@ public partial class PromocionDetallesPage : ContentPage
             HeartAnimation.IsAnimationEnabled = true;
         }
     }
-
 }

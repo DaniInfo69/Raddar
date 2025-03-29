@@ -188,7 +188,28 @@ public partial class Map : ContentPage
 
     private async void DisplayPromotionDetails(Matriz negocio)
     {
-        var detallesPage = new PromocionDetallesPage(negocio);
-        await Navigation.PushModalAsync(detallesPage);
+        if (negocio?.Promociones?.Any() == true)
+        {
+            // Mostrar todas las promociones en un carrusel o lista seleccionable
+            var action = await DisplayActionSheet(
+                "Selecciona una promoción",
+                "Cancelar",
+                null,
+                negocio.Promociones.Select(p => p.Nombre).ToArray());
+
+            if (action != "Cancelar" && action != null)
+            {
+                var promocionSeleccionada = negocio.Promociones.FirstOrDefault(p => p.Nombre == action);
+                if (promocionSeleccionada != null)
+                {
+                    var detallesPage = new PromocionDetallesPage(promocionSeleccionada);
+                    await Navigation.PushModalAsync(detallesPage);
+                }
+            }
+        }
+        else
+        {
+            await DisplayAlert("Sin promociones", "Este negocio no tiene promociones disponibles", "OK");
+        }
     }
 }

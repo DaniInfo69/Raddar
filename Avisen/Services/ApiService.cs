@@ -61,8 +61,21 @@ namespace Avisen.Services
                     NumberHandling = JsonNumberHandling.AllowReadingFromString
                 };
 
-                var promociones = await httpClient.GetFromJsonAsync<List<Promocion>>("promocion", options);
-                return promociones ?? new List<Promocion>();
+                var promociones = await httpClient.GetFromJsonAsync<List<Promocion>>("promocion", options) ?? new List<Promocion>();
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
+
+                // Enriquecer promociones con datos de la empresa
+                foreach (var promocion in promociones)
+                {
+                    var empresa = empresas.FirstOrDefault(e => e.idempresa == promocion.empresa_idempresa);
+                    if (empresa != null)
+                    {
+                        promocion.NombreEmpresa = empresa.Nombre;
+                        promocion.DescripcionEmpresa = empresa.Descripcion;
+                    }
+                }
+
+                return promociones;
             }
             catch (Exception ex)
             {

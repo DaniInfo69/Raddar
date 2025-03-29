@@ -84,63 +84,54 @@
                                 <DataTemplate>
                                     <Frame
                                         Margin="0,0,0,10"
-                                        Padding="10"
+                                        Padding="15"
                                         BorderColor="#CCCCCC"
                                         CornerRadius="8"
                                         HasShadow="False"
                                         BackgroundColor="White">
 
-                                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto">
-
-                                            <!-- Logo o imagen -->
+                                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
+                                            <!-- Imagen representativa (puedes usar una por defecto) -->
                                             <Image
-                                                Grid.RowSpan="2"
+                                                Grid.RowSpan="4"
                                                 Grid.Column="0"
-                                                Source="{Binding ImagenUrl}"
-                                                WidthRequest="50"
-                                                HeightRequest="50"
-                                                Aspect="AspectFit"
-                                                Margin="0,0,10,0" />
+                                                Source="promo_placeholder.png" 
+                                                WidthRequest="60"
+                                                HeightRequest="60"
+                                                Aspect="AspectFill"
+                                                Margin="0,0,15,0"/>
 
-                                            <!-- Título -->
-                                            <Label
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Text="{Binding Nombre}"
-                                                FontAttributes="Bold"
-                                                FontSize="16"
-                                                TextColor="#19535F" />
+                                                <!-- Nombre de la promoción -->
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Nombre}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    TextColor="#19535F"/>
 
-                                            <!-- Subtítulo / Descripción -->
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="1"
-                                                Text="{Binding DescripcionEmpresa}"
-                                                FontSize="14"
-                                                TextColor="Gray" />
+                                                <!-- Vigencia -->
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
+                                                    FontSize="12"
+                                                    TextColor="#0aa59b"/>
 
-                                            <!-- Lista de promociones -->
-                                            <CollectionView
-                                                Grid.Row="2"
-                                                Grid.Column="1"
-                                                ItemsSource="{Binding Promociones}"
-                                                HeightRequest="40">
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Label 
-                                                            Text="{Binding Nombre}" 
-                                                            FontSize="14" 
-                                                            TextColor="DarkBlue" />
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>
+                                                <!-- Tipo -->
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Text="{Binding Tipo}"
+                                                    FontSize="12"
+                                                    FontAttributes="Italic"
+                                                    TextColor="#19535F"/>
                                         </Grid>
 
-                                        <!-- Acción al tocar la tarjeta -->
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}"
-                                                CommandParameter="{Binding}" />
+                                                CommandParameter="{Binding}"/>
                                         </Frame.GestureRecognizers>
                                     </Frame>
                                 </DataTemplate>
@@ -153,12 +144,13 @@
                         <Frame x:Name="PopupFrame" BackgroundColor="White" Padding="20" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="250">
                             <VerticalStackLayout Spacing="15">
                                 <Label Text="Filtrar por:" FontSize="18" FontAttributes="Bold" TextColor="#19535F" HorizontalOptions="Center"/>
-                                <Picker
+                                <Label Text="Ofertas:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
+                                <Picker                                
                                     x:Name="FiltroPicker"
                                     Title="Selecciona una opción"
                                     ItemsSource="{Binding Filters}"
                                     SelectedItem="{Binding SelectedFilter}"
-                                    TitleColor="#19535F"
+                                    TitleColor="Gainsboro"
                                     TextColor="#19535F"
                                     WidthRequest="200" />
                                 <Button Text="Aplicar" Clicked="OnCerrarFiltroTapped" BackgroundColor="#0aa59b" TextColor="White" CornerRadius="10"/>

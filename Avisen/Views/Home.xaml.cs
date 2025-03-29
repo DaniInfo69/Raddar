@@ -7,8 +7,10 @@ namespace Avisen.Views
 {
     public partial class Home : ContentPage
     {
-        public ObservableCollection<Matriz> OfertasReales { get; set; }
-        public ObservableCollection<Matriz> OfertasActuales { get; set; }
+        public ObservableCollection<Promocion> OfertasReales { get; set; }
+        public ObservableCollection<Promocion> OfertasActuales { get; set; }
+
+
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
@@ -65,17 +67,20 @@ namespace Avisen.Views
             SeeHour = string.Empty;
             LoadSeeHour();
 
-            OfertasReales = new ObservableCollection<Matriz>(Map.OfertasVistas);
-            OfertasActuales = new ObservableCollection<Matriz>(Map.OfertasActuales);
+            // Inicializamos con listas de promociones
+            OfertasReales = new ObservableCollection<Promocion>(GetPromocionesFromMatrices(Map.OfertasVistas));
+            OfertasActuales = new ObservableCollection<Promocion>(GetPromocionesFromMatrices(Map.OfertasActuales));
+
+            // Modificamos el comando para recibir Promocion
+            TapCommand = new Command<Promocion>(async (promo) => await NavigateToDetalle(promo));
 
             // Filtro por defecto
             SelectedFilter = "Ofertas Vistas";
 
-            // Inicializamos el comando para el tap
-            TapCommand = new Command<Matriz>(async (negocio) => await NavigateToDetalle(negocio));
 
             BindingContext = this;
         }
+
 
         protected override void OnAppearing()
         {
@@ -92,31 +97,28 @@ namespace Avisen.Views
         {
             OfertasReales.Clear();
 
-            if (SelectedFilter == "Ofertas Vistas")
+            var promociones = SelectedFilter switch
             {
-                foreach (var oferta in Map.OfertasVistas )
-                    OfertasReales.Add(oferta);
-            }
-            else if (SelectedFilter == "Ofertas Cercanas")
+                "Ofertas Vistas" => GetPromocionesFromMatrices(Map.OfertasVistas),
+                "Ofertas Cercanas" => GetPromocionesFromMatrices(Map.OfertasActuales),
+                "Todas las Ofertas" => GetPromocionesFromMatrices(Map.TodasLasOfertas),
+                _ => new List<Promocion>()
+            };
+
+            foreach (var promo in promociones)
+                OfertasReales.Add(promo);
+        }
+
+
+        // Nueva navegación directa desde el tap de la tarjeta
+        private async Task NavigateToDetalle(Promocion promocion)
+        {
+            if (promocion != null)
             {
-                foreach (var oferta in Map.OfertasActuales)
-                    OfertasReales.Add(oferta);
-            }
-            else if (SelectedFilter == "Todas las Ofertas")
-            {
-                foreach (var oferta in Map.TodasLasOfertas)
-                    OfertasReales.Add(oferta);
+                await Navigation.PushModalAsync(new PromocionDetallesPage(promocion));
             }
         }
 
-        // Nueva navegación directa desde el tap de la tarjeta
-        private async Task NavigateToDetalle(Matriz negocio)
-        {
-            if (negocio != null)
-            {
-                await Navigation.PushModalAsync(new PromocionDetallesPage(negocio));
-            }
-        }
 
         private async void LoadSeeHour()
         {
@@ -138,6 +140,13 @@ namespace Avisen.Views
             FiltroPopup.IsVisible = false;
         }
 
+        private List<Promocion> GetPromocionesFromMatrices(List<Matriz> matrices)
+        {
+            return matrices
+                .Where(m => m.Promociones.Any()) // Solo matrices con promociones
+                .SelectMany(m => m.Promociones)   // Aplanamos todas las promociones
+                .ToList();
+        }
 
     }
 }
