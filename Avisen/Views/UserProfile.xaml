@@ -69,7 +69,8 @@
                                 HeightRequest="50"
                                 HorizontalOptions="Start"
                                 Text="   Editar Información               &gt;"
-                                TextColor="#2D2D2D">
+                                TextColor="#2D2D2D"
+                                Clicked="NavigateToEditInfo">
                                 <Button.ImageSource>
                                     <FontImageSource
                                         FontFamily="MaterialIcon"

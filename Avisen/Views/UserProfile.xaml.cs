@@ -97,6 +97,13 @@ public partial class UserProfile : ContentPage
             await DisplayAlert("Error", "Hubo un problema al cerrar sesión. Intenta nuevamente.", "OK");
         }
     }
+
+    public void NavigateToEditInfo(object sender, EventArgs e) {
+
+        Navigation.PushModalAsync(new EditUserInfo());
+    }
+       
+    
 }
 
 // Modelo para deserializar los datos del usuario

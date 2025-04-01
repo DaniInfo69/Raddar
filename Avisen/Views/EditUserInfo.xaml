@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Avisen"
+             x:Class="Avisen.Views.EditUserInfo"
+             Title="EditUserInfo">
+    <ContentView>
+        <Grid RowDefinitions=".1*, .8*">
+            <Grid BackgroundColor="#0aa59b" />
+
+            <Grid Grid.Row="1">
+                <RoundRectangle
+                    Margin="-5,-30,-5,-2"
+                    CornerRadius="30,30,0,0"
+                    Fill="#f0ebdc" />
+
+            </Grid>
+
+            <VerticalStackLayout Spacing="0" Grid.Row="1">
+
+                <Button
+                    Text="{x:Static local:IconFont.Arrow_back}"
+                    FontSize="30"
+                    HorizontalOptions="Start"
+                    BackgroundColor="Transparent"
+                    TextColor="#0aa59b"
+                    FontFamily="MaterialIcon"
+                    Clicked="CerrarModal"/>
+
+                <Grid HeightRequest="200" Padding="-40">
+
+                    <Ellipse
+                        Margin="0,50,0,0"
+                        Fill="Gray"
+                        HeightRequest="150"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        WidthRequest="150" />
+
+
+                    <Label
+                        Margin="0,70,0,0"
+                        FontSize="100"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource MaterialIcon}"
+                        Text="{x:Static local:IconFont.Person}"
+                        TextColor="#fcf9ed" />
+
+                    <Button
+                        HeightRequest="50"
+                        WidthRequest="50"
+                         BackgroundColor="#d1e7dd"
+                        Style="{StaticResource MaterialIcon}"
+                        Text="{x:Static local:IconFont.Camera_alt}"
+                        FontSize="25"
+                        CornerRadius="30"
+                        Margin="100,75,0,0"/>
+                </Grid>
+
+                <VerticalStackLayout Margin="-100,20,20,0" Spacing="15">
+                    <!--  Botón de Editar Nombre de Usuario  -->
+                    <Button
+                         BackgroundColor="Transparent"
+                         FontSize="18"
+                         HeightRequest="50"
+                         HorizontalOptions="Fill"
+                         Text="   Nombre de Usuario"
+                         TextColor="#2D2D2D">
+                        <Button.ImageSource>
+                            <FontImageSource
+                                        
+                                        FontFamily="MaterialIcon"
+                                        Glyph="{x:Static local:IconFont.Person_outline}"
+                                        Size="30"
+                                        Color="Black" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <!--  Botón de Editar Teléfono  -->
+                    <Button
+                         BackgroundColor="Transparent"
+                         FontSize="18"
+                         HeightRequest="50"
+                         HorizontalOptions="Fill"
+                         Text="   Teléfono                   "
+                         TextColor="#2D2D2D">
+                        <Button.ImageSource>
+                            <FontImageSource
+                                        
+                                        FontFamily="MaterialIcon"
+                                        Glyph="{x:Static local:IconFont.Phone}"
+                                        Size="30"
+                                        Color="Black" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <!--  Botón de Editar Email  -->
+                    <Button
+                         BackgroundColor="Transparent"
+                         FontSize="18"
+                         HeightRequest="50"
+                         HorizontalOptions="Fill"
+                         Text="   E-mail                       "
+                         TextColor="#2D2D2D">
+                        <Button.ImageSource>
+                            <FontImageSource
+                                        
+                                        FontFamily="MaterialIcon"
+                                        Glyph="{x:Static local:IconFont.Email}"
+                                        Size="30"
+                                        Color="Black" />
+                        </Button.ImageSource>
+                    </Button>
+
+                </VerticalStackLayout>
+
+
+            </VerticalStackLayout>
+        </Grid>
+    </ContentView>
+</ContentPage>
+
