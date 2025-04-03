@@ -3,6 +3,7 @@
     public class Promocion
     {
         public int empresa_idempresa { get; set; }
+        public int categoria_idcategoria { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Precio { get; set; }

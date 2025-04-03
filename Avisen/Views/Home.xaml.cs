@@ -1,7 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Avisen.Models;
-using Microsoft.Maui.Storage;
+using Avisen.Services;
+using System.Runtime.CompilerServices;
 
 namespace Avisen.Views
 {
@@ -9,56 +10,43 @@ namespace Avisen.Views
     {
         public ObservableCollection<Promocion> OfertasReales { get; set; }
         public ObservableCollection<Promocion> OfertasActuales { get; set; }
-
-
+        public ObservableCollection<Categoria> Categorias { get; set; }
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
-        private string _selectedFilter;
-        public string SelectedFilter
+        // Propiedades para selecciones temporales (no aplican filtros automáticamente)
+        private string _tempSelectedFilter;
+        public string TempSelectedFilter
         {
-            get => _selectedFilter;
-            set
-            {
-                if (_selectedFilter != value)
-                {
-                    _selectedFilter = value;
-                    OnPropertyChanged();
-                    UpdateCollectionView();
-                }
-            }
+            get => _tempSelectedFilter;
+            set => SetProperty(ref _tempSelectedFilter, value);
+        }
+
+        private Categoria _tempSelectedCategory;
+        public Categoria TempSelectedCategory
+        {
+            get => _tempSelectedCategory;
+            set => SetProperty(ref _tempSelectedCategory, value);
         }
 
         private double _updateFrequency;
         public double UpdateFrequency
         {
             get => _updateFrequency;
-            set
-            {
-                if (_updateFrequency != value)
-                {
-                    _updateFrequency = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => SetProperty(ref _updateFrequency, value);
         }
 
         private string _seeHour;
         public string SeeHour
         {
             get => _seeHour;
-            set
-            {
-                if (_seeHour != value)
-                {
-                    _seeHour = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => SetProperty(ref _seeHour, value);
         }
 
-        // Comando que usará la tarjeta para navegar
-        public ICommand TapCommand { get; set; }
+        // Comandos
+        public ICommand TapCommand { get; }
+        public ICommand ApplyFiltersCommand { get; }
+        public ICommand ClearFiltersCommand { get; }
 
         public Home()
         {
@@ -68,19 +56,22 @@ namespace Avisen.Views
             LoadSeeHour();
 
             // Inicializamos con listas de promociones
-            OfertasReales = new ObservableCollection<Promocion>(GetPromocionesFromMatrices(Map.OfertasVistas));
-            OfertasActuales = new ObservableCollection<Promocion>(GetPromocionesFromMatrices(Map.OfertasActuales));
+            OfertasReales = new ObservableCollection<Promocion>();
+            OfertasActuales = new ObservableCollection<Promocion>();
 
-            // Modificamos el comando para recibir Promocion
+            // Inicializamos la colección de categorías
+            Categorias = new ObservableCollection<Categoria>();
+
+            // Inicializar comandos
             TapCommand = new Command<Promocion>(async (promo) => await NavigateToDetalle(promo));
+            ApplyFiltersCommand = new Command(ApplyFilters);
+            ClearFiltersCommand = new Command(ClearFilters);
 
-            // Filtro por defecto
-            SelectedFilter = "Ofertas Vistas";
-
+            // Cargamos las categorías
+            _ = CargarCategoriasAsync();
 
             BindingContext = this;
         }
-
 
         protected override void OnAppearing()
         {
@@ -90,27 +81,18 @@ namespace Avisen.Views
 
             OfertasReales.Clear();
             OfertasActuales.Clear();
-            UpdateCollectionView();
+            RefreshPromotions();
         }
 
-        private void UpdateCollectionView()
+        private void RefreshPromotions()
         {
+            // Método para cargar promociones sin filtros
+            var promociones = GetPromocionesFromMatrices(Map.TodasLasOfertas);
             OfertasReales.Clear();
-
-            var promociones = SelectedFilter switch
-            {
-                "Ofertas Vistas" => GetPromocionesFromMatrices(Map.OfertasVistas),
-                "Ofertas Cercanas" => GetPromocionesFromMatrices(Map.OfertasActuales),
-                "Todas las Ofertas" => GetPromocionesFromMatrices(Map.TodasLasOfertas),
-                _ => new List<Promocion>()
-            };
-
             foreach (var promo in promociones)
                 OfertasReales.Add(promo);
         }
 
-
-        // Nueva navegación directa desde el tap de la tarjeta
         private async Task NavigateToDetalle(Promocion promocion)
         {
             if (promocion != null)
@@ -119,12 +101,10 @@ namespace Avisen.Views
             }
         }
 
-
         private async void LoadSeeHour()
         {
             SeeHour = await SecureStorage.GetAsync("lastLoadDataTime") ?? "No se ha ejecutado LoadData";
         }
-
 
         private async void OnFiltrarTapped(object sender, EventArgs e)
         {
@@ -142,11 +122,82 @@ namespace Avisen.Views
 
         private List<Promocion> GetPromocionesFromMatrices(List<Matriz> matrices)
         {
-            return matrices
-                .Where(m => m.Promociones.Any()) // Solo matrices con promociones
-                .SelectMany(m => m.Promociones)   // Aplanamos todas las promociones
-                .ToList();
+            return matrices?
+                .Where(m => m.Promociones?.Any() == true)
+                .SelectMany(m => m.Promociones)
+                .ToList() ?? new List<Promocion>();
         }
 
+        private async Task CargarCategoriasAsync()
+        {
+            try
+            {
+                var apiService = new ApiService();
+                var categoriasObtenidas = await apiService.ObtenerCategoriaAsync();
+
+                // Agregar opción "Todas las categorías"
+                categoriasObtenidas.Insert(0, new Categoria
+                {
+                    idcategoria = -1,
+                    Nombre = "Todas las categorías"
+                });
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Categorias.Clear();
+                    foreach (var categoria in categoriasObtenidas)
+                    {
+                        Categorias.Add(categoria);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error cargando categorías: {ex.Message}");
+            }
+        }
+
+        private void ApplyFilters()
+        {
+            var promociones = TempSelectedFilter switch
+            {
+                "Ofertas Vistas" => GetPromocionesFromMatrices(Map.OfertasVistas),
+                "Ofertas Cercanas" => GetPromocionesFromMatrices(Map.OfertasActuales),
+                "Todas las Ofertas" => GetPromocionesFromMatrices(Map.TodasLasOfertas),
+                _ => GetPromocionesFromMatrices(Map.TodasLasOfertas)
+            };
+
+            if (TempSelectedCategory != null && TempSelectedCategory.idcategoria != -1)
+            {
+                promociones = promociones.Where(p => p.categoria_idcategoria == TempSelectedCategory.idcategoria).ToList();
+            }
+
+            OfertasReales.Clear();
+            foreach (var promo in promociones)
+                OfertasReales.Add(promo);
+
+            OnCerrarFiltroTapped(null, null);
+        }
+
+        private void ClearFilters()
+        {
+            // Restablecer a valores por defecto
+            TempSelectedFilter = "Todas las Ofertas";
+            TempSelectedCategory = Categorias.FirstOrDefault(c => c.idcategoria == -1);
+
+            // Notificar cambios en las propiedades
+            OnPropertyChanged(nameof(TempSelectedFilter));
+            OnPropertyChanged(nameof(TempSelectedCategory));
+        }
+
+        private bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+                return false;
+
+            backingStore = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
     }
 }

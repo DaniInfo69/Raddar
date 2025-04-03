@@ -141,19 +141,47 @@
 
                     <!-- Popup del filtro encima de todo -->
                     <ContentView x:Name="FiltroPopup" IsVisible="False" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" ZIndex="99">
-                        <Frame x:Name="PopupFrame" BackgroundColor="White" Padding="20" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="250">
+                        <Frame x:Name="PopupFrame" BackgroundColor="White" Padding="20" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="350">
                             <VerticalStackLayout Spacing="15">
                                 <Label Text="Filtrar por:" FontSize="18" FontAttributes="Bold" TextColor="#19535F" HorizontalOptions="Center"/>
-                                <Label Text="Ofertas:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
-                                <Picker                                
+
+                                <Label Text="Tipo de ofertas:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
+                                <Picker
                                     x:Name="FiltroPicker"
                                     Title="Selecciona una opción"
                                     ItemsSource="{Binding Filters}"
-                                    SelectedItem="{Binding SelectedFilter}"
+                                    SelectedItem="{Binding TempSelectedFilter}"
                                     TitleColor="Gainsboro"
                                     TextColor="#19535F"
-                                    WidthRequest="200" />
-                                <Button Text="Aplicar" Clicked="OnCerrarFiltroTapped" BackgroundColor="#0aa59b" TextColor="White" CornerRadius="10"/>
+                                    WidthRequest="200"/>
+
+                                <Label Text="Categorías:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
+                                <Picker
+                                    x:Name="FiltroCategoria"
+                                    Title="Selecciona categoría"
+                                    ItemsSource="{Binding Categorias}"
+                                    ItemDisplayBinding="{Binding Nombre}"
+                                    SelectedItem="{Binding TempSelectedCategory}"
+                                    TitleColor="Gainsboro"
+                                    TextColor="#19535F"
+                                    WidthRequest="200"/>
+
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                    <Button 
+                                        Text="Limpiar"
+                                        Command="{Binding ClearFiltersCommand}"
+                                        BackgroundColor="LightGray"
+                                        TextColor="#19535F"
+                                        CornerRadius="10"/>
+
+                                    <Button 
+                                        Text="Aplicar"
+                                        Command="{Binding ApplyFiltersCommand}"
+                                        BackgroundColor="#0aa59b"
+                                        TextColor="White"
+                                        Grid.Column="1"
+                                        CornerRadius="10"/>
+                                </Grid>
                             </VerticalStackLayout>
                         </Frame>
                     </ContentView>

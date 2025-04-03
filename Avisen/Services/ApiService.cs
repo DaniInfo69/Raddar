@@ -115,6 +115,20 @@ namespace Avisen.Services
             }
         }
 
+        public async Task<List<Categoria>> ObtenerCategoriaAsync()
+        {
+            try
+            {
+                var categorias = await httpClient.GetFromJsonAsync<List<Categoria>>("categoria") ?? new List<Categoria>();
+
+                return categorias;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener categorias: {ex.Message}");
+                return new List<Categoria>();
+            }
+        }
 
     }
 }
