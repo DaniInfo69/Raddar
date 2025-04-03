@@ -7,6 +7,11 @@ public partial class SignUp : ContentPage
         InitializeComponent();
     }
 
+    bool isPasswordSafe = false;
+    bool areBothPasswordsTheSame = false;
+    bool isEmailValid = false;
+    bool isUserNameValid = false;
+
     private string IsSafePassword(string password)
     {
         if (password.Length < 8)
@@ -21,8 +26,6 @@ public partial class SignUp : ContentPage
             return "La contraseña debe contener al menos un carácter especial (@$!%*?&.).";
 
         return string.Empty;
-
-
     }
 
     private void Password_TextChanged(object sender, TextChangedEventArgs e)
@@ -37,31 +40,106 @@ public partial class SignUp : ContentPage
             Message.TextColor = Color.FromArgb("#dc5a4b");
             Message.Text = mensajeError;
             Message.FontSize = 20;
+            isPasswordSafe = false;
         }
         else
         {
             Message.TextColor = Color.FromArgb("#A3A3A4");
             Message.Text = "Crea tu cuenta!";
             Message.FontSize = 22;
+            isPasswordSafe = true;
         }
+        buttonCreateAccountEnable();
+    }
+
+    private void Password2_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (Password2.Text == Password.Text)
+        {
+            Message.TextColor = Color.FromArgb("#A3A3A4");
+            Message.Text = "Crea tu cuenta!";
+            Message.FontSize = 20;
+            areBothPasswordsTheSame = true;
+        }
+        else
+        {
+            Message.TextColor = Color.FromArgb("#dc5a4b");
+            Message.Text = "Las contraseñas no coinciden";
+            Message.FontSize = 20;
+            areBothPasswordsTheSame = false;
+        }
+        buttonCreateAccountEnable();
+    }
+
+    private void UserName_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        isUserNameValid = !string.IsNullOrEmpty(UserName.Text);
+        buttonCreateAccountEnable();
+    }
+
+    private void Email_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        try
+        {
+            var emailEntry = sender as Entry;
+            string email = e.NewTextValue;
+
+            // Validar si el correo electrónico es válido usando DataAnnotations
+            var atributoEmail = new System.ComponentModel.DataAnnotations.EmailAddressAttribute();
+            if (!atributoEmail.IsValid(email))
+            {
+                Message.TextColor = Color.FromArgb("#dc5a4b");
+                Message.Text = "El correo electrónico no es válido.";
+                Message.FontSize = 20;
+                isEmailValid = false;
+            }
+            else
+            {
+                Message.TextColor = Color.FromArgb("#A3A3A4");
+                Message.Text = "Crea tu cuenta!";
+                Message.FontSize = 22;
+                isEmailValid = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Message.TextColor = Color.FromArgb("#dc5a4b");
+            Message.Text = "Error:" + ex;
+        }
+        finally
+        {
+            buttonCreateAccountEnable();
+        }
+
 
     }
 
+    private void buttonCreateAccountEnable()
+    {
+        if (isPasswordSafe && areBothPasswordsTheSame && isEmailValid && isUserNameValid)
+        {
+            CreateAccount.IsEnabled = true;
+        }
+        else
+        {
+            CreateAccount.IsEnabled = false;
+        }
+    }
 
     private async void Back_Clicked(object sender, EventArgs e)
     {
-        // Obtener la página actual
-        var currentPage = Navigation.NavigationStack.LastOrDefault();
-
-        // Navegar hacia atrás
-        await Navigation.PopAsync();
-
-        // Eliminar la página actual de la pila de navegación
-        if (currentPage != null)
+        try
         {
+            var currentPage = Navigation.NavigationStack.LastOrDefault();
+            if (currentPage == null)
+                throw new InvalidOperationException("No se pudo obtener la página actual.");
+
+            await Navigation.PopAsync();
             Navigation.RemovePage(currentPage);
         }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"No se pudo navegar hacia atrás: {ex.Message}", "OK");
+        }
     }
-
-
 }
