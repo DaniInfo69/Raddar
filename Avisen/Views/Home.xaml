@@ -1,14 +1,15 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Avisen.Views.Home"
-             xmlns:local="clr-namespace:Avisen"
-             Title="Home"
-             Padding="0"
-             Shell.NavBarIsVisible="False">
+<ContentPage
+    x:Class="Avisen.Views.Home"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
+    Title="Home"
+    Padding="0"
+    Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto, *">
 
-        <!-- Header -->
+        <!--  Header  -->
         <Grid
             Grid.Row="0"
             Padding="30"
@@ -27,7 +28,7 @@
             </HorizontalStackLayout>
         </Grid>
 
-        <!-- Main Content -->
+        <!--  Main Content  -->
         <Grid Grid.Row="1">
             <Border
                 Margin="0,-30,0,0"
@@ -42,30 +43,33 @@
 
                 <AbsoluteLayout>
 
-                    <!-- Contenido principal -->
+                    <!--  Contenido principal  -->
                     <VerticalStackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                        <Grid ColumnDefinitions="*, Auto" Margin="0,0,0,10" VerticalOptions="Center">
-                            <!-- Título -->
+                        <Grid
+                            Margin="0,0,0,10"
+                            ColumnDefinitions="*, Auto"
+                            VerticalOptions="Center">
+                            <!--  Título  -->
                             <Label
                                 Grid.Column="0"
                                 Padding="80,0,0,0"
                                 FontAttributes="Bold"
                                 FontSize="24"
                                 HorizontalOptions="Center"
-                                Text="Ofertas"                             
+                                Text="Ofertas"
                                 TextColor="#19535F" />
 
-                            <!-- Botón de Filtrar -->
+                            <!--  Botón de Filtrar  -->
                             <Button
                                 Grid.Column="1"
-                                Text="Filtrar"
-                                FontSize="18"
-                                TextColor="#19535F"
-                                BackgroundColor="#d1e7dd"
-                                CornerRadius="20"
                                 Padding="10"
+                                BackgroundColor="#d1e7dd"
                                 Clicked="OnFiltrarTapped"
-                                HorizontalOptions="End">
+                                CornerRadius="20"
+                                FontSize="18"
+                                HorizontalOptions="End"
+                                Text="Filtrar"
+                                TextColor="#19535F">
 
                                 <Button.ImageSource>
                                     <FontImageSource
@@ -78,60 +82,58 @@
                             </Button>
                         </Grid>
 
-                        <!-- Lista estilo tarjetas -->
+                        <!--  Lista estilo tarjetas  -->
                         <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame
                                         Margin="0,0,0,10"
                                         Padding="15"
+                                        BackgroundColor="White"
                                         BorderColor="#CCCCCC"
                                         CornerRadius="8"
-                                        HasShadow="False"
-                                        BackgroundColor="White">
+                                        HasShadow="False">
 
                                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
-                                            <!-- Imagen representativa (puedes usar una por defecto) -->
+                                            <!--  Imagen representativa (puedes usar una por defecto)  -->
                                             <Image
                                                 Grid.RowSpan="4"
                                                 Grid.Column="0"
-                                                Source="promo_placeholder.png" 
-                                                WidthRequest="60"
-                                                HeightRequest="60"
+                                                Margin="0,0,15,0"
                                                 Aspect="AspectFill"
-                                                Margin="0,0,15,0"/>
+                                                HeightRequest="60"
+                                                Source="promo_placeholder.png"
+                                                WidthRequest="60" />
 
-                                                <!-- Nombre de la promoción -->
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Text="{Binding Nombre}"
-                                                    FontAttributes="Bold"
-                                                    FontSize="16"
-                                                    TextColor="#19535F"/>
+                                            <!--  Nombre de la promoción  -->
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                Text="{Binding Nombre}"
+                                                TextColor="#19535F" />
 
-                                                <!-- Vigencia -->
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="1"
-                                                    Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
-                                                    FontSize="12"
-                                                    TextColor="#0aa59b"/>
+                                            <!--  Vigencia  -->
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                FontSize="12"
+                                                Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
+                                                TextColor="#0aa59b" />
 
-                                                <!-- Tipo -->
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="1"
-                                                    Text="{Binding Tipo}"
-                                                    FontSize="12"
-                                                    FontAttributes="Italic"
-                                                    TextColor="#19535F"/>
+                                            <!--  Tipo  -->
+                                            <Label
+                                                Grid.Row="3"
+                                                Grid.Column="1"
+                                                FontAttributes="Italic"
+                                                FontSize="12"
+                                                Text="{Binding Tipo}"
+                                                TextColor="#19535F" />
                                         </Grid>
 
                                         <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}"
-                                                CommandParameter="{Binding}"/>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}" CommandParameter="{Binding}" />
                                         </Frame.GestureRecognizers>
                                     </Frame>
                                 </DataTemplate>
@@ -139,48 +141,75 @@
                         </CollectionView>
                     </VerticalStackLayout>
 
-                    <!-- Popup del filtro encima de todo -->
-                    <ContentView x:Name="FiltroPopup" IsVisible="False" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" ZIndex="99">
-                        <Frame x:Name="PopupFrame" BackgroundColor="White" Padding="20" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="350">
+                    <!--  Popup del filtro encima de todo  -->
+                    <ContentView
+                        x:Name="FiltroPopup"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="Transparent"
+                        IsVisible="False"
+                        ZIndex="99">
+                        <Frame
+                            x:Name="PopupFrame"
+                            Padding="20"
+                            BackgroundColor="White"
+                            CornerRadius="20"
+                            HeightRequest="350"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="300">
                             <VerticalStackLayout Spacing="15">
-                                <Label Text="Filtrar por:" FontSize="18" FontAttributes="Bold" TextColor="#19535F" HorizontalOptions="Center"/>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    Text="Filtrar por:"
+                                    TextColor="#19535F" />
 
-                                <Label Text="Tipo de ofertas:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
+                                <Label
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    Text="Tipo de ofertas:"
+                                    TextColor="#19535F" />
                                 <Picker
                                     x:Name="FiltroPicker"
                                     Title="Selecciona una opción"
                                     ItemsSource="{Binding Filters}"
                                     SelectedItem="{Binding TempSelectedFilter}"
-                                    TitleColor="Gainsboro"
                                     TextColor="#19535F"
-                                    WidthRequest="200"/>
+                                    TitleColor="Gainsboro"
+                                    WidthRequest="200" />
 
-                                <Label Text="Categorías:" FontSize="15" TextColor="#19535F" HorizontalOptions="Start"/>
+                                <Label
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    Text="Categorías:"
+                                    TextColor="#19535F" />
                                 <Picker
                                     x:Name="FiltroCategoria"
                                     Title="Selecciona categoría"
-                                    ItemsSource="{Binding Categorias}"
                                     ItemDisplayBinding="{Binding Nombre}"
+                                    ItemsSource="{Binding Categorias}"
                                     SelectedItem="{Binding TempSelectedCategory}"
-                                    TitleColor="Gainsboro"
                                     TextColor="#19535F"
-                                    WidthRequest="200"/>
+                                    TitleColor="Gainsboro"
+                                    WidthRequest="200" />
 
                                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-                                    <Button 
-                                        Text="Limpiar"
-                                        Command="{Binding ClearFiltersCommand}"
+                                    <Button
                                         BackgroundColor="LightGray"
-                                        TextColor="#19535F"
-                                        CornerRadius="10"/>
+                                        Command="{Binding ClearFiltersCommand}"
+                                        CornerRadius="10"
+                                        Text="Limpiar"
+                                        TextColor="#19535F" />
 
-                                    <Button 
-                                        Text="Aplicar"
-                                        Command="{Binding ApplyFiltersCommand}"
-                                        BackgroundColor="#0aa59b"
-                                        TextColor="White"
+                                    <Button
                                         Grid.Column="1"
-                                        CornerRadius="10"/>
+                                        BackgroundColor="#0aa59b"
+                                        Command="{Binding ApplyFiltersCommand}"
+                                        CornerRadius="10"
+                                        Text="Aplicar"
+                                        TextColor="White" />
                                 </Grid>
                             </VerticalStackLayout>
                         </Frame>

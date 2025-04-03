@@ -27,8 +27,10 @@
                     Fill="#f0ebdc" />
                 <VerticalStackLayout>
                     <Label
+                        x:Name="Message"
                         FontSize="22"
                         HorizontalTextAlignment="Center"
+                        LineHeight=".9"
                         Text="Crea tu cuenta!"
                         TextColor="#A3A3A4" />
 
@@ -51,6 +53,7 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="UserName"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
@@ -80,6 +83,7 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="Email"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
@@ -109,12 +113,15 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="Password"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
                             HeightRequest="60"
                             IsPassword="true"
+                            MaxLength="20"
                             Placeholder="Contraseña"
+                            TextChanged="Password_TextChanged"
                             TextColor="Black"
                             VerticalOptions="Center"
                             WidthRequest="300" />
@@ -139,11 +146,13 @@
                                 VerticalOptions="Center" />
                         </Border>
                         <Entry
+                            x:Name="Password2"
                             Grid.Column="1"
                             BackgroundColor="#f5f3ed"
                             FontSize="16"
                             HeightRequest="60"
                             IsPassword="true"
+                            MaxLength="20"
                             Placeholder="Repite la Contraseña"
                             TextColor="Black"
                             VerticalOptions="Center"
