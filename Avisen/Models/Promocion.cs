@@ -10,10 +10,18 @@
         public DateTime VigenciaInicio { get; set; }
         public DateTime VigenciaFin { get; set; }
         public string Tipo { get; set; }
-        public string ImagenUrl { get; set; }
+        public List<PromocionImagen> imagenes { get; set; }
 
         public string NombreEmpresa { get; set; }
         public string DescripcionEmpresa { get; set; }
 
     }
+
+    public class PromocionImagen
+    {
+        public int id { get; set; }
+        public string url { get; set; }
+        public string public_id { get; set; }
+    }
+
 }

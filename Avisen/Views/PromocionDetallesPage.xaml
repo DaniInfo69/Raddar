@@ -41,16 +41,24 @@
                         Grid.Row="0">
 
                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
-                            
-                            <Image 
-                                x:Name="PromocionImagen"
-                                Grid.RowSpan="2"
+
+                            <Image
+                                Grid.RowSpan="4"
                                 Grid.Column="0"
-                                Source="{Binding ImagenUrl}"
-                                WidthRequest="50"
-                                HeightRequest="50"
-                                Aspect="AspectFit"
-                                Margin="0,0,10,0"/>
+                                Margin="0,0,15,0"
+                                Aspect="AspectFill"
+                                HeightRequest="60"
+                                Source="{Binding imagenes[0].url}"
+                                WidthRequest="60">
+                                    <Image.Triggers>
+                                    <DataTrigger 
+                                            TargetType="Image"
+                                            Binding="{Binding imagenes.Count}"
+                                            Value="0">
+                                    </DataTrigger>
+                                    </Image.Triggers>
+                            </Image>
+
 
                             <Label
                                 x:Name="NombreNegocio"
@@ -108,7 +116,7 @@
                             Grid.Column="0"
                             RepeatMode="Restart"
                             Scale="1.5"
-                            HorizontalOptions="End"
+                            HorizontalOptions="Center"
                             IsAnimationEnabled="False"
                             Progress="1">
                             <skia:SKLottieView.GestureRecognizers>
@@ -128,7 +136,7 @@
                             VerticalOptions="Center"
                             HeightRequest="40"
                             WidthRequest="240"
-                            Clicked="IrAOfertaClicked"/>
+                            Clicked="IrAOfertaClicked"/> 
                     </Grid>
                 </Grid>
             </Border>

@@ -102,8 +102,17 @@
                                                 Margin="0,0,15,0"
                                                 Aspect="AspectFill"
                                                 HeightRequest="60"
-                                                Source="promo_placeholder.png"
-                                                WidthRequest="60" />
+                                                Source="{Binding imagenes[0].url}"
+                                                WidthRequest="60">
+                                                <Image.Triggers>
+                                                    <DataTrigger 
+                                                        TargetType="Image"
+                                                        Binding="{Binding imagenes.Count}"
+                                                        Value="0">
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+
 
                                             <!--  Nombre de la promoción  -->
                                             <Label
