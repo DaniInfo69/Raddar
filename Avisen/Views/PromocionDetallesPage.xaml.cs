@@ -1,15 +1,20 @@
 using Avisen.Models;
+using Avisen.Services;
 
 namespace Avisen.Views;
 
 public partial class PromocionDetallesPage : ContentPage
 {
-    public PromocionDetallesPage(Promocion promocion)
+    private readonly Location _ubicacionPromocion;
+
+    public PromocionDetallesPage(Promocion promocion, Location ubicacionPromocion)
     {
         InitializeComponent();
 
         // Configuramos el BindingContext con la promoción
         BindingContext = promocion;
+
+        _ubicacionPromocion = ubicacionPromocion;
 
         // Mostramos los detalles directamente desde el Binding
         PromocionesLabel.FormattedText = ObtenerDetallesPromocion(promocion);
@@ -68,8 +73,20 @@ public partial class PromocionDetallesPage : ContentPage
 
     private async void IrAOfertaClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Oferta", "Aquí puedes redirigir a la oferta específica.", "OK");
+        NavigationService.LocationToGo = _ubicacionPromocion;
+
+        bool answer = await DisplayAlert("Indicaciones", "¿Indicaciones para ir a la promoción?", "Si", "No");
+
+        if (answer)
+        {
+            await NavigationService.AbrirNavegacion(_ubicacionPromocion);
+        }
+
+        await Navigation.PopModalAsync();
+
+        await Shell.Current.GoToAsync("//Map");
     }
+
 
     private void OnHeartTapped(object sender, EventArgs e)
     {

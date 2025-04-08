@@ -42,22 +42,25 @@
 
                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
 
-                            <Image
-                                Grid.RowSpan="4"
-                                Grid.Column="0"
-                                Margin="0,0,15,0"
-                                Aspect="AspectFill"
-                                HeightRequest="60"
-                                Source="{Binding imagenes[0].url}"
-                                WidthRequest="60">
+                            <Border Grid.RowSpan="4" 
+                                    Margin="0,0,15,0" 
+                                    Grid.Column="0" 
+                                    HeightRequest="80" 
+                                    WidthRequest="80" 
+                                    Stroke="Transparent" 
+                                    StrokeShape="RoundRectangle 15">
+                                <Image
+                                    Aspect="AspectFill"
+                                    Source="{Binding imagenes[0].url}">
                                     <Image.Triggers>
-                                    <DataTrigger 
+                                        <DataTrigger 
                                             TargetType="Image"
                                             Binding="{Binding imagenes.Count}"
                                             Value="0">
-                                    </DataTrigger>
+                                        </DataTrigger>
                                     </Image.Triggers>
-                            </Image>
+                                </Image>
+                            </Border>
 
 
                             <Label

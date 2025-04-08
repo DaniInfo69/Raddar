@@ -95,15 +95,17 @@
                                         HasShadow="False">
 
                                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
-                                            <!--  Imagen representativa (puedes usar una por defecto)  -->
-                                            <Image
-                                                Grid.RowSpan="4"
-                                                Grid.Column="0"
-                                                Margin="0,0,15,0"
+                                            
+                                            <Border Grid.RowSpan="4" 
+                                                    Margin="0,0,15,0" 
+                                                    Grid.Column="0" 
+                                                    HeightRequest="90" 
+                                                    WidthRequest="90" 
+                                                    Stroke="Transparent" 
+                                                    StrokeShape="RoundRectangle 15">
+                                                <Image
                                                 Aspect="AspectFill"
-                                                HeightRequest="60"
-                                                Source="{Binding imagenes[0].url}"
-                                                WidthRequest="60">
+                                                Source="{Binding imagenes[0].url}">
                                                 <Image.Triggers>
                                                     <DataTrigger 
                                                         TargetType="Image"
@@ -111,7 +113,8 @@
                                                         Value="0">
                                                     </DataTrigger>
                                                 </Image.Triggers>
-                                            </Image>
+                                                </Image>
+                                            </Border>
 
 
                                             <!--  Nombre de la promoción  -->

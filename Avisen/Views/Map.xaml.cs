@@ -14,9 +14,12 @@ public partial class Map : ContentPage
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
 
+
     public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
     public static List<Matriz> OfertasActuales = new List<Matriz>();
     public static List<Matriz> TodasLasOfertas = new List<Matriz>();
+
+
 
     public Map(NegocioService negocioService)
     {
@@ -38,10 +41,33 @@ public partial class Map : ContentPage
         }
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+
+        // —————— BLOQUE “Ir a la oferta” ——————
+        if (NavigationService.LocationToGo is Location loc)
+        {
+            // Limpia cualquier pin anterior
+            map.Pins.Clear();
+
+            // Agrega el pin temporal
+            map.Pins.Add(new Pin
+            {
+                Label = "Oferta seleccionada",
+                Location = loc,
+                Type = PinType.Place
+            });
+
+            // Centra el mapa
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
+
+            // Resetea para que no lo ejecute de nuevo
+            NavigationService.LocationToGo = null;
+        }
+
     }
 
     private async void StartLocationUpdates()
@@ -95,6 +121,13 @@ public partial class Map : ContentPage
     // isUpdatingLocation = false;
     //}
 
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        // Limpiar pins temporales al salir de la pestaña
+        map.Pins.Clear();
+    }
     private async void LoadData()
     {
         try
@@ -204,7 +237,7 @@ public partial class Map : ContentPage
                 var promocionSeleccionada = negocio.Promociones.FirstOrDefault(p => p.Nombre == action);
                 if (promocionSeleccionada != null)
                 {
-                    var detallesPage = new PromocionDetallesPage(promocionSeleccionada);
+                    var detallesPage = new PromocionDetallesPage(promocionSeleccionada, default);
                     await Navigation.PushModalAsync(detallesPage);
                 }
             }

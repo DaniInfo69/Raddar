@@ -95,11 +95,25 @@ namespace Avisen.Views
 
         private async Task NavigateToDetalle(Promocion promocion)
         {
-            if (promocion != null)
+            if (promocion == null)
+                return;
+
+            // 1) Encuentra la Matriz que contiene esta promoción
+            var matriz = Map.TodasLasOfertas
+                           .FirstOrDefault(m => m.Promociones.Contains(promocion));
+
+            if (matriz == null)
             {
-                await Navigation.PushModalAsync(new PromocionDetallesPage(promocion));
+                await DisplayAlert("Error", "No se encontró la ubicación de la promoción.", "OK");
+                return;
             }
+
+            // 2) Pasa tanto la Promoción como la Location al detalle
+            await Navigation.PushModalAsync(
+                new PromocionDetallesPage(promocion, matriz.Location)
+            );
         }
+
 
         private async void LoadSeeHour()
         {
