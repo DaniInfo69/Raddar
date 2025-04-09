@@ -1,7 +1,11 @@
+using System.Text.Json;
+using Avisen.Services;
+
 namespace Avisen.Views;
 
 public partial class SignUp : ContentPage
 {
+    private readonly ApiService apiService = new ApiService();
     public SignUp()
     {
         InitializeComponent();
@@ -124,6 +128,46 @@ public partial class SignUp : ContentPage
         {
             CreateAccount.IsEnabled = false;
         }
+    }
+
+    private async void CreateAccount_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            // Construir el cuerpo de la solicitud
+            var jsonRequest = new
+            {
+                rol_idrol = 2, // Rol por defecto 2 (Cliente)
+                email = Email.Text,
+                contraseña = Password.Text,
+                nombre = UserName.Text
+            };
+
+            // Consumir API
+            var apiService = new ApiService();
+            var response = await apiService.PostAsync("usuario", jsonRequest);
+
+            // Manejo de respuesta
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                var message = jsonResponse.GetProperty("message").GetString();
+                await DisplayAlert("Éxito", message, "OK");
+            }
+            else
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                await DisplayAlert("Error", $"No se pudo registrar el usuario. Respuesta: {responseContent}", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Ocurrió un error inesperado: {ex.Message}", "OK");
+        }
+        finally
+        {
+        }
+
     }
 
     private async void Back_Clicked(object sender, EventArgs e)

@@ -95,24 +95,22 @@
                                         HasShadow="False">
 
                                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
-                                            
-                                            <Border Grid.RowSpan="4" 
-                                                    Margin="0,0,15,0" 
-                                                    Grid.Column="0" 
-                                                    HeightRequest="90" 
-                                                    WidthRequest="90" 
-                                                    Stroke="Transparent" 
-                                                    StrokeShape="RoundRectangle 15">
-                                                <Image
-                                                Aspect="AspectFill"
-                                                Source="{Binding imagenes[0].url}">
-                                                <Image.Triggers>
-                                                    <DataTrigger 
-                                                        TargetType="Image"
-                                                        Binding="{Binding imagenes.Count}"
-                                                        Value="0">
-                                                    </DataTrigger>
-                                                </Image.Triggers>
+
+                                            <Border
+                                                Grid.RowSpan="4"
+                                                Grid.Column="0"
+                                                Margin="0,0,15,0"
+                                                HeightRequest="90"
+                                                Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 15"
+                                                WidthRequest="90">
+                                                <Image Aspect="AspectFill" Source="{Binding imagenes[0].url}">
+                                                    <Image.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding imagenes.Count}"
+                                                            TargetType="Image"
+                                                            Value="0" />
+                                                    </Image.Triggers>
                                                 </Image>
                                             </Border>
 

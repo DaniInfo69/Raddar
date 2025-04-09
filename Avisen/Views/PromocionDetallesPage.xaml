@@ -3,8 +3,8 @@
     x:Class="Avisen.Views.PromocionDetallesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     xmlns:local="clr-namespace:Avisen"
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     Title="Detalles de la Promoción"
     BackgroundColor="#F5EBDC">
 
@@ -12,52 +12,50 @@
         <VerticalStackLayout Padding="20" Spacing="20">
 
             <Button
-                Text="{x:Static local:IconFont.Arrow_back}"
+                BackgroundColor="Transparent"
+                Clicked="CerrarModal"
+                FontFamily="MaterialIcon"
                 FontSize="30"
                 HorizontalOptions="Start"
-                BackgroundColor="Transparent"
-                TextColor="#0aa59b"
-                FontFamily="MaterialIcon"
-                Clicked="CerrarModal"/>
+                Text="{x:Static local:IconFont.Arrow_back}"
+                TextColor="#0aa59b" />
 
-            <!-- Tarjeta completa -->
+            <!--  Tarjeta completa  -->
             <Border
-                BackgroundColor="White"
-                Stroke="#19535F"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 20"
                 Padding="0"
-                HeightRequest="620">
+                BackgroundColor="White"
+                HeightRequest="620"
+                Stroke="#19535F"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="2">
 
 
                 <Grid RowDefinitions="Auto, *, Auto">
 
                     <Border
+                        Grid.Row="0"
                         Margin="10,20,10,0"
                         Padding="10"
                         Stroke="#CCCCCC"
-                        StrokeThickness="2"
                         StrokeShape="RoundRectangle 10"
-                        Grid.Row="0">
+                        StrokeThickness="2">
 
                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
 
-                            <Border Grid.RowSpan="4" 
-                                    Margin="0,0,15,0" 
-                                    Grid.Column="0" 
-                                    HeightRequest="80" 
-                                    WidthRequest="80" 
-                                    Stroke="Transparent" 
-                                    StrokeShape="RoundRectangle 15">
-                                <Image
-                                    Aspect="AspectFill"
-                                    Source="{Binding imagenes[0].url}">
+                            <Border
+                                Grid.RowSpan="4"
+                                Grid.Column="0"
+                                Margin="0,0,15,0"
+                                HeightRequest="80"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 15"
+                                WidthRequest="80">
+                                <Image Aspect="AspectFill" Source="{Binding imagenes[0].url}">
                                     <Image.Triggers>
-                                        <DataTrigger 
-                                            TargetType="Image"
+                                        <DataTrigger
                                             Binding="{Binding imagenes.Count}"
-                                            Value="0">
-                                        </DataTrigger>
+                                            TargetType="Image"
+                                            Value="0" />
                                     </Image.Triggers>
                                 </Image>
                             </Border>
@@ -67,79 +65,99 @@
                                 x:Name="NombreNegocio"
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Text="{Binding NombreEmpresa}"
                                 FontAttributes="Bold"
                                 FontSize="16"
-                                TextColor="#19535F"/>
+                                Text="{Binding NombreEmpresa}"
+                                TextColor="#19535F" />
 
                             <Label
                                 x:Name="DescripcionNegocio"
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Text="{Binding DescripcionEmpresa}"
                                 FontSize="14"
-                                TextColor="Gray"/>
+                                Text="{Binding DescripcionEmpresa}"
+                                TextColor="Gray" />
                         </Grid>
                     </Border>
 
-                    <!-- CONTENIDO PRINCIPAL -->
+                    <!--  CONTENIDO PRINCIPAL  -->
                     <VerticalStackLayout
                         Grid.Row="1"
                         Padding="20"
                         Spacing="15">
 
-                        <Label x:Name="PromocionesLabel"/>
-                        <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand"/>
+                        <Label x:Name="PromocionesLabel" />
+                        <BoxView
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            Color="Gray" />
 
-                        <!-- Fechas -->
-                        <Grid ColumnDefinitions="*,*" Padding="0,10">
+                        <!--  Fechas  -->
+                        <Grid Padding="0,10" ColumnDefinitions="*,*">
                             <VerticalStackLayout>
-                                <Label Text="Publicada el:" FontAttributes="Bold" TextColor="#19535F" FontSize="16"/>
-                                <Label x:Name="VigenciaLabel" TextColor="#19535F" FontSize="16"/>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Publicada el:"
+                                    TextColor="#19535F" />
+                                <Label
+                                    x:Name="VigenciaLabel"
+                                    FontSize="16"
+                                    TextColor="#19535F" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1">
-                                <Label Text="Finaliza el:" FontAttributes="Bold" TextColor="#19535F" FontSize="16"/>
-                                <Label x:Name="VigenciaLabel2" TextColor="#19535F" FontSize="16"/>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Finaliza el:"
+                                    TextColor="#19535F" />
+                                <Label
+                                    x:Name="VigenciaLabel2"
+                                    FontSize="16"
+                                    TextColor="#19535F" />
                             </VerticalStackLayout>
                         </Grid>
 
-                        <BoxView HeightRequest="2" Color="Gray" HorizontalOptions="FillAndExpand"/>
+                        <BoxView
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            Color="Gray" />
                     </VerticalStackLayout>
 
-                    <!-- BOTONES AL FINAL -->
+                    <!--  BOTONES AL FINAL  -->
                     <Grid
                         Grid.Row="2"
-                        ColumnDefinitions="65,*"
                         Padding="20"
+                        ColumnDefinitions="65,*"
                         VerticalOptions="End">
 
                         <skia:SKLottieView
                             x:Name="HeartAnimation"
-                            Source="heart.json"
                             Grid.Column="0"
-                            RepeatMode="Restart"
-                            Scale="1.5"
                             HorizontalOptions="Center"
                             IsAnimationEnabled="False"
-                            Progress="1">
+                            Progress="1"
+                            RepeatMode="Restart"
+                            Scale="1.5"
+                            Source="heart.json">
                             <skia:SKLottieView.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnHeartTapped"/>
+                                <TapGestureRecognizer Tapped="OnHeartTapped" />
                             </skia:SKLottieView.GestureRecognizers>
                         </skia:SKLottieView>
 
                         <Button
-                            Text="Ir a la oferta"
                             Grid.Column="1"
                             BackgroundColor="#19535F"
-                            TextColor="White"
+                            Clicked="IrAOfertaClicked"
                             CornerRadius="20"
                             FontAttributes="Bold"
                             FontSize="18"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
                             HeightRequest="40"
-                            WidthRequest="240"
-                            Clicked="IrAOfertaClicked"/> 
+                            HorizontalOptions="End"
+                            Text="Ir a la oferta"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            WidthRequest="240" />
                     </Grid>
                 </Grid>
             </Border>

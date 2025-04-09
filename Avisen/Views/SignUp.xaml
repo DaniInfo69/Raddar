@@ -168,11 +168,12 @@
                         x:Name="CreateAccount"
                         Margin="0,20,0,0"
                         BackgroundColor="#0bb8ac"
+                        Clicked="CreateAccount_Clicked"
                         HeightRequest="60"
+                        IsEnabled="False"
                         Text="Crear cuenta"
                         TextColor="Black"
-                        WidthRequest="350" 
-                        IsEnabled="False"/>
+                        WidthRequest="350" />
                     <Label
                         Margin="0,20,0,-10"
                         FontSize="40"
