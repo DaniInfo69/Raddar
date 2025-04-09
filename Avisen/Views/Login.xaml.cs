@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using Avisen.Services;
+using Avisen.Models;
 using Microsoft.Maui.Storage;
 
 namespace Avisen.Views
@@ -97,13 +98,13 @@ namespace Avisen.Views
 
                     // Guardar datos del usuario
                     var user = jsonResponse.GetProperty("user");
-                    var userData = new
+                    var userData = new UserData
                     {
-                        idUsuario = user.GetProperty("idusuario").GetInt32(),
-                        email = user.GetProperty("email").GetString(),
-                        nombreCliente = user.GetProperty("nombrecliente").GetString(),
-                        rolIdRol = user.GetProperty("rol_idrol").GetInt32(),
-                        rol = user.GetProperty("rol").GetString()
+                        IdUsuario = user.GetProperty("idusuario").GetInt32(),
+                        Email = user.GetProperty("email").GetString(),
+                        NombreCliente = user.GetProperty("nombrecliente").GetString(),
+                        RolIdRol = user.GetProperty("rol_idrol").GetInt32(),
+                        Rol = user.GetProperty("rol").GetString()
                     };
                     await SecureStorage.SetAsync("UserData", JsonSerializer.Serialize(userData));
 

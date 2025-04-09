@@ -1,5 +1,5 @@
-using System.Text;
 using System.Text.Json;
+using Avisen.Models;
 using Avisen.Services;
 
 namespace Avisen.Views;
@@ -102,16 +102,6 @@ public partial class UserProfile : ContentPage
 
         Navigation.PushModalAsync(new EditUserInfo());
     }
-       
-    
+
 }
 
-// Modelo para deserializar los datos del usuario
-public class UserData
-{
-    public int IdUsuario { get; set; }
-    public string Email { get; set; }
-    public string NombreCliente { get; set; }
-    public int RolIdRol { get; set; }
-    public string Rol { get; set; }
-}
