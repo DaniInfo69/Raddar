@@ -119,15 +119,10 @@ public partial class Map : ContentPage
     //{
     //  base.OnDisappearing();
     // isUpdatingLocation = false;
+    //map.Pins.Clear();
     //}
 
 
-    protected override void OnDisappearing()
-    {
-        base.OnDisappearing();
-        // Limpiar pins temporales al salir de la pestaña
-        map.Pins.Clear();
-    }
     private async void LoadData()
     {
         try

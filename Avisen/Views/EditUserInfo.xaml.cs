@@ -2,6 +2,7 @@ namespace Avisen.Views;
 
 public partial class EditUserInfo : ContentPage
 {
+
 	public EditUserInfo()
 	{
 		InitializeComponent();

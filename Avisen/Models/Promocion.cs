@@ -2,6 +2,7 @@
 {
     public class Promocion
     {
+        public int idpromocion { get; set; }
         public int empresa_idempresa { get; set; }
         public int categoria_idcategoria { get; set; }
         public string Nombre { get; set; }

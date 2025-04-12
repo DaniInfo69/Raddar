@@ -46,6 +46,8 @@
                         Text="{x:Static local:IconFont.Person}"
                         TextColor="#fcf9ed" />
 
+
+
                     <Button
                         HeightRequest="50"
                         WidthRequest="50"

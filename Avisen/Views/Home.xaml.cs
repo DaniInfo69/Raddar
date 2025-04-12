@@ -14,7 +14,6 @@ namespace Avisen.Views
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
-        // Propiedades para selecciones temporales (no aplican filtros automáticamente)
         private string _tempSelectedFilter;
         public string TempSelectedFilter
         {

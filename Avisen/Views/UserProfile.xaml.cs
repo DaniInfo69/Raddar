@@ -103,5 +103,11 @@ public partial class UserProfile : ContentPage
         Navigation.PushModalAsync(new EditUserInfo());
     }
 
+    public void NavigateToSaveOffers(object sender, EventArgs e)
+    {
+
+        Navigation.PushModalAsync(new SaveOffers());
+    }
+
 }
 

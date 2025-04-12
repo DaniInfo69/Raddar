@@ -6,6 +6,8 @@ namespace Avisen.Views;
 public partial class PromocionDetallesPage : ContentPage
 {
     private readonly Location _ubicacionPromocion;
+    private bool _esFavorita;
+
 
     public PromocionDetallesPage(Promocion promocion, Location ubicacionPromocion)
     {
@@ -21,8 +23,8 @@ public partial class PromocionDetallesPage : ContentPage
         VigenciaLabel.Text = promocion.VigenciaInicio.ToShortDateString();
         VigenciaLabel2.Text = promocion.VigenciaFin.ToShortDateString();
 
-        // Opcional: Si necesitas el nombre de la empresa, podrías pasarlo como parámetro adicional
-        // NombreNegocioLabel.Text = nombreEmpresa;
+        _esFavorita = FavoritosService.EstaMarcado(promocion.idpromocion);
+        ActualizarCorazon();
     }
 
     private FormattedString ObtenerDetallesPromocion(Promocion promocion)
@@ -90,15 +92,35 @@ public partial class PromocionDetallesPage : ContentPage
 
     private void OnHeartTapped(object sender, EventArgs e)
     {
-        if (HeartAnimation.IsAnimationEnabled)
+        _esFavorita = !_esFavorita;
+
+        FavoritosService.AlternarFavorito(((Promocion)BindingContext).idpromocion);
+        ActualizarCorazon();
+
+        var promocion = BindingContext as Promocion;
+
+        if (promocion == null)
+            return;
+
+        if (FavoritosService.EsFavorita(promocion))
         {
+            FavoritosService.EliminarDeFavoritos(promocion);
             HeartAnimation.Progress = TimeSpan.FromMilliseconds(0);
             HeartAnimation.IsAnimationEnabled = false;
         }
         else
         {
+            FavoritosService.AgregarAFavoritos(promocion);
             HeartAnimation.Progress = TimeSpan.FromMilliseconds(1100);
             HeartAnimation.IsAnimationEnabled = true;
         }
     }
+
+    private void ActualizarCorazon()
+    {
+        HeartAnimation.Progress = _esFavorita ? TimeSpan.FromMilliseconds(2000) : TimeSpan.FromMilliseconds(0);
+        HeartAnimation.IsAnimationEnabled = _esFavorita;
+    }
+
+
 }

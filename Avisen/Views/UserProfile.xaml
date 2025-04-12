@@ -86,8 +86,9 @@
                                 FontSize="18"
                                 HeightRequest="50"
                                 HorizontalOptions="Start"
-                                Text="  Historial de Promociones     &gt;"
-                                TextColor="#2D2D2D">
+                                Text="  Promociones Guardadas     &gt;"
+                                TextColor="#2D2D2D"
+                                Clicked="NavigateToSaveOffers">
                                 <Button.ImageSource>
                                     <FontImageSource
                                         FontFamily="MaterialIcon"
