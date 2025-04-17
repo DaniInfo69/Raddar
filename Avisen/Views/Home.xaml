@@ -16,14 +16,16 @@
             BackgroundColor="#0aa59b">
             <HorizontalStackLayout HorizontalOptions="FillAndExpand">
                 <Label
+                    Grid.Column="0"
                     FontSize="Medium"
                     HorizontalOptions="Start"
                     Text="{Binding UpdateFrequency}"
                     TextColor="White" />
                 <Label
+                    Grid.Column="1"
                     FontSize="Medium"
                     HorizontalOptions="End"
-                    Text="{Binding SeeHour}"
+                    Text="{Binding OfferDistance}"
                     TextColor="White" />
             </HorizontalStackLayout>
         </Grid>

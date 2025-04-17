@@ -65,12 +65,12 @@
                             <!--  Botón de Editar Información  -->
                             <Button
                                 BackgroundColor="Transparent"
+                                Clicked="NavigateToEditInfo"
                                 FontSize="18"
                                 HeightRequest="50"
                                 HorizontalOptions="Start"
                                 Text="   Editar Información               &gt;"
-                                TextColor="#2D2D2D"
-                                Clicked="NavigateToEditInfo">
+                                TextColor="#2D2D2D">
                                 <Button.ImageSource>
                                     <FontImageSource
                                         FontFamily="MaterialIcon"
@@ -83,12 +83,12 @@
                             <!--  Botón de Editar Historial de promociones  -->
                             <Button
                                 BackgroundColor="Transparent"
+                                Clicked="NavigateToSaveOffers"
                                 FontSize="18"
                                 HeightRequest="50"
                                 HorizontalOptions="Start"
                                 Text="  Promociones Guardadas     &gt;"
-                                TextColor="#2D2D2D"
-                                Clicked="NavigateToSaveOffers">
+                                TextColor="#2D2D2D">
                                 <Button.ImageSource>
                                     <FontImageSource
                                         FontFamily="MaterialIcon"

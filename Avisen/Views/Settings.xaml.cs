@@ -7,12 +7,17 @@ namespace Avisen.Views
             InitializeComponent();
             saveButton.IsEnabled = false;
             BindingContext = this;
-            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+
+            
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             IsDarkMode = Preferences.Get("IsDarkMode", false);
             OfferDistance = Preferences.Get("OfferDistance", 0.0);
-            SliderFrequencyValue = Preferences.Get("SliderFrequencyValue", 15.0);
-            SliderOfferDistanceValue = Preferences.Get("SliderOfferDistanceValue", 1.0);
-            
+            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            SliderOfferDistanceValue = OfferDistance;
+            SliderFrequencyValue = UpdateFrequency;
         }
 
         //Cambiar el switch
@@ -79,13 +84,14 @@ namespace Avisen.Views
             get => _sliderOfferDistanceValue;
             set
             {
-                _sliderOfferDistanceValue = Math.Round(value);
+                _sliderOfferDistanceValue = value;
                 OnPropertyChanged();
             }
         }
         private void OnSliderOfferDistanceValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SliderOfferDistanceValue = Math.Round(e.NewValue);
+
+            SliderOfferDistanceValue = Math.Round(e.NewValue * 2) / 2.0;
             saveButton.IsEnabled = true;
         }
 
@@ -96,9 +102,7 @@ namespace Avisen.Views
             try
             {
                 Preferences.Set("OfferDistance", SliderOfferDistanceValue);
-                Preferences.Set("SliderOfferDistanceValue", SliderOfferDistanceValue);
                 Preferences.Set("UpdateFrequency", SliderFrequencyValue);
-                Preferences.Set("SliderFrequencyValue", SliderFrequencyValue);
                 DisplayAlert("Guardado", "Se ha guardado correctamente", "OK");
             }
             catch (Exception ex)
@@ -106,8 +110,5 @@ namespace Avisen.Views
                 DisplayAlert("Error", "" + ex + "", "OK");
             }
         }
-
-
-
     }
 }

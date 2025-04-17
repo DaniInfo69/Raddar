@@ -50,7 +50,10 @@
                                 Stroke="Transparent"
                                 StrokeShape="RoundRectangle 15"
                                 WidthRequest="80">
-                                <Image x:Name ="ImageOffer" Aspect="AspectFill" Source="{Binding imagenes[0].url}">
+                                <Image
+                                    x:Name="ImageOffer"
+                                    Aspect="AspectFill"
+                                    Source="{Binding imagenes[0].url}">
                                     <Image.Triggers>
                                         <DataTrigger
                                             Binding="{Binding imagenes.Count}"

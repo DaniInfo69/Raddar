@@ -164,10 +164,7 @@
                             </Button>
 
                         </VerticalStackLayout>
-
-
                     </Grid>
-
                 </VerticalStackLayout>
             </Grid>
         </Grid>

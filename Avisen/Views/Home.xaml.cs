@@ -35,11 +35,15 @@ namespace Avisen.Views
             set => SetProperty(ref _updateFrequency, value);
         }
 
-        private string _seeHour;
-        public string SeeHour
+        private double _offerDistance;
+        public double OfferDistance
         {
-            get => _seeHour;
-            set => SetProperty(ref _seeHour, value);
+            get => _offerDistance;
+            set
+            {
+                _offerDistance = value;
+                OnPropertyChanged();
+            }
         }
 
         // Comandos
@@ -50,9 +54,6 @@ namespace Avisen.Views
         public Home()
         {
             InitializeComponent();
-            UpdateFrequency = Preferences.Get("UpdateFrequency", 10.0);
-            SeeHour = string.Empty;
-            LoadSeeHour();
 
             // Inicializamos con listas de promociones
             OfertasReales = new ObservableCollection<Promocion>();
@@ -75,8 +76,27 @@ namespace Avisen.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            UpdateFrequency = Preferences.Get("UpdateFrequency", 10.0);
-            LoadSeeHour();
+            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            OfferDistance = Preferences.Get("OfferDistance", 0.0);
+
+            if (UpdateFrequency == 0)
+            {
+                try
+                {
+                    Preferences.Set("UpdateFrequency", 30.0);
+                    Preferences.Set("OfferDistance", 2.5);
+                }
+                catch (Exception ex)
+                {
+                    DisplayAlert("Error", "" + ex + "", "OK");
+                }
+                finally
+                {
+                    UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+                    OfferDistance = Preferences.Get("OfferDistance", 0.0);
+                }
+
+            }
 
             OfertasReales.Clear();
             OfertasActuales.Clear();
@@ -114,10 +134,7 @@ namespace Avisen.Views
         }
 
 
-        private async void LoadSeeHour()
-        {
-            SeeHour = await SecureStorage.GetAsync("lastLoadDataTime") ?? "No se ha ejecutado LoadData";
-        }
+
 
         private async void OnFiltrarTapped(object sender, EventArgs e)
         {

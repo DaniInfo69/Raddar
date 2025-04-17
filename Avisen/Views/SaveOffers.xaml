@@ -1,100 +1,105 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Avisen.Views.SaveOffers"
-             xmlns:local="clr-namespace:Avisen"
-             Title="SaveOffers">
+<ContentPage
+    x:Class="Avisen.Views.SaveOffers"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
+    Title="SaveOffers">
 
     <Grid RowDefinitions="Auto, *">
 
-        <!-- Header -->
-        <Grid Grid.Row="0"
-              Padding="30"
-              BackgroundColor="#0aa59b">
-        </Grid>
-            
-        <!-- Contenido -->
+        <!--  Header  -->
+        <Grid
+            Grid.Row="0"
+            Padding="30"
+            BackgroundColor="#0aa59b" />
+
+        <!--  Contenido  -->
         <Grid Grid.Row="1">
-            <Border Margin="0,-30,0,0"
-        Padding="20"
-        BackgroundColor="#f0ebdc"
-        StrokeThickness="0"
-        VerticalOptions="FillAndExpand">
+            <Border
+                Margin="0,-30,0,0"
+                Padding="20"
+                BackgroundColor="#f0ebdc"
+                StrokeThickness="0"
+                VerticalOptions="FillAndExpand">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="30,30,0,0" />
                 </Border.StrokeShape>
                 <Grid RowDefinitions="Auto, *">
-                    <Button 
-                            Grid.Row="0"
-                            Text="{x:Static local:IconFont.Arrow_back}"
-                            FontSize="30"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Start"
-                            BackgroundColor="Transparent"
-                            TextColor="#0aa59b"
-                            FontFamily="MaterialIcon"
-                            Clicked="CerrarModal" />
+                    <Button
+                        Grid.Row="0"
+                        BackgroundColor="Transparent"
+                        Clicked="CerrarModal"
+                        FontFamily="MaterialIcon"
+                        FontSize="30"
+                        HorizontalOptions="Start"
+                        Text="{x:Static local:IconFont.Arrow_back}"
+                        TextColor="#0aa59b"
+                        VerticalOptions="Start" />
 
-                    <!-- Lista de promociones -->
-                    <CollectionView Grid.Row="1"
+                    <!--  Lista de promociones  -->
+                    <CollectionView
                         x:Name="FavoritosCollection"
+                        Grid.Row="1"
+                        Margin="0,20,0,0"
                         ItemsSource="{Binding Favoritos}"
-                        VerticalOptions="FillAndExpand"
-                        Margin="0,20,0,0">
+                        VerticalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" />
                         </CollectionView.ItemsLayout>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame Margin="0,0,0,10"
-                           Padding="15"
-                           BackgroundColor="White"
-                           BorderColor="#CCCCCC"
-                           CornerRadius="8"
-                           HasShadow="False">
-                                    <Grid ColumnDefinitions="Auto, *"
-                              RowDefinitions="Auto, Auto, Auto, Auto">
+                                <Frame
+                                    Margin="0,0,0,10"
+                                    Padding="15"
+                                    BackgroundColor="White"
+                                    BorderColor="#CCCCCC"
+                                    CornerRadius="8"
+                                    HasShadow="False">
+                                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
 
-                                        <!-- Imagen -->
-                                        <Border Grid.RowSpan="4"
-                                    Grid.Column="0"
-                                    Margin="0,0,15,0"
-                                    HeightRequest="90"
-                                    WidthRequest="90"
-                                    Stroke="Transparent"
-                                    StrokeShape="RoundRectangle 15">
-                                            <Image Aspect="AspectFill"
-                                       Source="{Binding imagenes[0].url}" />
+                                        <!--  Imagen  -->
+                                        <Border
+                                            Grid.RowSpan="4"
+                                            Grid.Column="0"
+                                            Margin="0,0,15,0"
+                                            HeightRequest="90"
+                                            Stroke="Transparent"
+                                            StrokeShape="RoundRectangle 15"
+                                            WidthRequest="90">
+                                            <Image Aspect="AspectFill" Source="{Binding imagenes[0].url}" />
                                         </Border>
 
-                                        <!-- Nombre de la promoción -->
-                                        <Label Grid.Row="0"
-                                   Grid.Column="1"
-                                   FontAttributes="Bold"
-                                   FontSize="16"
-                                   Text="{Binding Nombre}"
-                                   TextColor="#19535F" />
+                                        <!--  Nombre de la promoción  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            Text="{Binding Nombre}"
+                                            TextColor="#19535F" />
 
-                                        <!-- Vigencia -->
-                                        <Label Grid.Row="2"
-                                   Grid.Column="1"
-                                   FontSize="12"
-                                   Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
-                                   TextColor="#0aa59b" />
+                                        <!--  Vigencia  -->
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            FontSize="12"
+                                            Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
+                                            TextColor="#0aa59b" />
 
-                                        <!-- Tipo -->
-                                        <Label Grid.Row="3"
-                                   Grid.Column="1"
-                                   FontAttributes="Italic"
-                                   FontSize="12"
-                                   Text="{Binding Tipo}"
-                                   TextColor="#19535F" />
+                                        <!--  Tipo  -->
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            FontAttributes="Italic"
+                                            FontSize="12"
+                                            Text="{Binding Tipo}"
+                                            TextColor="#19535F" />
                                     </Grid>
 
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}"
-                                                  CommandParameter="{Binding}" />
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}" CommandParameter="{Binding}" />
                                     </Frame.GestureRecognizers>
                                 </Frame>
                             </DataTemplate>

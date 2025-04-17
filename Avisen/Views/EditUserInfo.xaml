@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Avisen"
-             x:Class="Avisen.Views.EditUserInfo"
-             Title="EditUserInfo">
+<ContentPage
+    x:Class="Avisen.Views.EditUserInfo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
+    Title="EditUserInfo">
     <ContentView>
         <Grid RowDefinitions=".1*, .8*">
             <Grid BackgroundColor="#0aa59b" />
@@ -16,18 +17,18 @@
 
             </Grid>
 
-            <VerticalStackLayout Spacing="0" Grid.Row="1">
+            <VerticalStackLayout Grid.Row="1" Spacing="0">
 
                 <Button
-                    Text="{x:Static local:IconFont.Arrow_back}"
+                    BackgroundColor="Transparent"
+                    Clicked="CerrarModal"
+                    FontFamily="MaterialIcon"
                     FontSize="30"
                     HorizontalOptions="Start"
-                    BackgroundColor="Transparent"
-                    TextColor="#0aa59b"
-                    FontFamily="MaterialIcon"
-                    Clicked="CerrarModal"/>
+                    Text="{x:Static local:IconFont.Arrow_back}"
+                    TextColor="#0aa59b" />
 
-                <Grid HeightRequest="200" Padding="-40">
+                <Grid Padding="-40" HeightRequest="200">
 
                     <Ellipse
                         Margin="0,50,0,0"
@@ -49,68 +50,65 @@
 
 
                     <Button
+                        Margin="100,75,0,0"
+                        BackgroundColor="#d1e7dd"
+                        CornerRadius="30"
+                        FontSize="25"
                         HeightRequest="50"
-                        WidthRequest="50"
-                         BackgroundColor="#d1e7dd"
                         Style="{StaticResource MaterialIcon}"
                         Text="{x:Static local:IconFont.Camera_alt}"
-                        FontSize="25"
-                        CornerRadius="30"
-                        Margin="100,75,0,0"/>
+                        WidthRequest="50" />
                 </Grid>
 
                 <VerticalStackLayout Margin="-100,20,20,0" Spacing="15">
                     <!--  Botón de Editar Nombre de Usuario  -->
                     <Button
-                         BackgroundColor="Transparent"
-                         FontSize="18"
-                         HeightRequest="50"
-                         HorizontalOptions="Fill"
-                         Text="   Nombre de Usuario"
-                         TextColor="#2D2D2D">
+                        BackgroundColor="Transparent"
+                        FontSize="18"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"
+                        Text="   Nombre de Usuario"
+                        TextColor="#2D2D2D">
                         <Button.ImageSource>
                             <FontImageSource
-                                        
-                                        FontFamily="MaterialIcon"
-                                        Glyph="{x:Static local:IconFont.Person_outline}"
-                                        Size="30"
-                                        Color="Black" />
+                                FontFamily="MaterialIcon"
+                                Glyph="{x:Static local:IconFont.Person_outline}"
+                                Size="30"
+                                Color="Black" />
                         </Button.ImageSource>
                     </Button>
 
                     <!--  Botón de Editar Teléfono  -->
                     <Button
-                         BackgroundColor="Transparent"
-                         FontSize="18"
-                         HeightRequest="50"
-                         HorizontalOptions="Fill"
-                         Text="   Teléfono                   "
-                         TextColor="#2D2D2D">
+                        BackgroundColor="Transparent"
+                        FontSize="18"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"
+                        Text="   Teléfono                   "
+                        TextColor="#2D2D2D">
                         <Button.ImageSource>
                             <FontImageSource
-                                        
-                                        FontFamily="MaterialIcon"
-                                        Glyph="{x:Static local:IconFont.Phone}"
-                                        Size="30"
-                                        Color="Black" />
+                                FontFamily="MaterialIcon"
+                                Glyph="{x:Static local:IconFont.Phone}"
+                                Size="30"
+                                Color="Black" />
                         </Button.ImageSource>
                     </Button>
 
                     <!--  Botón de Editar Email  -->
                     <Button
-                         BackgroundColor="Transparent"
-                         FontSize="18"
-                         HeightRequest="50"
-                         HorizontalOptions="Fill"
-                         Text="   E-mail                       "
-                         TextColor="#2D2D2D">
+                        BackgroundColor="Transparent"
+                        FontSize="18"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"
+                        Text="   E-mail                       "
+                        TextColor="#2D2D2D">
                         <Button.ImageSource>
                             <FontImageSource
-                                        
-                                        FontFamily="MaterialIcon"
-                                        Glyph="{x:Static local:IconFont.Email}"
-                                        Size="30"
-                                        Color="Black" />
+                                FontFamily="MaterialIcon"
+                                Glyph="{x:Static local:IconFont.Email}"
+                                Size="30"
+                                Color="Black" />
                         </Button.ImageSource>
                     </Button>
 
