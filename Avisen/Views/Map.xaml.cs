@@ -25,7 +25,6 @@ public partial class Map : ContentPage
     {
         InitializeComponent();
         this.negocioService = negocioService;
-        UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         LoadData();
         StartLocationUpdates();
     }
@@ -41,28 +40,40 @@ public partial class Map : ContentPage
         }
     }
 
+    private double _offerDistance;
+    public double OfferDistance
+    {
+        get => _offerDistance;
+        set
+        {
+            _offerDistance = value;
+            OnPropertyChanged();
+        }
+    }
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+        OfferDistance = Preferences.Get("OfferDistance", 0.0);
 
         // —————— BLOQUE “Ir a la oferta” ——————
         if (NavigationService.LocationToGo is Location loc)
         {
-            // Limpia cualquier pin anterior
-            map.Pins.Clear();
 
-            // Agrega el pin temporal
-            map.Pins.Add(new Pin
-            {
-                Label = "Oferta seleccionada",
-                Location = loc,
-                Type = PinType.Place
-            });
+                map.Pins.Clear();
+
+                // Agrega el pin temporal
+                map.Pins.Add(new Pin
+                {
+                    Label = "Oferta seleccionada",
+                    Location = loc,
+                    Type = PinType.Place
+                });
 
             // Centra el mapa
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
+            //map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200))); parece ser que no hace nada 
 
             // Resetea para que no lo ejecute de nuevo
             NavigationService.LocationToGo = null;
@@ -83,14 +94,13 @@ public partial class Map : ContentPage
             if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
             {
                 var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
-                if (timeSinceLastLoad.TotalSeconds >= 60)
+                if (timeSinceLastLoad.TotalSeconds >= frequency)
                 {
                     LoadData();
                 }
             }
 
             await UpdateUserLocationAsync();
-            await Task.Delay(frequency);
         }
     }
 
@@ -104,7 +114,7 @@ public partial class Map : ContentPage
             if (location != null)
             {
                 userLocation = new Location(location.Latitude, location.Longitude);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromMiles(0.5)));
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance))); //Distancia de 500 metros
                 CheckForPromotions();
             }
         }
@@ -113,15 +123,6 @@ public partial class Map : ContentPage
             await DisplayAlert("Error", $"Error al obtener la ubicación: {ex.Message}", "OK");
         }
     }
-
-
-    //protected override void OnDisappearing()
-    //{
-    //  base.OnDisappearing();
-    // isUpdatingLocation = false;
-    //map.Pins.Clear();
-    //}
-
 
     private async void LoadData()
     {
@@ -155,7 +156,7 @@ public partial class Map : ContentPage
         {
             var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
 
-            if (distance <= 0.1)
+            if (distance <= OfferDistance)
             {
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
                 {

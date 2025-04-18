@@ -89,7 +89,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 Maximum="5"
                                 MaximumTrackColor="Black"
-                                Minimum="1"
+                                Minimum="0.5"
                                 MinimumTrackColor="#0aa59b"
                                 ThumbColor="#0aa59b"
                                 ValueChanged="OnSliderOfferDistanceValueChanged"
