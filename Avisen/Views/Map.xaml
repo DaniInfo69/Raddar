@@ -12,7 +12,6 @@
         x:Name="map"
         IsScrollEnabled="True"
         IsShowingUser="true"
-        IsTrafficEnabled="True"
         IsZoomEnabled="True"
         MapType="Street" />
 

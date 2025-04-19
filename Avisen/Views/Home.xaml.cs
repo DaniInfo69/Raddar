@@ -83,8 +83,8 @@ namespace Avisen.Views
             {
                 try
                 {
-                    Preferences.Set("UpdateFrequency", 30.0);
-                    Preferences.Set("OfferDistance", 2.5);
+                    Preferences.Set("UpdateFrequency", 15.0);
+                    Preferences.Set("OfferDistance", 0.5);
                 }
                 catch (Exception ex)
                 {

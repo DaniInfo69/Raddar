@@ -26,7 +26,7 @@ public partial class Map : ContentPage
         InitializeComponent();
         this.negocioService = negocioService;
         LoadData();
-        StartLocationUpdates();
+        StartAndUpdateLocation();
     }
 
     private double _UpdateFrequency;
@@ -73,7 +73,7 @@ public partial class Map : ContentPage
                 });
 
             // Centra el mapa
-            //map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200))); parece ser que no hace nada 
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
 
             // Resetea para que no lo ejecute de nuevo
             NavigationService.LocationToGo = null;
@@ -81,46 +81,46 @@ public partial class Map : ContentPage
 
     }
 
-    private async void StartLocationUpdates()
+    private async void StartAndUpdateLocation()
     {
         isUpdatingLocation = true;
 
         while (isUpdatingLocation)
         {
-            var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
-            DateTime lastLoadDataTime;
-            int frequency = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
-
-            if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
+            try
             {
-                var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
-                if (timeSinceLastLoad.TotalSeconds >= frequency)
+                var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
+                    ?? await Geolocation.GetLastKnownLocationAsync();
+                Debug.WriteLine("Obtiene localizacion");
+
+                var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
+                DateTime lastLoadDataTime;
+                int frequency = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
+
+                if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
                 {
-                    LoadData();
+                    var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
+                    if (timeSinceLastLoad.TotalSeconds >= frequency)
+                    {
+                        LoadData();
+                    }
                 }
+
+                if (location != null)
+                {
+                    Debug.WriteLine("Mueve al lugar");
+                    userLocation = new Location(location.Latitude, location.Longitude);
+                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                    CheckForPromotions();
+                }else
+                    Debug.WriteLine("Le valió, no obtuvo localizacion");
+
+                await Task.Delay(1000);
             }
-
-            await UpdateUserLocationAsync();
-        }
-    }
-
-    private async Task UpdateUserLocationAsync()
-    {
-        try
-        {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
-                ?? await Geolocation.GetLastKnownLocationAsync();
-
-            if (location != null)
+            catch (Exception ex)
             {
-                userLocation = new Location(location.Latitude, location.Longitude);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance))); //Distancia de 500 metros
-                CheckForPromotions();
+                await DisplayAlert("Error", $"Error al obtener la ubicación o cargar datos: {ex.Message}", "OK");
             }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Error al obtener la ubicación: {ex.Message}", "OK");
         }
     }
 

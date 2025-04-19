@@ -13,7 +13,7 @@ namespace Avisen.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            IsDarkMode = Preferences.Get("IsDarkMode", false);
+            IsRecenter = Preferences.Get("IsRecenter", false);
             OfferDistance = Preferences.Get("OfferDistance", 0.0);
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
             SliderOfferDistanceValue = OfferDistance;
@@ -21,15 +21,15 @@ namespace Avisen.Views
         }
 
         //Cambiar el switch
-        private bool _isDarkMode;
-        public bool IsDarkMode
+        private bool _isRecenter;
+        public bool IsRecenter
         {
-            get => _isDarkMode;
+            get => _isRecenter;
             set
             {
-                _isDarkMode = value;
+                _isRecenter = value;
                 OnPropertyChanged();
-                Preferences.Set("IsDarkMode", value);
+                Preferences.Set("IsRecenter", value);
             }
         }
 
@@ -74,6 +74,7 @@ namespace Avisen.Views
         {
             SliderFrequencyValue = Math.Round(e.NewValue);
             saveButton.IsEnabled = true;
+            saveButton.IsVisible = true;
         }
 
         //Incrementar el valor de la distancia de rastreo con el slider
@@ -90,15 +91,16 @@ namespace Avisen.Views
         }
         private void OnSliderOfferDistanceValueChanged(object sender, ValueChangedEventArgs e)
         {
-
             SliderOfferDistanceValue = Math.Round(e.NewValue * 2) / 2.0;
             saveButton.IsEnabled = true;
+            saveButton.IsVisible = true;
         }
 
         //Guardar los datos en SecurityStorage
         private void OnSavePreferences(object sender, EventArgs e)
         {
             saveButton.IsEnabled = false;
+            saveButton.IsVisible = false;
             try
             {
                 Preferences.Set("OfferDistance", SliderOfferDistanceValue);

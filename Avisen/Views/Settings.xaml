@@ -44,17 +44,17 @@
                                     FontSize="35"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialIcon}"
-                                    Text="{x:Static local:IconFont.Dark_mode}"
+                                    Text="{x:Static local:IconFont.Location_searching}"
                                     TextColor="#BFCFFF"
                                     VerticalOptions="Center" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Medium"
                                     HorizontalOptions="Center"
-                                    Text="Modo Obscuro"
+                                    Text="Auto-Centrado"
                                     TextColor="#2D2D2D"
                                     VerticalOptions="Center" />
-                                <Switch Grid.Column="2" IsToggled="{Binding IsDarkMode}" />
+                                <Switch Grid.Column="2" IsToggled="{Binding IsRecenter}" />
                             </Grid>
 
                             <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
@@ -151,6 +151,7 @@
                                 CornerRadius="30"
                                 FontSize="18"
                                 IsEnabled="False"
+                                IsVisible="False"
                                 Text="Guardar"
                                 VerticalOptions="End">
 
