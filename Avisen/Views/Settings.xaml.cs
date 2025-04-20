@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Avisen.Views
 {
     public partial class Settings : ContentPage
@@ -8,7 +10,7 @@ namespace Avisen.Views
             saveButton.IsEnabled = false;
             BindingContext = this;
 
-            
+
         }
         protected override void OnAppearing()
         {
@@ -73,8 +75,7 @@ namespace Avisen.Views
         private void OnSliderFrequencyValueChanged(object sender, ValueChangedEventArgs e)
         {
             SliderFrequencyValue = Math.Round(e.NewValue);
-            saveButton.IsEnabled = true;
-            saveButton.IsVisible = true;
+            IsEqualToOriginalValue();
         }
 
         //Incrementar el valor de la distancia de rastreo con el slider
@@ -92,8 +93,21 @@ namespace Avisen.Views
         private void OnSliderOfferDistanceValueChanged(object sender, ValueChangedEventArgs e)
         {
             SliderOfferDistanceValue = Math.Round(e.NewValue * 2) / 2.0;
-            saveButton.IsEnabled = true;
-            saveButton.IsVisible = true;
+            IsEqualToOriginalValue();
+        }
+        private void IsEqualToOriginalValue()
+        {
+            if ((SliderOfferDistanceValue == Preferences.Get("OfferDistance", 0.0)) && (SliderFrequencyValue == Preferences.Get("UpdateFrequency", 0.0)))
+            {
+                saveButton.IsEnabled = false;
+                saveButton.IsVisible = false;
+            }
+            else
+            {
+                saveButton.IsEnabled = true;
+                saveButton.IsVisible = true;
+
+            }
         }
 
         //Guardar los datos en SecurityStorage

@@ -32,6 +32,32 @@ public partial class SignUp : ContentPage
         return string.Empty;
     }
 
+    private void IsEqualPassword()
+    {
+        if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Password2.Text))
+        {
+            areBothPasswordsTheSame = false;
+            return;
+        }
+
+        if (Password2.Text == Password.Text)
+        {
+            Message.TextColor = Color.FromArgb("#A3A3A4");
+            Message.Text = "Crea tu cuenta!";
+            Message.FontSize = 20;
+            areBothPasswordsTheSame = true;
+        }
+        else
+        {
+            Message.TextColor = Color.FromArgb("#dc5a4b");
+            Message.Text = "Las contraseñas no coinciden";
+            Message.FontSize = 20;
+            areBothPasswordsTheSame = false;
+        }
+
+
+    }
+
     private void Password_TextChanged(object sender, TextChangedEventArgs e)
     {
         var passwordEntry = sender as Entry;
@@ -52,26 +78,14 @@ public partial class SignUp : ContentPage
             Message.Text = "Crea tu cuenta!";
             Message.FontSize = 22;
             isPasswordSafe = true;
+            IsEqualPassword();
         }
         buttonCreateAccountEnable();
     }
 
     private void Password2_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (Password2.Text == Password.Text)
-        {
-            Message.TextColor = Color.FromArgb("#A3A3A4");
-            Message.Text = "Crea tu cuenta!";
-            Message.FontSize = 20;
-            areBothPasswordsTheSame = true;
-        }
-        else
-        {
-            Message.TextColor = Color.FromArgb("#dc5a4b");
-            Message.Text = "Las contraseñas no coinciden";
-            Message.FontSize = 20;
-            areBothPasswordsTheSame = false;
-        }
+        IsEqualPassword();
         buttonCreateAccountEnable();
     }
 

@@ -130,7 +130,7 @@
 
                             <Slider
                                 HorizontalOptions="FillAndExpand"
-                                Maximum="150"
+                                Maximum="145"
                                 MaximumTrackColor="Black"
                                 Minimum="15"
                                 MinimumTrackColor="#0aa59b"
