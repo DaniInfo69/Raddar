@@ -130,5 +130,39 @@ namespace Avisen.Services
             }
         }
 
+
+        public async Task<List<Promocion>> ObtenerFavoritosDesdeServidorAsync(int idUsuario)
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var guardados = await httpClient.GetFromJsonAsync<List<Guardado>>($"guardadoUsuario/{idUsuario}", options)
+                                 ?? new List<Guardado>();
+
+                var promociones = await ObtenerPromocionesAsync();
+
+                var idsPromosGuardadas = guardados
+                    .Where(g => g.eliminado == 0)
+                    .Select(g => g.promocion_idpromocion)
+                    .ToHashSet();
+
+                var promocionesGuardadas = promociones
+                    .Where(p => idsPromosGuardadas.Contains(p.idpromocion))
+                    .ToList();
+
+                return promocionesGuardadas;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener promociones guardadas: {ex.Message}");
+                return new List<Promocion>();
+            }
+        }
+
+
     }
 }

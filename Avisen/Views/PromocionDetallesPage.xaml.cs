@@ -90,8 +90,16 @@ public partial class PromocionDetallesPage : ContentPage
     }
 
 
-    private void OnHeartTapped(object sender, EventArgs e)
+    private async void OnHeartTapped(object sender, EventArgs e)
     {
+        var accessType = Connectivity.Current.NetworkAccess;
+
+        if (accessType != NetworkAccess.Internet)
+        {
+            await DisplayAlert("Sin conexión", "Necesitas conexión a internet para guardar promociones.", "OK");
+            return;
+        }
+
         _esFavorita = !_esFavorita;
 
         FavoritosService.AlternarFavorito(((Promocion)BindingContext).idpromocion);
@@ -115,6 +123,7 @@ public partial class PromocionDetallesPage : ContentPage
             HeartAnimation.IsAnimationEnabled = true;
         }
     }
+
 
     private void ActualizarCorazon()
     {
