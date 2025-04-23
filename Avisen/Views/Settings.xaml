@@ -54,7 +54,13 @@
                                     Text="Auto-Centrado"
                                     TextColor="#2D2D2D"
                                     VerticalOptions="Center" />
-                                <Switch Grid.Column="2" IsToggled="{Binding IsRecenter}" />
+                                <Switch 
+                                    x:Name="SwitchRecenter"
+                                    Grid.Column="2" 
+                                    OnColor="#f0ebdc"
+                                    ThumbColor="#0aa59b"
+                                    IsToggled="{Binding IsRecenter}" 
+                                    Toggled="SwtichRecenter_Toggled"/>
                             </Grid>
 
                             <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
@@ -132,7 +138,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 Maximum="145"
                                 MaximumTrackColor="Black"
-                                Minimum="15"
+                                Minimum="20"
                                 MinimumTrackColor="#0aa59b"
                                 ThumbColor="#0aa59b"
                                 ValueChanged="OnSliderFrequencyValueChanged"

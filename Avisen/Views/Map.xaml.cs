@@ -29,6 +29,16 @@ public partial class Map : ContentPage
         StartAndUpdateLocation();
     }
 
+    private bool _isRecenter;
+    public bool IsRecenter
+    {
+        get => _isRecenter;
+        set
+        {
+            _isRecenter = value;
+        }
+    }
+
     private double _UpdateFrequency;
     public double UpdateFrequency
     {
@@ -36,7 +46,6 @@ public partial class Map : ContentPage
         set
         {
             _UpdateFrequency = value;
-            OnPropertyChanged();
         }
     }
 
@@ -47,7 +56,6 @@ public partial class Map : ContentPage
         set
         {
             _offerDistance = value;
-            OnPropertyChanged();
         }
     }
 
@@ -55,6 +63,7 @@ public partial class Map : ContentPage
     {
         base.OnAppearing();
 
+        IsRecenter = Preferences.Get("IsRecenter", false);
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         OfferDistance = Preferences.Get("OfferDistance", 0.0);
 
@@ -62,15 +71,15 @@ public partial class Map : ContentPage
         if (NavigationService.LocationToGo is Location loc)
         {
 
-                map.Pins.Clear();
+            map.Pins.Clear();
 
-                // Agrega el pin temporal
-                map.Pins.Add(new Pin
-                {
-                    Label = "Oferta seleccionada",
-                    Location = loc,
-                    Type = PinType.Place
-                });
+            // Agrega el pin temporal
+            map.Pins.Add(new Pin
+            {
+                Label = "Oferta seleccionada",
+                Location = loc,
+                Type = PinType.Place
+            });
 
             // Centra el mapa
             map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
@@ -84,14 +93,17 @@ public partial class Map : ContentPage
     private async void StartAndUpdateLocation()
     {
         isUpdatingLocation = true;
-
+        bool hasCenteredMapOnce = false;
+        map.IsShowingUser = true;
         while (isUpdatingLocation)
         {
             try
             {
+                Debug.WriteLine("Empieza ciclo.");
                 var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
                     ?? await Geolocation.GetLastKnownLocationAsync();
                 Debug.WriteLine("Obtiene localizacion");
+                await Task.Delay(1000);
 
                 var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
                 DateTime lastLoadDataTime;
@@ -105,21 +117,39 @@ public partial class Map : ContentPage
                         LoadData();
                     }
                 }
+                Debug.WriteLine("Cargó Datos.");
 
                 if (location != null)
                 {
-                    Debug.WriteLine("Mueve al lugar");
+                    Debug.WriteLine("Procesando ubicación...");
                     userLocation = new Location(location.Latitude, location.Longitude);
-                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                    CheckForPromotions();
-                }else
-                    Debug.WriteLine("Le valió, no obtuvo localizacion");
+                    
+                    // Controla el centrado del mapa según IsRecenter
+                    if (Preferences.Get("IsRecenter", false)) // Centrar continuamente
+                    {
+                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                        Debug.WriteLine("Se mueve.");
+                    }
+                    else if (!hasCenteredMapOnce) // Centrar solo una vez si IsRecenter es false
+                    {
+                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                        hasCenteredMapOnce = true; // Marca como centrado
+                        Debug.WriteLine("Se movio por primera vez.");
+                    }
 
-                await Task.Delay(1000);
+                    CheckForPromotions();
+                }
+                else
+                {
+                    Debug.WriteLine("No se obtuvo localización.");
+                }
+
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"Error al obtener la ubicación o cargar datos: {ex.Message}", "OK");
+                await Task.Delay(10000);
+
             }
         }
     }

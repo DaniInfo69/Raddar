@@ -126,5 +126,21 @@ namespace Avisen.Views
                 DisplayAlert("Error", "" + ex + "", "OK");
             }
         }
+
+        private void SwtichRecenter_Toggled(object sender, ToggledEventArgs e)
+        {
+            // Cambia el color del Switch dependiendo del estado IsToggled
+            if (e.Value)
+            {
+                SwitchRecenter.OnColor = Color.FromArgb("#0aa59b"); // Color verde cuando activado
+                SwitchRecenter.ThumbColor = Color.FromArgb("#f0ebdc"); // Color verde cuando activado
+            }
+            else 
+            {
+                SwitchRecenter.OnColor = Colors.Gray; // Color rojo cuando desactivado
+                SwitchRecenter.ThumbColor = Color.FromArgb("#f0ebdc"); // Color verde cuando activado
+            }
+
+        }
     }
 }

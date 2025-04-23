@@ -85,7 +85,7 @@
                         </Grid>
 
                         <!--  Lista estilo tarjetas  -->
-                        <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}" >
+                        <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame
