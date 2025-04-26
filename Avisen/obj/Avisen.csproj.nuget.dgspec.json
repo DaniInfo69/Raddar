@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jardi\\OneDrive\\Escritorio\\Residencias Raddar\\Raddar\\Avisen\\Avisen.csproj": {}
+    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jardi\\OneDrive\\Escritorio\\Residencias Raddar\\Raddar\\Avisen\\Avisen.csproj": {
+    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Residencias Raddar\\Raddar\\Avisen\\Avisen.csproj",
+        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
         "projectName": "Avisen",
-        "projectPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Residencias Raddar\\Raddar\\Avisen\\Avisen.csproj",
-        "packagesPath": "C:\\Users\\jardi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Residencias Raddar\\Raddar\\Avisen\\obj\\",
+        "projectPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
+        "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jardi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -79,6 +79,10 @@
               "target": "Package",
               "version": "[9.0.40, )"
             },
+            "Microsoft.Maui.Controls.Compatibility": {
+              "target": "Package",
+              "version": "[9.0.60, )"
+            },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
               "version": "[9.0.40, )"
@@ -90,12 +94,16 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.0, )",
+              "version": "[9.0.1, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Sharpnado.MaterialFrame.Maui": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
@@ -125,7 +133,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-ios18.1": {
           "targetAlias": "net9.0-ios",
@@ -142,6 +150,10 @@
               "target": "Package",
               "version": "[9.0.40, )"
             },
+            "Microsoft.Maui.Controls.Compatibility": {
+              "target": "Package",
+              "version": "[9.0.60, )"
+            },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
               "version": "[9.0.40, )"
@@ -153,12 +165,16 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.0, )",
+              "version": "[9.0.1, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Sharpnado.MaterialFrame.Maui": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
@@ -184,7 +200,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-maccatalyst18.1": {
           "targetAlias": "net9.0-maccatalyst",
@@ -201,6 +217,10 @@
               "target": "Package",
               "version": "[9.0.40, )"
             },
+            "Microsoft.Maui.Controls.Compatibility": {
+              "target": "Package",
+              "version": "[9.0.60, )"
+            },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
               "version": "[9.0.40, )"
@@ -212,12 +232,16 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.0, )",
+              "version": "[9.0.1, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Sharpnado.MaterialFrame.Maui": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
@@ -244,7 +268,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-windows10.0.19041": {
           "targetAlias": "net9.0-windows10.0.19041.0",
@@ -261,6 +285,10 @@
               "target": "Package",
               "version": "[9.0.40, )"
             },
+            "Microsoft.Maui.Controls.Compatibility": {
+              "target": "Package",
+              "version": "[9.0.60, )"
+            },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
               "version": "[9.0.40, )"
@@ -272,6 +300,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Sharpnado.MaterialFrame.Maui": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
@@ -292,7 +324,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.19041.54, 10.0.19041.54]"
+              "version": "[10.0.19041.57, 10.0.19041.57]"
             }
           ],
           "frameworkReferences": {
@@ -303,7 +335,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

@@ -11,6 +11,7 @@ public class MauiSwipeView
 	static {
 		__md_methods = 
 			"n_onAttachedToWindow:()V:GetOnAttachedToWindowHandler\n" +
+			"n_onLayout:(ZIIII)V:GetOnLayout_ZIIIIHandler\n" +
 			"n_onTouchEvent:(Landroid/view/MotionEvent;)Z:GetOnTouchEvent_Landroid_view_MotionEvent_Handler\n" +
 			"n_onInterceptTouchEvent:(Landroid/view/MotionEvent;)Z:GetOnInterceptTouchEvent_Landroid_view_MotionEvent_Handler\n" +
 			"n_dispatchTouchEvent:(Landroid/view/MotionEvent;)Z:GetDispatchTouchEvent_Landroid_view_MotionEvent_Handler\n" +
@@ -56,6 +57,13 @@ public class MauiSwipeView
 	}
 
 	private native void n_onAttachedToWindow ();
+
+	public void onLayout (boolean p0, int p1, int p2, int p3, int p4)
+	{
+		n_onLayout (p0, p1, p2, p3, p4);
+	}
+
+	private native void n_onLayout (boolean p0, int p1, int p2, int p3, int p4);
 
 	public boolean onTouchEvent (android.view.MotionEvent p0)
 	{

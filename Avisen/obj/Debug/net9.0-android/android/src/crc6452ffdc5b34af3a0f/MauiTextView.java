@@ -11,6 +11,7 @@ public class MauiTextView
 	static {
 		__md_methods = 
 			"n_onLayoutFormatted:(ZIIII)V:GetOnLayoutFormatted_ZIIIIHandler\n" +
+			"n_onMeasure:(II)V:GetOnMeasure_IIHandler\n" +
 			"";
 		mono.android.Runtime.register ("Microsoft.Maui.Platform.MauiTextView, Microsoft.Maui", MauiTextView.class, __md_methods);
 	}
@@ -29,6 +30,13 @@ public class MauiTextView
 	}
 
 	private native void n_onLayoutFormatted (boolean p0, int p1, int p2, int p3, int p4);
+
+	public void onMeasure (int p0, int p1)
+	{
+		n_onMeasure (p0, p1);
+	}
+
+	private native void n_onMeasure (int p0, int p1);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

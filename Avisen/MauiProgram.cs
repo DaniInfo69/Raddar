@@ -1,6 +1,7 @@
 ﻿using Avisen.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Sharpnado.MaterialFrame;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Avisen
@@ -12,6 +13,7 @@ namespace Avisen
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseSharpnadoMaterialFrame(loggerEnable: false)
                 .UseMauiCommunityToolkit()
                 .UseSkiaSharp()
                 .ConfigureFonts(fonts =>

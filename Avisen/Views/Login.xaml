@@ -18,7 +18,7 @@
         <ScrollView>
             <Grid RowDefinitions=".3*, .7*">
                 <Image Aspect="AspectFill" Source="fondo3.png" />
-                <Grid BackgroundColor="Gainsboro" Opacity=".85" />
+                <Grid BackgroundColor="#e4e4e4" Opacity=".85" />
                 <Grid ColumnDefinitions="*,*">
                     <Image
                         Aspect="AspectFit"
@@ -31,7 +31,7 @@
                     <RoundRectangle
                         Margin="-5,-30,-5,-2"
                         CornerRadius="30,30,0,0"
-                        Fill="#f0ebdc" />
+                        Fill="#fdfefe" />
                     <VerticalStackLayout>
                         <Label
                             FontSize="22"
@@ -42,7 +42,7 @@
                         <!--  Campo de EMAIL  -->
                         <Grid Margin="0,30,0,0" ColumnDefinitions=".2*, .8*">
                             <Border
-                                BackgroundColor="#fcf9ed"
+                                BackgroundColor="#f0f3f4"
                                 HeightRequest="60"
                                 HorizontalOptions="Center"
                                 StrokeShape="RoundRectangle 30,30,30,30"
@@ -60,7 +60,7 @@
                             <Entry
                                 x:Name="EmailEntry"
                                 Grid.Column="1"
-                                BackgroundColor="#f5f3ed"
+                                BackgroundColor="#fdfefe"
                                 FontSize="16"
                                 HeightRequest="60"
                                 MaxLength="60"
@@ -73,7 +73,7 @@
                         <!--  Campo Contraseña  -->
                         <Grid Margin="0,30,0,0" ColumnDefinitions=".2*, .8*">
                             <Border
-                                BackgroundColor="#fcf9ed"
+                                BackgroundColor="#f0f3f4"
                                 HeightRequest="60"
                                 HorizontalOptions="Center"
                                 StrokeShape="RoundRectangle 30,30,30,30"
@@ -91,7 +91,7 @@
                             <Entry
                                 x:Name="PasswordEntry"
                                 Grid.Column="1"
-                                BackgroundColor="#f5f3ed"
+                                BackgroundColor="#fdfefe"
                                 FontSize="16"
                                 HeightRequest="60"
                                 IsPassword="true"
@@ -105,29 +105,34 @@
                         <Button
                             x:Name="LoginHome"
                             Margin="0,20,0,0"
-                            BackgroundColor="#0bb8ac"
+                            BackgroundColor="#11d8cb"
                             Clicked="LoginHome_Clicked"
                             HeightRequest="60"
+                            FontSize="20"
                             Text="Iniciar Sesión"
                             TextColor="Black"
-                            WidthRequest="350" />
+                            WidthRequest="350" 
+                            CornerRadius="30"/>
 
                         <Label
                             Margin="0,20,0,-10"
                             HorizontalOptions="Center"
                             Text="¿Olvidaste tu contraseña?"
                             TextColor="#dc5a4b"
+                            FontAttributes="Bold"
                             TextDecorations="Underline" />
 
                         <Button
                             x:Name="CreateAccount"
                             Margin="0,20,0,0"
-                            BackgroundColor="#0cccc0"
+                            BackgroundColor="#11d8cb"
                             Clicked="CreateAccount_Clicked"
                             HeightRequest="60"
                             Text="Crear cuenta"
+                            FontSize="20"
                             TextColor="Black"
-                            WidthRequest="350" />
+                            WidthRequest="350" 
+                            CornerRadius="30"/>
 
                     </VerticalStackLayout>
                 </Grid>

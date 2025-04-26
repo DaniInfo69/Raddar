@@ -77,8 +77,8 @@ namespace Avisen.Views
                 LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
                 var jsonRequest = new
                 {
-                    email = "usuario@ejemplo.com", // Esto debería venir de entradas de usuario
-                    contraseña = "contra123"       // Esto también debe provenir de entradas
+                    email = "bernabemorana@gmail.com", // Esto debería venir de entradas de usuario
+                    contraseña = "123456"       // Esto también debe provenir de entradas
                 };
 
                 var response = await apiService.PostAsync("usuario/login", jsonRequest);

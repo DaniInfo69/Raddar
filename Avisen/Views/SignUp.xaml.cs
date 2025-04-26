@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 using Avisen.Services;
 
@@ -148,6 +149,8 @@ public partial class SignUp : ContentPage
     {
         try
         {
+             ShowCustomAlert();
+
             // Construir el cuerpo de la solicitud
             var jsonRequest = new
             {
@@ -166,7 +169,8 @@ public partial class SignUp : ContentPage
             {
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
                 var message = jsonResponse.GetProperty("message").GetString();
-                await DisplayAlert("Éxito", message, "OK");
+                Debug.WriteLine($"Exito {message}");
+                ShowCustomAlert();
             }
             else
             {
@@ -182,6 +186,17 @@ public partial class SignUp : ContentPage
         {
         }
 
+    }
+
+    private void ShowCustomAlert()
+    {
+        AfterCreationMessage.Text = "Hemos enviado un correo a "+ Email.Text +". Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta. \nSi no lo encuentras, asegúrate de revisar tu carpeta de spam o correos no deseados.";
+        CustomAlert.IsVisible = true;
+    }
+
+    private void CloseCustomAlert(object sender, EventArgs e)
+    {
+        CustomAlert.IsVisible = false;
     }
 
     private async void Back_Clicked(object sender, EventArgs e)
