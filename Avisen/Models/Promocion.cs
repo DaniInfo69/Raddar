@@ -16,6 +16,8 @@
         public string NombreEmpresa { get; set; }
         public string DescripcionEmpresa { get; set; }
 
+        public bool eliminado { get; set; }
+
     }
 
     public class PromocionImagen

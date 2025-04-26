@@ -23,7 +23,7 @@ public partial class PromocionDetallesPage : ContentPage
         VigenciaLabel.Text = promocion.VigenciaInicio.ToShortDateString();
         VigenciaLabel2.Text = promocion.VigenciaFin.ToShortDateString();
 
-        _esFavorita = FavoritosService.EstaMarcado(promocion.idpromocion);
+        _esFavorita = FavoritosService.EsFavorita(promocion);
         ActualizarCorazon();
     }
 
@@ -100,36 +100,33 @@ public partial class PromocionDetallesPage : ContentPage
             return;
         }
 
-        _esFavorita = !_esFavorita;
+        var promocion = BindingContext as Promocion;
+        if (promocion == null) return;
 
-        FavoritosService.AlternarFavorito(((Promocion)BindingContext).idpromocion);
+        _esFavorita = !_esFavorita;
+        await FavoritosService.AlternarFavoritoAsync(promocion);
         ActualizarCorazon();
 
-        var promocion = BindingContext as Promocion;
-
-        if (promocion == null)
-            return;
-
-        if (FavoritosService.EsFavorita(promocion))
+        if (_esFavorita)
         {
-            FavoritosService.EliminarDeFavoritos(promocion);
-            HeartAnimation.Progress = TimeSpan.FromMilliseconds(0);
-            HeartAnimation.IsAnimationEnabled = false;
+            HeartAnimation.Progress = TimeSpan.FromMilliseconds(1100);
+            HeartAnimation.IsAnimationEnabled = true;
         }
         else
         {
-            FavoritosService.AgregarAFavoritos(promocion);
-            HeartAnimation.Progress = TimeSpan.FromMilliseconds(1100);
-            HeartAnimation.IsAnimationEnabled = true;
+            HeartAnimation.Progress = TimeSpan.FromMilliseconds(0);
+            HeartAnimation.IsAnimationEnabled = false;
         }
     }
 
 
+
     private void ActualizarCorazon()
     {
-        HeartAnimation.Progress = _esFavorita ? TimeSpan.FromMilliseconds(2000) : TimeSpan.FromMilliseconds(0);
+        HeartAnimation.Progress = _esFavorita ? TimeSpan.FromMilliseconds(1000) : TimeSpan.FromMilliseconds(2000);
         HeartAnimation.IsAnimationEnabled = _esFavorita;
     }
 
 
 }
+
