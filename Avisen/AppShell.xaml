@@ -4,7 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Avisen.Views"
-    Title="Avisen">
+    Title="Avisen"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarForegroundColor="Black"
+    Shell.TabBarTitleColor="Black"
+    Shell.TabBarUnselectedColor="Gray">
 
 
     <FlyoutItem>
@@ -21,7 +25,7 @@
             ContentTemplate="{DataTemplate views:SignUp}"
             Route="SignUp" />
     </FlyoutItem>
-    
+
     <TabBar>
         <ShellContent
             Title="Home"
@@ -32,7 +36,7 @@
             Title="Map"
             ContentTemplate="{DataTemplate views:Map}"
             Route="Map" />
-        
+
         <ShellContent
             Title="Settings"
             ContentTemplate="{DataTemplate views:Settings}"
@@ -44,5 +48,5 @@
             Route="UserProfile" />
 
     </TabBar>
-    
+
 </Shell>

@@ -149,12 +149,12 @@ public partial class SignUp : ContentPage
     {
         try
         {
-             ShowCustomAlert();
+            ShowCustomAlert();
 
             // Construir el cuerpo de la solicitud
             var jsonRequest = new
             {
-                rol_idrol = 2, // Rol por defecto 2 (Cliente)
+                rol_idrol = 2,
                 email = Email.Text,
                 contraseña = Password.Text,
                 nombre = UserName.Text
@@ -170,17 +170,20 @@ public partial class SignUp : ContentPage
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
                 var message = jsonResponse.GetProperty("message").GetString();
                 Debug.WriteLine($"Exito {message}");
+                AfterCreationMessage.Text = "Hemos enviado un correo a " + Email.Text + ". Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta. \nSi no lo encuentras, asegúrate de revisar tu carpeta de spam o correos no deseados.";
                 ShowCustomAlert();
             }
             else
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                await DisplayAlert("Error", $"No se pudo registrar el usuario. Respuesta: {responseContent}", "OK");
+                Debug.WriteLine($"Error: {responseContent}");
+                AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"Ocurrió un error inesperado: {ex.Message}", "OK");
+            AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
+            Debug.WriteLine($"Error: {ex.Message}");
         }
         finally
         {
@@ -190,7 +193,6 @@ public partial class SignUp : ContentPage
 
     private void ShowCustomAlert()
     {
-        AfterCreationMessage.Text = "Hemos enviado un correo a "+ Email.Text +". Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta. \nSi no lo encuentras, asegúrate de revisar tu carpeta de spam o correos no deseados.";
         CustomAlert.IsVisible = true;
     }
 
