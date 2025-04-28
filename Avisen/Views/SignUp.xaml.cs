@@ -156,10 +156,10 @@ public partial class SignUp : ContentPage
             {
                 rol_idrol = 2,
                 email = Email.Text,
-                contraseña = Password.Text,
+                password = Password.Text,
                 nombre = UserName.Text
             };
-
+            
             // Consumir API
             var apiService = new ApiService();
             var response = await apiService.PostAsync("usuario", jsonRequest);
@@ -178,11 +178,13 @@ public partial class SignUp : ContentPage
                 var responseContent = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine($"Error: {responseContent}");
                 AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
+                ShowCustomAlert();
             }
         }
         catch (Exception ex)
         {
             AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
+            ShowCustomAlert();
             Debug.WriteLine($"Error: {ex.Message}");
         }
         finally

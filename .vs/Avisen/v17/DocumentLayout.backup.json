@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,20 +27,8 @@
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 94,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "AppShell.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\AppShell.xaml",
               "RelativeDocumentMoniker": "Avisen\\AppShell.xaml",
@@ -58,75 +58,73 @@
               "RelativeToolTip": "Avisen\\AppShell.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-27T04:43:21.133Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T04:43:21.133Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Login.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Login.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwB4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T21:47:26.225Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Login.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml",
               "RelativeToolTip": "Avisen\\Views\\Login.xaml",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAHgAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAHgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-26T21:08:11.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T21:08:11.078Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "SignUp.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\SignUp.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\SignUp.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\SignUp.xaml.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAwLwAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAwLoAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T21:47:47.746Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "SignUp.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\SignUp.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\SignUp.xaml",
               "RelativeToolTip": "Avisen\\Views\\SignUp.xaml",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKQAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAKQAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-26T19:56:05.63Z"
+              "WhenOpened": "2025-04-26T19:56:05.63Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\MauiProgram.cs",
               "RelativeDocumentMoniker": "Avisen\\MauiProgram.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\MauiProgram.cs",
               "RelativeToolTip": "Avisen\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T19:34:58.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T19:34:58.494Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ApiService.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Services\\ApiService.cs",
               "RelativeDocumentMoniker": "Avisen\\Services\\ApiService.cs",
@@ -134,8 +132,7 @@
               "RelativeToolTip": "Avisen\\Services\\ApiService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T21:47:41.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T21:47:41.842Z"
             }
           ]
         }
