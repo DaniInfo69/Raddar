@@ -1,8 +1,6 @@
-using System.Text;
 using System.Text.Json;
 using Avisen.Services;
 using Avisen.Models;
-using Microsoft.Maui.Storage;
 
 namespace Avisen.Views
 {
@@ -24,33 +22,44 @@ namespace Avisen.Views
             try
             {
                 Overlay.IsVisible = true;
-                LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
-                // Recuperar tokens almacenados
+                LoadingIndicator.IsVisible = true;
+                LoadingIndicator.IsRunning = true;
+                //LabelLoading.Rotation = 0;
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
                 var refreshToken = await tokenService.GetRefreshTokenAsync();
-                LabelLoading.ScaleTo(1.7, 1000, Easing.BounceIn);
-                await LabelLoading.RotateTo(180, 1200, Easing.CubicInOut); // Luego realiza la animación
+                //await LabelLoading.ScaleTo(1.7, 1000, Easing.BounceIn);
+                //await LabelLoading.RotateTo(180, 1200, Easing.CubicInOut);
 
-                if (!string.IsNullOrEmpty(existingAccessToken) && !string.IsNullOrEmpty(refreshToken))
+                if (!string.IsNullOrEmpty(existingAccessToken))
                 {
-                    // Refrescar el token si es necesario
-                    var jsonRequest = new { refreshToken = refreshToken };
-                    var response = await apiService.PostAsync("usuario/refresh-token", jsonRequest);
+                    await Shell.Current.GoToAsync("//Home");
+                    return;
+                }
 
-                    if (response.IsSuccessStatusCode)
+                if (!string.IsNullOrEmpty(refreshToken))
+                {
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
-                        var newAccessToken = jsonResponse.GetProperty("accessToken").GetString();
-
-                        // Guardar el nuevo AccessToken
-                        await tokenService.SetAccessTokenAsync(newAccessToken, TimeSpan.FromMinutes(15));
-
-                        // Navegar a Home
+                        await DisplayAlert("Sin conexión", "No hay acceso a Internet. Verifica tu conexión.", "OK");
                         await Shell.Current.GoToAsync("//Home");
                     }
                     else
                     {
-                        await DisplayAlert("Error", "No se pudo refrescar el token. Por favor, inicie sesión nuevamente.", "OK");
+                        var jsonRequest = new { refreshToken = refreshToken };
+                        var response = await apiService.PostAsync("usuario/refresh-token", jsonRequest);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                            var newAccessToken = jsonResponse.GetProperty("accessToken").GetString();
+
+                            await tokenService.SetAccessTokenAsync(newAccessToken, TimeSpan.FromMinutes(15));
+                            await Shell.Current.GoToAsync("//Home");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "Revise su conexion a internet o intente mas tarde.", "OK");
+                        }
                     }
                 }
             }
@@ -61,6 +70,9 @@ namespace Avisen.Views
             finally
             {
                 Overlay.IsVisible = false;
+                LoadingIndicator.IsVisible = false;
+                LoadingIndicator.IsRunning = false;
+
             }
         }
 
@@ -74,7 +86,10 @@ namespace Avisen.Views
             try
             {
                 Overlay.IsVisible = true;
-                LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
+                LoadingIndicator.IsVisible = true;
+                LoadingIndicator.IsRunning = true;                
+                //LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
+
                 var jsonRequest = new
                 {
                     email = "bernabemorana@gmail.com", // Esto debería venir de entradas de usuario
@@ -85,8 +100,8 @@ namespace Avisen.Views
 
                 if (response.IsSuccessStatusCode)
                 {
-                    LabelLoading.ScaleTo(1.7, 1200, Easing.BounceIn);
-                    await LabelLoading.RotateTo(180, 1500, Easing.CubicInOut);
+                    //LabelLoading.ScaleTo(1.7, 1200, Easing.BounceIn);
+                    //await LabelLoading.RotateTo(180, 1500, Easing.CubicInOut);
                     var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
 
                     // Guardar tokens
@@ -113,6 +128,22 @@ namespace Avisen.Views
                 }
                 else
                 {
+                    var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                    bool success = jsonResponse.GetProperty("success").GetBoolean();
+                    bool emailExists = jsonResponse.GetProperty("emailExists").GetBoolean();
+                    bool pending = jsonResponse.GetProperty("pending").GetBoolean();
+                    if (!success && emailExists)
+                    {
+                        await DisplayAlert("Mal", "La contraseña es incorrecta", "OK");
+                    }
+                    else if (!success && emailExists && pending)
+                    {
+                        await DisplayAlert("Pendiente", "Su cuenta está esta pendiente de activación, revise su correo, de no encontrarlo revise el spam", "OK");
+                    }
+                    else if (!success && !emailExists && !pending)
+                    {
+                        await DisplayAlert("Pendiente", "Su cuenta está pendiente de aprobación", "OK");
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
                     await DisplayAlert("Error", $"Error en el login.\nResponse: {responseContent}", "OK");
                 }
@@ -124,6 +155,8 @@ namespace Avisen.Views
             finally
             {
                 Overlay.IsVisible = false;
+                LoadingIndicator.IsVisible = false;
+                LoadingIndicator.IsRunning = false;
             }
         }
     }

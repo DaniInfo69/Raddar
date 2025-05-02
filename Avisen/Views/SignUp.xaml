@@ -171,13 +171,13 @@
                             Margin="0,20,0,0"
                             BackgroundColor="#11d8cb"
                             Clicked="CreateAccount_Clicked"
-                            HeightRequest="60"
-                            IsEnabled="False"
-                            Text="Crear cuenta"
+                            CornerRadius="30"
                             FontSize="20"
+                            HeightRequest="60"
+                            IsEnabled="True"
+                            Text="Crear cuenta"
                             TextColor="Black"
-                            WidthRequest="350" 
-                            CornerRadius="30"/>
+                            WidthRequest="350" />
                         <Label
                             Margin="0,20,0,-10"
                             FontSize="40"
@@ -198,31 +198,37 @@
             x:Name="CustomAlert"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All"
+            InputTransparent="False"
             IsVisible="False">
-            <sharpnado:MaterialFrame
-                CornerRadius="30"
-                HeightRequest="325"
-                HorizontalOptions="Center"
-                MaterialBlurStyle="Light"
-                MaterialTheme="AcrylicBlur"
-                VerticalOptions="Center"
-                WidthRequest="400">
-                <VerticalStackLayout Padding="20" Spacing="15">
-                    <Label
-                        x:Name="AfterCreationMessage"
-                        FontAttributes="Bold"
-                        FontSize="17"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Justify"
-                        TextColor="#19535F" />
-                    <Button
-                        BackgroundColor="#dc5a4b"
-                        Clicked="CloseCustomAlert"
-                        CornerRadius="30"
-                        Text="Aceptar"
-                        TextColor="White" />
-                </VerticalStackLayout>
-            </sharpnado:MaterialFrame>
+            <Grid BackgroundColor="#30000000">
+                <sharpnado:MaterialFrame
+                    x:Name="Popupalert"
+                    CornerRadius="30"
+                    HeightRequest="325"
+                    HorizontalOptions="Center"
+                    MaterialBlurStyle="Light"
+                    MaterialTheme="AcrylicBlur"
+                    VerticalOptions="Center"
+                    WidthRequest="400">
+                    <VerticalStackLayout Padding="20" Spacing="15">
+                        <Label
+                            x:Name="AfterCreationMessage"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Justify"
+                            TextColor="#19535F" />
+                        <Button
+                            BackgroundColor="#11d8cb"
+                            Clicked="CloseCustomAlert"
+                            CornerRadius="30"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Aceptar"
+                            TextColor="White" />
+                    </VerticalStackLayout>
+                </sharpnado:MaterialFrame>
+            </Grid>
         </ContentView>
 
     </Grid>

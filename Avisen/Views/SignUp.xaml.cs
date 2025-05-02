@@ -129,8 +129,6 @@ public partial class SignUp : ContentPage
         {
             buttonCreateAccountEnable();
         }
-
-
     }
 
     private void buttonCreateAccountEnable()
@@ -149,8 +147,6 @@ public partial class SignUp : ContentPage
     {
         try
         {
-            ShowCustomAlert();
-
             // Construir el cuerpo de la solicitud
             var jsonRequest = new
             {
@@ -159,7 +155,7 @@ public partial class SignUp : ContentPage
                 password = Password.Text,
                 nombre = UserName.Text
             };
-            
+            CreateAccount.IsEnabled = false;
             // Consumir API
             var apiService = new ApiService();
             var response = await apiService.PostAsync("usuario", jsonRequest);
@@ -168,39 +164,64 @@ public partial class SignUp : ContentPage
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
-                var message = jsonResponse.GetProperty("message").GetString();
-                Debug.WriteLine($"Exito {message}");
                 AfterCreationMessage.Text = "Hemos enviado un correo a " + Email.Text + ". Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta. \nSi no lo encuentras, asegúrate de revisar tu carpeta de spam o correos no deseados.";
-                ShowCustomAlert();
+                Popupalert.HeightRequest = 325;
             }
             else
             {
+                var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+                bool success = jsonResponse.GetProperty("success").GetBoolean();
+                bool emailExists = jsonResponse.GetProperty("emailExists").GetBoolean();
+                bool pending = jsonResponse.GetProperty("pending").GetBoolean();
+
+                if (!success && emailExists && pending)
+                {
+                    AfterCreationMessage.Text = "El correo ya existe, pero aún no está verificado. Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta. \nSi no lo encuentras, asegúrate de revisar tu carpeta de spam o correos no deseados.";
+                    Popupalert.HeightRequest = 325;
+                }
+                else if (!success && emailExists && !pending)
+                {
+                    AfterCreationMessage.Text = "El correo ya existe y se encuentra activo.";
+                    Popupalert.HeightRequest = 180;
+                }
                 var responseContent = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine($"Error: {responseContent}");
-                AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
-                ShowCustomAlert();
             }
         }
         catch (Exception ex)
         {
             AfterCreationMessage.Text = "Ha ocurrido un error. Por favor, verifica tu conexión a internet e inténtalo nuevamente más tarde";
-            ShowCustomAlert();
+            Popupalert.HeightRequest = 220;
             Debug.WriteLine($"Error: {ex.Message}");
         }
         finally
         {
+            ShowCustomAlert();
         }
-
     }
 
     private void ShowCustomAlert()
     {
+        UserName.IsEnabled = false;
+        Email.IsEnabled = false;
+        Password.IsEnabled = false;
+        Password2.IsEnabled = false;
         CustomAlert.IsVisible = true;
     }
 
     private void CloseCustomAlert(object sender, EventArgs e)
     {
+        UserName.IsEnabled = true;
+        Email.IsEnabled = true;
+        Password.IsEnabled = true;
+        Password2.IsEnabled = true;
         CustomAlert.IsVisible = false;
+
+        UserName.Text = string.Empty;
+        Email.Text = string.Empty;
+        Password.Text = string.Empty;
+        Password2.Text = string.Empty;
+        AfterCreationMessage.Text = string.Empty;
     }
 
     private async void Back_Clicked(object sender, EventArgs e)

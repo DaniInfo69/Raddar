@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Avisen"
+    xmlns:sharpnado="http://sharpnado.com"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="Login"
     NavigationPage.HasNavigationBar="False"
@@ -107,19 +108,19 @@
                             Margin="0,20,0,0"
                             BackgroundColor="#11d8cb"
                             Clicked="LoginHome_Clicked"
-                            HeightRequest="60"
+                            CornerRadius="30"
                             FontSize="20"
+                            HeightRequest="60"
                             Text="Iniciar Sesión"
                             TextColor="Black"
-                            WidthRequest="350" 
-                            CornerRadius="30"/>
+                            WidthRequest="350" />
 
                         <Label
                             Margin="0,20,0,-10"
+                            FontAttributes="Bold"
                             HorizontalOptions="Center"
                             Text="¿Olvidaste tu contraseña?"
                             TextColor="#dc5a4b"
-                            FontAttributes="Bold"
                             TextDecorations="Underline" />
 
                         <Button
@@ -127,12 +128,12 @@
                             Margin="0,20,0,0"
                             BackgroundColor="#11d8cb"
                             Clicked="CreateAccount_Clicked"
+                            CornerRadius="30"
+                            FontSize="20"
                             HeightRequest="60"
                             Text="Crear cuenta"
-                            FontSize="20"
                             TextColor="Black"
-                            WidthRequest="350" 
-                            CornerRadius="30"/>
+                            WidthRequest="350" />
 
                     </VerticalStackLayout>
                 </Grid>
@@ -140,17 +141,34 @@
         </ScrollView>
         <Grid
             x:Name="Overlay"
-            BackgroundColor="Black"
-            IsVisible="False"
-            Opacity="0.5">
-            <Label
-                x:Name="LabelLoading"
-                FontSize="100"
+            BackgroundColor="#30000000"
+            IsVisible="False">
+            <sharpnado:MaterialFrame
+                x:Name="Popupalert"
+                CornerRadius="30"
+                HeightRequest="200"
                 HorizontalOptions="Center"
-                Style="{StaticResource MaterialIcon}"
-                Text="{x:Static local:IconFont.Hourglass_top}"
-                TextColor="White"
-                VerticalOptions="Center" />
+                MaterialBlurStyle="Light"
+                MaterialTheme="AcrylicBlur"
+                VerticalOptions="Center"
+                WidthRequest="180">
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <ActivityIndicator
+                        x:Name="LoadingIndicator"
+                        HeightRequest="80"
+                        IsRunning="False"
+                        IsVisible="False"
+                        WidthRequest="80"
+                        Color="Black" />
+                    <Label
+                        Text="Cargando"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HorizontalOptions="Center"
+                        TextColor="Black" />
+                </VerticalStackLayout>
+            </sharpnado:MaterialFrame>
         </Grid>
+
     </Grid>
 </ContentPage>
