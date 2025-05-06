@@ -51,16 +51,17 @@ namespace Avisen.Views
         public ICommand ApplyFiltersCommand { get; }
         public ICommand ClearFiltersCommand { get; }
 
-        public Home()
+        private readonly NegocioService negocioService;
+        public Home(NegocioService negocioService)
         {
             InitializeComponent();
+            this.negocioService = negocioService;
 
-            // Inicializamos con listas de promociones
             OfertasReales = new ObservableCollection<Promocion>();
             OfertasActuales = new ObservableCollection<Promocion>();
-
-            // Inicializamos la colección de categorías
             Categorias = new ObservableCollection<Categoria>();
+
+            LoadPromotions();
 
             // Inicializar comandos
             TapCommand = new Command<Promocion>(async (promo) => await NavigateToDetalle(promo));
@@ -229,5 +230,37 @@ namespace Avisen.Views
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        private async void LoadPromotions()
+        {
+            try
+            {
+                // Si ya se cargaron en Map, úsalo directamente
+                if (Map.TodasLasOfertas?.Any() != true)
+                {
+                    var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
+                    Map.TodasLasOfertas.Clear();
+                    Map.TodasLasOfertas.AddRange(negocios);
+                }
+
+                // Llenar OfertasReales con todas las promociones disponibles
+                var todasPromos = Map.TodasLasOfertas
+                    .Where(m => m.Promociones != null)
+                    .SelectMany(m => m.Promociones)
+                    .ToList();
+
+                OfertasReales.Clear();
+                foreach (var promo in todasPromos)
+                {
+                    OfertasReales.Add(promo);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error al cargar promociones: {ex.Message}", "OK");
+            }
+        }
+
     }
 }

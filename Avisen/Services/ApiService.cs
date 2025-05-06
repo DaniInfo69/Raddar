@@ -164,5 +164,23 @@ namespace Avisen.Services
         }
 
 
+        public async Task<List<Matriz>> ObtenerPromocionesEnRangoAsync(double lat, double lng, double rango)
+        {
+            try
+            {
+                var url = $"https://TU_API_URL/promocionRango?lat={lat}&lng={lng}&rango={rango}";
+                var response = await httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<List<Matriz>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error en ObtenerPromocionesEnRangoAsync: {ex.Message}");
+                return new List<Matriz>();
+            }
+        }
+
     }
 }

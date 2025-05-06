@@ -123,7 +123,7 @@ public partial class Map : ContentPage
                 {
                     Debug.WriteLine("Procesando ubicación...");
                     userLocation = new Location(location.Latitude, location.Longitude);
-                    
+
                     // Controla el centrado del mapa según IsRecenter
                     if (Preferences.Get("IsRecenter", false)) // Centrar continuamente
                     {
@@ -158,19 +158,24 @@ public partial class Map : ContentPage
     {
         try
         {
-            negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
+            if (userLocation == null) return;
+
+            negocios = await negocioService.ObtenerPromocionesEnRangoAsync(userLocation.Latitude, userLocation.Longitude, OfferDistance);
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
+
             TodasLasOfertas.Clear();
             TodasLasOfertas.AddRange(negocios);
+
+            ActualizarPinesDelMapa(negocios);
         }
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
-
-            Console.WriteLine("Error", $"Error al cargar datos: {ex.Message}", "OK");
+            Console.WriteLine($"Error al cargar datos: {ex.Message}");
         }
     }
+
 
     private void CheckForPromotions()
     {
@@ -273,4 +278,33 @@ public partial class Map : ContentPage
             await DisplayAlert("Sin promociones", "Este negocio no tiene promociones disponibles", "OK");
         }
     }
+
+
+    private void ActualizarPinesDelMapa(List<Matriz> negociosEnRango)
+    {
+        map.Pins.Clear();
+        OfertasActuales.Clear();
+
+        foreach (var negocio in negociosEnRango)
+        {
+            var pin = new Pin
+            {
+                Label = negocio.Nombre,
+                Address = "¡Oferta!",
+                Type = PinType.Place,
+                Location = negocio.Location
+            };
+
+            pin.MarkerClicked += (s, e) => DisplayPromotionDetails(negocio);
+            map.Pins.Add(pin);
+            OfertasActuales.Add(negocio);
+
+            if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
+            {
+                Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.2));
+                OfertasVistas.Add(negocio);
+            }
+        }
+    }
+
 }

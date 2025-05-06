@@ -20,8 +20,8 @@ public partial class PromocionDetallesPage : ContentPage
 
         // Mostramos los detalles directamente desde el Binding
         PromocionesLabel.FormattedText = ObtenerDetallesPromocion(promocion);
-        VigenciaLabel.Text = promocion.VigenciaInicio.ToShortDateString();
-        VigenciaLabel2.Text = promocion.VigenciaFin.ToShortDateString();
+        VigenciaLabel.Text = promocion.VigenciaInicio.HasValue ? promocion.VigenciaInicio.Value.ToShortDateString() : "Sin fecha de inicio";
+        VigenciaLabel2.Text = promocion.VigenciaFin.HasValue ? promocion.VigenciaFin.Value.ToShortDateString() : "Sin fecha de fin";
 
         _esFavorita = FavoritosService.EsFavorita(promocion);
         ActualizarCorazon();

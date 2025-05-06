@@ -8,8 +8,8 @@
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Precio { get; set; }
-        public DateTime VigenciaInicio { get; set; }
-        public DateTime VigenciaFin { get; set; }
+        public DateTime? VigenciaInicio { get; set; }
+        public DateTime? VigenciaFin { get; set; }
         public string Tipo { get; set; }
         public List<PromocionImagen> imagenes { get; set; }
 
