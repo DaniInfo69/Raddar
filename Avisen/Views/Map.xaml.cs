@@ -17,7 +17,7 @@ public partial class Map : ContentPage
 
     public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
     public static List<Matriz> OfertasActuales = new List<Matriz>();
-    public static List<Matriz> TodasLasOfertas = new List<Matriz>();
+
 
 
 
@@ -163,9 +163,6 @@ public partial class Map : ContentPage
             negocios = await negocioService.ObtenerPromocionesEnRangoAsync(userLocation.Latitude, userLocation.Longitude, OfferDistance);
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
-
-            TodasLasOfertas.Clear();
-            TodasLasOfertas.AddRange(negocios);
 
             ActualizarPinesDelMapa(negocios);
         }

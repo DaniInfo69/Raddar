@@ -92,8 +92,8 @@ namespace Avisen.Views
 
                 var jsonRequest = new
                 {
-                    email = "bernabemorana@gmail.com", // Esto debería venir de entradas de usuario
-                    password = "123456"       // Esto también debe provenir de entradas
+                    email = "dajosolmag1@gmail.com", // Esto debería venir de entradas de usuario
+                    password = "Qq12345."       // Esto también debe provenir de entradas
                 };
 
                 var response = await apiService.PostAsync("usuario/login", jsonRequest);

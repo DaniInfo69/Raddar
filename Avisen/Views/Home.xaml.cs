@@ -11,6 +11,8 @@ namespace Avisen.Views
         public ObservableCollection<Promocion> OfertasReales { get; set; }
         public ObservableCollection<Promocion> OfertasActuales { get; set; }
         public ObservableCollection<Categoria> Categorias { get; set; }
+        private List<Promocion> todasLasPromosCache = new(); // para filtros
+
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
@@ -106,33 +108,41 @@ namespace Avisen.Views
 
         private void RefreshPromotions()
         {
-            // Método para cargar promociones sin filtros
-            var promociones = GetPromocionesFromMatrices(Map.TodasLasOfertas);
-            OfertasReales.Clear();
-            foreach (var promo in promociones)
-                OfertasReales.Add(promo);
+            if (todasLasPromosCache.Any())
+            {
+                OfertasReales.Clear();
+                foreach (var promo in todasLasPromosCache)
+                {
+                    OfertasReales.Add(promo);
+                }
+            }
         }
+
 
         private async Task NavigateToDetalle(Promocion promocion)
         {
             if (promocion == null)
                 return;
 
-            // 1) Encuentra la Matriz que contiene esta promoción
-            var matriz = Map.TodasLasOfertas
-                           .FirstOrDefault(m => m.Promociones.Contains(promocion));
-
-            if (matriz == null)
+            try
             {
-                await DisplayAlert("Error", "No se encontró la ubicación de la promoción.", "OK");
-                return;
-            }
+                var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
+                var matriz = negocios.FirstOrDefault(m => m.Promociones.Any(p => p.idpromocion == promocion.idpromocion));
 
-            // 2) Pasa tanto la Promoción como la Location al detalle
-            await Navigation.PushModalAsync(
-                new PromocionDetallesPage(promocion, matriz.Location)
-            );
+                if (matriz == null)
+                {
+                    await DisplayAlert("Error", "No se encontró la ubicación de la promoción.", "OK");
+                    return;
+                }
+
+                await Navigation.PushModalAsync(new PromocionDetallesPage(promocion, matriz.Location));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"No se pudo navegar al detalle: {ex.Message}", "OK");
+            }
         }
+
 
 
 
@@ -190,13 +200,16 @@ namespace Avisen.Views
 
         private void ApplyFilters()
         {
-            var promociones = TempSelectedFilter switch
+            var promociones = todasLasPromosCache;
+
+            if (TempSelectedFilter == "Ofertas Vistas")
             {
-                "Ofertas Vistas" => GetPromocionesFromMatrices(Map.OfertasVistas),
-                "Ofertas Cercanas" => GetPromocionesFromMatrices(Map.OfertasActuales),
-                "Todas las Ofertas" => GetPromocionesFromMatrices(Map.TodasLasOfertas),
-                _ => GetPromocionesFromMatrices(Map.TodasLasOfertas)
-            };
+                promociones = Map.OfertasVistas.SelectMany(m => m.Promociones).ToList();
+            }
+            else if (TempSelectedFilter == "Ofertas Cercanas")
+            {
+                promociones = Map.OfertasActuales.SelectMany(m => m.Promociones).ToList();
+            }
 
             if (TempSelectedCategory != null && TempSelectedCategory.idcategoria != -1)
             {
@@ -209,6 +222,7 @@ namespace Avisen.Views
 
             OnCerrarFiltroTapped(null, null);
         }
+
 
         private void ClearFilters()
         {
@@ -235,25 +249,23 @@ namespace Avisen.Views
         {
             try
             {
-                // Si ya se cargaron en Map, úsalo directamente
-                if (Map.TodasLasOfertas?.Any() != true)
-                {
-                    var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
-                    Map.TodasLasOfertas.Clear();
-                    Map.TodasLasOfertas.AddRange(negocios);
-                }
+                // Cargar directamente desde el servicio, no desde Map
+                var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
 
-                // Llenar OfertasReales con todas las promociones disponibles
-                var todasPromos = Map.TodasLasOfertas
+                // Guardar localmente para Home
+                var todasLasPromos = negocios
                     .Where(m => m.Promociones != null)
                     .SelectMany(m => m.Promociones)
                     .ToList();
 
                 OfertasReales.Clear();
-                foreach (var promo in todasPromos)
+                foreach (var promo in todasLasPromos)
                 {
                     OfertasReales.Add(promo);
                 }
+
+                // Guardar localmente en una lista privada si deseas filtrar más adelante
+                todasLasPromosCache = todasLasPromos;
 
             }
             catch (Exception ex)
@@ -261,6 +273,7 @@ namespace Avisen.Views
                 await DisplayAlert("Error", $"Error al cargar promociones: {ex.Message}", "OK");
             }
         }
+
 
     }
 }
