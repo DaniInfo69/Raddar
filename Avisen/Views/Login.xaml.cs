@@ -21,14 +21,11 @@ namespace Avisen.Views
 
             try
             {
-                Overlay.IsVisible = true;
-                LoadingIndicator.IsVisible = true;
-                LoadingIndicator.IsRunning = true;
-                //LabelLoading.Rotation = 0;
+                LoadingIndicartorEnable();
+
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
                 var refreshToken = await tokenService.GetRefreshTokenAsync();
-                //await LabelLoading.ScaleTo(1.7, 1000, Easing.BounceIn);
-                //await LabelLoading.RotateTo(180, 1200, Easing.CubicInOut);
+
 
                 if (!string.IsNullOrEmpty(existingAccessToken))
                 {
@@ -69,9 +66,7 @@ namespace Avisen.Views
             }
             finally
             {
-                Overlay.IsVisible = false;
-                LoadingIndicator.IsVisible = false;
-                LoadingIndicator.IsRunning = false;
+                LoadingIndicartorUnable();
 
             }
         }
@@ -87,13 +82,13 @@ namespace Avisen.Views
             {
                 Overlay.IsVisible = true;
                 LoadingIndicator.IsVisible = true;
-                LoadingIndicator.IsRunning = true;                
-                //LabelLoading.Rotation = 0; // Asegúrate de que comience desde 0
+                LoadingIndicator.IsRunning = true;
+                //LabelLoading.Rotation = 0; // Asegurate de que comience desde 0
 
                 var jsonRequest = new
                 {
-                    email = "dajosolmag1@gmail.com", // Esto debería venir de entradas de usuario
-                    password = "Qq12345."       // Esto también debe provenir de entradas
+                    email = "dajosolmag1@gmail.com", // Esto deberia venir de entradas de usuario
+                    password = "Qq12345."       // Esto tambien debe provenir de entradas
                 };
 
                 var response = await apiService.PostAsync("usuario/login", jsonRequest);
@@ -154,10 +149,28 @@ namespace Avisen.Views
             }
             finally
             {
-                Overlay.IsVisible = false;
-                LoadingIndicator.IsVisible = false;
-                LoadingIndicator.IsRunning = false;
+                LoadingIndicartorUnable();
             }
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            LoadingIndicartorEnable();
+            await Navigation.PushAsync(new SendEmail());
+        }
+
+        private async void LoadingIndicartorEnable()
+        {
+            Overlay.IsVisible = true;
+            LoadingIndicator.IsVisible = true;
+            LoadingIndicator.IsRunning = true;
+        }
+
+        private async void LoadingIndicartorUnable()
+        {
+            Overlay.IsVisible = false;
+            LoadingIndicator.IsVisible = false;
+            LoadingIndicator.IsRunning = false;
         }
     }
 }

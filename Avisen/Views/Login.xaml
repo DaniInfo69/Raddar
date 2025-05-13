@@ -121,7 +121,11 @@
                             HorizontalOptions="Center"
                             Text="¿Olvidaste tu contraseña?"
                             TextColor="#dc5a4b"
-                            TextDecorations="Underline" />
+                            TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
 
                         <Button
                             x:Name="CreateAccount"
@@ -161,10 +165,10 @@
                         WidthRequest="80"
                         Color="Black" />
                     <Label
-                        Text="Cargando"
                         FontAttributes="Bold"
                         FontSize="17"
                         HorizontalOptions="Center"
+                        Text="Cargando"
                         TextColor="Black" />
                 </VerticalStackLayout>
             </sharpnado:MaterialFrame>

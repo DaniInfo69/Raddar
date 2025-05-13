@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Avisen.Views.SendEmail"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
+    xmlns:sharpnado="http://sharpnado.com"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="SendEmail"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <Grid>
+
+        <ScrollView>
+            <Grid RowDefinitions=".3*, .7*">
+                <Image Aspect="AspectFill" Source="fondo3.png" />
+                <Grid BackgroundColor="#e4e4e4" Opacity=".85" />
+                <Grid ColumnDefinitions="*,*">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="150"
+                        Source="logo.png" />
+                </Grid>
+
+                <!--  Contenido principal  -->
+                <Grid Grid.Row="1">
+                    <RoundRectangle
+                        Margin="-5,-30,-5,-2"
+                        CornerRadius="30,30,0,0"
+                        Fill="#fdfefe" />
+                    <VerticalStackLayout>
+                        <Label
+                            FontSize="21"
+                            HorizontalTextAlignment="Center"
+                            Text="Ingresa tu correo para la recuperación"
+                            TextColor="#A3A3A4" />
+
+                        <!--  Campo de EMAIL  -->
+                        <Grid Margin="0,30,0,0" ColumnDefinitions=".2*, .8*">
+                            <Border
+                                BackgroundColor="#f0f3f4"
+                                HeightRequest="60"
+                                HorizontalOptions="Center"
+                                StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="0"
+                                VerticalOptions="Center"
+                                WidthRequest="60">
+                                <Label
+                                    FontSize="32"
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource MaterialIcon}"
+                                    Text="{x:Static local:IconFont.Mail}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </Border>
+                            <Entry
+                                x:Name="EmailEntry"
+                                Grid.Column="1"
+                                BackgroundColor="#fdfefe"
+                                FontSize="16"
+                                HeightRequest="60"
+                                MaxLength="60"
+                                Placeholder="EMAIL"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                WidthRequest="300" />
+                        </Grid>
+
+
+                        <Button
+                            x:Name="SendUserEmail"
+                            Margin="0,20,0,0"
+                            BackgroundColor="#11d8cb"
+                            Clicked="SendUserEmail_Clicked"
+                            CornerRadius="30"
+                            FontSize="20"
+                            HeightRequest="60"
+                            Text="Enviar correo"
+                            TextColor="Black"
+                            WidthRequest="350" />
+
+
+                        <Button
+                            x:Name="ReturnLogin"
+                            Margin="0,20,0,0"
+                            BackgroundColor="#11d8cb"
+                            Clicked="ReturnLogin_Clicked"
+                            CornerRadius="30"
+                            FontSize="20"
+                            HeightRequest="60"
+                            Text="Regresar"
+                            TextColor="Black"
+                            WidthRequest="350" />
+
+
+                    </VerticalStackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+        <Grid
+            x:Name="Overlay"
+            BackgroundColor="#30000000"
+            IsVisible="False">
+            <sharpnado:MaterialFrame
+                x:Name="Popupalert"
+                CornerRadius="30"
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                MaterialBlurStyle="Light"
+                MaterialTheme="AcrylicBlur"
+                VerticalOptions="Center"
+                WidthRequest="180">
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <ActivityIndicator
+                        x:Name="LoadingIndicator"
+                        HeightRequest="80"
+                        IsRunning="False"
+                        IsVisible="False"
+                        WidthRequest="80"
+                        Color="Black" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HorizontalOptions="Center"
+                        Text="Cargando"
+                        TextColor="Black" />
+                </VerticalStackLayout>
+            </sharpnado:MaterialFrame>
+        </Grid>
+    </Grid>
+</ContentPage>
