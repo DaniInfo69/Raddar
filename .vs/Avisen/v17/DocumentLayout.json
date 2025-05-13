@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\sendemail.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\sendemail.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\emailcode.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\emailcode.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\sendemail.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\sendemail.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\emailcode.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\emailcode.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar2\\raddar\\avisen\\views\\emailcode.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\emailcode.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -48,58 +48,58 @@
               "RelativeDocumentMoniker": "Avisen\\AppShell.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\AppShell.xaml",
               "RelativeToolTip": "Avisen\\AppShell.xaml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-13T01:13:38.991Z",
+              "WhenOpened": "2025-05-13T01:35:48.976Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "SignUp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SignUp.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SignUp.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\SignUp.xaml.cs",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAUwOQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T01:34:35.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignUp.xaml",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SignUp.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Views\\SignUp.xaml",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SignUp.xaml",
+              "RelativeToolTip": "Avisen\\Views\\SignUp.xaml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T01:34:32.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EmailCode.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\EmailCode.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\EmailCode.xaml.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\EmailCode.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\EmailCode.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowFMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-13T01:09:19.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SendEmail.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SendEmail.xaml.cs",
-              "RelativeDocumentMoniker": "Avisen\\Views\\SendEmail.xaml.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SendEmail.xaml.cs",
-              "RelativeToolTip": "Avisen\\Views\\SendEmail.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T01:08:57.749Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "EmailCode.xaml",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\EmailCode.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\EmailCode.xaml",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\EmailCode.xaml",
               "RelativeToolTip": "Avisen\\Views\\EmailCode.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAANAAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-13T01:08:45.655Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SendEmail.xaml",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SendEmail.xaml",
-              "RelativeDocumentMoniker": "Avisen\\Views\\SendEmail.xaml",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\raddar2\\Raddar\\Avisen\\Views\\SendEmail.xaml",
-              "RelativeToolTip": "Avisen\\Views\\SendEmail.xaml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAABIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-13T01:05:41.071Z"
             }
           ]
         }

@@ -26,6 +26,21 @@
             Route="SignUp" />
     </FlyoutItem>
 
+    <FlyoutItem>
+        <ShellContent
+         Title="SendEmail"
+         ContentTemplate="{DataTemplate views:SendEmail}"
+         Route="SendEmail" />
+    </FlyoutItem>
+
+    <FlyoutItem>
+        <ShellContent
+         Title="EmailCode"
+         ContentTemplate="{DataTemplate views:EmailCode}"
+         Route="EmailCode" />
+    </FlyoutItem>
+
+
     <TabBar>
         <ShellContent
             Title="Home"

@@ -30,10 +30,8 @@ public partial class SendEmail : ContentPage
             var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
 
             bool success = jsonResponse.GetProperty("success").GetBoolean();
-            bool emailExists = jsonResponse.GetProperty("emailExists").GetBoolean();
-            bool pending = jsonResponse.GetProperty("pending").GetBoolean();
 
-            if (success && emailExists && pending)
+            if (success)
             {
                 await DisplayAlert("Bien", "siguiente pagina", "OK");
                 await Navigation.PushAsync(new EmailCode(EmailEntry.Text));
@@ -47,14 +45,14 @@ public partial class SendEmail : ContentPage
         await Shell.Current.GoToAsync("..");
     }
 
-    private async void activateLoading()
+    private void activateLoading()
     {
         Overlay.IsVisible = true;
         LoadingIndicator.IsVisible = true;
         LoadingIndicator.IsRunning = true;
     }
 
-    private async void desactivateLoading()
+    private void desactivateLoading()
     {
         Overlay.IsVisible = false;
         LoadingIndicator.IsVisible = false;

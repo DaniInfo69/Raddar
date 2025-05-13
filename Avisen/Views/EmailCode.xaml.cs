@@ -10,4 +10,82 @@ public partial class EmailCode : ContentPage
         InitializeComponent();
         _email = Email;
     }
+    private void OnEntryTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var currentEntry = sender as Entry;
+
+        // Si el usuario ha ingresado un número, mueve el foco al siguiente Entry
+        if (!string.IsNullOrEmpty(currentEntry.Text) && currentEntry.Text.Length == 1)
+        {
+            if (currentEntry == Entry1) Entry2.Focus();
+            else if (currentEntry == Entry2) Entry3.Focus();
+            else if (currentEntry == Entry3) Entry4.Focus();
+            else if (currentEntry == Entry4) Entry5.Focus();
+            else if (currentEntry == Entry5) Entry6.Focus();
+        }
+        // Si el usuario borra el contenido, mueve el foco al Entry anterior
+        else if (string.IsNullOrEmpty(currentEntry.Text))
+        {
+            if (currentEntry == Entry6) Entry5.Focus();
+            else if (currentEntry == Entry5) Entry4.Focus();
+            else if (currentEntry == Entry4) Entry3.Focus();
+            else if (currentEntry == Entry3) Entry2.Focus();
+            else if (currentEntry == Entry2) Entry1.Focus();
+        }
+    }
+
+    private void activateLoading()
+    {
+        Overlay.IsVisible = true;
+        LoadingIndicator.IsVisible = true;
+        LoadingIndicator.IsRunning = true;
+    }
+
+    private void desactivateLoading()
+    {
+        Overlay.IsVisible = false;
+        LoadingIndicator.IsVisible = false;
+        LoadingIndicator.IsRunning = false;
+    }
+
+    private async void NewPassword_Clicked(object sender, EventArgs e)
+    {
+        activateLoading();
+        string code = Entry1.Text + Entry2.Text + Entry3.Text + Entry4.Text + Entry5.Text + Entry6.Text;
+        Console.WriteLine($"El codigo recibido es: {code}");
+        var jsonRequest = new
+        {
+            code
+        };
+
+        var response = await apiService.PostAsync("verificarcode", jsonRequest);
+        if (response.IsSuccessStatusCode)
+        {
+
+            var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+
+            bool success = jsonResponse.GetProperty("success").GetBoolean();
+
+            if (success)
+            {
+                //await Navigation.PushAsync(new ChangePassword(_email, code));
+            }
+        }
+        else
+        {
+            Console.WriteLine($"El codigo recibido es: {code}");
+
+        }
+        desactivateLoading();
+    }
+
+    private async void GoBack_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
+    }
+
+    private void ResendEmail_Clicked(object sender, EventArgs e)
+    {
+        Console.WriteLine($"El email recibido es: {_email}");
+    }
 }
