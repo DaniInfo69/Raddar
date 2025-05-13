@@ -42,6 +42,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Resources.Styles.St
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/Pc/Desktop/Programacion/raddar2/Raddar/Avisen/Views/ChangePassword.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.ChangePassword.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ChangePassword.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ChangePassword.xaml
+
 [C:/Users/Pc/Desktop/Programacion/raddar2/Raddar/Avisen/Views/EditUserInfo.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Views.EditUserInfo.xaml

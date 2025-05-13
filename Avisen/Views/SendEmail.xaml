@@ -119,12 +119,15 @@
                         IsVisible="False"
                         WidthRequest="80"
                         Color="Black" />
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="17"
-                        HorizontalOptions="Center"
-                        Text="Cargando"
-                        TextColor="Black" />
+                    <HorizontalStackLayout VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            HorizontalOptions="Center"
+                            Text="Cargando"
+                            TextColor="Black" />
+                    </HorizontalStackLayout>
+
                 </VerticalStackLayout>
             </sharpnado:MaterialFrame>
         </Grid>

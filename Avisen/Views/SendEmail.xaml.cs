@@ -16,28 +16,40 @@ public partial class SendEmail : ContentPage
 
     private async void SendUserEmail_Clicked(object sender, EventArgs e)
     {
-        activateLoading();
-        var jsonRequest = new
+        try
         {
-            email = EmailEntry.Text
-        };
-
-        var response = await apiService.PostAsync("resetpassword-request-code", jsonRequest);
-
-        if (response.IsSuccessStatusCode)
-        {
-
-            var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
-
-            bool success = jsonResponse.GetProperty("success").GetBoolean();
-
-            if (success)
+            activateLoading();
+            var jsonRequest = new
             {
-                await DisplayAlert("Bien", "siguiente pagina", "OK");
-                await Navigation.PushAsync(new EmailCode(EmailEntry.Text));
+                email = EmailEntry.Text
+            };
+
+            var response = await apiService.PostAsync("resetpassword-request-code", jsonRequest);
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+
+                bool success = jsonResponse.GetProperty("success").GetBoolean();
+
+                if (success)
+                {
+                    await DisplayAlert("Bien", "siguiente pagina", "OK");
+                    await Navigation.PushAsync(new EmailCode(EmailEntry.Text));
+                }
             }
         }
-        desactivateLoading();
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            desactivateLoading();
+
+        }
+
     }
 
     private async void ReturnLogin_Clicked(object sender, EventArgs e)

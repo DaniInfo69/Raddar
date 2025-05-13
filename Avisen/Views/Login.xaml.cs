@@ -21,6 +21,8 @@ namespace Avisen.Views
 
             try
             {
+                EmailEntry.Text = string.Empty;
+                PasswordEntry.Text = string.Empty;
                 LoadingIndicartorEnable();
 
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
@@ -87,8 +89,8 @@ namespace Avisen.Views
 
                 var jsonRequest = new
                 {
-                    email = "dajosolmag1@gmail.com", // Esto deberia venir de entradas de usuario
-                    password = "Qq12345."       // Esto tambien debe provenir de entradas
+                    email = EmailEntry.Text, // Esto deberia venir de entradas de usuario
+                    password = PasswordEntry.Text       // Esto tambien debe provenir de entradas
                 };
 
                 var response = await apiService.PostAsync("usuario/login", jsonRequest);

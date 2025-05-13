@@ -226,6 +226,18 @@ public partial class SignUp : ContentPage
 
     private async void Back_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("..");
+        try
+        {
+            var currentPage = Navigation.NavigationStack.LastOrDefault();
+            if (currentPage == null)
+                throw new InvalidOperationException("No se pudo obtener la página actual.");
+
+            await Navigation.PopAsync();
+            Navigation.RemovePage(currentPage);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"No se pudo navegar hacia atrás: {ex.Message}", "OK");
+        }
     }
 }

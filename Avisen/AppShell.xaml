@@ -28,16 +28,23 @@
 
     <FlyoutItem>
         <ShellContent
-         Title="SendEmail"
-         ContentTemplate="{DataTemplate views:SendEmail}"
-         Route="SendEmail" />
+            Title="SendEmail"
+            ContentTemplate="{DataTemplate views:SendEmail}"
+            Route="SendEmail" />
     </FlyoutItem>
 
     <FlyoutItem>
         <ShellContent
-         Title="EmailCode"
-         ContentTemplate="{DataTemplate views:EmailCode}"
-         Route="EmailCode" />
+            Title="EmailCode"
+            ContentTemplate="{DataTemplate views:EmailCode}"
+            Route="EmailCode" />
+    </FlyoutItem>
+
+    <FlyoutItem>
+        <ShellContent
+            Title="ChangePassword"
+            ContentTemplate="{DataTemplate views:ChangePassword}"
+            Route="ChangePassword" />
     </FlyoutItem>
 
 
