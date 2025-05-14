@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Una herramienta generó este código.
-    Se generó desde C:\Users\Pc\Desktop\Programacion\raddar2\Raddar\Avisen\Platforms\Android\AndroidManifest.xml
+    Se generó desde C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\Platforms\Android\AndroidManifest.xml
     Los cambios realizados en este archivo pueden generar un comportamiento incorrecto y se perderán si
     se regenera el contenido.
     -->
@@ -13,7 +13,7 @@
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:name="crc64be4a4d0745143da3.MainApplication" android:label="Raddar" android:debuggable="true" android:extractNativeLibs="true">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDEy8LnN1mgiy4hHa7W7TC9Jf_ywbYt3XA" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
     <activity android:configChanges="density|orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:launchMode="singleTop" android:theme="@style/Maui.SplashTheme" android:name="crc64be4a4d0745143da3.MainActivity" android:exported="true">

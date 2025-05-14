@@ -20,6 +20,7 @@ layout\toolbar;android\Resources\layout\Toolbar
 values\attr;values\attr
 values\attrs;android\Resources\values\attrs
 values\colors;values\colors
+values\google_maps_api;values\google_maps_api
 values\strings;values\strings
 values\styles;android\Resources\values\styles
 xml\microsoft_maui_essentials_fileprovider_file_paths;resources\xml\microsoft_maui_essentials_fileprovider_file_paths
