@@ -13,7 +13,7 @@
         <Grid
             Grid.Row="0"
             Padding="30"
-            BackgroundColor="#0aa59b">
+            BackgroundColor="#11d8cb">
             <HorizontalStackLayout HorizontalOptions="FillAndExpand">
                 <Label
                     Grid.Column="0"
@@ -35,7 +35,7 @@
             <Border
                 Margin="0,-30,0,0"
                 Padding="20"
-                BackgroundColor="#f0ebdc"
+                BackgroundColor="#fdfefe"
                 StrokeThickness="0"
                 VerticalOptions="FillAndExpand">
 

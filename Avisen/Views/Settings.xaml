@@ -8,14 +8,14 @@
     Shell.NavBarIsVisible="False">
     <ScrollView>
         <Grid RowDefinitions=".1*, .8*">
-            <Grid BackgroundColor="#0aa59b" />
+            <Grid BackgroundColor="#11d8cb" />
 
             <!--  Contenido principal  -->
             <Grid Grid.Row="1" Grid.Column="2">
                 <RoundRectangle
                     Margin="-5,-30,-5,-2"
                     CornerRadius="30,30,0,0"
-                    Fill="#f0ebdc" />
+                    Fill="#fdfefe" />
 
                 <VerticalStackLayout>
                     <Grid Padding="20">
@@ -23,7 +23,7 @@
                         <RoundRectangle
                             Margin="0,0,0,10"
                             CornerRadius="30,30,30,30"
-                            Fill="#f5f3ed" />
+                            Fill="#f5f5f5" />
 
                         <VerticalStackLayout Padding="20">
                             <Label
@@ -33,7 +33,7 @@
                                 Text="Ajustes"
                                 TextColor="#2D2D2D"
                                 VerticalOptions="Start" />
-                            <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
+                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
 
 
@@ -54,16 +54,16 @@
                                     Text="Auto-Centrado"
                                     TextColor="#2D2D2D"
                                     VerticalOptions="Center" />
-                                <Switch 
+                                <Switch
                                     x:Name="SwitchRecenter"
-                                    Grid.Column="2" 
+                                    Grid.Column="2"
+                                    IsToggled="{Binding IsRecenter}"
                                     OnColor="#f0ebdc"
                                     ThumbColor="#0aa59b"
-                                    IsToggled="{Binding IsRecenter}" 
-                                    Toggled="SwtichRecenter_Toggled"/>
+                                    Toggled="SwtichRecenter_Toggled" />
                             </Grid>
 
-                            <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
+                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
 
                             <Grid ColumnDefinitions="Auto, *, Auto">
@@ -102,7 +102,7 @@
                                 VerticalOptions="Center"
                                 Value="{Binding SliderOfferDistanceValue}" />
 
-                            <BoxView BackgroundColor="#f0ebdc" HeightRequest="5" />
+                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
                             <Grid ColumnDefinitions="Auto, *, Auto">
                                 <Label
@@ -147,7 +147,7 @@
 
                             <BoxView
                                 Margin="0,0,0,10"
-                                BackgroundColor="#f0ebdc"
+                                BackgroundColor="#fdfefe"
                                 HeightRequest="5" />
 
                             <Button

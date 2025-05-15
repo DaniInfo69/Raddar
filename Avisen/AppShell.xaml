@@ -50,17 +50,17 @@
 
     <TabBar>
         <ShellContent
-            Title="Home"
+            Title="Inicio"
             ContentTemplate="{DataTemplate views:Home}"
             Route="Home" />
 
         <ShellContent
-            Title="Map"
+            Title="Mapa"
             ContentTemplate="{DataTemplate views:Map}"
             Route="Map" />
 
         <ShellContent
-            Title="Settings"
+            Title="Ajustes"
             ContentTemplate="{DataTemplate views:Settings}"
             Route="Settings" />
 

@@ -11,7 +11,7 @@
     Shell.NavBarIsVisible="False">
 
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="#0aa59b" StatusBarStyle="Default" />
+        <toolkit:StatusBarBehavior StatusBarColor="#11d8cb" StatusBarStyle="Default" />
     </ContentPage.Behaviors>
 
     <Grid>
