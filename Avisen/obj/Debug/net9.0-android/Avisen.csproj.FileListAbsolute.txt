@@ -11879,3 +11879,7 @@ C:\Users\Pc\Desktop\Programacion\raddar2\Raddar\Avisen\obj\Debug\net9.0-android\
 C:\Users\Pc\Desktop\Programacion\raddar2\Raddar\Avisen\obj\Debug\net9.0-android\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\obj\Debug\net9.0-android\res\values\google_maps_api.xml
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\res\values\google_maps_api.xml
+C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\home.png
+C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\map.png
+C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\perfile.png
+C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\settings.png

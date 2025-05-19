@@ -18,12 +18,12 @@ namespace Avisen.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            LoadingIndicartorEnable();
 
             try
             {
                 EmailEntry.Text = string.Empty;
                 PasswordEntry.Text = string.Empty;
-                LoadingIndicartorEnable();
 
                 var existingAccessToken = await tokenService.GetAccessTokenAsync();
                 var refreshToken = await tokenService.GetRefreshTokenAsync();
@@ -161,14 +161,14 @@ namespace Avisen.Views
             await Navigation.PushAsync(new SendEmail());
         }
 
-        private async void LoadingIndicartorEnable()
+        private void LoadingIndicartorEnable()
         {
             Overlay.IsVisible = true;
             LoadingIndicator.IsVisible = true;
             LoadingIndicator.IsRunning = true;
         }
 
-        private async void LoadingIndicartorUnable()
+        private void LoadingIndicartorUnable()
         {
             Overlay.IsVisible = false;
             LoadingIndicator.IsVisible = false;

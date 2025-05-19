@@ -65,21 +65,25 @@
     <TabBar>
         <ShellContent
             Title="Inicio"
+            Icon="home.png"
             ContentTemplate="{DataTemplate views:Home}"
             Route="Home" />
 
         <ShellContent
             Title="Mapa"
+            Icon="map.png"
             ContentTemplate="{DataTemplate views:Map}"
             Route="Map" />
 
         <ShellContent
             Title="Ajustes"
+            Icon="settings.png"
             ContentTemplate="{DataTemplate views:Settings}"
             Route="Settings" />
 
         <ShellContent
             Title="Perfil"
+            Icon="perfile.png"
             ContentTemplate="{DataTemplate views:UserProfile}"
             Route="UserProfile" />
 
