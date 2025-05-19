@@ -135,7 +135,8 @@ namespace Avisen.Views
                     return;
                 }
 
-                await Navigation.PushModalAsync(new PromocionDetallesPage(promocion, matriz.Location));
+                await Navigation.PushAsync(new PromocionDetallesPage(promocion, matriz.Location));
+                //await Navigation.PushModalAsync(new PromocionDetallesPage(promocion, matriz.Location));
             }
             catch (Exception ex)
             {

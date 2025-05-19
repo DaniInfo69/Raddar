@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:Avisen"
     xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     Title="Detalles de la Promoción"
-    BackgroundColor="#F5EBDC">
+    BackgroundColor="#fdfefe"
+    Shell.NavBarIsVisible="False">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -23,7 +24,7 @@
             <!--  Tarjeta completa  -->
             <Border
                 Padding="0"
-                BackgroundColor="White"
+                BackgroundColor="#F5EBDC"
                 HeightRequest="620"
                 Stroke="#19535F"
                 StrokeShape="RoundRectangle 20"

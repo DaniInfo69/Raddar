@@ -7,7 +7,7 @@
     Padding="0"
     Shell.NavBarIsVisible="False">
 
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions=".1*, .8*">
 
         <!--  Header  -->
         <Grid
@@ -33,7 +33,7 @@
         <!--  Main Content  -->
         <Grid Grid.Row="1">
             <Border
-                Margin="0,-30,0,0"
+                Margin="-5,-30,-5,-2"
                 Padding="20"
                 BackgroundColor="#fdfefe"
                 StrokeThickness="0"
@@ -91,7 +91,7 @@
                                     <Frame
                                         Margin="0,0,0,10"
                                         Padding="15"
-                                        BackgroundColor="White"
+                                        BackgroundColor="#F5EBDC"
                                         BorderColor="#CCCCCC"
                                         CornerRadius="8"
                                         HasShadow="False">
@@ -161,11 +161,11 @@
                         BackgroundColor="Transparent"
                         IsVisible="False"
                         ZIndex="99">
-                        <Frame
+                        <Border
                             x:Name="PopupFrame"
                             Padding="20"
                             BackgroundColor="White"
-                            CornerRadius="20"
+                            StrokeShape="RoundRectangle 40,40,40,40"
                             HeightRequest="350"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
@@ -211,7 +211,7 @@
                                     <Button
                                         BackgroundColor="LightGray"
                                         Command="{Binding ClearFiltersCommand}"
-                                        CornerRadius="10"
+                                        CornerRadius="20"
                                         Text="Limpiar"
                                         TextColor="#19535F" />
 
@@ -219,12 +219,12 @@
                                         Grid.Column="1"
                                         BackgroundColor="#0aa59b"
                                         Command="{Binding ApplyFiltersCommand}"
-                                        CornerRadius="10"
+                                        CornerRadius="20"
                                         Text="Aplicar"
                                         TextColor="White" />
                                 </Grid>
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
                     </ContentView>
 
                 </AbsoluteLayout>

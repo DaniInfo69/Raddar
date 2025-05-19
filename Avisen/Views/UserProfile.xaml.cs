@@ -23,8 +23,7 @@ public partial class UserProfile : ContentPage
 
             if (!string.IsNullOrEmpty(userDataJson))
             {
-                await DisplayAlert("UserData JSON", userDataJson, "OK");
-
+                Console.WriteLine($"UserData JSON: {userDataJson}");
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -73,9 +72,6 @@ public partial class UserProfile : ContentPage
 
             if (response.IsSuccessStatusCode)
             {
-                // Éxito: cerrar sesión y limpiar almacenamiento seguro
-                await DisplayAlert("Éxito", "Sesión cerrada exitosamente.", "OK");
-
                 SecureStorage.Remove("UserData");
                 SecureStorage.Remove("AccessToken");
                 SecureStorage.Remove("RefreshToken");
@@ -98,15 +94,14 @@ public partial class UserProfile : ContentPage
         }
     }
 
-    public void NavigateToEditInfo(object sender, EventArgs e) {
-
-        Navigation.PushModalAsync(new EditUserInfo());
+    public async void NavigateToEditInfo(object sender, EventArgs e) {
+        await Navigation.PushAsync(new EditUserInfo());
+        //Navigation.PushModalAsync(new EditUserInfo());
     }
 
-    public void NavigateToSaveOffers(object sender, EventArgs e)
+    public async void NavigateToSaveOffers(object sender, EventArgs e)
     {
-
-        Navigation.PushModalAsync(new SaveOffers());
+        await Navigation.PushModalAsync(new SaveOffers());
     }
 
 }

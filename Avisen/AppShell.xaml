@@ -47,6 +47,20 @@
             Route="ChangePassword" />
     </FlyoutItem>
 
+    <FlyoutItem>
+        <ShellContent
+            Title="EditUserInfo"
+            ContentTemplate="{DataTemplate views:EditUserInfo}"
+            Route="EditUserInfo" />
+    </FlyoutItem>
+
+    <FlyoutItem>
+        <ShellContent
+            Title="PromocionDetallesPage"
+            ContentTemplate="{DataTemplate views:PromocionDetallesPage}"
+            Route="PromocionDetallesPage" />
+    </FlyoutItem>
+
 
     <TabBar>
         <ShellContent

@@ -35,7 +35,6 @@ public partial class SendEmail : ContentPage
 
                 if (success)
                 {
-                    await DisplayAlert("Bien", "siguiente pagina", "OK");
                     await Navigation.PushAsync(new EmailCode(EmailEntry.Text));
                 }
             }

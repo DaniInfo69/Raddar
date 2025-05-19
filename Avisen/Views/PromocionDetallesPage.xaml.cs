@@ -70,7 +70,7 @@ public partial class PromocionDetallesPage : ContentPage
     // Mantenemos los mismos métodos de eventos
     private async void CerrarModal(object sender, EventArgs e)
     {
-        await Navigation.PopModalAsync();
+        await Shell.Current.GoToAsync("..");
     }
 
     private async void IrAOfertaClicked(object sender, EventArgs e)
@@ -84,7 +84,7 @@ public partial class PromocionDetallesPage : ContentPage
             await NavigationService.AbrirNavegacion(_ubicacionPromocion);
         }
 
-        await Navigation.PopModalAsync();
+        await Shell.Current.GoToAsync("..");
 
         await Shell.Current.GoToAsync("//Map");
     }

@@ -49,7 +49,7 @@ namespace Avisen.Views
 
         private async void CerrarModal(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("..");
         }
 
         private async void LoadUserInfo()

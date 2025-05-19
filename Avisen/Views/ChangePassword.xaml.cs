@@ -116,15 +116,15 @@ public partial class ChangePassword : ContentPage
                 token = _code,
                 newPassword = Password.Text
             };
-
+            Console.WriteLine("Empieza");
             var response = await apiService.PostAsync("reset-password-code", jsonRequest);
             if (response.IsSuccessStatusCode)
             {
-
+                Console.WriteLine("Success");
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
 
                 bool success = jsonResponse.GetProperty("success").GetBoolean();
-
+                Console.WriteLine("Cambia a Login");
                 await Shell.Current.GoToAsync("//Login");
             }
 
