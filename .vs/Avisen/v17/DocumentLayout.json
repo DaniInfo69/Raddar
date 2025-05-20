@@ -1,21 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\",
+  "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\pc\\desktop\\programacion\\raddar\\avisen\\iconfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\iconfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\iconfont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,36 +30,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 265,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Map.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAowBEBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T22:07:49.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Login.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Login.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Login.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Login.xaml.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDYAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwDYAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T01:12:25.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Login.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Login.xaml",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Views\\Login.xaml",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Login.xaml",
               "RelativeToolTip": "Avisen\\Views\\Login.xaml",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAAFgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -63,11 +72,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\AppShell.xaml",
               "RelativeDocumentMoniker": "Avisen\\AppShell.xaml",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\AppShell.xaml",
               "RelativeToolTip": "Avisen\\AppShell.xaml",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAEkAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -75,11 +84,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IconFont.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\IconFont.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\IconFont.cs",
               "RelativeDocumentMoniker": "Avisen\\IconFont.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\IconFont.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\IconFont.cs",
               "RelativeToolTip": "Avisen\\IconFont.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

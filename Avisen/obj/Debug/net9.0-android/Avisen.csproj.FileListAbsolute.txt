@@ -11883,3 +11883,7 @@ C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizeti
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\map.png
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\perfile.png
 C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\settings.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\home.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\map.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\perfile.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto Residencias\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\settings.png
