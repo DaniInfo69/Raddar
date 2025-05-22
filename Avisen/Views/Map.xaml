@@ -3,16 +3,53 @@
     x:Class="Avisen.Views.Map"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Avisen"
     xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
     xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
     Title="Map"
     Shell.NavBarIsVisible="False">
 
-    <maps:Map
-        x:Name="map"
-        IsScrollEnabled="True"
-        IsShowingUser="true"
-        IsZoomEnabled="True"
-        MapType="Street" />
+    <Grid>
+        <!--  Mapa  -->
+        <maps:Map
+            x:Name="map"
+            IsScrollEnabled="True"
+            IsShowingUser="true"
+            IsZoomEnabled="True"
+            MapType="Street" />
 
+        <!--  Capa transparente para capturar toques  -->
+        <ContentView
+            x:Name="tapOverlay"
+            BackgroundColor="Transparent"
+            IsEnabled="False">
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnMapTapped" />
+            </ContentView.GestureRecognizers>
+        </ContentView>
+
+        <!--  Botón para activar modo agregar pin  -->
+        <Button
+            x:Name="AddPin"
+            Margin="10"
+            Padding="10"
+            BackgroundColor="#d1e7dd"
+            Clicked="OnAddPinClicked"
+            CornerRadius="20"
+            FontSize="18"
+            HorizontalOptions="Start"
+            Opacity="0.8"
+            Text="Agregar Pin"
+            TextColor="#19535F"
+            VerticalOptions="Start">
+            <Button.ImageSource>
+                <FontImageSource
+                    FontFamily="MaterialIcon"
+                    Glyph="{x:Static local:IconFont.Add_location}"
+                    Size="25"
+                    Color="#19535F" />
+            </Button.ImageSource>
+        </Button>
+
+    </Grid>
 </ContentPage>

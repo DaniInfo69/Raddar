@@ -3,6 +3,7 @@ using Avisen.Services;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Diagnostics;
+using Microsoft.Maui.Devices.Sensors;
 
 namespace Avisen.Views;
 
@@ -13,7 +14,7 @@ public partial class Map : ContentPage
     private readonly NegocioService negocioService;
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
-
+    private bool isAddingPin = false;
 
     public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
     public static List<Matriz> OfertasActuales = new List<Matriz>();
@@ -270,5 +271,91 @@ public partial class Map : ContentPage
         {
             await DisplayAlert("Sin promociones", "Este negocio no tiene promociones disponibles", "OK");
         }
+    }
+
+    private void OnAddPinClicked(object sender, EventArgs e)
+    {
+        if (!isAddingPin)
+        {
+            isAddingPin = true;
+            tapOverlay.IsEnabled = true;
+
+            AddPin.Text = "Cancelar";
+            AddPin.TextColor = Color.FromArgb("#5f1919");
+            AddPin.BackgroundColor = Color.FromArgb("#e7d1d1");
+
+            if (AddPin.ImageSource is FontImageSource icon)
+            {
+                icon.Color = Color.FromArgb("#5f1919");
+                icon.Glyph = IconFont.Cancel;
+            }
+            DisplayAlert("Modo Pin", "Toca en el mapa para agregar un pin", "OK");
+        }
+        else
+        {
+            isAddingPin = false;
+            tapOverlay.IsEnabled = false;
+
+            AddPin.Text = "Agregar Pin";
+            AddPin.TextColor = Color.FromArgb("#19535F");
+            AddPin.BackgroundColor = Color.FromArgb("#d1e7dd");
+
+            if (AddPin.ImageSource is FontImageSource icon)
+            {
+                icon.Color = Color.FromArgb("#19535F");
+                icon.Glyph = IconFont.Add_location;
+            }
+            DisplayAlert("Modo Normal", "Ya puedes mover el mapa", "OK");
+        }
+
+
+    }
+
+    // Evento cuando se toca el mapa (tapOverlay)
+    private async void OnMapTapped(object sender, TappedEventArgs e)
+    {
+        if (!isAddingPin) return;
+
+        // Obtener punto tocado relativo al mapa
+        var point = e.GetPosition(map);
+        if (point == null) return;
+
+        // Convertir a coordenadas de mapa
+        var location = map.VisibleRegion?.ToLocation(point.Value, map.Width, map.Height);
+        if (location == null) return;
+
+        // Crear y agregar el pin
+        var pin = new Microsoft.Maui.Controls.Maps.Pin
+        {
+            Label = "Ubicación seleccionada",
+            Location = location,
+            Type = PinType.Place
+        };
+
+        map.Pins.Clear(); // Opcional: eliminar otros pins
+        map.Pins.Add(pin);
+
+        // Mostrar coordenadas
+        await DisplayAlert("Coordenadas",
+            $"Lat: {location.Latitude:F6}, Lng: {location.Longitude:F6}",
+            "OK");
+
+        isAddingPin = false;
+    }
+
+
+}
+
+public static class MapExtensions
+{
+    public static Location? ToLocation(this MapSpan region, Point point, double mapWidth, double mapHeight)
+    {
+        var latDegreesPerPixel = region.LatitudeDegrees / mapHeight;
+        var lonDegreesPerPixel = region.LongitudeDegrees / mapWidth;
+
+        var lat = region.Center.Latitude + ((mapHeight / 2 - point.Y) * latDegreesPerPixel);
+        var lon = region.Center.Longitude + ((point.X - mapWidth / 2) * lonDegreesPerPixel);
+
+        return new Location(lat, lon);
     }
 }
