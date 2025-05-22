@@ -1,4 +1,3 @@
-runtimes\win-x64\native\WebView2Loader.dll
 appicon.ico
 appiconLargeTile.scale-100.png
 appiconLargeTile.scale-125.png
@@ -56,8 +55,13 @@ fondo.scale-100.png
 fondo2.scale-100.png
 fondo3.scale-100.jpg
 fondoprueba1.scale-100.png
+home.scale-100.png
 logo.scale-100.png
 logo_prueba1.scale-100.png
+map.scale-100.png
 papel.scale-100.jpeg
+perfile.scale-100.png
 refrescos.scale-100.jpg
+settings.scale-100.png
 AboutAssets.txt
+heart.json

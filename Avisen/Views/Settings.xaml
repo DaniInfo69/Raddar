@@ -172,6 +172,73 @@
 
                         </VerticalStackLayout>
                     </Grid>
+
+                    <Grid>
+                        <RoundRectangle
+                            Margin="0,0,0,10"
+                            CornerRadius="30,30,30,30"
+                            Fill="#f5f5f5" />
+
+                        <VerticalStackLayout Padding="20">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalTextAlignment="Center"
+                                Text="Ubicaciones Favoritas"
+                                TextColor="#2D2D2D"
+                                VerticalOptions="Start" />
+                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
+
+
+                            <CollectionView x:Name="FavoritosCollectionView" ItemsSource="{Binding Favoritos}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid
+                                            Padding="20"
+                                            ColumnDefinitions="Auto, *, Auto"
+                                            RowDefinitions="Auto, Auto">
+                                            <RoundRectangle
+                                                Margin="0,0,0,10"
+                                                CornerRadius="30,30,30,30"
+                                                Fill="#f5f5f5" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="35"
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource MaterialIcon}"
+                                                Text="{x:Static local:IconFont.Location_on}"
+                                                TextColor="#BFCFFF"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                FontSize="Medium"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Nombre}"
+                                                TextColor="#2D2D2D"
+                                                VerticalOptions="Center" />
+                                            <Button
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                BackgroundColor="#f5f5f5"
+                                                Command="{Binding BindingContext.EliminarFavoritoCommand, Source={x:Reference Name=FavoritosCollectionView}}"
+                                                CommandParameter="{Binding idfavorito}"
+                                                FontSize="35"
+                                                Style="{StaticResource MaterialIcon}"
+                                                Text="{x:Static local:IconFont.Delete}" />
+                                            <BoxView
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                BackgroundColor="LightGray"
+                                                HeightRequest="1" />
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Grid>
                 </VerticalStackLayout>
             </Grid>
         </Grid>

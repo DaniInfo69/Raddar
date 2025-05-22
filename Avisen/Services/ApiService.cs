@@ -28,6 +28,30 @@ namespace Avisen.Services
             return await httpClient.PostAsync(endpoint, content);
         }
 
+        public async Task<List<Favorito>> ObtenerFavoritosPorUsuarioAsync(int idUsuario)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync($"favorito/usuario/{idUsuario}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var favoritos = await response.Content.ReadFromJsonAsync<List<Favorito>>();
+                    return favoritos ?? new List<Favorito>();
+                }
+
+                return new List<Favorito>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al obtener favoritos: {ex.Message}");
+                return new List<Favorito>();
+            }
+        }
+
+
+
+
         public async Task<List<Negocio>> ObtenerNegociosAsync()
         {
             try

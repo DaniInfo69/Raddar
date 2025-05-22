@@ -165,9 +165,9 @@
                             x:Name="PopupFrame"
                             Padding="20"
                             BackgroundColor="White"
-                            StrokeShape="RoundRectangle 40,40,40,40"
                             HeightRequest="350"
                             HorizontalOptions="Center"
+                            StrokeShape="RoundRectangle 40,40,40,40"
                             VerticalOptions="Center"
                             WidthRequest="300">
                             <VerticalStackLayout Spacing="15">

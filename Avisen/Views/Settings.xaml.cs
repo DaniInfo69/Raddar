@@ -1,18 +1,62 @@
 using System.Diagnostics;
+using Avisen.Models;
+using Avisen.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.Text.Json;
 
 namespace Avisen.Views
 {
     public partial class Settings : ContentPage
     {
+        public ObservableCollection<Favorito> Favoritos { get; set; } = new ObservableCollection<Favorito>();
+        public ICommand EliminarFavoritoCommand { get; }
+        private int UserId;
         public Settings()
         {
+            BindingContext = this;
             InitializeComponent();
             saveButton.IsEnabled = false;
-            BindingContext = this;
-
-
+            EliminarFavoritoCommand = new Command<int>(OnEliminarFavorito);
         }
-        protected override void OnAppearing()
+
+        private async void LoadUserDataAsync()
+        {
+            try
+            {
+                var userDataJson = await SecureStorage.GetAsync("UserData");
+
+                if (!string.IsNullOrEmpty(userDataJson))
+                {
+                    Console.WriteLine($"UserData JSON: {userDataJson}");
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+
+                    var userData = JsonSerializer.Deserialize<UserData>(userDataJson, options);
+
+                    if (userData != null)
+                    {
+                        UserId = Convert.ToInt32(userData.IdUsuario);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error al descerializar datos");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Sin informacion del usuario");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             IsRecenter = Preferences.Get("IsRecenter", false);
@@ -20,6 +64,29 @@ namespace Avisen.Views
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
             SliderOfferDistanceValue = OfferDistance;
             SliderFrequencyValue = UpdateFrequency;
+
+            await ObtenerFavoritos();
+        }
+
+        private async Task ObtenerFavoritos()
+        {
+            try
+            {
+                LoadUserDataAsync();
+                var apiService = new ApiService();
+                var favoritos = await apiService.ObtenerFavoritosPorUsuarioAsync(UserId);
+
+                Favoritos.Clear();
+                foreach (var favorito in favoritos)
+                {
+                    Favoritos.Add(favorito);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
         }
 
         //Cambiar el switch
@@ -110,7 +177,7 @@ namespace Avisen.Views
             }
         }
 
-        //Guardar los datos en SecurityStorage
+        //Guardar los datos en Preferences
         private void OnSavePreferences(object sender, EventArgs e)
         {
             saveButton.IsEnabled = false;
@@ -135,12 +202,19 @@ namespace Avisen.Views
                 SwitchRecenter.OnColor = Color.FromArgb("#0aa59b"); // Color verde cuando activado
                 SwitchRecenter.ThumbColor = Color.FromArgb("#f0ebdc"); // Color verde cuando activado
             }
-            else 
+            else
             {
                 SwitchRecenter.OnColor = Colors.Gray; // Color rojo cuando desactivado
                 SwitchRecenter.ThumbColor = Color.FromArgb("#f0ebdc"); // Color verde cuando activado
             }
 
         }
+
+        private void OnEliminarFavorito(int idfavorito)
+        {
+            Debug.WriteLine($"ID del usuario: {UserId}");
+            Debug.WriteLine($"Eliminar favorito con ID: {idfavorito}");
+        }
+
     }
 }
