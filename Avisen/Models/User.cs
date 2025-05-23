@@ -6,11 +6,14 @@ namespace Avisen.Models
         [JsonPropertyName("idusuario")]
         public int IdUsuario { get; set; }
 
-        [JsonPropertyName("email")]
-        public string Email { get; set; }
+        [JsonPropertyName("idcliente")]
+        public int IdCliente { get; set; }
 
         [JsonPropertyName("nombrecliente")]
         public string NombreCliente { get; set; }
+
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
 
         [JsonPropertyName("rol_idrol")]
         public int RolIdRol { get; set; }

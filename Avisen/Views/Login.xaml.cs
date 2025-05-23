@@ -113,8 +113,9 @@ namespace Avisen.Views
                     var userData = new UserData
                     {
                         IdUsuario = user.GetProperty("idusuario").GetInt32(),
-                        Email = user.GetProperty("email").GetString(),
+                        IdCliente = user.GetProperty("idcliente").GetInt32(),
                         NombreCliente = user.GetProperty("nombrecliente").GetString(),
+                        Email = user.GetProperty("email").GetString(),
                         RolIdRol = user.GetProperty("rol_idrol").GetInt32(),
                         Rol = user.GetProperty("rol").GetString()
                     };

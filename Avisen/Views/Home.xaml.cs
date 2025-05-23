@@ -264,7 +264,7 @@ namespace Avisen.Views
                 {
                     OfertasReales.Add(promo);
                 }
-
+                Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
                 // Guardar localmente en una lista privada si deseas filtrar más adelante
                 todasLasPromosCache = todasLasPromos;
 

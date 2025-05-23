@@ -194,7 +194,7 @@ public partial class Map : ContentPage
             {
                 if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
                 {
-                    Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.2));
+                    Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
 
                     ShowPromotionAlert(negocio);
                 }
@@ -280,12 +280,20 @@ public partial class Map : ContentPage
 
     private void OnAddPinClicked(object sender, EventArgs e)
     {
-        turnMode();
+        
+        if (!isAddingPin)
+        {
+            turnMode(false);
+        }
+        else
+        {
+            turnMode(true);
+        }
     }
 
-    private async void turnMode()
+    private async void turnMode(bool decition)
     {
-        if (!isAddingPin)
+        if (!decition)
         {
             isAddingPin = true;
             tapOverlay.IsEnabled = true;
@@ -360,8 +368,8 @@ public partial class Map : ContentPage
 
     private async void buttonSave_Clicked(object sender, EventArgs e)
     {
-        //try
-        //{
+        try
+        {
             Console.WriteLine($"Nomrbre: {NameEntry.Text} lat: {selectedLat} lng: {selectedLng}, id: {UserId}");
             var jsonRequest = new
             {
@@ -384,19 +392,15 @@ public partial class Map : ContentPage
                 await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
                 AddNewFavoriteZone.IsVisible = false;
                 NameEntry.Text = string.Empty;
-                turnMode();
+                turnMode(true);
             }
             else
                 Console.WriteLine("Error");
-            
-            //}
-        //catch (Exception ex)
-        //{
-        //    Console.WriteLine($"Error: {ex.Message}");
-        //}
-
-
-
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 
     private async void buttonCancel_Clicked(object sender, EventArgs e)
@@ -425,7 +429,7 @@ public partial class Map : ContentPage
 
                 if (userData != null)
                 {
-                    UserId = Convert.ToInt32(userData.IdUsuario);
+                    UserId = Convert.ToInt32(userData.IdCliente);
                 }
                 else
                 {
