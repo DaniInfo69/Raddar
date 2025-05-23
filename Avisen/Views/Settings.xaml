@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Avisen"
     Title="Settings"
     Shell.NavBarIsVisible="False">
-    <ScrollView>
+    
         <Grid RowDefinitions=".1*, .8*">
             <Grid BackgroundColor="#11d8cb" />
 
@@ -18,10 +18,11 @@
                     Fill="#fdfefe" />
 
                 <VerticalStackLayout>
-                    <Grid Padding="20">
+                    <Grid Padding="20"
+                          Margin="0,0,0,0">
 
                         <RoundRectangle
-                            Margin="0,0,0,10"
+                            Margin="0,0,0,12"
                             CornerRadius="30,30,30,30"
                             Fill="#f5f5f5" />
 
@@ -173,9 +174,9 @@
                         </VerticalStackLayout>
                     </Grid>
 
-                    <Grid>
+                    <Grid
+                        Margin="20,0,20,10">
                         <RoundRectangle
-                            Margin="0,0,0,10"
                             CornerRadius="30,30,30,30"
                             Fill="#f5f5f5" />
 
@@ -194,7 +195,7 @@
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid
-                                            Padding="20"
+                                            Padding="15"
                                             ColumnDefinitions="Auto, *, Auto"
                                             RowDefinitions="Auto, Auto">
                                             <RoundRectangle
@@ -242,5 +243,4 @@
                 </VerticalStackLayout>
             </Grid>
         </Grid>
-    </ScrollView>
 </ContentPage>

@@ -4,6 +4,7 @@ using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Diagnostics;
 using Microsoft.Maui.Devices.Sensors;
+using System.Text.Json;
 
 namespace Avisen.Views;
 
@@ -15,9 +16,15 @@ public partial class Map : ContentPage
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
     private bool isAddingPin = false;
+    private int UserId;
+    private double? selectedLat = null;
+    private double? selectedLng = null;
+
+
 
     public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
     public static List<Matriz> OfertasActuales = new List<Matriz>();
+    private readonly ApiService apiService = new ApiService(); // Servicio para manejo de API
 
 
 
@@ -59,10 +66,10 @@ public partial class Map : ContentPage
         }
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-
+        LoadUserDataAsync();
         IsRecenter = Preferences.Get("IsRecenter", false);
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         OfferDistance = Preferences.Get("OfferDistance", 0.0);
@@ -95,6 +102,7 @@ public partial class Map : ContentPage
         isUpdatingLocation = true;
         bool hasCenteredMapOnce = false;
         map.IsShowingUser = true;
+
         while (isUpdatingLocation)
         {
             try
@@ -102,8 +110,6 @@ public partial class Map : ContentPage
                 Debug.WriteLine("Empieza ciclo.");
                 var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
                     ?? await Geolocation.GetLastKnownLocationAsync();
-                Debug.WriteLine("Obtiene localizacion");
-                await Task.Delay(1000);
 
                 var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
                 DateTime lastLoadDataTime;
@@ -112,28 +118,26 @@ public partial class Map : ContentPage
                 if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
                 {
                     var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
-                    if (timeSinceLastLoad.TotalSeconds >= frequency)
+                    if (timeSinceLastLoad.TotalSeconds >= frequency / 1000.0)
                     {
                         LoadData();
                     }
                 }
-                Debug.WriteLine("Cargó Datos.");
 
                 if (location != null)
                 {
                     Debug.WriteLine("Procesando ubicación...");
                     userLocation = new Location(location.Latitude, location.Longitude);
 
-                    // Controla el centrado del mapa según IsRecenter
-                    if (Preferences.Get("IsRecenter", false)) // Centrar continuamente
+                    if (Preferences.Get("IsRecenter", false))
                     {
                         map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
                         Debug.WriteLine("Se mueve.");
                     }
-                    else if (!hasCenteredMapOnce) // Centrar solo una vez si IsRecenter es false
+                    else if (!hasCenteredMapOnce)
                     {
                         map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                        hasCenteredMapOnce = true; // Marca como centrado
+                        hasCenteredMapOnce = true;
                         Debug.WriteLine("Se movio por primera vez.");
                     }
 
@@ -143,16 +147,17 @@ public partial class Map : ContentPage
                 {
                     Debug.WriteLine("No se obtuvo localización.");
                 }
-
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"Error al obtener la ubicación o cargar datos: {ex.Message}", "OK");
-                await Task.Delay(10000);
-
             }
+
+            int waitTime = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
+            await Task.Delay(waitTime);
         }
     }
+
 
     private async void LoadData()
     {
@@ -161,7 +166,7 @@ public partial class Map : ContentPage
             negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
-
+            Debug.WriteLine("Cargó Datos.");
         }
         catch (Exception ex)
         {
@@ -275,6 +280,11 @@ public partial class Map : ContentPage
 
     private void OnAddPinClicked(object sender, EventArgs e)
     {
+        turnMode();
+    }
+
+    private async void turnMode()
+    {
         if (!isAddingPin)
         {
             isAddingPin = true;
@@ -289,7 +299,7 @@ public partial class Map : ContentPage
                 icon.Color = Color.FromArgb("#5f1919");
                 icon.Glyph = IconFont.Cancel;
             }
-            DisplayAlert("Modo Pin", "Toca en el mapa para agregar un pin", "OK");
+            await DisplayAlert("Modo Pin", "Toca en el mapa para agregar un pin", "OK");
         }
         else
         {
@@ -305,10 +315,8 @@ public partial class Map : ContentPage
                 icon.Color = Color.FromArgb("#19535F");
                 icon.Glyph = IconFont.Add_location;
             }
-            DisplayAlert("Modo Normal", "Ya puedes mover el mapa", "OK");
+            await DisplayAlert("Modo Normal", "Ya puedes mover el mapa", "OK");
         }
-
-
     }
 
     // Evento cuando se toca el mapa (tapOverlay)
@@ -335,14 +343,105 @@ public partial class Map : ContentPage
         map.Pins.Clear(); // Opcional: eliminar otros pins
         map.Pins.Add(pin);
 
+        selectedLat = Math.Round(location.Latitude, 15);
+        selectedLng = Math.Round(location.Longitude, 14);
+
         // Mostrar coordenadas
         await DisplayAlert("Coordenadas",
-            $"Lat: {location.Latitude:F6}, Lng: {location.Longitude:F6}",
+            $"Lat: {selectedLat}, Lng: {selectedLng}",
             "OK");
 
         isAddingPin = false;
+
+        AddNewFavoriteZone.IsVisible = true;
+        await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
+        await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
     }
 
+    private async void buttonSave_Clicked(object sender, EventArgs e)
+    {
+        //try
+        //{
+            Console.WriteLine($"Nomrbre: {NameEntry.Text} lat: {selectedLat} lng: {selectedLng}, id: {UserId}");
+            var jsonRequest = new
+            {
+                nombre = NameEntry.Text,
+                ubicacion = new
+                {
+                    lat = selectedLat,
+                    lng = selectedLng
+                },
+                cliente_idcliente = UserId
+            };
+
+
+            var response = await apiService.PostAsync("favorito", jsonRequest);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
+
+                await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
+                await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
+                AddNewFavoriteZone.IsVisible = false;
+                NameEntry.Text = string.Empty;
+                turnMode();
+            }
+            else
+                Console.WriteLine("Error");
+            
+            //}
+        //catch (Exception ex)
+        //{
+        //    Console.WriteLine($"Error: {ex.Message}");
+        //}
+
+
+
+    }
+
+    private async void buttonCancel_Clicked(object sender, EventArgs e)
+    {
+        await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
+        await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
+        AddNewFavoriteZone.IsVisible = false;
+        NameEntry.Text = string.Empty;
+    }
+
+    private async void LoadUserDataAsync()
+    {
+        try
+        {
+            var userDataJson = await SecureStorage.GetAsync("UserData");
+
+            if (!string.IsNullOrEmpty(userDataJson))
+            {
+                Console.WriteLine($"UserData JSON: {userDataJson}");
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var userData = JsonSerializer.Deserialize<UserData>(userDataJson, options);
+
+                if (userData != null)
+                {
+                    UserId = Convert.ToInt32(userData.IdUsuario);
+                }
+                else
+                {
+                    Console.WriteLine("Error al descerializar datos");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sin informacion del usuario");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
 
 }
 

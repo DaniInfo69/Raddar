@@ -20,7 +20,7 @@ namespace Avisen.Views
             EliminarFavoritoCommand = new Command<int>(OnEliminarFavorito);
         }
 
-        private async void LoadUserDataAsync()
+        private async Task LoadUserDataAsync()
         {
             try
             {
@@ -59,20 +59,21 @@ namespace Avisen.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await LoadUserDataAsync();
             IsRecenter = Preferences.Get("IsRecenter", false);
             OfferDistance = Preferences.Get("OfferDistance", 0.0);
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
             SliderOfferDistanceValue = OfferDistance;
             SliderFrequencyValue = UpdateFrequency;
-
             await ObtenerFavoritos();
+
+            
         }
 
         private async Task ObtenerFavoritos()
         {
             try
             {
-                LoadUserDataAsync();
                 var apiService = new ApiService();
                 var favoritos = await apiService.ObtenerFavoritosPorUsuarioAsync(UserId);
 

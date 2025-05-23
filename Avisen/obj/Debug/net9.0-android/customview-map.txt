@@ -42,6 +42,7 @@ com.google.android.material.appbar.MaterialToolbar;C:\Users\Pc\Desktop\Programac
 com.google.android.material.tabs.TabLayout;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\178\jl\res\layout\tabbar.xml
 corners;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\192\jl\res\drawable\common_google_signin_btn_icon_disabled.xml
 corners;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\192\jl\res\drawable\common_google_signin_btn_text_disabled.xml
+crc640ec207abc449b2ca.ShellFlyoutLayout;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\179\jl\res\layout\flyoutcontent.xml
 declare-styleable;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\178\jl\res\values\attrs.xml
 declare-styleable;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\181\jl\res\values\attr.xml
 declare-styleable;C:\Users\Pc\Desktop\Programacion\Raddar\Avisen\obj\Debug\net9.0-android\lp\184\jl\res\values\attrs.xml

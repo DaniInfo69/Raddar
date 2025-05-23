@@ -51,5 +51,59 @@
             </Button.ImageSource>
         </Button>
 
+        <ContentView
+            x:Name="AddNewFavoriteZone"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#30000000"
+            IsVisible="False"
+            ZIndex="99">
+            <Border
+                x:Name="PopupFrame"
+                Padding="20"
+                BackgroundColor="White"
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle 40,40,40,40"
+                VerticalOptions="Center"
+                WidthRequest="350">
+                <VerticalStackLayout Spacing="15">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        Text="Agregar Zona Favorita:"
+                        TextColor="#19535F" />
+
+                    <Entry
+                        x:Name="NameEntry"
+                        FontSize="20"
+                        MaxLength="25"
+                        Placeholder="Nombre de la zona"
+                        TextColor="Black" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button
+                            x:Name="buttonCancel"
+                            BackgroundColor="#e7d1d1"
+                            Clicked="buttonCancel_Clicked"
+                            CornerRadius="20"
+                            FontSize="18"
+                            Text="Cancelar"
+                            TextColor="#5f1919" />
+
+                        <Button
+                            x:Name="buttonSave"
+                            Grid.Column="1"
+                            BackgroundColor="#d1e7dd"
+                            Clicked="buttonSave_Clicked"
+                            CornerRadius="20"
+                            FontSize="18"
+                            Text="Guardar"
+                            TextColor="#19535F" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </ContentView>
     </Grid>
 </ContentPage>
