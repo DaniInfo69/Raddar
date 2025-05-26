@@ -147,10 +147,9 @@ namespace Avisen.Views
                     }
                     else if (!success && !emailExists && !pending)
                     {
-                        await DisplayAlert("Pendiente", "Su cuenta está pendiente de aprobación", "OK");
+                        await DisplayAlert("No existe", "No existe tal cuenta", "OK");
                     }
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    await DisplayAlert("Error", $"Error en el login.\nResponse: {responseContent}", "OK");
                 }
             }
             catch (Exception ex)

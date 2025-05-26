@@ -24,6 +24,8 @@ namespace Avisen
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("telephas.ttf", "Telephas");
                     fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcon");
+                    fonts.AddFont("FluentUI.ttf", "FluentUI");
+
                 })
                 .UseMauiMaps();
 

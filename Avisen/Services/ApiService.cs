@@ -18,7 +18,7 @@ namespace Avisen.Services
         {
             httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://japi-production.up.railway.app/api/")
+                BaseAddress = new Uri("https://mapi-7pel.onrender.com/api/")
             };
         }
 
@@ -33,7 +33,7 @@ namespace Avisen.Services
             try
             {
                 var response = await httpClient.GetAsync($"favorito/usuario/{idUsuario}");
-
+                Debug.WriteLine($"Obteniendo favoritos para el usuario {idUsuario} desde la API: {response.RequestMessage?.RequestUri}");
                 if (response.IsSuccessStatusCode)
                 {
                     var favoritos = await response.Content.ReadFromJsonAsync<List<Favorito>>();

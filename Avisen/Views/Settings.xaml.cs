@@ -76,7 +76,7 @@ namespace Avisen.Views
             {
                 var apiService = new ApiService();
                 var favoritos = await apiService.ObtenerFavoritosPorUsuarioAsync(UserId);
-
+                Console.WriteLine(UserId);
                 Favoritos.Clear();
                 foreach (var favorito in favoritos)
                 {
