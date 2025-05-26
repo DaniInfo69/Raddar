@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {}
+    "C:\\Raddar\\Avisen\\Avisen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj": {
+    "C:\\Raddar\\Avisen\\Avisen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
+        "projectUniqueName": "C:\\Raddar\\Avisen\\Avisen.csproj",
         "projectName": "Avisen",
-        "projectPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\Avisen.csproj",
+        "projectPath": "C:\\Raddar\\Avisen\\Avisen.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pc\\Desktop\\Programacion\\Raddar\\Avisen\\obj\\",
+        "outputPath": "C:\\Raddar\\Avisen\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -101,6 +101,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Sharpnado.MaterialFrame.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
@@ -172,6 +176,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Sharpnado.MaterialFrame.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
@@ -239,6 +247,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Sharpnado.MaterialFrame.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
@@ -300,6 +312,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[12.0.1, )"
             },
             "Sharpnado.MaterialFrame.Maui": {
               "target": "Package",

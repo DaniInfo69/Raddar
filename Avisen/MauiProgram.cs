@@ -1,6 +1,7 @@
 ﻿using Avisen.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.LocalNotification;
 using Sharpnado.MaterialFrame;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -16,6 +17,7 @@ namespace Avisen
                 .UseSharpnadoMaterialFrame(loggerEnable: false)
                 .UseMauiCommunityToolkit()
                 .UseSkiaSharp()
+                .UseLocalNotification()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -11,6 +11,7 @@ Microsoft.Maui.dll
 Microsoft.Maui.Essentials.dll
 Microsoft.Maui.Graphics.dll
 Microsoft.Maui.Maps.dll
+Plugin.LocalNotification.dll
 SkiaSharp.dll
 SkiaSharp.Extended.UI.dll
 SkiaSharp.SceneGraph.dll
@@ -100,6 +101,7 @@ Xamarin.Google.ErrorProne.Annotations.dll
 Xamarin.Google.Guava.ListenableFuture.dll
 Xamarin.GooglePlayServices.Base.dll
 Xamarin.GooglePlayServices.Basement.dll
+Xamarin.GooglePlayServices.Location.dll
 Xamarin.GooglePlayServices.Maps.dll
 Xamarin.GooglePlayServices.Tasks.dll
 Xamarin.Jetbrains.Annotations.dll
@@ -192,6 +194,7 @@ Xamarin.Google.ErrorProne.Annotations.aar
 Xamarin.Google.Guava.ListenableFuture.aar
 play-services-base.aar
 play-services-basement.aar
+play-services-location.aar
 play-services-maps.aar
 play-services-tasks.aar
 Xamarin.Jetbrains.Annotations.aar
@@ -207,3 +210,4 @@ playservicesbasement-18.5.0.aar
 playservicestasks-18.2.0.aar
 playservicesbase-18.5.0.aar
 playservicesmaps-19.0.0.aar
+playserviceslocation-21.3.0.aar

@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Avisen.Services;
 using Avisen.Models;
+using Plugin.LocalNotification;
 
 namespace Avisen.Views
 {
@@ -19,6 +20,12 @@ namespace Avisen.Views
         {
             base.OnAppearing();
             LoadingIndicartorEnable();
+
+            var isGranted = await LocalNotificationCenter.Current.AreNotificationsEnabled();
+            if (!isGranted)
+            {
+                await LocalNotificationCenter.Current.RequestNotificationPermission();
+            }
 
             try
             {

@@ -3,6 +3,9 @@ using System.Windows.Input;
 using Avisen.Models;
 using Avisen.Services;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using Plugin.LocalNotification;
+using Plugin.LocalNotification.AndroidOption;
 
 namespace Avisen.Views
 {
@@ -12,6 +15,7 @@ namespace Avisen.Views
         public ObservableCollection<Promocion> OfertasActuales { get; set; }
         public ObservableCollection<Categoria> Categorias { get; set; }
         private List<Promocion> todasLasPromosCache = new(); // para filtros
+        private bool timerIniciado = false;
 
 
         public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
@@ -78,6 +82,7 @@ namespace Avisen.Views
 
         protected override void OnAppearing()
         {
+
             base.OnAppearing();
             UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
             OfferDistance = Preferences.Get("OfferDistance", 0.0);
@@ -104,6 +109,19 @@ namespace Avisen.Views
             OfertasReales.Clear();
             OfertasActuales.Clear();
             RefreshPromotions();
+
+            if (!timerIniciado)
+            {
+                timerIniciado = true;
+
+                this.Dispatcher.StartTimer(TimeSpan.FromSeconds(UpdateFrequency), () =>
+                {
+                    Console.WriteLine("Recarga de Datos");
+                    LoadPromotions(); // Ejecutado en hilo UI
+                    return true;
+                });
+            }
+
         }
 
         private void RefreshPromotions()
@@ -143,9 +161,6 @@ namespace Avisen.Views
                 await DisplayAlert("Error", $"No se pudo navegar al detalle: {ex.Message}", "OK");
             }
         }
-
-
-
 
 
         private async void OnFiltrarTapped(object sender, EventArgs e)
@@ -250,31 +265,72 @@ namespace Avisen.Views
         {
             try
             {
-                // Cargar directamente desde el servicio, no desde Map
                 var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
 
-                // Guardar localmente para Home
-                var todasLasPromos = negocios
+                var nuevasPromos = negocios
                     .Where(m => m.Promociones != null)
                     .SelectMany(m => m.Promociones)
                     .ToList();
 
+                var promocionesJson = Preferences.Get("PromosGuardadas", null);
+                List<Promocion> promosGuardadas = new();
+
+                if (!string.IsNullOrEmpty(promocionesJson))
+                {
+                    try
+                    {
+                        promosGuardadas = JsonSerializer.Deserialize<List<Promocion>>(promocionesJson);
+                    }
+                    catch
+                    {
+                        // Si hay error, ignoramos y seguimos con lista vacía
+                    }
+                }
+
+                var idsAntiguos = promosGuardadas.Select(p => p.idpromocion).ToHashSet();
+                var idsNuevos = nuevasPromos.Select(p => p.idpromocion).ToHashSet();
+
+                if (!idsAntiguos.SetEquals(idsNuevos))
+                {
+
+                    var isGranted = await LocalNotificationCenter.Current.AreNotificationsEnabled();
+                    if (!isGranted)
+                    {
+                        await LocalNotificationCenter.Current.RequestNotificationPermission();
+                    }
+
+                    var notification = new NotificationRequest
+                    {
+                        NotificationId = 1001,
+                        Title = "¡Nuevas ofertas disponibles!",
+                        Description = "Hay promociones nuevas que podrían interesarte.",
+                        Schedule = new NotificationRequestSchedule
+                        {
+                            NotifyTime = DateTime.Now.AddSeconds(1)
+                        }
+                    };
+
+                    await LocalNotificationCenter.Current.Show(notification);
+                }
+
+                var nuevasPromosJson = JsonSerializer.Serialize(nuevasPromos);
+                Preferences.Set("PromosGuardadas", nuevasPromosJson);
+
                 OfertasReales.Clear();
-                foreach (var promo in todasLasPromos)
+                foreach (var promo in nuevasPromos)
                 {
                     OfertasReales.Add(promo);
                 }
-                Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
-                // Guardar localmente en una lista privada si deseas filtrar más adelante
-                todasLasPromosCache = todasLasPromos;
 
+                todasLasPromosCache = nuevasPromos;
+
+                Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"Error al cargar promociones: {ex.Message}", "OK");
             }
         }
-
 
     }
 }
