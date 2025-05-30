@@ -1,21 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Raddar\\",
+  "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\raddar\\avisen\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\saveoffers.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\saveoffers.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\services\\favoritosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\services\\favoritosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\raddar\\avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\raddar\\avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto residencias\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,71 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 110,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SaveOffers.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\SaveOffers.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Views\\SaveOffers.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\SaveOffers.xaml.cs",
+              "RelativeToolTip": "Avisen\\Views\\SaveOffers.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:42:54.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FavoritosService.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Services\\FavoritosService.cs",
+              "RelativeDocumentMoniker": "Avisen\\Services\\FavoritosService.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Services\\FavoritosService.cs",
+              "RelativeToolTip": "Avisen\\Services\\FavoritosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:37:39.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ApiService.cs",
-              "DocumentMoniker": "C:\\Raddar\\Avisen\\Services\\ApiService.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Services\\ApiService.cs",
               "RelativeDocumentMoniker": "Avisen\\Services\\ApiService.cs",
-              "ToolTip": "C:\\Raddar\\Avisen\\Services\\ApiService.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Services\\ApiService.cs",
               "RelativeToolTip": "Avisen\\Services\\ApiService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAuwCcAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBQAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-26T20:07:39.986Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Settings.xaml.cs",
-              "DocumentMoniker": "C:\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml.cs",
-              "ToolTip": "C:\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Settings.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Settings.xaml.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAkwE4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T20:05:27.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T20:05:27.812Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Settings.xaml",
-              "DocumentMoniker": "C:\\Raddar\\Avisen\\Views\\Settings.xaml",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Settings.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Settings.xaml",
-              "ToolTip": "C:\\Raddar\\Avisen\\Views\\Settings.xaml",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Settings.xaml",
               "RelativeToolTip": "Avisen\\Views\\Settings.xaml",
               "ViewState": "AgIAAK4AAAAAAAAAAAAAAMEAAABsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-26T20:05:24.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T20:05:24.692Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Map.xaml.cs",
-              "DocumentMoniker": "C:\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
-              "ToolTip": "C:\\Raddar\\Avisen\\Views\\Map.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto Residencias\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
               "ViewState": "AgIAAMMAAAAAAAAAAAAIwBoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T20:05:08.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T20:05:08.798Z"
             }
           ]
         }

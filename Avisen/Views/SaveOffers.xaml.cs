@@ -39,7 +39,7 @@ public partial class SaveOffers : ContentPage
                     if (idUsuario > 0)
                     {
                         Favoritos = await _apiService.ObtenerFavoritosDesdeServidorAsync(idUsuario);
-                        await DisplayAlert("Debug", $"Promociones encontradas: {Favoritos.Count}", "OK");
+                        await DisplayAlert("", $"Promociones encontradas: {Favoritos.Count}", "OK");
 
                     }
                     else
