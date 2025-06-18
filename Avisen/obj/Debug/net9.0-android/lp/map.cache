@@ -43,10 +43,10 @@ Xamarin.AndroidX.ConstraintLayout.dll
 Xamarin.AndroidX.CoordinatorLayout.dll
 Xamarin.AndroidX.Core.Core.Ktx.dll
 Xamarin.AndroidX.Core.dll
+Xamarin.AndroidX.Core.ViewTree.dll
 Xamarin.AndroidX.CursorAdapter.dll
 Xamarin.AndroidX.CustomView.dll
 Xamarin.AndroidX.CustomView.PoolingContainer.dll
-Xamarin.AndroidX.DocumentFile.dll
 Xamarin.AndroidX.DrawerLayout.dll
 Xamarin.AndroidX.DynamicAnimation.dll
 Xamarin.AndroidX.Emoji2.dll
@@ -55,7 +55,6 @@ Xamarin.AndroidX.ExifInterface.dll
 Xamarin.AndroidX.Fragment.dll
 Xamarin.AndroidX.Fragment.Ktx.dll
 Xamarin.AndroidX.Interpolator.dll
-Xamarin.AndroidX.Legacy.Support.Core.Utils.dll
 Xamarin.AndroidX.Lifecycle.Common.dll
 Xamarin.AndroidX.Lifecycle.Common.Jvm.dll
 Xamarin.AndroidX.Lifecycle.LiveData.Core.dll
@@ -71,12 +70,10 @@ Xamarin.AndroidX.Lifecycle.ViewModel.dll
 Xamarin.AndroidX.Lifecycle.ViewModel.Ktx.dll
 Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll
 Xamarin.AndroidX.Loader.dll
-Xamarin.AndroidX.LocalBroadcastManager.dll
 Xamarin.AndroidX.Navigation.Common.dll
 Xamarin.AndroidX.Navigation.Fragment.dll
 Xamarin.AndroidX.Navigation.Runtime.dll
 Xamarin.AndroidX.Navigation.UI.dll
-Xamarin.AndroidX.Print.dll
 Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll
 Xamarin.AndroidX.RecyclerView.dll
 Xamarin.AndroidX.ResourceInspection.Annotation.dll
@@ -98,6 +95,7 @@ Xamarin.AndroidX.Window.Extensions.Core.Core.dll
 Xamarin.Google.Android.Material.dll
 Xamarin.Google.Crypto.Tink.Android.dll
 Xamarin.Google.ErrorProne.Annotations.dll
+Xamarin.Google.ErrorProne.TypeAnnotations.dll
 Xamarin.Google.Guava.ListenableFuture.dll
 Xamarin.GooglePlayServices.Base.dll
 Xamarin.GooglePlayServices.Basement.dll
@@ -105,6 +103,7 @@ Xamarin.GooglePlayServices.Location.dll
 Xamarin.GooglePlayServices.Maps.dll
 Xamarin.GooglePlayServices.Tasks.dll
 Xamarin.Jetbrains.Annotations.dll
+Xamarin.JSpecify.dll
 Xamarin.Kotlin.StdLib.dll
 Xamarin.KotlinX.AtomicFU.dll
 Xamarin.KotlinX.AtomicFU.Jvm.dll
@@ -121,6 +120,7 @@ androidx.arch.core.core-runtime.aar
 androidx.lifecycle.lifecycle-runtime-android.aar
 androidx.lifecycle.lifecycle-runtime.aar
 androidx.interpolator.interpolator.aar
+androidx.core.core-viewtree.aar
 androidx.annotation.annotation-experimental.aar
 androidx.core.core.aar
 androidx.customview.customview.aar
@@ -139,10 +139,6 @@ androidx.recyclerview.recyclerview.aar
 androidx.viewpager2.viewpager2.aar
 androidx.vectordrawable.vectordrawable.aar
 androidx.vectordrawable.vectordrawable-animated.aar
-androidx.print.print.aar
-androidx.localbroadcastmanager.localbroadcastmanager.aar
-androidx.documentfile.documentfile.aar
-androidx.legacy.legacy-support-core-utils.aar
 androidx.dynamicanimation.dynamicanimation.aar
 androidx.transition.transition.aar
 androidx.lifecycle.lifecycle-process.aar
@@ -191,6 +187,7 @@ glide.aar
 gifdecoder.aar
 Xamarin.Google.Crypto.Tink.Android.aar
 Xamarin.Google.ErrorProne.Annotations.aar
+Xamarin.Google.ErrorProne.TypeAnnotations.aar
 Xamarin.Google.Guava.ListenableFuture.aar
 play-services-base.aar
 play-services-basement.aar
@@ -198,6 +195,7 @@ play-services-location.aar
 play-services-maps.aar
 play-services-tasks.aar
 Xamarin.Jetbrains.Annotations.aar
+Xamarin.JSpecify.aar
 Xamarin.Kotlin.StdLib.aar
 Xamarin.KotlinX.AtomicFU.aar
 Xamarin.KotlinX.AtomicFU.Jvm.aar
@@ -206,8 +204,8 @@ Xamarin.KotlinX.Coroutines.Core.aar
 Xamarin.KotlinX.Coroutines.Core.Jvm.aar
 Xamarin.KotlinX.Serialization.Core.aar
 Xamarin.KotlinX.Serialization.Core.Jvm.aar
-playservicesbasement-18.5.0.aar
-playservicestasks-18.2.0.aar
-playservicesbase-18.5.0.aar
-playservicesmaps-19.0.0.aar
+playservicesbasement-18.7.0.aar
+playservicestasks-18.3.0.aar
+playservicesbase-18.7.0.aar
+playservicesmaps-19.2.0.aar
 playserviceslocation-21.3.0.aar

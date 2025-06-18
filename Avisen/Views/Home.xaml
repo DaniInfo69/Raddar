@@ -85,7 +85,12 @@
                         </Grid>
 
                         <!--  Lista estilo tarjetas  -->
-                        <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
+                        <CollectionView
+                            x:Name="OfertasList"
+                            HeightRequest="650"
+                            ItemsLayout="VerticalList"
+                            ItemsSource="{Binding OfertasReales}"
+                            VerticalOptions="Fill">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame

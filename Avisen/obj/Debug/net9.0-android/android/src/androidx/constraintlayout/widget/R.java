@@ -403,18 +403,18 @@ public final class R {
 		public static final int staticLayout = 0x7f0801cf;
 		public static final int staticPostLayout = 0x7f0801d0;
 		public static final int stop = 0x7f0801d1;
-		public static final int top = 0x7f0801fb;
-		public static final int triangle = 0x7f080209;
-		public static final int vertical = 0x7f08020f;
-		public static final int vertical_only = 0x7f080210;
-		public static final int view_transition = 0x7f080212;
-		public static final int visible = 0x7f080217;
-		public static final int west = 0x7f080219;
-		public static final int wrap = 0x7f08021e;
-		public static final int wrap_content = 0x7f08021f;
-		public static final int wrap_content_constrained = 0x7f080220;
-		public static final int x_left = 0x7f080221;
-		public static final int x_right = 0x7f080222;
+		public static final int top = 0x7f0801fd;
+		public static final int triangle = 0x7f08020b;
+		public static final int vertical = 0x7f080211;
+		public static final int vertical_only = 0x7f080212;
+		public static final int view_transition = 0x7f080214;
+		public static final int visible = 0x7f08021a;
+		public static final int west = 0x7f08021c;
+		public static final int wrap = 0x7f080221;
+		public static final int wrap_content = 0x7f080222;
+		public static final int wrap_content_constrained = 0x7f080223;
+		public static final int x_left = 0x7f080224;
+		public static final int x_right = 0x7f080225;
 	}
 	public static final class styleable {
 		public static final int[] Carousel = new int[] { 0x7f0300b2, 0x7f0300b3, 0x7f0300b4, 0x7f0300b5, 0x7f0300b6, 0x7f0300b7, 0x7f0300b8, 0x7f0300b9, 0x7f0300ba, 0x7f0300bb, 0x7f0300bc };

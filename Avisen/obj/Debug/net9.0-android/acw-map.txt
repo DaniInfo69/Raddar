@@ -13,6 +13,15 @@ communitytoolkit.maui.alerts.Snackbar_SnackbarCallback;crc648fc34c62be8fbbff.Sna
 CommunityToolkit.Maui.Media.OfflineSpeechToTextImplementation+SpeechRecognitionListener, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.OfflineSpeechToTextImplementation_SpeechRecognitionListener
 CommunityToolkit.Maui.Media.OfflineSpeechToTextImplementation.SpeechRecognitionListener;crc64d6358e7bf64fbac4.OfflineSpeechToTextImplementation_SpeechRecognitionListener
 communitytoolkit.maui.media.OfflineSpeechToTextImplementation_SpeechRecognitionListener;crc64d6358e7bf64fbac4.OfflineSpeechToTextImplementation_SpeechRecognitionListener
+CommunityToolkit.Maui.Media.RecognitionSupportCallback, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.RecognitionSupportCallback
+CommunityToolkit.Maui.Media.RecognitionSupportCallback;crc64d6358e7bf64fbac4.RecognitionSupportCallback
+communitytoolkit.maui.media.RecognitionSupportCallback;crc64d6358e7bf64fbac4.RecognitionSupportCallback
+CommunityToolkit.Maui.Media.Executor, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.Executor
+CommunityToolkit.Maui.Media.Executor;crc64d6358e7bf64fbac4.Executor
+communitytoolkit.maui.media.Executor;crc64d6358e7bf64fbac4.Executor
+CommunityToolkit.Maui.Media.ModelDownloadListener, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.ModelDownloadListener
+CommunityToolkit.Maui.Media.ModelDownloadListener;crc64d6358e7bf64fbac4.ModelDownloadListener
+communitytoolkit.maui.media.ModelDownloadListener;crc64d6358e7bf64fbac4.ModelDownloadListener
 CommunityToolkit.Maui.Media.SpeechToTextImplementation+SpeechRecognitionListener, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
 CommunityToolkit.Maui.Media.SpeechToTextImplementation.SpeechRecognitionListener;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
 communitytoolkit.maui.media.SpeechToTextImplementation_SpeechRecognitionListener;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
@@ -2050,6 +2059,9 @@ androidx.core.util.TypedValueCompat$ComplexDimensionUnit;androidx.core.util.Type
 AndroidX.Core.Provider.FontsContractCompat+FontRequestCallback+IFontRequestFailReason, Xamarin.AndroidX.Core;androidx.core.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason
 AndroidX.Core.Provider.FontsContractCompat.FontRequestCallback.IFontRequestFailReason;androidx.core.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason
 androidx.core.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason;androidx.core.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason
+AndroidX.Core.Provider.FontsContractCompat+ITypefaceStyle, Xamarin.AndroidX.Core;androidx.core.provider.FontsContractCompat$TypefaceStyle
+AndroidX.Core.Provider.FontsContractCompat.ITypefaceStyle;androidx.core.provider.FontsContractCompat$TypefaceStyle
+androidx.core.provider.FontsContractCompat$TypefaceStyle;androidx.core.provider.FontsContractCompat$TypefaceStyle
 AndroidX.Core.Provider.SelfDestructiveThread+IReplyCallback, Xamarin.AndroidX.Core;androidx.core.provider.SelfDestructiveThread$ReplyCallback
 AndroidX.Core.Provider.SelfDestructiveThread.IReplyCallback;androidx.core.provider.SelfDestructiveThread$ReplyCallback
 androidx.core.provider.SelfDestructiveThread$ReplyCallback;androidx.core.provider.SelfDestructiveThread$ReplyCallback
@@ -2062,6 +2074,9 @@ androidx.core.os.CancellationSignal$OnCancelListener;androidx.core.os.Cancellati
 AndroidX.Core.OS.CancellationSignal+IOnCancelListenerImplementor, Xamarin.AndroidX.Core;mono.androidx.core.os.CancellationSignal_OnCancelListenerImplementor
 AndroidX.Core.OS.CancellationSignal.IOnCancelListenerImplementor;mono.androidx.core.os.CancellationSignal_OnCancelListenerImplementor
 mono.androidx.core.os.CancellationSignal_OnCancelListenerImplementor;mono.androidx.core.os.CancellationSignal_OnCancelListenerImplementor
+AndroidX.Core.OS.IOutcomeReceiverCompat, Xamarin.AndroidX.Core;androidx.core.os.OutcomeReceiverCompat
+AndroidX.Core.OS.IOutcomeReceiverCompat;androidx.core.os.OutcomeReceiverCompat
+androidx.core.os.OutcomeReceiverCompat;androidx.core.os.OutcomeReceiverCompat
 AndroidX.Core.OS.IParcelableCompatCreatorCallbacks, Xamarin.AndroidX.Core;androidx.core.os.ParcelableCompatCreatorCallbacks
 AndroidX.Core.OS.IParcelableCompatCreatorCallbacks;androidx.core.os.ParcelableCompatCreatorCallbacks
 androidx.core.os.ParcelableCompatCreatorCallbacks;androidx.core.os.ParcelableCompatCreatorCallbacks
@@ -2086,6 +2101,9 @@ androidx.core.internal.view.SupportMenuItem;androidx.core.internal.view.SupportM
 AndroidX.Core.Internal.View.ISupportSubMenu, Xamarin.AndroidX.Core;androidx.core.internal.view.SupportSubMenu
 AndroidX.Core.Internal.View.ISupportSubMenu;androidx.core.internal.view.SupportSubMenu
 androidx.core.internal.view.SupportSubMenu;androidx.core.internal.view.SupportSubMenu
+AndroidX.Core.Hardware.Display.IExperimentalDisplayApi, Xamarin.AndroidX.Core;androidx.core.hardware.display.ExperimentalDisplayApi
+AndroidX.Core.Hardware.Display.IExperimentalDisplayApi;androidx.core.hardware.display.ExperimentalDisplayApi
+androidx.core.hardware.display.ExperimentalDisplayApi;androidx.core.hardware.display.ExperimentalDisplayApi
 AndroidX.Core.Graphics.Drawable.IconCompat+IIconType, Xamarin.AndroidX.Core;androidx.core.graphics.drawable.IconCompat$IconType
 AndroidX.Core.Graphics.Drawable.IconCompat.IIconType;androidx.core.graphics.drawable.IconCompat$IconType
 androidx.core.graphics.drawable.IconCompat$IconType;androidx.core.graphics.drawable.IconCompat$IconType
@@ -2377,6 +2395,9 @@ androidx.core.view.ViewCompat$ScrollIndicators;androidx.core.view.ViewCompat$Scr
 AndroidX.Core.View.WindowInsetsAnimationCompat+Callback+IDispatchMode, Xamarin.AndroidX.Core;androidx.core.view.WindowInsetsAnimationCompat$Callback$DispatchMode
 AndroidX.Core.View.WindowInsetsAnimationCompat.Callback.IDispatchMode;androidx.core.view.WindowInsetsAnimationCompat$Callback$DispatchMode
 androidx.core.view.WindowInsetsAnimationCompat$Callback$DispatchMode;androidx.core.view.WindowInsetsAnimationCompat$Callback$DispatchMode
+AndroidX.Core.View.WindowInsetsCompat+Side+IInsetsSide, Xamarin.AndroidX.Core;androidx.core.view.WindowInsetsCompat$Side$InsetsSide
+AndroidX.Core.View.WindowInsetsCompat.Side.IInsetsSide;androidx.core.view.WindowInsetsCompat$Side$InsetsSide
+androidx.core.view.WindowInsetsCompat$Side$InsetsSide;androidx.core.view.WindowInsetsCompat$Side$InsetsSide
 AndroidX.Core.View.WindowInsetsCompat+Type+IInsetsType, Xamarin.AndroidX.Core;androidx.core.view.WindowInsetsCompat$Type$InsetsType
 AndroidX.Core.View.WindowInsetsCompat.Type.IInsetsType;androidx.core.view.WindowInsetsCompat$Type$InsetsType
 androidx.core.view.WindowInsetsCompat$Type$InsetsType;androidx.core.view.WindowInsetsCompat$Type$InsetsType
@@ -2449,6 +2470,12 @@ androidx.drawerlayout.widget.DrawerLayout$DrawerListener;androidx.drawerlayout.w
 AndroidX.DrawerLayout.Widget.DrawerLayout+IDrawerListenerImplementor, Xamarin.AndroidX.DrawerLayout;mono.androidx.drawerlayout.widget.DrawerLayout_DrawerListenerImplementor
 AndroidX.DrawerLayout.Widget.DrawerLayout.IDrawerListenerImplementor;mono.androidx.drawerlayout.widget.DrawerLayout_DrawerListenerImplementor
 mono.androidx.drawerlayout.widget.DrawerLayout_DrawerListenerImplementor;mono.androidx.drawerlayout.widget.DrawerLayout_DrawerListenerImplementor
+AndroidX.DynamicAnimation.AnimationHandler+IDurationScaleChangeListener, Xamarin.AndroidX.DynamicAnimation;androidx.dynamicanimation.animation.AnimationHandler$DurationScaleChangeListener
+AndroidX.DynamicAnimation.AnimationHandler.IDurationScaleChangeListener;androidx.dynamicanimation.animation.AnimationHandler$DurationScaleChangeListener
+androidx.dynamicanimation.animation.AnimationHandler$DurationScaleChangeListener;androidx.dynamicanimation.animation.AnimationHandler$DurationScaleChangeListener
+AndroidX.DynamicAnimation.AnimationHandler+IDurationScaleChangeListenerImplementor, Xamarin.AndroidX.DynamicAnimation;mono.androidx.dynamicanimation.animation.AnimationHandler_DurationScaleChangeListenerImplementor
+AndroidX.DynamicAnimation.AnimationHandler.IDurationScaleChangeListenerImplementor;mono.androidx.dynamicanimation.animation.AnimationHandler_DurationScaleChangeListenerImplementor
+mono.androidx.dynamicanimation.animation.AnimationHandler_DurationScaleChangeListenerImplementor;mono.androidx.dynamicanimation.animation.AnimationHandler_DurationScaleChangeListenerImplementor
 AndroidX.DynamicAnimation.DynamicAnimation+IOnAnimationEndListener, Xamarin.AndroidX.DynamicAnimation;androidx.dynamicanimation.animation.DynamicAnimation$OnAnimationEndListener
 AndroidX.DynamicAnimation.DynamicAnimation.IOnAnimationEndListener;androidx.dynamicanimation.animation.DynamicAnimation$OnAnimationEndListener
 androidx.dynamicanimation.animation.DynamicAnimation$OnAnimationEndListener;androidx.dynamicanimation.animation.DynamicAnimation$OnAnimationEndListener
@@ -2461,6 +2488,9 @@ androidx.dynamicanimation.animation.DynamicAnimation$OnAnimationUpdateListener;a
 AndroidX.DynamicAnimation.DynamicAnimation+IOnAnimationUpdateListenerImplementor, Xamarin.AndroidX.DynamicAnimation;mono.androidx.dynamicanimation.animation.DynamicAnimation_OnAnimationUpdateListenerImplementor
 AndroidX.DynamicAnimation.DynamicAnimation.IOnAnimationUpdateListenerImplementor;mono.androidx.dynamicanimation.animation.DynamicAnimation_OnAnimationUpdateListenerImplementor
 mono.androidx.dynamicanimation.animation.DynamicAnimation_OnAnimationUpdateListenerImplementor;mono.androidx.dynamicanimation.animation.DynamicAnimation_OnAnimationUpdateListenerImplementor
+AndroidX.DynamicAnimation.IFrameCallbackScheduler, Xamarin.AndroidX.DynamicAnimation;androidx.dynamicanimation.animation.FrameCallbackScheduler
+AndroidX.DynamicAnimation.IFrameCallbackScheduler;androidx.dynamicanimation.animation.FrameCallbackScheduler
+androidx.dynamicanimation.animation.FrameCallbackScheduler;androidx.dynamicanimation.animation.FrameCallbackScheduler
 AndroidX.Emoji2.Text.EmojiCompat+ICodepointSequenceMatchResult, Xamarin.AndroidX.Emoji2;androidx.emoji2.text.EmojiCompat$CodepointSequenceMatchResult
 AndroidX.Emoji2.Text.EmojiCompat.ICodepointSequenceMatchResult;androidx.emoji2.text.EmojiCompat$CodepointSequenceMatchResult
 androidx.emoji2.text.EmojiCompat$CodepointSequenceMatchResult;androidx.emoji2.text.EmojiCompat$CodepointSequenceMatchResult
@@ -2635,9 +2665,6 @@ mono.androidx.navigation.ui.AppBarConfiguration_OnNavigateUpListenerImplementor;
 AndroidX.Navigation.UI.INavigationUiSaveStateControl, Xamarin.AndroidX.Navigation.UI;androidx.navigation.ui.NavigationUiSaveStateControl
 AndroidX.Navigation.UI.INavigationUiSaveStateControl;androidx.navigation.ui.NavigationUiSaveStateControl
 androidx.navigation.ui.NavigationUiSaveStateControl;androidx.navigation.ui.NavigationUiSaveStateControl
-AndroidX.Print.PrintHelper+IOnPrintFinishCallback, Xamarin.AndroidX.Print;androidx.print.PrintHelper$OnPrintFinishCallback
-AndroidX.Print.PrintHelper.IOnPrintFinishCallback;androidx.print.PrintHelper$OnPrintFinishCallback
-androidx.print.PrintHelper$OnPrintFinishCallback;androidx.print.PrintHelper$OnPrintFinishCallback
 AndroidX.ProfileInstallers.ProfileInstaller+IDiagnosticCode, Xamarin.AndroidX.ProfileInstaller.ProfileInstaller;androidx.profileinstaller.ProfileInstaller$DiagnosticCode
 AndroidX.ProfileInstallers.ProfileInstaller.IDiagnosticCode;androidx.profileinstaller.ProfileInstaller$DiagnosticCode
 androidx.profileinstaller.ProfileInstaller$DiagnosticCode;androidx.profileinstaller.ProfileInstaller$DiagnosticCode
@@ -3817,6 +3844,12 @@ com.google.crypto.tink.jwt.JwtPublicKeyVerify;com.google.crypto.tink.jwt.JwtPubl
 Xamarin.Google.Crypto.Tink.Jwt.IJwtPublicKeyVerifyInternal, Xamarin.Google.Crypto.Tink.Android;com.google.crypto.tink.jwt.JwtPublicKeyVerifyInternal
 Xamarin.Google.Crypto.Tink.Jwt.IJwtPublicKeyVerifyInternal;com.google.crypto.tink.jwt.JwtPublicKeyVerifyInternal
 com.google.crypto.tink.jwt.JwtPublicKeyVerifyInternal;com.google.crypto.tink.jwt.JwtPublicKeyVerifyInternal
+Xamarin.Google.Crypto.Tink.Internal.IKeysetHandleInterfaceEntry, Xamarin.Google.Crypto.Tink.Android;com.google.crypto.tink.internal.KeysetHandleInterface$Entry
+Xamarin.Google.Crypto.Tink.Internal.IKeysetHandleInterfaceEntry;com.google.crypto.tink.internal.KeysetHandleInterface$Entry
+com.google.crypto.tink.internal.KeysetHandleInterface$Entry;com.google.crypto.tink.internal.KeysetHandleInterface$Entry
+Xamarin.Google.Crypto.Tink.Internal.IKeysetHandleInterface, Xamarin.Google.Crypto.Tink.Android;com.google.crypto.tink.internal.KeysetHandleInterface
+Xamarin.Google.Crypto.Tink.Internal.IKeysetHandleInterface;com.google.crypto.tink.internal.KeysetHandleInterface
+com.google.crypto.tink.internal.KeysetHandleInterface;com.google.crypto.tink.internal.KeysetHandleInterface
 Xamarin.Google.Crypto.Tink.Internal.IMonitoringClientLogger, Xamarin.Google.Crypto.Tink.Android;com.google.crypto.tink.internal.MonitoringClient$Logger
 Xamarin.Google.Crypto.Tink.Internal.IMonitoringClientLogger;com.google.crypto.tink.internal.MonitoringClient$Logger
 com.google.crypto.tink.internal.MonitoringClient$Logger;com.google.crypto.tink.internal.MonitoringClient$Logger
@@ -4147,6 +4180,9 @@ com.google.errorprone.annotations.ForOverride;com.google.errorprone.annotations.
 Xamarin.Google.ErrorProne.Annotations.IImmutable, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.Immutable
 Xamarin.Google.ErrorProne.Annotations.IImmutable;com.google.errorprone.annotations.Immutable
 com.google.errorprone.annotations.Immutable;com.google.errorprone.annotations.Immutable
+Xamarin.Google.ErrorProne.Annotations.IImmutableTypeParameter, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.ImmutableTypeParameter
+Xamarin.Google.ErrorProne.Annotations.IImmutableTypeParameter;com.google.errorprone.annotations.ImmutableTypeParameter
+com.google.errorprone.annotations.ImmutableTypeParameter;com.google.errorprone.annotations.ImmutableTypeParameter
 Xamarin.Google.ErrorProne.Annotations.IIncompatibleModifiers, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.IncompatibleModifiers
 Xamarin.Google.ErrorProne.Annotations.IIncompatibleModifiers;com.google.errorprone.annotations.IncompatibleModifiers
 com.google.errorprone.annotations.IncompatibleModifiers;com.google.errorprone.annotations.IncompatibleModifiers
@@ -4180,6 +4216,9 @@ com.google.errorprone.annotations.SuppressPackageLocation;com.google.errorprone.
 Xamarin.Google.ErrorProne.Annotations.IThreadSafe, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.ThreadSafe
 Xamarin.Google.ErrorProne.Annotations.IThreadSafe;com.google.errorprone.annotations.ThreadSafe
 com.google.errorprone.annotations.ThreadSafe;com.google.errorprone.annotations.ThreadSafe
+Xamarin.Google.ErrorProne.Annotations.IThreadSafeTypeParameter, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.ThreadSafeTypeParameter
+Xamarin.Google.ErrorProne.Annotations.IThreadSafeTypeParameter;com.google.errorprone.annotations.ThreadSafeTypeParameter
+com.google.errorprone.annotations.ThreadSafeTypeParameter;com.google.errorprone.annotations.ThreadSafeTypeParameter
 Xamarin.Google.ErrorProne.Annotations.IVar, Xamarin.Google.ErrorProne.Annotations;com.google.errorprone.annotations.Var
 Xamarin.Google.ErrorProne.Annotations.IVar;com.google.errorprone.annotations.Var
 com.google.errorprone.annotations.Var;com.google.errorprone.annotations.Var
@@ -4261,21 +4300,21 @@ mono.com.google.android.gms.common.api.internal.SignInConnectionListenerImplemen
 Android.Gms.Common.Api.Internal.IStatusCallback, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.IStatusCallback
 Android.Gms.Common.Api.Internal.IStatusCallback;com.google.android.gms.common.api.internal.IStatusCallback
 com.google.android.gms.common.api.internal.IStatusCallback;com.google.android.gms.common.api.internal.IStatusCallback
-Android.Gms.Common.Api.Internal.IZabf, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zabf
-Android.Gms.Common.Api.Internal.IZabf;com.google.android.gms.common.api.internal.zabf
-com.google.android.gms.common.api.internal.zabf;com.google.android.gms.common.api.internal.zabf
-Android.Gms.Common.Api.Internal.IZabz, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zabz
-Android.Gms.Common.Api.Internal.IZabz;com.google.android.gms.common.api.internal.zabz
-com.google.android.gms.common.api.internal.zabz;com.google.android.gms.common.api.internal.zabz
-Android.Gms.Common.Api.Internal.IZaca, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zaca
-Android.Gms.Common.Api.Internal.IZaca;com.google.android.gms.common.api.internal.zaca
-com.google.android.gms.common.api.internal.zaca;com.google.android.gms.common.api.internal.zaca
-Android.Gms.Common.Api.Internal.IZacs, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zacs
-Android.Gms.Common.Api.Internal.IZacs;com.google.android.gms.common.api.internal.zacs
-com.google.android.gms.common.api.internal.zacs;com.google.android.gms.common.api.internal.zacs
-Android.Gms.Common.Api.Internal.IZau, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zau
-Android.Gms.Common.Api.Internal.IZau;com.google.android.gms.common.api.internal.zau
-com.google.android.gms.common.api.internal.zau;com.google.android.gms.common.api.internal.zau
+Android.Gms.Common.Api.Internal.IZaba, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zaba
+Android.Gms.Common.Api.Internal.IZaba;com.google.android.gms.common.api.internal.zaba
+com.google.android.gms.common.api.internal.zaba;com.google.android.gms.common.api.internal.zaba
+Android.Gms.Common.Api.Internal.IZabu, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zabu
+Android.Gms.Common.Api.Internal.IZabu;com.google.android.gms.common.api.internal.zabu
+com.google.android.gms.common.api.internal.zabu;com.google.android.gms.common.api.internal.zabu
+Android.Gms.Common.Api.Internal.IZabv, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zabv
+Android.Gms.Common.Api.Internal.IZabv;com.google.android.gms.common.api.internal.zabv
+com.google.android.gms.common.api.internal.zabv;com.google.android.gms.common.api.internal.zabv
+Android.Gms.Common.Api.Internal.IZacl, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zacl
+Android.Gms.Common.Api.Internal.IZacl;com.google.android.gms.common.api.internal.zacl
+com.google.android.gms.common.api.internal.zacl;com.google.android.gms.common.api.internal.zacl
+Android.Gms.Common.Api.Internal.IZat, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.zat
+Android.Gms.Common.Api.Internal.IZat;com.google.android.gms.common.api.internal.zat
+com.google.android.gms.common.api.internal.zat;com.google.android.gms.common.api.internal.zat
 Android.Gms.Common.Api.Internal.ListenerHolder+INotifier, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
 Android.Gms.Common.Api.Internal.ListenerHolder.INotifier;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
 com.google.android.gms.common.api.internal.ListenerHolder$Notifier;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
@@ -4339,6 +4378,12 @@ com.google.android.gms.common.data.DataBufferObserver;com.google.android.gms.com
 Android.Gms.Common.Data.IFreezable, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.data.Freezable
 Android.Gms.Common.Data.IFreezable;com.google.android.gms.common.data.Freezable
 com.google.android.gms.common.data.Freezable;com.google.android.gms.common.data.Freezable
+Google.Android.Gms.Common.SignatureVerification.ISignatureVerificationConfiguration, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.signatureverification.SignatureVerificationConfiguration
+Google.Android.Gms.Common.SignatureVerification.ISignatureVerificationConfiguration;com.google.android.gms.common.signatureverification.SignatureVerificationConfiguration
+com.google.android.gms.common.signatureverification.SignatureVerificationConfiguration;com.google.android.gms.common.signatureverification.SignatureVerificationConfiguration
+Google.Android.Gms.Common.SignatureVerification.ISignatureVerificationLogger, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.signatureverification.SignatureVerificationLogger
+Google.Android.Gms.Common.SignatureVerification.ISignatureVerificationLogger;com.google.android.gms.common.signatureverification.SignatureVerificationLogger
+com.google.android.gms.common.signatureverification.SignatureVerificationLogger;com.google.android.gms.common.signatureverification.SignatureVerificationLogger
 Android.Gms.Security.ProviderInstaller+IProviderInstallListener, Xamarin.GooglePlayServices.Basement;com.google.android.gms.security.ProviderInstaller$ProviderInstallListener
 Android.Gms.Security.ProviderInstaller.IProviderInstallListener;com.google.android.gms.security.ProviderInstaller$ProviderInstallListener
 com.google.android.gms.security.ProviderInstaller$ProviderInstallListener;com.google.android.gms.security.ProviderInstaller$ProviderInstallListener
@@ -4951,6 +4996,18 @@ org.intellij.lang.annotations.JdkConstants$TreeSelectionMode;org.intellij.lang.a
 IntelliJ.Lang.Annotations.JdkConstants+IVerticalScrollBarPolicy, Xamarin.Jetbrains.Annotations;org.intellij.lang.annotations.JdkConstants$VerticalScrollBarPolicy
 IntelliJ.Lang.Annotations.JdkConstants.IVerticalScrollBarPolicy;org.intellij.lang.annotations.JdkConstants$VerticalScrollBarPolicy
 org.intellij.lang.annotations.JdkConstants$VerticalScrollBarPolicy;org.intellij.lang.annotations.JdkConstants$VerticalScrollBarPolicy
+Xamarin.JSpecify.Annotations.INonNull, Xamarin.JSpecify;org.jspecify.annotations.NonNull
+Xamarin.JSpecify.Annotations.INonNull;org.jspecify.annotations.NonNull
+org.jspecify.annotations.NonNull;org.jspecify.annotations.NonNull
+Xamarin.JSpecify.Annotations.INullable, Xamarin.JSpecify;org.jspecify.annotations.Nullable
+Xamarin.JSpecify.Annotations.INullable;org.jspecify.annotations.Nullable
+org.jspecify.annotations.Nullable;org.jspecify.annotations.Nullable
+Xamarin.JSpecify.Annotations.INullMarked, Xamarin.JSpecify;org.jspecify.annotations.NullMarked
+Xamarin.JSpecify.Annotations.INullMarked;org.jspecify.annotations.NullMarked
+org.jspecify.annotations.NullMarked;org.jspecify.annotations.NullMarked
+Xamarin.JSpecify.Annotations.INullUnmarked, Xamarin.JSpecify;org.jspecify.annotations.NullUnmarked
+Xamarin.JSpecify.Annotations.INullUnmarked;org.jspecify.annotations.NullUnmarked
+org.jspecify.annotations.NullUnmarked;org.jspecify.annotations.NullUnmarked
 Kotlin.IBuilderInference, Xamarin.Kotlin.StdLib;kotlin.BuilderInference
 Kotlin.IBuilderInference;kotlin.BuilderInference
 kotlin.BuilderInference;kotlin.BuilderInference

@@ -5039,11 +5039,6 @@ public final class R {
      */
     public static final int keyboardIcon=0x7f03028f;
     /**
-     * A reference to an array of integers representing the
-     * locations of horizontal keylines in dp from the starting edge.
-     * Child views can refer to these keylines for alignment using
-     * layout_keyline="index" where index is a 0-based index into
-     * this array.
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -5165,7 +5160,6 @@ public final class R {
      */
     public static final int layoutManager=0x7f0302a0;
     /**
-     * The id of an anchor view that this view should position relative to.
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -5173,8 +5167,6 @@ public final class R {
      */
     public static final int layout_anchor=0x7f0302a1;
     /**
-     * Specifies how an object should position relative to an anchor, on both the X and Y axes,
-     * within its parent's bounds.
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -5205,8 +5197,6 @@ public final class R {
      */
     public static final int layout_anchorGravity=0x7f0302a2;
     /**
-     * The class name of a Behavior class defining special runtime behavior
-     * for this child view.
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
@@ -5716,7 +5706,6 @@ public final class R {
      */
     public static final int layout_constraintWidth_percent=0x7f0302d3;
     /**
-     * Specifies how this view dodges the inset edges of the CoordinatorLayout.
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -5807,8 +5796,6 @@ public final class R {
      */
     public static final int layout_goneMarginTop=0x7f0302dd;
     /**
-     * Specifies how this view insets the CoordinatorLayout and make some other views
-     * dodge it.
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -5826,9 +5813,6 @@ public final class R {
      */
     public static final int layout_insetEdge=0x7f0302de;
     /**
-     * The index of a keyline this view should position relative to.
-     * android:layout_gravity will affect how the view aligns to the
-     * specified keyline.
      * <p>May be an integer value, such as "<code>100</code>".
      */
     public static final int layout_keyline=0x7f0302df;
@@ -8412,7 +8396,6 @@ public final class R {
      */
     public static final int state_with_icon=0x7f030443;
     /**
-     * Drawable to display behind the status bar when the view is set to draw behind it.
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -12625,78 +12608,81 @@ public final class R {
     public static final int tag_accessibility_clickable_spans=0x7f0801d8;
     public static final int tag_accessibility_heading=0x7f0801d9;
     public static final int tag_accessibility_pane_title=0x7f0801da;
-    public static final int tag_on_apply_window_listener=0x7f0801db;
-    public static final int tag_on_receive_content_listener=0x7f0801dc;
-    public static final int tag_on_receive_content_mime_types=0x7f0801dd;
-    public static final int tag_screen_reader_focusable=0x7f0801de;
-    public static final int tag_state_description=0x7f0801df;
-    public static final int tag_transition_group=0x7f0801e0;
-    public static final int tag_unhandled_key_event_manager=0x7f0801e1;
-    public static final int tag_unhandled_key_listeners=0x7f0801e2;
-    public static final int tag_window_insets_animation_callback=0x7f0801e3;
-    public static final int terrain=0x7f0801e4;
-    public static final int text=0x7f0801e5;
-    public static final int text2=0x7f0801e6;
-    public static final int textEnd=0x7f0801e7;
-    public static final int textSpacerNoButtons=0x7f0801e8;
-    public static final int textSpacerNoTitle=0x7f0801e9;
-    public static final int textStart=0x7f0801ea;
-    public static final int textTop=0x7f0801eb;
-    public static final int text_input_end_icon=0x7f0801ec;
-    public static final int text_input_error_icon=0x7f0801ed;
-    public static final int text_input_start_icon=0x7f0801ee;
-    public static final int textinput_counter=0x7f0801ef;
-    public static final int textinput_error=0x7f0801f0;
-    public static final int textinput_helper_text=0x7f0801f1;
-    public static final int textinput_placeholder=0x7f0801f2;
-    public static final int textinput_prefix_text=0x7f0801f3;
-    public static final int textinput_suffix_text=0x7f0801f4;
-    public static final int time=0x7f0801f5;
-    public static final int title=0x7f0801f6;
-    public static final int titleDividerNoCustom=0x7f0801f7;
-    public static final int title_template=0x7f0801f8;
-    public static final int toggle=0x7f0801f9;
-    public static final int toolbar=0x7f0801fa;
-    public static final int top=0x7f0801fb;
-    public static final int topPanel=0x7f0801fc;
-    public static final int topToBottom=0x7f0801fd;
-    public static final int touch_outside=0x7f0801fe;
-    public static final int transitionToEnd=0x7f0801ff;
-    public static final int transitionToStart=0x7f080200;
-    public static final int transition_clip=0x7f080201;
-    public static final int transition_current_scene=0x7f080202;
-    public static final int transition_image_transform=0x7f080203;
-    public static final int transition_layout_save=0x7f080204;
-    public static final int transition_pause_alpha=0x7f080205;
-    public static final int transition_position=0x7f080206;
-    public static final int transition_scene_layoutid_cache=0x7f080207;
-    public static final int transition_transform=0x7f080208;
-    public static final int triangle=0x7f080209;
-    public static final int unchecked=0x7f08020a;
-    public static final int uniform=0x7f08020b;
-    public static final int unlabeled=0x7f08020c;
-    public static final int up=0x7f08020d;
-    public static final int useLogo=0x7f08020e;
-    public static final int vertical=0x7f08020f;
-    public static final int vertical_only=0x7f080210;
-    public static final int view_offset_helper=0x7f080211;
-    public static final int view_transition=0x7f080212;
-    public static final int view_tree_lifecycle_owner=0x7f080213;
-    public static final int view_tree_on_back_pressed_dispatcher_owner=0x7f080214;
-    public static final int view_tree_saved_state_registry_owner=0x7f080215;
-    public static final int view_tree_view_model_store_owner=0x7f080216;
-    public static final int visible=0x7f080217;
-    public static final int visible_removing_fragment_view_tag=0x7f080218;
-    public static final int west=0x7f080219;
-    public static final int wide=0x7f08021a;
-    public static final int withText=0x7f08021b;
-    public static final int with_icon=0x7f08021c;
-    public static final int withinBounds=0x7f08021d;
-    public static final int wrap=0x7f08021e;
-    public static final int wrap_content=0x7f08021f;
-    public static final int wrap_content_constrained=0x7f080220;
-    public static final int x_left=0x7f080221;
-    public static final int x_right=0x7f080222;
+    public static final int tag_compat_insets_dispatch=0x7f0801db;
+    public static final int tag_on_apply_window_listener=0x7f0801dc;
+    public static final int tag_on_receive_content_listener=0x7f0801dd;
+    public static final int tag_on_receive_content_mime_types=0x7f0801de;
+    public static final int tag_screen_reader_focusable=0x7f0801df;
+    public static final int tag_state_description=0x7f0801e0;
+    public static final int tag_system_bar_state_monitor=0x7f0801e1;
+    public static final int tag_transition_group=0x7f0801e2;
+    public static final int tag_unhandled_key_event_manager=0x7f0801e3;
+    public static final int tag_unhandled_key_listeners=0x7f0801e4;
+    public static final int tag_window_insets_animation_callback=0x7f0801e5;
+    public static final int terrain=0x7f0801e6;
+    public static final int text=0x7f0801e7;
+    public static final int text2=0x7f0801e8;
+    public static final int textEnd=0x7f0801e9;
+    public static final int textSpacerNoButtons=0x7f0801ea;
+    public static final int textSpacerNoTitle=0x7f0801eb;
+    public static final int textStart=0x7f0801ec;
+    public static final int textTop=0x7f0801ed;
+    public static final int text_input_end_icon=0x7f0801ee;
+    public static final int text_input_error_icon=0x7f0801ef;
+    public static final int text_input_start_icon=0x7f0801f0;
+    public static final int textinput_counter=0x7f0801f1;
+    public static final int textinput_error=0x7f0801f2;
+    public static final int textinput_helper_text=0x7f0801f3;
+    public static final int textinput_placeholder=0x7f0801f4;
+    public static final int textinput_prefix_text=0x7f0801f5;
+    public static final int textinput_suffix_text=0x7f0801f6;
+    public static final int time=0x7f0801f7;
+    public static final int title=0x7f0801f8;
+    public static final int titleDividerNoCustom=0x7f0801f9;
+    public static final int title_template=0x7f0801fa;
+    public static final int toggle=0x7f0801fb;
+    public static final int toolbar=0x7f0801fc;
+    public static final int top=0x7f0801fd;
+    public static final int topPanel=0x7f0801fe;
+    public static final int topToBottom=0x7f0801ff;
+    public static final int touch_outside=0x7f080200;
+    public static final int transitionToEnd=0x7f080201;
+    public static final int transitionToStart=0x7f080202;
+    public static final int transition_clip=0x7f080203;
+    public static final int transition_current_scene=0x7f080204;
+    public static final int transition_image_transform=0x7f080205;
+    public static final int transition_layout_save=0x7f080206;
+    public static final int transition_pause_alpha=0x7f080207;
+    public static final int transition_position=0x7f080208;
+    public static final int transition_scene_layoutid_cache=0x7f080209;
+    public static final int transition_transform=0x7f08020a;
+    public static final int triangle=0x7f08020b;
+    public static final int unchecked=0x7f08020c;
+    public static final int uniform=0x7f08020d;
+    public static final int unlabeled=0x7f08020e;
+    public static final int up=0x7f08020f;
+    public static final int useLogo=0x7f080210;
+    public static final int vertical=0x7f080211;
+    public static final int vertical_only=0x7f080212;
+    public static final int view_offset_helper=0x7f080213;
+    public static final int view_transition=0x7f080214;
+    public static final int view_tree_disjoint_parent=0x7f080215;
+    public static final int view_tree_lifecycle_owner=0x7f080216;
+    public static final int view_tree_on_back_pressed_dispatcher_owner=0x7f080217;
+    public static final int view_tree_saved_state_registry_owner=0x7f080218;
+    public static final int view_tree_view_model_store_owner=0x7f080219;
+    public static final int visible=0x7f08021a;
+    public static final int visible_removing_fragment_view_tag=0x7f08021b;
+    public static final int west=0x7f08021c;
+    public static final int wide=0x7f08021d;
+    public static final int withText=0x7f08021e;
+    public static final int with_icon=0x7f08021f;
+    public static final int withinBounds=0x7f080220;
+    public static final int wrap=0x7f080221;
+    public static final int wrap_content=0x7f080222;
+    public static final int wrap_content_constrained=0x7f080223;
+    public static final int x_left=0x7f080224;
+    public static final int x_right=0x7f080225;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f090000;
@@ -29329,9 +29315,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_keylines com.companyname.avisen:keylines}</code></td><td>A reference to an array of integers representing the
-     * locations of horizontal keylines in dp from the starting edge.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_statusBarBackground com.companyname.avisen:statusBarBackground}</code></td><td>Drawable to display behind the status bar when the view is set to draw behind it.</td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_keylines com.companyname.avisen:keylines}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_statusBarBackground com.companyname.avisen:statusBarBackground}</code></td><td></td></tr>
      * </table>
      * @see #CoordinatorLayout_keylines
      * @see #CoordinatorLayout_statusBarBackground
@@ -29340,13 +29325,8 @@ public final class R {
       0x7f030290, 0x7f030444
     };
     /**
-     * <p>
-     * @attr description
-     * A reference to an array of integers representing the
-     * locations of horizontal keylines in dp from the starting edge.
-     * Child views can refer to these keylines for alignment using
-     * layout_keyline="index" where index is a 0-based index into
-     * this array.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#keylines}
+     * attribute's value can be found in the {@link #CoordinatorLayout} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -29357,9 +29337,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_keylines=0;
     /**
-     * <p>
-     * @attr description
-     * Drawable to display behind the status bar when the view is set to draw behind it.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#statusBarBackground}
+     * attribute's value can be found in the {@link #CoordinatorLayout} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -29380,15 +29359,12 @@ public final class R {
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
      * <tr><td><code>{@link #CoordinatorLayout_Layout_android_layout_gravity android:layout_gravity}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor com.companyname.avisen:layout_anchor}</code></td><td>The id of an anchor view that this view should position relative to.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity com.companyname.avisen:layout_anchorGravity}</code></td><td>Specifies how an object should position relative to an anchor, on both the X and Y axes,
-     * within its parent's bounds.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior com.companyname.avisen:layout_behavior}</code></td><td>The class name of a Behavior class defining special runtime behavior
-     * for this child view.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges com.companyname.avisen:layout_dodgeInsetEdges}</code></td><td>Specifies how this view dodges the inset edges of the CoordinatorLayout.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge com.companyname.avisen:layout_insetEdge}</code></td><td>Specifies how this view insets the CoordinatorLayout and make some other views
-     * dodge it.</td></tr>
-     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline com.companyname.avisen:layout_keyline}</code></td><td>The index of a keyline this view should position relative to.</td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchor com.companyname.avisen:layout_anchor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_anchorGravity com.companyname.avisen:layout_anchorGravity}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_behavior com.companyname.avisen:layout_behavior}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_dodgeInsetEdges com.companyname.avisen:layout_dodgeInsetEdges}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_insetEdge com.companyname.avisen:layout_insetEdge}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CoordinatorLayout_Layout_layout_keyline com.companyname.avisen:layout_keyline}</code></td><td></td></tr>
      * </table>
      * @see #CoordinatorLayout_Layout_android_layout_gravity
      * @see #CoordinatorLayout_Layout_layout_anchor
@@ -29432,9 +29408,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_android_layout_gravity=0;
     /**
-     * <p>
-     * @attr description
-     * The id of an anchor view that this view should position relative to.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_anchor}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -29445,10 +29420,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_layout_anchor=1;
     /**
-     * <p>
-     * @attr description
-     * Specifies how an object should position relative to an anchor, on both the X and Y axes,
-     * within its parent's bounds.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_anchorGravity}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
      * <table>
@@ -29482,10 +29455,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_layout_anchorGravity=2;
     /**
-     * <p>
-     * @attr description
-     * The class name of a Behavior class defining special runtime behavior
-     * for this child view.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_behavior}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
@@ -29494,9 +29465,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_layout_behavior=3;
     /**
-     * <p>
-     * @attr description
-     * Specifies how this view dodges the inset edges of the CoordinatorLayout.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_dodgeInsetEdges}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one or more (separated by '|') of the following constant values.</p>
      * <table>
@@ -29518,10 +29488,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges=4;
     /**
-     * <p>
-     * @attr description
-     * Specifies how this view insets the CoordinatorLayout and make some other views
-     * dodge it.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_insetEdge}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -29542,11 +29510,8 @@ public final class R {
      */
     public static final int CoordinatorLayout_Layout_layout_insetEdge=5;
     /**
-     * <p>
-     * @attr description
-     * The index of a keyline this view should position relative to.
-     * android:layout_gravity will affect how the view aligns to the
-     * specified keyline.
+     * <p>This symbol is the offset where the {@link com.companyname.avisen.R.attr#layout_keyline}
+     * attribute's value can be found in the {@link #CoordinatorLayout_Layout} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *

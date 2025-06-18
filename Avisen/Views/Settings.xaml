@@ -6,241 +6,225 @@
     xmlns:local="clr-namespace:Avisen"
     Title="Settings"
     Shell.NavBarIsVisible="False">
-    
-        <Grid RowDefinitions=".1*, .8*">
-            <Grid BackgroundColor="#11d8cb" />
 
-            <!--  Contenido principal  -->
-            <Grid Grid.Row="1" Grid.Column="2">
-                <RoundRectangle
-                    Margin="-5,-30,-5,-2"
-                    CornerRadius="30,30,0,0"
-                    Fill="#fdfefe" />
+    <!--  Layout principal: dos filas (cabecera + contenido)  -->
+    <Grid RowDefinitions="Auto, *">
+        <!--  Cabecera  -->
+        <Grid
+            Grid.Row="0"
+            BackgroundColor="#11d8cb"
+            HeightRequest="60" />
 
-                <VerticalStackLayout>
-                    <Grid Padding="20"
-                          Margin="0,0,0,0">
+        <!--  Contenido principal  -->
+        <Grid Grid.Row="1">
+            <RoundRectangle
+                Margin="-5,-30,-5,-2"
+                CornerRadius="30,30,0,0"
+                Fill="#fdfefe" />
 
-                        <RoundRectangle
-                            Margin="0,0,0,12"
-                            CornerRadius="30,30,30,30"
-                            Fill="#f5f5f5" />
+            <Grid RowDefinitions="Auto, *">
+                <!--  Ajustes  -->
+                <Grid Grid.Row="0" Padding="20">
+                    <RoundRectangle
+                        Margin="0,0,0,12"
+                        CornerRadius="30"
+                        Fill="#f5f5f5" />
+                    <VerticalStackLayout Padding="20">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalTextAlignment="Center"
+                            Text="Ajustes"
+                            TextColor="#2D2D2D" />
+                        <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
-                        <VerticalStackLayout Padding="20">
+                        <!--  Auto-Centrado  -->
+                        <Grid Margin="0,5" ColumnDefinitions="Auto,*,Auto">
                             <Label
-                                FontAttributes="Bold"
-                                FontSize="24"
+                                Grid.Column="0"
+                                FontSize="35"
+                                Style="{StaticResource MaterialIcon}"
+                                Text="{x:Static local:IconFont.Location_searching}"
+                                TextColor="#BFCFFF"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Medium"
                                 HorizontalTextAlignment="Center"
-                                Text="Ajustes"
+                                Text="Auto‑Centrado"
                                 TextColor="#2D2D2D"
-                                VerticalOptions="Start" />
-                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
-
-
-
-                            <Grid ColumnDefinitions="Auto, *, Auto">
-
-                                <Label
-                                    Grid.Column="0"
-                                    FontSize="35"
-                                    HorizontalOptions="Center"
-                                    Style="{StaticResource MaterialIcon}"
-                                    Text="{x:Static local:IconFont.Location_searching}"
-                                    TextColor="#BFCFFF"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Column="1"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Center"
-                                    Text="Auto-Centrado"
-                                    TextColor="#2D2D2D"
-                                    VerticalOptions="Center" />
-                                <Switch
-                                    x:Name="SwitchRecenter"
-                                    Grid.Column="2"
-                                    IsToggled="{Binding IsRecenter}"
-                                    OnColor="#f0ebdc"
-                                    ThumbColor="#0aa59b"
-                                    Toggled="SwtichRecenter_Toggled" />
-                            </Grid>
-
-                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
-
-
-                            <Grid ColumnDefinitions="Auto, *, Auto">
-                                <Label
-                                    Grid.Column="0"
-                                    FontSize="35"
-                                    HorizontalOptions="Center"
-                                    Style="{StaticResource MaterialIcon}"
-                                    Text="{x:Static local:IconFont.Expand}"
-                                    TextColor="#BFCFFF"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Column="1"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Center"
-                                    Text="Distancia de Rastreo (KM):"
-                                    TextColor="#2D2D2D"
-                                    VerticalOptions="Center" />
-                                <Entry
-                                    Grid.Column="2"
-                                    FontSize="20"
-                                    IsEnabled="False"
-                                    Keyboard="Numeric"
-                                    Text="{Binding SliderOfferDistanceValue}"
-                                    TextColor="#2D2D2D" />
-                            </Grid>
-
-                            <Slider
-                                HorizontalOptions="FillAndExpand"
-                                Maximum="5"
-                                MaximumTrackColor="Black"
-                                Minimum="0.5"
-                                MinimumTrackColor="#0aa59b"
+                                VerticalOptions="Center" />
+                            <Switch
+                                x:Name="SwitchRecenter"
+                                Grid.Column="2"
+                                IsToggled="{Binding IsRecenter}"
+                                OnColor="#f0ebdc"
                                 ThumbColor="#0aa59b"
-                                ValueChanged="OnSliderOfferDistanceValueChanged"
-                                VerticalOptions="Center"
-                                Value="{Binding SliderOfferDistanceValue}" />
+                                Toggled="SwtichRecenter_Toggled" />
+                        </Grid>
+                        <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
-                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
-
-                            <Grid ColumnDefinitions="Auto, *, Auto">
-                                <Label
-                                    Grid.Column="0"
-                                    FontSize="35"
-                                    HorizontalOptions="Center"
-                                    Style="{StaticResource MaterialIcon}"
-                                    Text="{x:Static local:IconFont.Update}"
-                                    TextColor="#BFCFFF"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Column="1"
-                                    Margin="1,1,0,0"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="Frecuencia de actualización (Seg):"
-                                    TextColor="#2D2D2D"
-                                    VerticalOptions="Center" />
-                                <Entry
-                                    Grid.Column="2"
-                                    FontSize="20"
-                                    HorizontalOptions="Center"
-                                    IsEnabled="False"
-                                    Keyboard="Numeric"
-                                    Text="{Binding SliderFrequencyValue}"
-                                    TextColor="#2D2D2D"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </Grid>
-
-                            <Slider
-                                HorizontalOptions="FillAndExpand"
-                                Maximum="145"
-                                MaximumTrackColor="Black"
-                                Minimum="20"
-                                MinimumTrackColor="#0aa59b"
-                                ThumbColor="#0aa59b"
-                                ValueChanged="OnSliderFrequencyValueChanged"
-                                VerticalOptions="Center"
-                                Value="{Binding SliderFrequencyValue}" />
-
-                            <BoxView
-                                Margin="0,0,0,10"
-                                BackgroundColor="#fdfefe"
-                                HeightRequest="5" />
-
-                            <Button
-                                x:Name="saveButton"
-                                BackgroundColor="#0aa59b"
-                                Clicked="OnSavePreferences"
-                                CornerRadius="30"
-                                FontSize="18"
+                        <!--  Distancia de Rastreo  -->
+                        <Grid Margin="0,5" ColumnDefinitions="Auto,*,Auto">
+                            <Label
+                                Grid.Column="0"
+                                FontSize="35"
+                                Style="{StaticResource MaterialIcon}"
+                                Text="{x:Static local:IconFont.Expand}"
+                                TextColor="#BFCFFF"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Medium"
+                                HorizontalTextAlignment="Center"
+                                Text="Distancia de Rastreo (KM):"
+                                TextColor="#2D2D2D"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Column="2"
+                                FontSize="20"
                                 IsEnabled="False"
-                                IsVisible="False"
-                                Text="Guardar"
-                                VerticalOptions="End">
-
-                                <Button.ImageSource>
-                                    <FontImageSource
-                                        FontFamily="MaterialIcon"
-                                        Glyph="{x:Static local:IconFont.Save}"
-                                        Size="30"
-                                        Color="#BFCFFF" />
-                                </Button.ImageSource>
-                            </Button>
-
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <Grid
-                        Margin="20,0,20,10">
-                        <RoundRectangle
-                            CornerRadius="30,30,30,30"
-                            Fill="#f5f5f5" />
-
-                        <VerticalStackLayout Padding="20">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="24"
-                                HorizontalTextAlignment="Center"
-                                Text="Ubicaciones Favoritas"
+                                Keyboard="Numeric"
+                                Text="{Binding SliderOfferDistanceValue}"
                                 TextColor="#2D2D2D"
-                                VerticalOptions="Start" />
-                            <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                        <Slider
+                            Margin="0,0,0,5"
+                            Maximum="5"
+                            MaximumTrackColor="Black"
+                            Minimum="0.5"
+                            MinimumTrackColor="#0aa59b"
+                            ThumbColor="#0aa59b"
+                            ValueChanged="OnSliderOfferDistanceValueChanged"
+                            Value="{Binding SliderOfferDistanceValue}" />
 
+                        <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
 
-                            <CollectionView x:Name="FavoritosCollectionView" ItemsSource="{Binding Favoritos}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid
-                                            Padding="15"
-                                            ColumnDefinitions="Auto, *, Auto"
-                                            RowDefinitions="Auto, Auto">
-                                            <RoundRectangle
-                                                Margin="0,0,0,10"
-                                                CornerRadius="30,30,30,30"
-                                                Fill="#f5f5f5" />
-                                            <Label
-                                                Grid.Row="0"
-                                                Grid.Column="0"
-                                                FontSize="35"
-                                                HorizontalOptions="Center"
-                                                Style="{StaticResource MaterialIcon}"
-                                                Text="{x:Static local:IconFont.Location_on}"
-                                                TextColor="#BFCFFF"
-                                                VerticalOptions="Center" />
-                                            <Label
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                FontSize="Medium"
-                                                HorizontalOptions="Center"
-                                                Text="{Binding Nombre}"
-                                                TextColor="#2D2D2D"
-                                                VerticalOptions="Center" />
-                                            <Button
-                                                Grid.Row="0"
-                                                Grid.Column="2"
-                                                BackgroundColor="#f5f5f5"
-                                                Command="{Binding BindingContext.EliminarFavoritoCommand, Source={x:Reference Name=FavoritosCollectionView}}"
-                                                CommandParameter="{Binding idfavorito}"
-                                                FontSize="35"
-                                                Style="{StaticResource MaterialIcon}"
-                                                Text="{x:Static local:IconFont.Delete}" />
-                                            <BoxView
-                                                Grid.Row="1"
-                                                Grid.ColumnSpan="3"
-                                                BackgroundColor="LightGray"
-                                                HeightRequest="1" />
-                                        </Grid>
+                        <!--  Frecuencia de actualización  -->
+                        <Grid Margin="0,5" ColumnDefinitions="Auto,*,Auto">
+                            <Label
+                                Grid.Column="0"
+                                FontSize="35"
+                                Style="{StaticResource MaterialIcon}"
+                                Text="{x:Static local:IconFont.Update}"
+                                TextColor="#BFCFFF"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Medium"
+                                HorizontalTextAlignment="Center"
+                                Text="Frecuencia de actualización (Seg):"
+                                TextColor="#2D2D2D"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Column="2"
+                                FontSize="20"
+                                IsEnabled="False"
+                                Keyboard="Numeric"
+                                Text="{Binding SliderFrequencyValue}"
+                                TextColor="#2D2D2D"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                        <Slider
+                            Margin="0,0,0,10"
+                            Maximum="145"
+                            MaximumTrackColor="Black"
+                            Minimum="20"
+                            MinimumTrackColor="#0aa59b"
+                            ThumbColor="#0aa59b"
+                            ValueChanged="OnSliderFrequencyValueChanged"
+                            Value="{Binding SliderFrequencyValue}" />
 
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </VerticalStackLayout>
-                    </Grid>
-                </VerticalStackLayout>
+                        <Button
+                            x:Name="saveButton"
+                            Margin="0,10,0,0"
+                            BackgroundColor="#0aa59b"
+                            Clicked="OnSavePreferences"
+                            CornerRadius="30"
+                            FontSize="18"
+                            IsEnabled="False"
+                            IsVisible="False"
+                            Text="Guardar"
+                            VerticalOptions="End">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="MaterialIcon"
+                                    Glyph="{x:Static local:IconFont.Save}"
+                                    Size="30"
+                                    Color="#BFCFFF" />
+                            </Button.ImageSource>
+                        </Button>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!--  Ubicaciones Favoritas  -->
+                <Grid Grid.Row="1" Margin="10,0,20,10">
+                    <RoundRectangle CornerRadius="30" Fill="#f5f5f5" />
+                    <VerticalStackLayout Padding="20">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalTextAlignment="Center"
+                            Text="Ubicaciones Favoritas"
+                            TextColor="#2D2D2D" />
+                        <BoxView BackgroundColor="#fdfefe" HeightRequest="5" />
+
+                        <CollectionView
+                            x:Name="FavoritosCollectionView"
+                            HeightRequest="250"
+                            ItemsLayout="VerticalList"
+                            ItemsSource="{Binding Favoritos}"
+                            VerticalOptions="Fill">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        Padding="15"
+                                        ColumnDefinitions="Auto,*,Auto"
+                                        RowDefinitions="Auto,Auto">
+                                        <RoundRectangle
+                                            Margin="0,0,0,10"
+                                            CornerRadius="30"
+                                            Fill="#f5f5f5" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            FontSize="35"
+                                            Style="{StaticResource MaterialIcon}"
+                                            Text="{x:Static local:IconFont.Location_on}"
+                                            TextColor="#BFCFFF"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="Medium"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Nombre}"
+                                            TextColor="#2D2D2D"
+                                            VerticalOptions="Center" />
+                                        <Button
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            BackgroundColor="#f5f5f5"
+                                            Command="{Binding BindingContext.EliminarFavoritoCommand, Source={x:Reference FavoritosCollectionView}}"
+                                            CommandParameter="{Binding idfavorito}"
+                                            FontSize="35"
+                                            Style="{StaticResource MaterialIcon}"
+                                            Text="{x:Static local:IconFont.Delete}" />
+                                        <BoxView
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                            BackgroundColor="LightGray"
+                                            HeightRequest="1" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+
+                </Grid>
             </Grid>
         </Grid>
+    </Grid>
 </ContentPage>
