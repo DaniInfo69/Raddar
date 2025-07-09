@@ -18,7 +18,7 @@ namespace Avisen.Services
         {
             httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://mapi-7pel.onrender.com/api/")
+                BaseAddress = new Uri("https://raddar.softwareinsights.com.mx/api/")
             };
         }
 

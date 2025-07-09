@@ -10,7 +10,7 @@ public static class FavoritosService
 
     private static readonly HttpClient _httpClient = new HttpClient
     {
-        BaseAddress = new Uri("https://mapi-7pel.onrender.com/api/")
+        BaseAddress = new Uri("https://raddar.softwareinsights.com.mx/api/")
     };
 
     public static List<Promocion> ObtenerFavoritos()

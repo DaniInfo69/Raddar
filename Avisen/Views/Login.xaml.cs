@@ -137,7 +137,7 @@ namespace Avisen.Views
                     bool success = jsonResponse.GetProperty("success").GetBoolean();
                     bool emailExists = jsonResponse.GetProperty("emailExists").GetBoolean();
                     bool pending = jsonResponse.GetProperty("pending").GetBoolean();
-                    if (!success && emailExists)
+                    if (!success && emailExists && !pending)
                     {
                         await DisplayAlert("Mal", "La contraseña es incorrecta", "OK");
                     }
