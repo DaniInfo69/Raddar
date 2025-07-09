@@ -296,7 +296,6 @@ public partial class Map : ContentPage
         if (!decition)
         {
             isAddingPin = true;
-            tapOverlay.IsEnabled = true;
 
             AddPin.Text = "Cancelar";
             AddPin.TextColor = Color.FromArgb("#5f1919");
@@ -312,7 +311,6 @@ public partial class Map : ContentPage
         else
         {
             isAddingPin = false;
-            tapOverlay.IsEnabled = false;
 
             AddPin.Text = "Agregar Pin";
             AddPin.TextColor = Color.FromArgb("#19535F");
@@ -327,20 +325,14 @@ public partial class Map : ContentPage
         }
     }
 
+
     // Evento cuando se toca el mapa (tapOverlay)
-    private async void OnMapTapped(object sender, TappedEventArgs e)
+    private async void OnMapClicked(object sender, MapClickedEventArgs e)
     {
         if (!isAddingPin) return;
 
-        // Obtener punto tocado relativo al mapa
-        var point = e.GetPosition(map);
-        if (point == null) return;
+        var location = e.Location;
 
-        // Convertir a coordenadas de mapa
-        var location = map.VisibleRegion?.ToLocation(point.Value, map.Width, map.Height);
-        if (location == null) return;
-
-        // Crear y agregar el pin
         var pin = new Microsoft.Maui.Controls.Maps.Pin
         {
             Label = "Ubicación seleccionada",
@@ -348,23 +340,22 @@ public partial class Map : ContentPage
             Type = PinType.Place
         };
 
-        map.Pins.Clear(); // Opcional: eliminar otros pins
+        map.Pins.Clear(); // Opcional: limpiar otros pins
         map.Pins.Add(pin);
 
         selectedLat = Math.Round(location.Latitude, 15);
         selectedLng = Math.Round(location.Longitude, 14);
 
-        // Mostrar coordenadas
         await DisplayAlert("Coordenadas",
             $"Lat: {selectedLat}, Lng: {selectedLng}",
             "OK");
 
         isAddingPin = false;
-
         AddNewFavoriteZone.IsVisible = true;
         await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
         await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
     }
+
 
     private async void buttonSave_Clicked(object sender, EventArgs e)
     {
@@ -409,6 +400,7 @@ public partial class Map : ContentPage
         await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
         AddNewFavoriteZone.IsVisible = false;
         NameEntry.Text = string.Empty;
+        turnMode(true);
     }
 
     private async void LoadUserDataAsync()

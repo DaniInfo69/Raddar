@@ -69,32 +69,32 @@
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.1.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )",
+              "version": "[9.0.7, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
@@ -112,6 +112,10 @@
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             },
             "Xamarin.AndroidX.Browser": {
               "target": "Package",
@@ -137,39 +141,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-ios18.5": {
           "targetAlias": "net9.0-ios",
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.1.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )",
+              "version": "[9.0.7, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
@@ -187,6 +191,10 @@
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             }
           },
           "imports": [
@@ -208,39 +216,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-maccatalyst18.5": {
           "targetAlias": "net9.0-maccatalyst",
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.1.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )",
+              "version": "[9.0.7, )",
               "autoReferenced": true
             },
             "Newtonsoft.Json": {
@@ -258,6 +266,10 @@
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             }
           },
           "imports": [
@@ -280,34 +292,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-windows10.0.19041": {
           "targetAlias": "net9.0-windows10.0.19041.0",
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[12.1.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Microsoft.Maui.Maps": {
               "target": "Package",
-              "version": "[9.0.80, )"
+              "version": "[9.0.81, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -324,6 +336,10 @@
             "SkiaSharp.Extended.UI.Maui": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             }
           },
           "imports": [
@@ -351,7 +367,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
