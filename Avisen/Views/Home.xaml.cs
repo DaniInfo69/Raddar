@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Windows.Input;
 using Avisen.Models;
 using Avisen.Services;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
 using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;
 
@@ -12,135 +12,114 @@ namespace Avisen.Views
     public partial class Home : ContentPage
     {
         public ObservableCollection<Promocion> OfertasReales { get; set; }
-        public ObservableCollection<Promocion> OfertasActuales { get; set; }
         public ObservableCollection<Categoria> Categorias { get; set; }
-        private List<Promocion> todasLasPromosCache = new(); // para filtros
+        private List<Promocion> todasLasPromosCache = new();
         private bool timerIniciado = false;
+        private Categoria _categoriaSeleccionada;
+
+        public ObservableCollection<Promocion> OfertasDestacadas { get; set; } = new();
 
 
-        public List<string> Filters { get; } = new List<string> { "Ofertas Vistas", "Ofertas Cercanas", "Todas las Ofertas" };
 
-        private string _tempSelectedFilter;
-        public string TempSelectedFilter
+        public Categoria CategoriaSeleccionada
         {
-            get => _tempSelectedFilter;
-            set => SetProperty(ref _tempSelectedFilter, value);
-        }
-
-        private Categoria _tempSelectedCategory;
-        public Categoria TempSelectedCategory
-        {
-            get => _tempSelectedCategory;
-            set => SetProperty(ref _tempSelectedCategory, value);
-        }
-
-        private double _updateFrequency;
-        public double UpdateFrequency
-        {
-            get => _updateFrequency;
-            set => SetProperty(ref _updateFrequency, value);
-        }
-
-        private double _offerDistance;
-        public double OfferDistance
-        {
-            get => _offerDistance;
+            get => _categoriaSeleccionada;
             set
             {
-                _offerDistance = value;
-                OnPropertyChanged();
+                if (_categoriaSeleccionada != value)
+                {
+                    // Deseleccionar la categoría anterior
+                    if (_categoriaSeleccionada != null)
+                        _categoriaSeleccionada.IsSelected = false;
+
+                    _categoriaSeleccionada = value;
+
+                    // Seleccionar la nueva categoría
+                    if (_categoriaSeleccionada != null)
+                    {
+                        _categoriaSeleccionada.IsSelected = true;
+                        FiltrarOfertasPorCategoria(_categoriaSeleccionada);
+                    }
+
+                    OnPropertyChanged();
+                }
             }
         }
 
-        // Comandos
-        public ICommand TapCommand { get; }
-        public ICommand ApplyFiltersCommand { get; }
-        public ICommand ClearFiltersCommand { get; }
-
         private readonly NegocioService negocioService;
+
+        public ICommand TapCommand { get; }
+
         public Home(NegocioService negocioService)
         {
             InitializeComponent();
             this.negocioService = negocioService;
 
             OfertasReales = new ObservableCollection<Promocion>();
-            OfertasActuales = new ObservableCollection<Promocion>();
             Categorias = new ObservableCollection<Categoria>();
+            OfertasDestacadas = new ObservableCollection<Promocion>();
 
-            LoadPromotions();
-
-            // Inicializar comandos
             TapCommand = new Command<Promocion>(async (promo) => await NavigateToDetalle(promo));
-            ApplyFiltersCommand = new Command(ApplyFilters);
-            ClearFiltersCommand = new Command(ClearFilters);
-
-            // Cargamos las categorías
-            _ = CargarCategoriasAsync();
 
             BindingContext = this;
+
+            LoadUserNameAsync();
+            _ = CargarCategoriasAsync();
+            LoadPromotions(); // Llenará también las ofertas destacadas correctamente
         }
+
 
         protected override void OnAppearing()
         {
-
             base.OnAppearing();
-            UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
-            OfferDistance = Preferences.Get("OfferDistance", 0.0);
 
-            if (UpdateFrequency == 0)
+            double updateFrequency = Preferences.Get("UpdateFrequency", 0.0);
+            double offerDistance = Preferences.Get("OfferDistance", 0.0);
+
+            if (updateFrequency == 0)
             {
-                try
-                {
-                    Preferences.Set("UpdateFrequency", 20.0);
-                    Preferences.Set("OfferDistance", 0.5);
-                }
-                catch (Exception ex)
-                {
-                    DisplayAlert("Error", "" + ex + "", "OK");
-                }
-                finally
-                {
-                    UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
-                    OfferDistance = Preferences.Get("OfferDistance", 0.0);
-                }
-
+                Preferences.Set("UpdateFrequency", 20.0);
+                Preferences.Set("OfferDistance", 0.5);
             }
 
             OfertasReales.Clear();
-            OfertasActuales.Clear();
             RefreshPromotions();
 
             if (!timerIniciado)
             {
                 timerIniciado = true;
-
-                this.Dispatcher.StartTimer(TimeSpan.FromSeconds(UpdateFrequency), () =>
+                this.Dispatcher.StartTimer(TimeSpan.FromSeconds(20), () =>
                 {
-                    Console.WriteLine("Recarga de Datos");
-                    LoadPromotions(); // Ejecutado en hilo UI
+                    LoadPromotions();
                     return true;
                 });
             }
+
+            var carouselTimer = Application.Current.Dispatcher.CreateTimer();
+            carouselTimer.Interval = TimeSpan.FromSeconds(8);
+            carouselTimer.Tick += (_, _) =>
+            {
+                if (OfertasDestacadas.Count > 1)
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        int next = (HotOffersCarousel.Position + 1) % OfertasDestacadas.Count;
+                        HotOffersCarousel.ScrollTo(next, animate: true);
+                    });
+            };
+            carouselTimer.Start();
 
         }
 
         private void RefreshPromotions()
         {
-            if (todasLasPromosCache.Any())
-            {
-                OfertasReales.Clear();
-                foreach (var promo in todasLasPromosCache)
-                {
-                    OfertasReales.Add(promo);
-                }
-            }
+            OfertasReales.Clear();
+            foreach (var promo in todasLasPromosCache)
+                OfertasReales.Add(promo);
         }
-
 
         private async Task NavigateToDetalle(Promocion promocion)
         {
-            if (promocion == null)
-                return;
+            if (promocion == null) return;
 
             try
             {
@@ -154,35 +133,11 @@ namespace Avisen.Views
                 }
 
                 await Navigation.PushAsync(new PromocionDetallesPage(promocion, matriz.Location));
-                //await Navigation.PushModalAsync(new PromocionDetallesPage(promocion, matriz.Location));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"No se pudo navegar al detalle: {ex.Message}", "OK");
             }
-        }
-
-
-        private async void OnFiltrarTapped(object sender, EventArgs e)
-        {
-            FiltroPopup.IsVisible = true;
-            await PopupFrame.FadeTo(1, 250, Easing.CubicInOut);
-            await PopupFrame.ScaleTo(1, 250, Easing.CubicOut);
-        }
-
-        private async void OnCerrarFiltroTapped(object sender, EventArgs e)
-        {
-            await PopupFrame.ScaleTo(0.8, 200, Easing.CubicIn);
-            await PopupFrame.FadeTo(0, 200, Easing.CubicOut);
-            FiltroPopup.IsVisible = false;
-        }
-
-        private List<Promocion> GetPromocionesFromMatrices(List<Matriz> matrices)
-        {
-            return matrices?
-                .Where(m => m.Promociones?.Any() == true)
-                .SelectMany(m => m.Promociones)
-                .ToList() ?? new List<Promocion>();
         }
 
         private async Task CargarCategoriasAsync()
@@ -192,7 +147,6 @@ namespace Avisen.Views
                 var apiService = new ApiService();
                 var categoriasObtenidas = await apiService.ObtenerCategoriaAsync();
 
-                // Agregar opción "Todas las categorías"
                 categoriasObtenidas.Insert(0, new Categoria
                 {
                     idcategoria = -1,
@@ -203,9 +157,7 @@ namespace Avisen.Views
                 {
                     Categorias.Clear();
                     foreach (var categoria in categoriasObtenidas)
-                    {
                         Categorias.Add(categoria);
-                    }
                 });
             }
             catch (Exception ex)
@@ -214,59 +166,11 @@ namespace Avisen.Views
             }
         }
 
-        private void ApplyFilters()
-        {
-            var promociones = todasLasPromosCache;
-
-            if (TempSelectedFilter == "Ofertas Vistas")
-            {
-                promociones = Map.OfertasVistas.SelectMany(m => m.Promociones).ToList();
-            }
-            else if (TempSelectedFilter == "Ofertas Cercanas")
-            {
-                promociones = Map.OfertasActuales.SelectMany(m => m.Promociones).ToList();
-            }
-
-            if (TempSelectedCategory != null && TempSelectedCategory.idcategoria != -1)
-            {
-                promociones = promociones.Where(p => p.categoria_idcategoria == TempSelectedCategory.idcategoria).ToList();
-            }
-
-            OfertasReales.Clear();
-            foreach (var promo in promociones)
-                OfertasReales.Add(promo);
-
-            OnCerrarFiltroTapped(null, null);
-        }
-
-
-        private void ClearFilters()
-        {
-            // Restablecer a valores por defecto
-            TempSelectedFilter = "Todas las Ofertas";
-            TempSelectedCategory = Categorias.FirstOrDefault(c => c.idcategoria == -1);
-
-            // Notificar cambios en las propiedades
-            OnPropertyChanged(nameof(TempSelectedFilter));
-            OnPropertyChanged(nameof(TempSelectedCategory));
-        }
-
-        private bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "")
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-
         private async void LoadPromotions()
         {
             try
             {
                 var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
-
                 var nuevasPromos = negocios
                     .Where(m => m.Promociones != null)
                     .SelectMany(m => m.Promociones)
@@ -281,10 +185,7 @@ namespace Avisen.Views
                     {
                         promosGuardadas = JsonSerializer.Deserialize<List<Promocion>>(promocionesJson);
                     }
-                    catch
-                    {
-                        // Si hay error, ignoramos y seguimos con lista vacía
-                    }
+                    catch { }
                 }
 
                 var idsAntiguos = promosGuardadas.Select(p => p.idpromocion).ToHashSet();
@@ -292,12 +193,9 @@ namespace Avisen.Views
 
                 if (!idsAntiguos.SetEquals(idsNuevos))
                 {
-
                     var isGranted = await LocalNotificationCenter.Current.AreNotificationsEnabled();
                     if (!isGranted)
-                    {
                         await LocalNotificationCenter.Current.RequestNotificationPermission();
-                    }
 
                     var notification = new NotificationRequest
                     {
@@ -316,13 +214,25 @@ namespace Avisen.Views
                 var nuevasPromosJson = JsonSerializer.Serialize(nuevasPromos);
                 Preferences.Set("PromosGuardadas", nuevasPromosJson);
 
-                OfertasReales.Clear();
-                foreach (var promo in nuevasPromos)
-                {
-                    OfertasReales.Add(promo);
-                }
-
                 todasLasPromosCache = nuevasPromos;
+
+                OfertasDestacadas.Clear();
+                foreach (var promo in nuevasPromos.Take(3))
+                    OfertasDestacadas.Add(promo);
+
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    if (CategoriaSeleccionada != null)
+                        FiltrarOfertasPorCategoria(CategoriaSeleccionada);
+                    else
+                    {
+                        OfertasReales.Clear();
+                        foreach (var promo in nuevasPromos)
+                            OfertasReales.Add(promo);
+                    }
+                });
+
 
                 Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
             }
@@ -332,5 +242,57 @@ namespace Avisen.Views
             }
         }
 
+        private async void LoadUserNameAsync()
+        {
+            try
+            {
+                var userDataJson = await SecureStorage.GetAsync("UserData");
+
+                if (!string.IsNullOrEmpty(userDataJson))
+                {
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var userData = JsonSerializer.Deserialize<UserData>(userDataJson, options);
+
+                    lblUserName.Text = userData != null
+                        ? $"¡Hola, {userData.NombreCliente}!"
+                        : "Nombre no disponible";
+                }
+                else
+                {
+                    lblUserName.Text = "No se encontró información del usuario.";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblUserName.Text = "Error al cargar el nombre";
+                await DisplayAlert("Error", $"Detalles: {ex.Message}", "OK");
+            }
+        }
+
+        private void FiltrarOfertasPorCategoria(Categoria categoria)
+        {
+            var filtradas = categoria.idcategoria == -1
+                ? todasLasPromosCache
+                : todasLasPromosCache
+                    .Where(p => p.categoria_idcategoria == categoria.idcategoria)
+                    .ToList();
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                OfertasReales.Clear();
+                foreach (var promo in filtradas)
+                    OfertasReales.Add(promo);
+            });
+        }
+
+        private bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+                return false;
+
+            backingStore = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
     }
 }
