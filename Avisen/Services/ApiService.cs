@@ -119,15 +119,13 @@ namespace Avisen.Services
 
                 foreach (var matriz in matrices)
                 {
-                    // Buscar la empresa que tiene esta matriz como su sede
-                    var empresa = empresas.FirstOrDefault(e => e.matriz_idmatriz == matriz.idmatriz);
-                    matriz.DescripcionEmpresa = empresa?.Descripcion ?? "Sin descripción";
+                    var empresasDeLaMatriz = empresas.Where(e => e.matriz_idmatriz == matriz.idmatriz).ToList();
 
-                    // Obtener promociones de la empresa asociada a la matriz
-                    matriz.Promociones = promociones.Where(p => p.empresa_idempresa == empresa?.idempresa).ToList();
+                    matriz.Promociones = promociones
+                        .Where(p => empresasDeLaMatriz.Any(emp => emp.idempresa == p.empresa_idempresa))
+                        .ToList();
 
-                    Console.WriteLine($"Matriz: {matriz.Nombre}, Empresa: {empresa?.Nombre}, Descripción: {matriz.DescripcionEmpresa}, Ubicación: {matriz.Ubicacion}");
-                    Console.WriteLine($"Matriz: {matriz.Nombre} tiene {matriz.Promociones.Count} promociones.");
+                    matriz.DescripcionEmpresa = empresasDeLaMatriz.FirstOrDefault()?.Descripcion ?? "Sin descripción";
                 }
 
                 return matrices;

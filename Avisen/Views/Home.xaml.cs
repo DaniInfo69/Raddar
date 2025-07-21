@@ -16,6 +16,7 @@ namespace Avisen.Views
         private List<Promocion> todasLasPromosCache = new();
         private bool timerIniciado = false;
         private Categoria _categoriaSeleccionada;
+        private IDispatcherTimer _carouselTimer;
 
         public ObservableCollection<Promocion> OfertasDestacadas { get; set; } = new();
 
@@ -64,7 +65,7 @@ namespace Avisen.Views
             BindingContext = this;
 
             LoadUserNameAsync();
-            _ = CargarCategoriasAsync();
+            _ = InicializarPantallaAsync();
             LoadPromotions(); // Llenará también las ofertas destacadas correctamente
         }
 
@@ -96,19 +97,35 @@ namespace Avisen.Views
             }
 
             var carouselTimer = Application.Current.Dispatcher.CreateTimer();
-            carouselTimer.Interval = TimeSpan.FromSeconds(8);
-            carouselTimer.Tick += (_, _) =>
+            if (_carouselTimer == null)
             {
-                if (OfertasDestacadas.Count > 1)
-                    MainThread.BeginInvokeOnMainThread(() =>
+                _carouselTimer = Application.Current.Dispatcher.CreateTimer();
+                _carouselTimer.Interval = TimeSpan.FromSeconds(6);
+                _carouselTimer.Tick += (_, _) =>
+                {
+                    if (OfertasDestacadas.Count > 1)
                     {
                         int next = (HotOffersCarousel.Position + 1) % OfertasDestacadas.Count;
-                        HotOffersCarousel.ScrollTo(next, animate: true);
-                    });
-            };
-            carouselTimer.Start();
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            HotOffersCarousel.ScrollTo(next, animate: true);
+                        });
+                    }
+                };
+                _carouselTimer.Start();
+            }
+
 
         }
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _carouselTimer?.Stop();
+            _carouselTimer = null;
+        }
+
 
         private void RefreshPromotions()
         {
@@ -158,7 +175,10 @@ namespace Avisen.Views
                     Categorias.Clear();
                     foreach (var categoria in categoriasObtenidas)
                         Categorias.Add(categoria);
+
+                    CategoriaSeleccionada = Categorias.FirstOrDefault();
                 });
+
             }
             catch (Exception ex)
             {
@@ -168,6 +188,9 @@ namespace Avisen.Views
 
         private async void LoadPromotions()
         {
+
+            int posicionActual = HotOffersCarousel.Position;
+
             try
             {
                 var negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
@@ -220,18 +243,17 @@ namespace Avisen.Views
                 foreach (var promo in nuevasPromos.Take(3))
                     OfertasDestacadas.Add(promo);
 
-
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
+                    HotOffersCarousel.ScrollTo(Math.Min(posicionActual, OfertasDestacadas.Count - 1), animate: false);
+
+                    // Aplicar el filtro actual después de cargar las promociones
                     if (CategoriaSeleccionada != null)
-                        FiltrarOfertasPorCategoria(CategoriaSeleccionada);
-                    else
                     {
-                        OfertasReales.Clear();
-                        foreach (var promo in nuevasPromos)
-                            OfertasReales.Add(promo);
+                        FiltrarOfertasPorCategoria(CategoriaSeleccionada);
                     }
                 });
+
 
 
                 Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
@@ -294,5 +316,21 @@ namespace Avisen.Views
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        private async Task InicializarPantallaAsync()
+        {
+            await CargarCategoriasAsync();    // Carga categorías y selecciona "Todas"
+            await Task.Delay(50);             // Espera mínima para asegurar que el binding aplique
+
+            await Task.Run(() => LoadPromotions()); // Carga promociones en segundo plano
+
+            // Esperamos un poco más para asegurar que todas las promos estén listas
+            await Task.Delay(200);
+
+            // Forzamos el filtro ahora que todasLasPromosCache ya está lleno
+            if (CategoriaSeleccionada != null)
+                FiltrarOfertasPorCategoria(CategoriaSeleccionada);
+        }
+
     }
 }

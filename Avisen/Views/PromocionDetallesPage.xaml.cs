@@ -34,7 +34,7 @@ public partial class PromocionDetallesPage : ContentPage
         // Nombre en negritas
         formattedString.Spans.Add(new Span
         {
-            Text = promocion.Nombre + "\n\n",
+            Text = (promocion.Nombre ?? "Sin nombre") + "\n\n",
             FontAttributes = FontAttributes.Bold,
             FontSize = 18,
             TextColor = Color.FromArgb("#19535F"),
@@ -43,7 +43,7 @@ public partial class PromocionDetallesPage : ContentPage
         // Descripción normal
         formattedString.Spans.Add(new Span
         {
-            Text = promocion.Descripcion + "\n\n",
+            Text = (promocion.Descripcion ?? "Sin descripción") + "\n\n",
             FontSize = 16,
             TextColor = Color.FromArgb("#602020")
         });
@@ -51,7 +51,7 @@ public partial class PromocionDetallesPage : ContentPage
         // Precio
         formattedString.Spans.Add(new Span
         {
-            Text = $"Precio: {(promocion.Precio == null ? "Oferta especial" : $"${promocion.Precio} mxn")}\n\n",
+            Text = $"Precio: {(string.IsNullOrWhiteSpace(promocion.Precio) ? "Oferta especial" : $"${promocion.Precio} mxn")}\n\n",
             FontSize = 16,
             TextColor = Color.FromArgb("#19535F")
         });
@@ -59,13 +59,14 @@ public partial class PromocionDetallesPage : ContentPage
         // Tipo de promoción
         formattedString.Spans.Add(new Span
         {
-            Text = $"Tipo de promoción: {promocion.Tipo}",
+            Text = $"Tipo de promoción: {(promocion.Tipo ?? "No especificado")}",
             FontSize = 16,
             TextColor = Color.FromArgb("#19535F")
         });
 
         return formattedString;
     }
+
 
     // Mantenemos los mismos métodos de eventos
     private async void CerrarModal(object sender, EventArgs e)

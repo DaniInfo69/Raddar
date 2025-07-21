@@ -111,10 +111,12 @@
            Margin="15,0,0,0" />
 
                 <CarouselView x:Name="HotOffersCarousel"
-                  ItemsSource="{Binding OfertasDestacadas}"
-                  HeightRequest="260"
-                  PeekAreaInsets="1"
-                  IsSwipeEnabled="True">
+              ItemsSource="{Binding OfertasDestacadas}"
+              HeightRequest="300"
+              PeekAreaInsets="20"
+              IsSwipeEnabled="True"
+              HorizontalOptions="FillAndExpand">
+
 
                     <CarouselView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" 
@@ -125,12 +127,11 @@
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <Frame CornerRadius="20" 
-                       Padding="15"
-                       HasShadow="True"
-                       WidthRequest="320"
-                       HeightRequest="240"
-                       Margin="0"
-                       HorizontalOptions="Center">
+       Padding="15"
+       HasShadow="True"
+       Margin="10"
+       HorizontalOptions="FillAndExpand">
+
 
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -219,7 +220,7 @@
             <!-- Todas las ofertas -->
             <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
                 <Label Grid.Column="0" Text="Todas las ofertas" FontSize="18" FontAttributes="Bold" TextColor="#19535F" />
-                <Button Grid.Column="1" Text="Ver todo" FontSize="14" BackgroundColor="Transparent" TextColor="#0aa59b" />
+
             </Grid>
 
             <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
