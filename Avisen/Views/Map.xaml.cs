@@ -11,7 +11,7 @@ namespace Avisen.Views;
 public partial class Map : ContentPage
 {
     private Location userLocation;
-    private List<Matriz> negocios;
+    private List<Negocio> negocios;
     private readonly NegocioService negocioService;
     private bool isUpdatingLocation;
     private int updateDelayFrequency = 1000;
@@ -22,8 +22,9 @@ public partial class Map : ContentPage
 
 
 
-    public static List<Matriz> OfertasVistas { get; private set; } = new List<Matriz>();
-    public static List<Matriz> OfertasActuales = new List<Matriz>();
+    public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
+    public static List<Negocio> OfertasActuales = new List<Negocio>();
+
     private readonly ApiService apiService = new ApiService(); // Servicio para manejo de API
 
 
@@ -163,7 +164,7 @@ public partial class Map : ContentPage
     {
         try
         {
-            negocios = await negocioService.ObtenerMatricesConPromocionesAsync();
+            negocios = await negocioService.ObtenerNegociosConPromocionesAsync();
             var currentTime = DateTime.Now.ToString("o");
             await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
             Debug.WriteLine("Cargó Datos.");
@@ -184,11 +185,20 @@ public partial class Map : ContentPage
             return;
         }
 
-        var negociosEnRango = new List<Matriz>();
+        var negociosEnRango = new List<Negocio>();
 
         foreach (var negocio in negocios)
         {
+            if (negocio?.Ubicacion == null)
+            {
+                Debug.WriteLine($"Negocio sin ubicación: {negocio?.Nombre}");
+                Console.WriteLine($"Ubicación {negocio?.Ubicacion} en:{negocio?.Nombre} ");
+                continue;
+            }
+
             var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
+            Console.WriteLine($"Ubicación {negocio?.Location} en:{negocio?.Nombre} ");
+
 
             if (distance <= OfferDistance)
             {
@@ -232,7 +242,7 @@ public partial class Map : ContentPage
         }
     }
 
-    private void ShowPromotionAlert(Matriz negocio)
+    private void ShowPromotionAlert(Negocio negocio)
     {
         if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
         {
@@ -251,11 +261,11 @@ public partial class Map : ContentPage
         map.Pins.Add(promotionPin);
     }
 
-    private async void DisplayPromotionDetails(Matriz negocio)
+
+    private async void DisplayPromotionDetails(Negocio negocio)
     {
         if (negocio?.Promociones?.Any() == true)
         {
-            // Mostrar todas las promociones en un carrusel o lista seleccionable
             var action = await DisplayActionSheet(
                 "Selecciona una promoción",
                 "Cancelar",
@@ -274,9 +284,10 @@ public partial class Map : ContentPage
         }
         else
         {
-            await DisplayAlert("Sin promociones", "Este negocio no tiene promociones disponibles", "OK");
+            await DisplayAlert("Sin promociones", "Esta sucursal no tiene promociones disponibles", "OK");
         }
     }
+
 
     private void OnAddPinClicked(object sender, EventArgs e)
     {

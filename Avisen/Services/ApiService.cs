@@ -86,7 +86,7 @@ namespace Avisen.Services
                 };
 
                 var promociones = await httpClient.GetFromJsonAsync<List<Promocion>>("promocion", options) ?? new List<Promocion>();
-                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("matriz") ?? new List<Negocio>();
 
                 // Enriquecer promociones con datos de la empresa
                 foreach (var promocion in promociones)
@@ -201,6 +201,35 @@ namespace Avisen.Services
             {
                 Debug.WriteLine($"Error en ObtenerPromocionesEnRangoAsync: {ex.Message}");
                 return new List<Matriz>();
+            }
+        }
+
+
+
+        public async Task<List<Negocio>> ObtenerNegociosConPromocionesAsync()
+        {
+            try
+            {
+                var negocios = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
+                var promociones = await ObtenerPromocionesAsync();
+
+                // Relacionar promociones con negocios
+                foreach (var negocio in negocios)
+                {
+                    negocio.Promociones = promociones
+                        .Where(p => p.empresa_idempresa == negocio.idempresa)
+                        .ToList();
+                }
+
+                // Filtrar solo los negocios que sí tienen promociones
+                return negocios
+                    .Where(n => n.Promociones != null && n.Promociones.Any())
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al obtener negocios con promociones: {ex.Message}");
+                return new List<Negocio>();
             }
         }
 
