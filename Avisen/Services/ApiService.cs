@@ -86,7 +86,7 @@ namespace Avisen.Services
                 };
 
                 var promociones = await httpClient.GetFromJsonAsync<List<Promocion>>("promocion", options) ?? new List<Promocion>();
-                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("matriz") ?? new List<Negocio>();
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
 
                 // Enriquecer promociones con datos de la empresa
                 foreach (var promocion in promociones)
@@ -213,25 +213,31 @@ namespace Avisen.Services
                 var negocios = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa") ?? new List<Negocio>();
                 var promociones = await ObtenerPromocionesAsync();
 
-                // Relacionar promociones con negocios
                 foreach (var negocio in negocios)
                 {
+                    // Validar si Ubicacion viene nula
+                    if (negocio?.Ubicacion == null)
+                    {
+                        Console.WriteLine($"Negocio sin ubicación: ID={negocio?.idempresa}, Nombre={negocio?.Nombre ?? "Sin nombre"}");
+                    }
+
                     negocio.Promociones = promociones
                         .Where(p => p.empresa_idempresa == negocio.idempresa)
                         .ToList();
                 }
 
-                // Filtrar solo los negocios que sí tienen promociones
+                // Filtrar solo los negocios que sí tienen promociones y ubicación válida
                 return negocios
-                    .Where(n => n.Promociones != null && n.Promociones.Any())
+                    .Where(n => n.Promociones != null && n.Promociones.Any() && n.Ubicacion != null)
                     .ToList();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error al obtener negocios con promociones: {ex.Message}");
+                Console.WriteLine($"Error al obtener negocios con promociones: {ex.Message}");
                 return new List<Negocio>();
             }
         }
+
 
     }
 }

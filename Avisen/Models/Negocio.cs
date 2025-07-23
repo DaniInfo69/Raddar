@@ -10,14 +10,17 @@ namespace Avisen.Models
         public string ImagenUrl { get; set; }
         public string Nombre { get; set; }               // Nombre del negocio
         public string Descripcion { get; set; }
-        public UbicacionApi Ubicacion { get; set; }
+        public UbicacionApi? Ubicacion { get; set; }
+
         public List<Promocion> Promociones { get; set; } = new();
 
         [JsonIgnore]
-        public Location Location
+        public Location? Location
         {
             get
             {
+                if (Ubicacion == null) return null;
+
                 if (Ubicacion.x < -90 || Ubicacion.x > 90)
                 {
                     Console.WriteLine($"¡Coordenadas invertidas detectadas! Empresa ID: {idempresa}");
@@ -27,6 +30,7 @@ namespace Avisen.Models
                 return new Location(Ubicacion.x, Ubicacion.y);
             }
         }
+
 
 
         // Modelo que refleja EXACTAMENTE la estructura de la API
