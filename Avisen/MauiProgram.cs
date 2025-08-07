@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
 using Sharpnado.MaterialFrame;
 using SkiaSharp.Views.Maui.Controls.Hosting;
-
+using UraniumUI;
 namespace Avisen
 {
     public static class MauiProgram
@@ -16,6 +16,8 @@ namespace Avisen
                 .UseMauiApp<App>()
                 .UseSharpnadoMaterialFrame(loggerEnable: false)
                 .UseMauiCommunityToolkit()
+                .UseUraniumUI()
+                .UseUraniumUIMaterial()
                 .UseSkiaSharp()
                 .UseLocalNotification()
                 .ConfigureFonts(fonts =>

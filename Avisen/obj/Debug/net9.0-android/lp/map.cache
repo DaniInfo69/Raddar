@@ -1,6 +1,7 @@
 CommunityToolkit.Maui.Core.dll
 CommunityToolkit.Maui.dll
 GoogleGson.dll
+InputKit.Maui.dll
 Jsr305Binding.dll
 Maui.MaterialFrame.dll
 Microsoft.Maui.Controls.Compatibility.dll
@@ -11,6 +12,7 @@ Microsoft.Maui.dll
 Microsoft.Maui.Essentials.dll
 Microsoft.Maui.Graphics.dll
 Microsoft.Maui.Maps.dll
+Plainer.Maui.dll
 Plugin.LocalNotification.dll
 SkiaSharp.dll
 SkiaSharp.Extended.UI.dll
@@ -19,6 +21,8 @@ SkiaSharp.Skottie.dll
 SkiaSharp.Views.Android.dll
 SkiaSharp.Views.Maui.Controls.dll
 SkiaSharp.Views.Maui.Core.dll
+UraniumUI.dll
+UraniumUI.Material.dll
 Xamarin.Android.Glide.Annotations.dll
 Xamarin.Android.Glide.DiskLruCache.dll
 Xamarin.Android.Glide.dll

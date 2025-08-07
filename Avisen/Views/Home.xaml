@@ -3,213 +3,239 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Avisen"
+    xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
+    xmlns:uranium="clr-namespace:UraniumUI;assembly=UraniumUI"
     Title="Home"
     BackgroundColor="#FAFAFA"
     Shell.NavBarIsVisible="False">
 
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="PaginationLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="#666" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="5,0" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Hero Section -->
+            <!--  Hero Section  -->
             <Border
+                Margin="0"
                 Padding="20"
-                Stroke="Black"    
-                StrokeThickness="1"         
-                StrokeShape="RoundRectangle 20"           
-                Margin="0">
+                Stroke="Black"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="1">
 
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#11d8cb" Offset="0.0" />
-                        <GradientStop Color="#CB11D8" Offset="1.0" />
+                        <GradientStop Offset="0.0" Color="#11d8cb" />
+                        <GradientStop Offset="1.0" Color="#CB11D8" />
                     </LinearGradientBrush>
                 </Border.Background>
 
-
                 <VerticalStackLayout Spacing="8">
-                    <!-- Título principal -->
-                    <Label 
-                        x:Name="lblUserName" 
-                        FontSize="20" 
-                        TextColor="White" 
-                        FontAttributes="Bold"/>
-
-
-                    <!-- Subtítulo -->
-                    <Label 
-                        Text="Descubre ofertas increíbles cerca de ti" 
-                        FontSize="14" 
+                    <!--  Título principal  -->
+                    <Label
+                        x:Name="lblUserName"
+                        FontAttributes="Bold"
+                        FontSize="20"
                         TextColor="White" />
 
-                    <!-- Sección de ofertas -->
-                    <Border 
-                        Stroke="Black"
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 12"
-                        BackgroundColor="Transparent"
-                        Padding="12,10">
-                        <!-- Padding ajustado -->
+                    <!--  Subtítulo  -->
+                    <Label
+                        FontSize="14"
+                        Text="Descubre ofertas increíbles cerca de ti"
+                        TextColor="White" />
 
+                    <!--  Sección de ofertas  -->
+                    <Border
+                        Padding="12,10"
+                        BackgroundColor="Transparent"
+                        Stroke="Black"
+                        StrokeShape="RoundRectangle 12"
+                        StrokeThickness="1">
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                            <Label 
+                            <Label
+                                FontSize="20"
                                 Style="{StaticResource MaterialIcon}"
                                 Text="{x:Static local:IconFont.Pin_drop}"
-                                FontSize="20"
                                 TextColor="Black"
-                                VerticalOptions="Center"/>
+                                VerticalOptions="Center" />
 
-                            <Label 
-                                Text="12 nuevas ofertas cerca de ti" 
-                                FontSize="13" 
+                            <Label
+                                FontSize="13"
+                                Text="12 nuevas ofertas cerca de ti"
                                 TextColor="Black"
-                                VerticalOptions="Center"/>
+                                VerticalOptions="Center" />
                         </HorizontalStackLayout>
                     </Border>
                 </VerticalStackLayout>
             </Border>
 
+            <!--  Categorías  -->
             <CollectionView
-    x:Name="CategoriasList"
-                Background="AntiqueWhite"
-    ItemsSource="{Binding Categorias}"
-    ItemsLayout="HorizontalList"
-    SelectionMode="Single"
-    HeightRequest="50"
-    SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}">
-
-
+                x:Name="CategoriasList"
+                HeightRequest="50"
+                ItemsLayout="HorizontalList"
+                ItemsSource="{Binding Categorias}"
+                SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}"
+                SelectionMode="Single">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
-                Padding="12,6"
-                StrokeThickness="1"
-                StrokeShape="RoundRectangle 20"
-                Stroke="Transparent"
-                BackgroundColor="Transparent">
+                            Padding="12,6"
+                            BackgroundColor="Transparent"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 20"
+                            StrokeThickness="1">
 
                             <Label
-                    Text="{Binding Nombre}"
-                    FontSize="14"
-                    FontAttributes="Bold"
-                    TextColor="{Binding IsSelected, Converter={StaticResource TextColorSelectionConverter}}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{Binding Nombre}"
+                                TextColor="{Binding IsSelected, Converter={StaticResource TextColorSelectionConverter}}"
+                                VerticalOptions="Center" />
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            <!--  Ofertas destacadas  -->
+            <StackLayout Margin="0,10" Spacing="0">
+                <Label
+                    Margin="15,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="🔥 Ofertas Populares"
+                    TextColor="#19535F" />
 
-
-            <!-- Ofertas destacadas - Versión optimizada -->
-            <StackLayout Spacing="0" Margin="0,10">
-                <Label Text="🔥 Ofertas Populares" 
-           FontSize="18" 
-           TextColor="#19535F" 
-           FontAttributes="Bold"
-           Margin="15,0,0,0" />
-
-                <CarouselView x:Name="HotOffersCarousel"
-              ItemsSource="{Binding OfertasDestacadas}"
-              HeightRequest="300"
-              PeekAreaInsets="20"
-              IsSwipeEnabled="True"
-              HorizontalOptions="FillAndExpand">
-
+                <CarouselView
+                    x:Name="HotOffersCarousel"
+                    HeightRequest="300"
+                    HorizontalOptions="FillAndExpand"
+                    IsSwipeEnabled="True"
+                    ItemsSource="{Binding OfertasDestacadas}"
+                    PeekAreaInsets="20">
 
                     <CarouselView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" 
-                              SnapPointsType="MandatorySingle"
-                              ItemSpacing="15" />
+                        <LinearItemsLayout
+                            ItemSpacing="15"
+                            Orientation="Horizontal"
+                            SnapPointsType="MandatorySingle" />
                     </CarouselView.ItemsLayout>
 
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="20" 
-       Padding="15"
-       HasShadow="True"
-       Margin="10"
-       HorizontalOptions="FillAndExpand">
-
+                            <Frame
+                                Margin="10"
+                                Padding="15"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
 
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#11d8cb" Offset="0.0" />
-                                        <GradientStop Color="#CB11D8" Offset="1.0" />
+                                        <GradientStop Offset="0.0" Color="#11d8cb" />
+                                        <GradientStop Offset="1.0" Color="#CB11D8" />
                                     </LinearGradientBrush>
                                 </Frame.Background>
 
-                                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
-                          ColumnDefinitions="*,Auto"
-                          RowSpacing="5"
-                          VerticalOptions="FillAndExpand">
+                                <Grid
+                                    ColumnDefinitions="*,Auto"
+                                    RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                    RowSpacing="5"
+                                    VerticalOptions="FillAndExpand">
 
-                                    <!-- Imagen + Título -->
-                                    <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="2" 
-                                              Spacing="10" 
-                                              VerticalOptions="Center">
-                                        <Image Source="{Binding imagenes[0].url}" 
-                                   WidthRequest="40" 
-                                   HeightRequest="40" 
-                                   Aspect="AspectFill" />
+                                    <!--  Imagen + Título  -->
+                                    <HorizontalStackLayout
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2"
+                                        Spacing="10"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Aspect="AspectFill"
+                                            HeightRequest="40"
+                                            Source="{Binding imagenes[0].url}"
+                                            WidthRequest="40" />
                                         <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="{Binding Nombre}" 
-                                       FontSize="14" 
-                                       TextColor="White" 
-                                       FontAttributes="Bold"
-                                       LineBreakMode="TailTruncation"/>
-                                            <Label Text="Restaurante" 
-                                       FontSize="12" 
-                                       TextColor="White" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="14"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{Binding Nombre}"
+                                                TextColor="White" />
+                                            <Label
+                                                FontSize="12"
+                                                Text="Restaurante"
+                                                TextColor="White" />
                                         </VerticalStackLayout>
-                                        <Label Text="LIMITED"
-                                   FontSize="10"
-                                   TextColor="Black"
-                                   BackgroundColor="Yellow"
-                                   Padding="6,2"
-                                   HorizontalOptions="End"
-                                   VerticalOptions="Start"/>
+                                        <Label
+                                            Padding="6,2"
+                                            BackgroundColor="Yellow"
+                                            FontSize="10"
+                                            HorizontalOptions="End"
+                                            Text="LIMITED"
+                                            TextColor="Black"
+                                            VerticalOptions="Start" />
                                     </HorizontalStackLayout>
 
-                                    <!-- Descuento -->
-                                    <Label Grid.Row="1" Grid.ColumnSpan="2"
-                               Text="50% OFF Dinner for Two"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="White"
-                               Margin="0,5,0,0" />
+                                    <!--  Descuento  -->
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,5,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="50% OFF Dinner for Two"
+                                        TextColor="White" />
 
-                                    <!-- Descripción -->
-                                    <Label Grid.Row="2" Grid.ColumnSpan="2"
-                               Text="Enjoy authentic Italian cuisine with our special dinner package"
-                               FontSize="12"
-                               TextColor="White"
-                               MaxLines="2"
-                               LineBreakMode="TailTruncation"/>
+                                    <!--  Descripción  -->
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.ColumnSpan="2"
+                                        FontSize="12"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2"
+                                        Text="Enjoy authentic Italian cuisine with our special dinner package"
+                                        TextColor="White" />
 
-                                    <!-- Fechas/Distancia -->
-                                    <HorizontalStackLayout Grid.Row="3" Grid.ColumnSpan="2"
-                                               Spacing="15"
-                                               Margin="0,5">
-                                        <Label Text="⏳ 2 days left" 
-                                   FontSize="12" 
-                                   TextColor="White" />
-                                        <Label Text="📍 0.8 miles" 
-                                   FontSize="12" 
-                                   TextColor="White" />
+                                    <!--  Fechas/Distancia  -->
+                                    <HorizontalStackLayout
+                                        Grid.Row="3"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,5"
+                                        Spacing="15">
+                                        <Label
+                                            FontSize="12"
+                                            Text="⏳ 2 days left"
+                                            TextColor="White" />
+                                        <Label
+                                            FontSize="12"
+                                            Text="📍 0.8 miles"
+                                            TextColor="White" />
                                     </HorizontalStackLayout>
 
-                                    <!-- Botón -->
-                                    <Button Grid.Row="4" Grid.ColumnSpan="2"
-                                Text="Ver oferta"
-                                FontSize="12"
-                                CornerRadius="10"
-                                Padding="10,5"
-                                BackgroundColor="White"
-                                TextColor="#CB11D8"
-                                HorizontalOptions="Fill"
-                                Margin="0,10,0,0"/>
+                                    <!--  Botón  -->
+                                    <Button
+                                        Grid.Row="4"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,10,0,0"
+                                        Padding="10,5"
+                                        BackgroundColor="White"
+                                        CornerRadius="10"
+                                        FontSize="12"
+                                        HorizontalOptions="Fill"
+                                        Text="Ver oferta"
+                                        TextColor="#CB11D8" />
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -217,21 +243,81 @@
                 </CarouselView>
             </StackLayout>
 
-            <!-- Todas las ofertas -->
+            <!--  Todas las ofertas  -->
             <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
-                <Label Grid.Column="0" Text="Todas las ofertas" FontSize="18" FontAttributes="Bold" TextColor="#19535F" />
-
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Todas las ofertas"
+                    TextColor="#19535F" />
             </Grid>
 
-            <CollectionView x:Name="OfertasList" ItemsSource="{Binding OfertasReales}">
+            <!--  Lista de ofertas con paginación  -->
+            <CollectionView
+                x:Name="OfertasList"
+                ItemsSource="{Binding OfertasReales}"
+                SelectionMode="None">
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="10"
+                        VerticalOptions="Center">
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="No hay ofertas disponibles" />
+                        <Button
+                            Command="{Binding RefreshCommand}"
+                            Style="{StaticResource OutlinedButton}"
+                            Text="Recargar" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="15" Margin="0,0,0,10" BackgroundColor="White" BorderColor="#e0e0e0" CornerRadius="10" HasShadow="True">
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="15"
+                            BackgroundColor="White"
+                            BorderColor="#e0e0e0"
+                            CornerRadius="10"
+                            HasShadow="True">
                             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
-                                <Image Grid.RowSpan="3" Grid.Column="0" Source="{Binding imagenes[0].url}" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" Margin="0,0,15,0" />
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nombre}" FontSize="16" FontAttributes="Bold" TextColor="#19535F" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}" FontSize="12" TextColor="#0aa59b" />
-                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Tipo}" FontSize="12" TextColor="#777" />
+                                <Image
+                                    Grid.RowSpan="3"
+                                    Grid.Column="0"
+                                    Margin="0,0,15,0"
+                                    Aspect="AspectFill"
+                                    HeightRequest="80"
+                                    WidthRequest="80">
+                                    <Image.Source>
+                                        <UriImageSource
+                                            CacheValidity="1:00:00:00"
+                                            CachingEnabled="True"
+                                            Uri="{Binding imagenes[0].url}" />
+                                    </Image.Source>
+                                </Image>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="{Binding Nombre}"
+                                    TextColor="#19535F" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
+                                    TextColor="#0aa59b" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    Text="{Binding Tipo}"
+                                    TextColor="#777" />
                             </Grid>
 
                             <Frame.GestureRecognizers>
@@ -241,6 +327,30 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Frame
+                Margin="0,20"
+                Padding="10"
+                BackgroundColor="#FAFAFA"
+                BorderColor="#EEEEEE"
+                CornerRadius="10"
+                HasShadow="True">
+
+                <HorizontalStackLayout
+                    x:Name="PaginationLayout"
+                    HorizontalOptions="Center"
+                    Spacing="5"
+                    VerticalOptions="Center">
+
+                    <!--  Loading indicator alternativo  -->
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding IsLoading}"
+                        IsVisible="{Binding IsLoading}"
+                        VerticalOptions="Center"
+                        Color="#0aa59b" />
+                </HorizontalStackLayout>
+            </Frame>
 
         </VerticalStackLayout>
     </ScrollView>

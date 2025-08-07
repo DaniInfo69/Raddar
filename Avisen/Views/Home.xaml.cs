@@ -1,17 +1,47 @@
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Text.Json;
-using System.Windows.Input;
 using Avisen.Models;
 using Avisen.Services;
+using Microsoft.Maui;
 using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Windows.Input;
+using UraniumUI.Material.Controls;
+using UraniumUI.Material.Extensions;
+using UraniumUI.Material.Resources;
 
 namespace Avisen.Views
 {
-    public partial class Home : ContentPage
+    public partial class Home : ContentPage, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        private int currentPage = 1;
+        private const int pageSize = 5;
+        private int totalPages => (_todasLasPromosCache?.Count ?? 0) == 0 ? 1 : (int)Math.Ceiling((double)_todasLasPromosCache.Count / pageSize);
+
+        public int CurrentPage
+        {
+            get => currentPage;
+            set
+            {
+                if (currentPage != value)
+                {
+                    currentPage = value;
+                    OnPropertyChanged();
+                    LoadPage();
+                }
+            }
+        }
+
+        public int TotalPages => totalPages;
+
         private readonly Stopwatch _loadStopwatch = new();
         private bool _isInitialized;
         private Categoria _categoriaSeleccionada;
@@ -20,6 +50,13 @@ namespace Avisen.Views
         private readonly NegocioService _negocioService;
         private List<Promocion> _todasLasPromosCache = new();
         private bool _isRefreshing;
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set { _isLoading = value; OnPropertyChanged(); }
+        }
 
         // Colecciones optimizadas
         public OptimizedObservableCollection<Promocion> OfertasReales { get; } = new();
@@ -28,6 +65,7 @@ namespace Avisen.Views
 
         public ICommand TapCommand { get; }
         public ICommand RefreshCommand { get; }
+        public ICommand ChangePageCommand { get; }
 
         public Categoria CategoriaSeleccionada
         {
@@ -36,7 +74,6 @@ namespace Avisen.Views
             {
                 if (_categoriaSeleccionada == value) return;
 
-                // Actualización sin notificar cambios hasta terminar
                 OfertasReales.BeginBatchUpdate();
 
                 try
@@ -70,10 +107,13 @@ namespace Avisen.Views
             // Comandos
             TapCommand = new Command<Promocion>(async (p) => await NavigateToDetalle(p));
             RefreshCommand = new Command(async () => await RefreshDataAsync(force: true));
+            ChangePageCommand = new Command<int>((page) =>
+            {
+                if (page >= 1 && page <= TotalPages)
+                    CurrentPage = page;
+            });
 
             BindingContext = this;
-
-            // Configuración inicial ligera
             SetDefaultPreferences();
         }
 
@@ -108,8 +148,6 @@ namespace Avisen.Views
             try
             {
                 _cts = new CancellationTokenSource();
-
-                // Carga paralela optimizada
                 var loadTasks = new[]
                 {
                     LoadUserNameAsync(_cts.Token),
@@ -181,25 +219,44 @@ namespace Avisen.Views
         {
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                // Actualización por lotes para OfertasDestacadas
                 OfertasDestacadas.ReplaceRange(promociones.Take(3));
 
-                // Actualizar carrusel sin animación si es refresco
                 if (OfertasDestacadas.Count > 0)
                 {
                     var newPosition = Math.Min(carouselPosition, OfertasDestacadas.Count - 1);
                     HotOffersCarousel.ScrollTo(newPosition, animate: false);
                 }
 
-                // Aplicar filtro actual
-                if (CategoriaSeleccionada != null)
-                {
-                    FiltrarOfertasPorCategoria(CategoriaSeleccionada);
-                }
+                CurrentPage = 1; // Resetear a la primera página
+                LoadPage();
 
-                // Feedback táctil optimizado
                 SafeVibrate();
             });
+        }
+
+        void LoadPage()
+        {
+            if (_todasLasPromosCache == null || _todasLasPromosCache.Count == 0)
+                return;
+
+            IsLoading = true;
+
+            try
+            {
+                var promos = _todasLasPromosCache
+                    .Skip((CurrentPage - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                OfertasReales.ReplaceRange(promos);
+                OnPropertyChanged(nameof(TotalPages));
+
+                RenderPagination();
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async Task LoadCategoriesAsync(CancellationToken ct)
@@ -263,6 +320,8 @@ namespace Avisen.Views
                 : _todasLasPromosCache.Where(p => p.categoria_idcategoria == categoria.idcategoria).ToList();
 
             OfertasReales.ReplaceRange(filtradas);
+            CurrentPage = 1;
+            LoadPage();
         }
 
         private async Task CheckForNewPromotions(List<Promocion> nuevasPromos)
@@ -299,7 +358,6 @@ namespace Avisen.Views
 
         private void StartTimers()
         {
-            // Timer de actualización con intervalo configurable
             this.Dispatcher.StartTimer(TimeSpan.FromSeconds(
                 Preferences.Get("UpdateFrequency", 20.0)), () =>
                 {
@@ -308,7 +366,6 @@ namespace Avisen.Views
                     return true;
                 });
 
-            // Timer de carrusel solo si hay elementos
             if (_carouselTimer == null && OfertasDestacadas.Count > 1)
             {
                 _carouselTimer = Application.Current.Dispatcher.CreateTimer();
@@ -387,50 +444,140 @@ namespace Avisen.Views
                 await SafeDisplayAlert("Error", $"No se pudo navegar: {ex.Message}");
             }
         }
-    }
 
-    #region Clases de Soporte para Optimización
-
-    public class OptimizedObservableCollection<T> : ObservableCollection<T>
-    {
-        private bool _isBatching;
-
-        public void BeginBatchUpdate()
+        void RenderPagination()
         {
-            _isBatching = true;
-        }
+            PaginationLayout.Children.Clear();
 
-        public void EndBatchUpdate()
-        {
-            _isBatching = false;
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(
-                NotifyCollectionChangedAction.Reset));
-        }
+            if (TotalPages <= 1)
+                return;
 
-        public void ReplaceRange(IEnumerable<T> items)
-        {
-            BeginBatchUpdate();
-
-            try
+            // Botón anterior - Siempre visible
+            var prevButton = new Button
             {
-                Clear();
-                foreach (var item in items)
+                Text = "<", // Usamos un carácter Unicode más estilizado
+                FontAttributes = FontAttributes.Bold,
+                BackgroundColor = Colors.Transparent,
+                TextColor = CurrentPage > 1 ? Color.FromArgb("#0aa59b") : Colors.LightGray,
+                Command = new Command(() =>
                 {
-                    Add(item);
+                    if (CurrentPage > 1) CurrentPage--;
+                })
+                // Quitamos IsEnabled para que siempre sea clickeable (aunque no haga nada en la primera página)
+            };
+            PaginationLayout.Children.Add(prevButton);
+
+            // Mostrar páginas cercanas
+            int startPage = Math.Max(1, CurrentPage - 2);
+            int endPage = Math.Min(TotalPages, CurrentPage + 2);
+
+            // Primera página con elipsis si es necesario
+            if (startPage > 1)
+            {
+                AddPageButton(1);
+                if (startPage > 2)
+                {
+                    PaginationLayout.Children.Add(new Label
+                    {
+                        Text = "…", // Carácter Unicode para puntos suspensivos
+                        VerticalOptions = LayoutOptions.Center,
+                        Style = (Style)Resources["PaginationLabel"]
+                    });
                 }
             }
-            finally
+
+            // Páginas centrales
+            for (int i = startPage; i <= endPage; i++)
             {
-                EndBatchUpdate();
+                AddPageButton(i);
+            }
+
+            // Última página con elipsis si es necesario
+            if (endPage < TotalPages)
+            {
+                if (endPage < TotalPages - 1)
+                {
+                    PaginationLayout.Children.Add(new Label
+                    {
+                        Text = "…",
+                        VerticalOptions = LayoutOptions.Center,
+                        Style = (Style)Resources["PaginationLabel"]
+                    });
+                }
+                AddPageButton(TotalPages);
+            }
+
+            // Botón siguiente - Siempre visible
+            var nextButton = new Button
+            {
+                Text = ">", // Usamos un carácter Unicode más estilizado
+                FontAttributes = FontAttributes.Bold,
+                BackgroundColor = Colors.Transparent,
+                TextColor = CurrentPage < TotalPages ? Color.FromArgb("#0aa59b") : Colors.LightGray,
+                Command = new Command(() =>
+                {
+                    if (CurrentPage < TotalPages) CurrentPage++;
+                })
+                // Quitamos IsEnabled para que siempre sea clickeable (aunque no haga nada en la última página)
+            };
+            PaginationLayout.Children.Add(nextButton);
+        }
+
+        void AddPageButton(int pageNumber)
+        {
+            var button = new Button
+            {
+                Text = pageNumber.ToString(),
+                BackgroundColor = pageNumber == CurrentPage ? Color.FromArgb("#0aa59b") : Colors.Transparent,
+                TextColor = pageNumber == CurrentPage ? Colors.White : Color.FromArgb("#0aa59b"),
+                CornerRadius = 20,
+                WidthRequest = 40,
+                HeightRequest = 40,
+                Command = new Command(() => CurrentPage = pageNumber)
+            };
+
+            PaginationLayout.Children.Add(button);
+        }
+
+        public class OptimizedObservableCollection<T> : ObservableCollection<T>
+        {
+            private bool _isBatching;
+
+            public void BeginBatchUpdate()
+            {
+                _isBatching = true;
+            }
+
+            public void EndBatchUpdate()
+            {
+                _isBatching = false;
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(
+                    NotifyCollectionChangedAction.Reset));
+            }
+
+            public void ReplaceRange(IEnumerable<T> items)
+            {
+                BeginBatchUpdate();
+
+                try
+                {
+                    Clear();
+                    foreach (var item in items)
+                    {
+                        Add(item);
+                    }
+                }
+                finally
+                {
+                    EndBatchUpdate();
+                }
+            }
+
+            protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+            {
+                if (!_isBatching)
+                    base.OnCollectionChanged(e);
             }
         }
-
-        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-        {
-            if (!_isBatching)
-                base.OnCollectionChanged(e);
-        }
     }
-
-    #endregion
 }
