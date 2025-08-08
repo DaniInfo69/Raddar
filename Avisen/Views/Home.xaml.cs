@@ -40,7 +40,11 @@ namespace Avisen.Views
             }
         }
 
-        public int TotalPages => totalPages;
+        public int TotalPages =>
+    (_promosFiltradas?.Count ?? 0) == 0
+        ? 1
+        : (int)Math.Ceiling((double)_promosFiltradas.Count / pageSize);
+
 
         private readonly Stopwatch _loadStopwatch = new();
         private bool _isInitialized;
@@ -49,6 +53,8 @@ namespace Avisen.Views
         private CancellationTokenSource _cts;
         private readonly NegocioService _negocioService;
         private List<Promocion> _todasLasPromosCache = new();
+        private List<Promocion> _promosFiltradas = new();
+
         private bool _isRefreshing;
         private bool _isLoading;
 
@@ -63,6 +69,7 @@ namespace Avisen.Views
         public OptimizedObservableCollection<Categoria> Categorias { get; } = new();
         public OptimizedObservableCollection<Promocion> OfertasDestacadas { get; } = new();
 
+
         public ICommand TapCommand { get; }
         public ICommand RefreshCommand { get; }
         public ICommand ChangePageCommand { get; }
@@ -72,31 +79,19 @@ namespace Avisen.Views
             get => _categoriaSeleccionada;
             set
             {
-                if (_categoriaSeleccionada == value) return;
-
-                OfertasReales.BeginBatchUpdate();
-
-                try
+                if (_categoriaSeleccionada != value)
                 {
-                    if (_categoriaSeleccionada != null)
-                        _categoriaSeleccionada.IsSelected = false;
-
                     _categoriaSeleccionada = value;
+                    OnPropertyChanged();
 
                     if (_categoriaSeleccionada != null)
                     {
-                        _categoriaSeleccionada.IsSelected = true;
                         FiltrarOfertasPorCategoria(_categoriaSeleccionada);
                     }
-
-                    OnPropertyChanged();
-                }
-                finally
-                {
-                    OfertasReales.EndBatchUpdate();
                 }
             }
         }
+
 
         public Home(NegocioService negocioService)
         {
@@ -227,6 +222,8 @@ namespace Avisen.Views
                     HotOffersCarousel.ScrollTo(newPosition, animate: false);
                 }
 
+                _promosFiltradas = promociones;
+
                 CurrentPage = 1; // Resetear a la primera página
                 LoadPage();
 
@@ -236,21 +233,20 @@ namespace Avisen.Views
 
         void LoadPage()
         {
-            if (_todasLasPromosCache == null || _todasLasPromosCache.Count == 0)
+            if (_promosFiltradas == null || _promosFiltradas.Count == 0)
                 return;
 
             IsLoading = true;
 
             try
             {
-                var promos = _todasLasPromosCache
+                var promos = _promosFiltradas
                     .Skip((CurrentPage - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();
 
                 OfertasReales.ReplaceRange(promos);
                 OnPropertyChanged(nameof(TotalPages));
-
                 RenderPagination();
             }
             finally
@@ -258,6 +254,7 @@ namespace Avisen.Views
                 IsLoading = false;
             }
         }
+
 
         private async Task LoadCategoriesAsync(CancellationToken ct)
         {
@@ -315,14 +312,14 @@ namespace Avisen.Views
 
         private void FiltrarOfertasPorCategoria(Categoria categoria)
         {
-            var filtradas = categoria.idcategoria == -1
+            _promosFiltradas = categoria.idcategoria == -1
                 ? _todasLasPromosCache
                 : _todasLasPromosCache.Where(p => p.categoria_idcategoria == categoria.idcategoria).ToList();
 
-            OfertasReales.ReplaceRange(filtradas);
             CurrentPage = 1;
             LoadPage();
         }
+
 
         private async Task CheckForNewPromotions(List<Promocion> nuevasPromos)
         {
@@ -467,9 +464,17 @@ namespace Avisen.Views
             };
             PaginationLayout.Children.Add(prevButton);
 
-            // Mostrar páginas cercanas
-            int startPage = Math.Max(1, CurrentPage - 2);
-            int endPage = Math.Min(TotalPages, CurrentPage + 2);
+            int maxButtons = 2;
+            int half = maxButtons / 2;
+            int startPage = Math.Max(1, CurrentPage - half);
+            int endPage = Math.Min(TotalPages, startPage + maxButtons - 1);
+
+            // Ajustar startPage si no hay suficientes páginas al final
+            if (endPage - startPage + 1 < maxButtons)
+            {
+                startPage = Math.Max(1, endPage - maxButtons + 1);
+            }
+
 
             // Primera página con elipsis si es necesario
             if (startPage > 1)
@@ -495,7 +500,7 @@ namespace Avisen.Views
             // Última página con elipsis si es necesario
             if (endPage < TotalPages)
             {
-                if (endPage < TotalPages - 1)
+                if (endPage < TotalPages - 2)
                 {
                     PaginationLayout.Children.Add(new Label
                     {
@@ -506,6 +511,8 @@ namespace Avisen.Views
                 }
                 AddPageButton(TotalPages);
             }
+
+            
 
             // Botón siguiente - Siempre visible
             var nextButton = new Button

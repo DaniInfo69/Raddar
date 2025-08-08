@@ -19,8 +19,18 @@
                 <Setter Property="Margin" Value="5,0" />
             </Style>
 
+            <!--  Estilo OutlinedButton  -->
+            <Style x:Key="OutlinedButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="#0aa59b" />
+                <Setter Property="BorderColor" Value="#0aa59b" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Padding" Value="10,5" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -82,6 +92,7 @@
             <!--  Categorías  -->
             <CollectionView
                 x:Name="CategoriasList"
+                BackgroundColor="AntiqueWhite"
                 HeightRequest="50"
                 ItemsLayout="HorizontalList"
                 ItemsSource="{Binding Categorias}"
@@ -97,16 +108,43 @@
                             StrokeShape="RoundRectangle 20"
                             StrokeThickness="1">
 
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=IsSelected}"
+                                    TargetType="Border"
+                                    Value="True">
+                                    <Setter Property="BackgroundColor" Value="#0aa59b" />
+                                    <Setter Property="Stroke" Value="#0aa59b" />
+                                </DataTrigger>
+                            </Border.Triggers>
+
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="14"
                                 HorizontalOptions="Center"
                                 Text="{Binding Nombre}"
-                                TextColor="{Binding IsSelected, Converter={StaticResource TextColorSelectionConverter}}"
-                                VerticalOptions="Center" />
+                                TextColor="Black"
+                                VerticalOptions="Center">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=IsSelected}"
+                                        TargetType="Label"
+                                        Value="True">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=IsSelected}"
+                                        TargetType="Label"
+                                        Value="False">
+                                        <Setter Property="TextColor" Value="#0aa59b" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+
+
             </CollectionView>
 
             <!--  Ofertas destacadas  -->
