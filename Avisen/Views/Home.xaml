@@ -175,7 +175,7 @@
                         <DataTemplate>
                             <Frame
                                 Margin="10"
-                                Padding="15"
+                                Padding="12"
                                 CornerRadius="20"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
@@ -188,87 +188,157 @@
                                 </Frame.Background>
 
                                 <Grid
-                                    ColumnDefinitions="*,Auto"
-                                    RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-                                    RowSpacing="5"
+                                    ColumnDefinitions="Auto, *"
+                                    RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                                    RowSpacing="6"
                                     VerticalOptions="FillAndExpand">
 
-                                    <!--  Imagen + Título  -->
-                                    <HorizontalStackLayout
+                                    <!--  Imagen con badge overlay  -->
+                                    <Grid
                                         Grid.Row="0"
-                                        Grid.ColumnSpan="2"
-                                        Spacing="10"
-                                        VerticalOptions="Center">
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        HeightRequest="80"
+                                        HorizontalOptions="Start"
+                                        WidthRequest="80">
                                         <Image
                                             Aspect="AspectFill"
-                                            HeightRequest="40"
+                                            HeightRequest="80"
+                                            HorizontalOptions="Center"
                                             Source="{Binding imagenes[0].url}"
-                                            WidthRequest="40" />
-                                        <VerticalStackLayout VerticalOptions="Center">
+                                            VerticalOptions="Center"
+                                            WidthRequest="80" />
+                                        <Frame
+                                            Margin="6"
+                                            Padding="6,2"
+                                            BackgroundColor="#FFEB3B"
+                                            CornerRadius="10"
+                                            HasShadow="False"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Start">
                                             <Label
                                                 FontAttributes="Bold"
-                                                FontSize="14"
-                                                LineBreakMode="TailTruncation"
-                                                Text="{Binding Nombre}"
-                                                TextColor="White" />
-                                            <Label
-                                                FontSize="12"
-                                                Text="Restaurante"
-                                                TextColor="White" />
-                                        </VerticalStackLayout>
-                                        <Label
-                                            Padding="6,2"
-                                            BackgroundColor="Yellow"
-                                            FontSize="10"
-                                            HorizontalOptions="End"
-                                            Text="LIMITED"
-                                            TextColor="Black"
-                                            VerticalOptions="Start" />
-                                    </HorizontalStackLayout>
+                                                FontSize="10"
+                                                LineBreakMode="NoWrap"
+                                                Text="LIMITED"
+                                                TextColor="Black" />
+                                        </Frame>
+                                    </Grid>
 
-                                    <!--  Descuento  -->
+                                    <!--  Título + Tipo (columna 1)  -->
+                                    <VerticalStackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Spacing="2"
+                                        VerticalOptions="Center">
+                                        <!--  Nombre: ahora admite 2 líneas para no cortarse  -->
+                                        <Label
+                                            Padding="10"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="2"
+                                            Text="{Binding Nombre}"
+                                            TextColor="White" />
+                                        <!--  Tipo: un poco más grande  -->
+                                        <Label
+                                            Padding="10,0,0,0"
+                                            FontSize="13"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            Text="{Binding Tipo}"
+                                            TextColor="White" />
+                                    </VerticalStackLayout>
+
+                                    <!--  Descripción corta  -->
                                     <Label
                                         Grid.Row="1"
-                                        Grid.ColumnSpan="2"
-                                        Margin="0,5,0,0"
+                                        Grid.Column="1"
                                         FontAttributes="Bold"
-                                        FontSize="16"
-                                        Text="50% OFF Dinner for Two"
+                                        FontSize="14"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="{Binding DescripcionCorta}"
                                         TextColor="White" />
 
-                                    <!--  Descripción  -->
+                                    <!--  Descripción completa  -->
                                     <Label
                                         Grid.Row="2"
                                         Grid.ColumnSpan="2"
-                                        FontSize="12"
+                                        Padding="10,0,0,0"
+                                        FontSize="14"
                                         LineBreakMode="TailTruncation"
                                         MaxLines="2"
-                                        Text="Enjoy authentic Italian cuisine with our special dinner package"
+                                        Text="{Binding Descripcion}"
                                         TextColor="White" />
 
-                                    <!--  Fechas/Distancia  -->
+                                    <!--  Fechas / distancia (row 3)  -->
                                     <HorizontalStackLayout
                                         Grid.Row="3"
                                         Grid.ColumnSpan="2"
                                         Margin="0,5"
-                                        Spacing="15">
+                                        Spacing="12"
+                                        VerticalOptions="Center">
+
+                                        <!--  Días restantes (texto principal)  -->
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            Text="{Binding DiasRestantesTexto}"
+                                            TextColor="White"
+                                            VerticalOptions="Center">
+                                            <Label.Triggers>
+                                                <!--  Si ya expiró, color rojo tenue  -->
+                                                <DataTrigger
+                                                    Binding="{Binding IsExpired}"
+                                                    TargetType="Label"
+                                                    Value="True">
+                                                    <Setter Property="TextColor" Value="#FFCDD2" />
+                                                </DataTrigger>
+
+                                                <!--  Si falta 1 o 2 días, llamar la atención (opcional)  -->
+                                                <DataTrigger
+                                                    Binding="{Binding DiasRestantesTexto}"
+                                                    TargetType="Label"
+                                                    Value="1">
+                                                    <Setter Property="TextColor" Value="#FFF59D" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding DiasRestantesTexto}"
+                                                    TargetType="Label"
+                                                    Value="2">
+                                                    <Setter Property="TextColor" Value="#FFF59D" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                        <!--  Fecha completa como complemento  -->
                                         <Label
                                             FontSize="12"
-                                            Text="⏳ 2 days left"
-                                            TextColor="White" />
+                                            Opacity="0.9"
+                                            Text="{Binding VigenciaFin, StringFormat='⏳ válido hasta {0:d}'}"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+
+                                        <!--  Distancia (sigue igual)  -->
                                         <Label
                                             FontSize="12"
-                                            Text="📍 0.8 miles"
-                                            TextColor="White" />
+                                            Text="📍 Distancia N/A"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
                                     </HorizontalStackLayout>
+
+
 
                                     <!--  Botón  -->
                                     <Button
                                         Grid.Row="4"
                                         Grid.ColumnSpan="2"
-                                        Margin="0,10,0,0"
-                                        Padding="10,5"
+                                        Margin="0,8,0,0"
+                                        Padding="10,6"
                                         BackgroundColor="White"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}"
+                                        CommandParameter="{Binding}"
                                         CornerRadius="10"
                                         FontSize="12"
                                         HorizontalOptions="Fill"
@@ -278,6 +348,10 @@
                             </Frame>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
+
+
+
+
                 </CarouselView>
             </StackLayout>
 

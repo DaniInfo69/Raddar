@@ -18,6 +18,8 @@
 
         public bool eliminado { get; set; }
 
+        public string DiasRestantesTexto { get; set; }
+
     }
 
     public class PromocionImagen

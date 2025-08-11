@@ -1943,11 +1943,6 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\AboutAssets.txt
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\heart.json
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-100.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-125.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-150.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-200.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-400.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\settings.scale-100.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\refrescos.scale-100.jpg
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\map.scale-100.png
@@ -2412,11 +2407,6 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Avisen.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauisplash.stamp
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\mauifont.stamp
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\FluentUI.cs
@@ -2517,3 +2507,13 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_raddarSplashScreen.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_raddarSplashScreen.scale-125.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_raddarSplashScreen.scale-150.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_raddarSplashScreen.scale-200.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logo_raddarSplashScreen.scale-400.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-125.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-150.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-200.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-400.png

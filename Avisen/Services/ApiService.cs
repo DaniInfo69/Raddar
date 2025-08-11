@@ -239,5 +239,48 @@ namespace Avisen.Services
         }
 
 
+
+        public async Task<List<Promocion>> ObtenerPromocionesPremiumAsync()
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
+                };
+
+                // 1️⃣ Obtener promociones premium desde el endpoint
+                var promocionesPremium = await httpClient
+                    .GetFromJsonAsync<List<Promocion>>("promocionPremium", options)
+                    ?? new List<Promocion>();
+
+                // 2️⃣ Enriquecer datos con info de la empresa (igual que en ObtenerPromocionesAsync)
+                var empresas = await httpClient
+                    .GetFromJsonAsync<List<Negocio>>("empresa")
+                    ?? new List<Negocio>();
+
+                foreach (var promo in promocionesPremium)
+                {
+                    var empresa = empresas.FirstOrDefault(e => e.idempresa == promo.empresa_idempresa);
+                    if (empresa != null)
+                    {
+                        promo.NombreEmpresa = empresa.Nombre;
+                        promo.DescripcionEmpresa = empresa.Descripcion;
+                    }
+                }
+
+                // 3️⃣ Devolver la lista lista para bindear en el Home
+                return promocionesPremium;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener promociones premium: {ex.Message}");
+                return new List<Promocion>();
+            }
+        }
+
+
+
     }
 }

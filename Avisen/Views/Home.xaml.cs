@@ -24,7 +24,7 @@ namespace Avisen.Views
 
         private int currentPage = 1;
         private const int pageSize = 5;
-        private int totalPages => (_todasLasPromosCache?.Count ?? 0) == 0 ? 1 : (int)Math.Ceiling((double)_todasLasPromosCache.Count / pageSize);
+        
 
         public int CurrentPage
         {
@@ -147,7 +147,8 @@ namespace Avisen.Views
                 {
                     LoadUserNameAsync(_cts.Token),
                     LoadCategoriesAsync(_cts.Token),
-                    LoadPromotionsAsync(_cts.Token)
+                    LoadPromotionsAsync(_cts.Token),
+                    LoadPromotionsDestacadasAsync(_cts.Token)
                 };
 
                 await Task.WhenAll(loadTasks);
@@ -173,10 +174,13 @@ namespace Avisen.Views
             try
             {
                 _cts = new CancellationTokenSource();
-                await LoadPromotionsAsync(_cts.Token);
+                await Task.WhenAll(
+                    LoadPromotionsAsync(_cts.Token),
+                    LoadPromotionsDestacadasAsync(_cts.Token) // <-- nuevo
+                );
                 Debug.WriteLine($"Refresh completed in {_loadStopwatch.ElapsedMilliseconds}ms");
             }
-            catch (OperationCanceledException) { /* Ignorar cancelación */ }
+            catch (OperationCanceledException) { }
             catch (Exception ex)
             {
                 await SafeDisplayAlert("Error", $"Refresh error: {ex.Message}");
@@ -187,6 +191,7 @@ namespace Avisen.Views
                 _loadStopwatch.Reset();
             }
         }
+
 
         #endregion
 
@@ -210,26 +215,38 @@ namespace Avisen.Views
             await UpdateUI(nuevasPromos, position);
         }
 
+        private async Task LoadPromotionsDestacadasAsync(CancellationToken ct)
+        {
+
+            var destacadas = await _negocioService.ObtenerPromocionesPremiumAsync();
+
+            ct.ThrowIfCancellationRequested();
+
+            await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                OfertasDestacadas.ReplaceRange(destacadas ?? new List<Promocion>());
+
+                if (OfertasDestacadas.Count > 0)
+                {
+                    HotOffersCarousel.ScrollTo(0, animate: false);
+                }
+            });
+        }
+
+
         private async Task UpdateUI(List<Promocion> promociones, int carouselPosition)
         {
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                OfertasDestacadas.ReplaceRange(promociones.Take(3));
-
-                if (OfertasDestacadas.Count > 0)
-                {
-                    var newPosition = Math.Min(carouselPosition, OfertasDestacadas.Count - 1);
-                    HotOffersCarousel.ScrollTo(newPosition, animate: false);
-                }
-
+                // Ya NO cargamos las destacadas aquí
                 _promosFiltradas = promociones;
 
-                CurrentPage = 1; // Resetear a la primera página
+                CurrentPage = 1;
                 LoadPage();
-
                 SafeVibrate();
             });
         }
+
 
         void LoadPage()
         {
@@ -245,6 +262,29 @@ namespace Avisen.Views
                     .Take(pageSize)
                     .ToList();
 
+                foreach (var promo in promos)
+                {
+                    if (promo.VigenciaFin.HasValue)
+                    {
+                        var fecha = promo.VigenciaFin.Value.ToLocalTime().Date;
+                        var diasRestantes = (fecha - DateTime.Now.Date).Days;
+
+                        if (diasRestantes < 0)
+                            promo.DiasRestantesTexto = "Expirada";
+                        else if (diasRestantes == 0)
+                            promo.DiasRestantesTexto = "Hoy";
+                        else if (diasRestantes == 1)
+                            promo.DiasRestantesTexto = "1 día restante";
+                        else
+                            promo.DiasRestantesTexto = $"{diasRestantes} días restantes";
+                    }
+                    else
+                    {
+                        promo.DiasRestantesTexto = "Sin fecha de fin";
+                    }
+                }
+
+
                 OfertasReales.ReplaceRange(promos);
                 OnPropertyChanged(nameof(TotalPages));
                 RenderPagination();
@@ -254,6 +294,7 @@ namespace Avisen.Views
                 IsLoading = false;
             }
         }
+
 
 
         private async Task LoadCategoriesAsync(CancellationToken ct)

@@ -66,19 +66,19 @@ public final class R {
 		public static final int ic_call_answer_video_low = 0x7f0700a7;
 		public static final int ic_call_decline = 0x7f0700a8;
 		public static final int ic_call_decline_low = 0x7f0700a9;
-		public static final int notification_action_background = 0x7f0700f6;
-		public static final int notification_bg = 0x7f0700f7;
-		public static final int notification_bg_low = 0x7f0700f8;
-		public static final int notification_bg_low_normal = 0x7f0700f9;
-		public static final int notification_bg_low_pressed = 0x7f0700fa;
-		public static final int notification_bg_normal = 0x7f0700fb;
-		public static final int notification_bg_normal_pressed = 0x7f0700fc;
-		public static final int notification_icon_background = 0x7f0700fd;
-		public static final int notification_oversize_large_icon_bg = 0x7f0700fe;
-		public static final int notification_template_icon_bg = 0x7f0700ff;
-		public static final int notification_template_icon_low_bg = 0x7f070100;
-		public static final int notification_tile_bg = 0x7f070101;
-		public static final int notify_panel_notification_icon_bg = 0x7f070102;
+		public static final int notification_action_background = 0x7f0700f7;
+		public static final int notification_bg = 0x7f0700f8;
+		public static final int notification_bg_low = 0x7f0700f9;
+		public static final int notification_bg_low_normal = 0x7f0700fa;
+		public static final int notification_bg_low_pressed = 0x7f0700fb;
+		public static final int notification_bg_normal = 0x7f0700fc;
+		public static final int notification_bg_normal_pressed = 0x7f0700fd;
+		public static final int notification_icon_background = 0x7f0700fe;
+		public static final int notification_oversize_large_icon_bg = 0x7f0700ff;
+		public static final int notification_template_icon_bg = 0x7f070100;
+		public static final int notification_template_icon_low_bg = 0x7f070101;
+		public static final int notification_tile_bg = 0x7f070102;
+		public static final int notify_panel_notification_icon_bg = 0x7f070103;
 	}
 	public static final class id {
 		public static final int accessibility_action_clickable_span = 0x7f080010;
