@@ -55,6 +55,19 @@ namespace Avisen.Views
         private List<Promocion> _todasLasPromosCache = new();
         private List<Promocion> _promosFiltradas = new();
 
+        private bool _isNavigating;
+        private bool _isLoadingDetalle;
+        public bool IsLoadingDetalle
+        {
+            get => _isLoadingDetalle;
+            set
+            {
+                _isLoadingDetalle = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private bool _isRefreshing;
         private bool _isLoading;
 
@@ -461,7 +474,10 @@ namespace Avisen.Views
 
         private async Task NavigateToDetalle(Promocion promocion)
         {
-            if (promocion == null) return;
+            if (promocion == null || _isNavigating) return;
+
+            _isNavigating = true;
+            await LoadingView.ShowAsync(); // Muestra con animación
 
             try
             {
@@ -481,7 +497,13 @@ namespace Avisen.Views
             {
                 await SafeDisplayAlert("Error", $"No se pudo navegar: {ex.Message}");
             }
+            finally
+            {
+                await LoadingView.HideAsync(); // Oculta con animación
+                _isNavigating = false;
+            }
         }
+
 
         void RenderPagination()
         {

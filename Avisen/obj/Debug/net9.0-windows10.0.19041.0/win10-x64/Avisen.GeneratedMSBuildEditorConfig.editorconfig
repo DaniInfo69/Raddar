@@ -34,6 +34,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Avisen.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/jardi/OneDrive/Escritorio/Proyecto RADDAR/Raddar/Avisen/Controls/LoadingOverlay.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Controls.LoadingOverlay.xaml
+build_metadata.AdditionalFiles.TargetPath = Controls\LoadingOverlay.xaml
+build_metadata.AdditionalFiles.RelativePath = Controls\LoadingOverlay.xaml
+
 [C:/Users/jardi/OneDrive/Escritorio/Proyecto RADDAR/Raddar/Avisen/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Avisen.Resources.Styles.Colors.xaml

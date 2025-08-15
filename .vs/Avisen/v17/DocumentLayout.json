@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\controls\\loadingoverlay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\controls\\loadingoverlay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\controls\\loadingoverlay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\controls\\loadingoverlay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\avisen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,50 +34,78 @@
       "DocumentGroups": [
         {
           "DockedWidth": 110,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Home.xaml.cs",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Home.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Home.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml.cs",
-              "ViewState": "AgIAAAkBAAAAAAAAAAAQwPoAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAOMBAAAAAAAAAAAuwPgBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-10T21:17:02.207Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Home.xaml",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Home.xaml",
               "RelativeDocumentMoniker": "Avisen\\Views\\Home.xaml",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Home.xaml",
               "RelativeToolTip": "Avisen\\Views\\Home.xaml",
-              "ViewState": "AgIAACoBAAAAAAAAAADwvzIBAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAMwBAAAAAAAAAAAAANkBAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-07-10T21:16:40.157Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "LoadingOverlay.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Controls\\LoadingOverlay.xaml.cs",
+              "RelativeDocumentMoniker": "Avisen\\Controls\\LoadingOverlay.xaml.cs",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Controls\\LoadingOverlay.xaml.cs",
+              "RelativeToolTip": "Avisen\\Controls\\LoadingOverlay.xaml.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T18:07:12.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoadingOverlay.xaml",
+              "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Controls\\LoadingOverlay.xaml",
+              "RelativeDocumentMoniker": "Avisen\\Controls\\LoadingOverlay.xaml",
+              "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Controls\\LoadingOverlay.xaml",
+              "RelativeToolTip": "Avisen\\Controls\\LoadingOverlay.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-15T18:05:59.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Map.xaml.cs",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAuwM0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPIBAAAAAAAAAAAAAO8BAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-15T00:24:11.122Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Avisen.csproj",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Avisen.csproj",
               "RelativeDocumentMoniker": "Avisen\\Avisen.csproj",
@@ -77,8 +113,7 @@
               "RelativeToolTip": "Avisen\\Avisen.csproj",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-08T20:17:06.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T20:17:06.78Z"
             }
           ]
         }
