@@ -103,15 +103,37 @@ public partial class Map : ContentPage
         isUpdatingLocation = true;
         bool hasCenteredMapOnce = false;
         map.IsShowingUser = true;
+        bool gpsAlertShown = false;
 
         while (isUpdatingLocation)
         {
             try
             {
                 Debug.WriteLine("Empieza ciclo.");
+
+                // Intentar obtener ubicación actual
                 var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
                     ?? await Geolocation.GetLastKnownLocationAsync();
 
+                // Si no hay ubicación
+                if (location == null)
+                {
+                    Debug.WriteLine("Ubicación no disponible.");
+                    if (!gpsAlertShown)
+                    {
+                        gpsAlertShown = true;
+                        await DisplayAlert("GPS no disponible",
+                            "No se pudo obtener tu ubicación. Verifica que el GPS esté encendido y que la app tenga permisos.",
+                            "OK");
+                    }
+                    await Task.Delay(2000);
+                    continue;
+                }
+
+                gpsAlertShown = false; // Se resetea si ya obtuvimos ubicación
+                userLocation = new Location(location.Latitude, location.Longitude);
+
+                // Cargar datos si ya pasó el tiempo definido
                 var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
                 DateTime lastLoadDataTime;
                 int frequency = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
@@ -124,40 +146,64 @@ public partial class Map : ContentPage
                         LoadData();
                     }
                 }
-
-                if (location != null)
+                else
                 {
-                    Debug.WriteLine("Procesando ubicación...");
-                    userLocation = new Location(location.Latitude, location.Longitude);
+                    LoadData();
+                }
 
-                    if (Preferences.Get("IsRecenter", false))
-                    {
-                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                        Debug.WriteLine("Se mueve.");
-                    }
-                    else if (!hasCenteredMapOnce)
-                    {
-                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                        hasCenteredMapOnce = true;
-                        Debug.WriteLine("Se movio por primera vez.");
-                    }
+                // Centrado del mapa
+                if (Preferences.Get("IsRecenter", false))
+                {
+                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                    Debug.WriteLine("Mapa centrado por IsRecenter.");
+                }
+                else if (!hasCenteredMapOnce)
+                {
+                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                    hasCenteredMapOnce = true;
+                    Debug.WriteLine("Mapa centrado la primera vez.");
+                }
 
+                // Verificar promociones solo si hay datos
+                if (negocios != null && negocios.Any())
+                {
                     CheckForPromotions();
                 }
                 else
                 {
-                    Debug.WriteLine("No se obtuvo localización.");
+                    Debug.WriteLine("No hay negocios cargados para verificar promociones.");
+                }
+            }
+            catch (FeatureNotEnabledException)
+            {
+                if (!gpsAlertShown)
+                {
+                    gpsAlertShown = true;
+                    await DisplayAlert("GPS apagado",
+                        "Por favor, activa el GPS para usar el mapa.",
+                        "OK");
+                }
+            }
+            catch (PermissionException)
+            {
+                if (!gpsAlertShown)
+                {
+                    gpsAlertShown = true;
+                    await DisplayAlert("Permisos denegados",
+                        "La aplicación no tiene permisos para acceder a tu ubicación. Ve a ajustes y actívalos.",
+                        "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Error al obtener la ubicación o cargar datos: {ex.Message}", "OK");
+                Debug.WriteLine($"Error inesperado en StartAndUpdateLocation: {ex.Message}");
             }
 
             int waitTime = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
-            await Task.Delay(waitTime);
+            await Task.Delay(waitTime > 0 ? waitTime : 1000); // Valor mínimo para evitar bucle rápido
         }
     }
+
 
 
     private async void LoadData()

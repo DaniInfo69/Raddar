@@ -674,6 +674,6 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\Avisen.pdb
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\Avisen.genruntimeconfig.cache
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\ref\Avisen.dll
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_A9517864FD9BBB6C4266B2460704A66A2B00618E5EC137C4187E7B1034860003.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_A9517864FD9BBB6C4266B2460704A66A2B00618E5EC137C4187E7B1034860003@2x.png
-C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_A9517864FD9BBB6C4266B2460704A66A2B00618E5EC137C4187E7B1034860003@3x.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526@2x.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526@3x.png
