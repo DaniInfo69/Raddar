@@ -99,7 +99,7 @@ namespace Avisen.Views
 
                     if (_categoriaSeleccionada != null)
                     {
-                        FiltrarOfertasPorCategoria(_categoriaSeleccionada);
+                        //FiltrarOfertasPorCategoria(_categoriaSeleccionada);
                     }
                 }
             }
@@ -364,7 +364,7 @@ namespace Avisen.Views
 
         #region Métodos de Soporte Optimizados
 
-        private void FiltrarOfertasPorCategoria(Categoria categoria)
+        /*private void FiltrarOfertasPorCategoria(Categoria categoria)
         {
             _promosFiltradas = categoria.idcategoria == -1
                 ? _todasLasPromosCache
@@ -372,7 +372,7 @@ namespace Avisen.Views
 
             CurrentPage = 1;
             LoadPage();
-        }
+        }*/
 
 
         private async Task CheckForNewPromotions(List<Promocion> nuevasPromos)

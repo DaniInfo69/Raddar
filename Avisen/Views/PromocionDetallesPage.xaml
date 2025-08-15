@@ -12,6 +12,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
+            <!--  Botón de volver  -->
             <Button
                 BackgroundColor="Transparent"
                 Clicked="CerrarModal"
@@ -21,18 +22,17 @@
                 Text="{x:Static local:IconFont.Arrow_back}"
                 TextColor="#0aa59b" />
 
-            <!--  Tarjeta completa  -->
+            <!--  Tarjeta principal  -->
             <Border
                 Padding="0"
                 BackgroundColor="#F5EBDC"
-                HeightRequest="620"
                 Stroke="#19535F"
                 StrokeShape="RoundRectangle 20"
                 StrokeThickness="2">
 
-
                 <Grid RowDefinitions="Auto, *, Auto">
 
+                    <!--  Header con imagen y nombre empresa  -->
                     <Border
                         Grid.Row="0"
                         Margin="10,20,10,0"
@@ -40,11 +40,9 @@
                         Stroke="#CCCCCC"
                         StrokeShape="RoundRectangle 10"
                         StrokeThickness="2">
-
                         <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
-
                             <Border
-                                Grid.RowSpan="4"
+                                Grid.RowSpan="2"
                                 Grid.Column="0"
                                 Margin="0,0,15,0"
                                 HeightRequest="80"
@@ -54,16 +52,8 @@
                                 <Image
                                     x:Name="ImageOffer"
                                     Aspect="AspectFill"
-                                    Source="{Binding imagenes[0].url}">
-                                    <Image.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding imagenes.Count}"
-                                            TargetType="Image"
-                                            Value="0" />
-                                    </Image.Triggers>
-                                </Image>
+                                    Source="{Binding imagenes[0].url}" />
                             </Border>
-
 
                             <Label
                                 x:Name="NombreNegocio"
@@ -84,19 +74,20 @@
                         </Grid>
                     </Border>
 
-                    <!--  CONTENIDO PRINCIPAL  -->
+                    <!--  Contenido principal  -->
                     <VerticalStackLayout
                         Grid.Row="1"
                         Padding="20"
                         Spacing="15">
 
+                        <!--  Nombre, descripción, precio y tipo  -->
                         <Label x:Name="PromocionesLabel" />
+
                         <BoxView
                             HeightRequest="2"
                             HorizontalOptions="FillAndExpand"
                             Color="Gray" />
 
-                        <!--  Fechas  -->
                         <Grid Padding="0,10" ColumnDefinitions="*,*">
                             <VerticalStackLayout>
                                 <Label
@@ -126,15 +117,31 @@
                             HeightRequest="2"
                             HorizontalOptions="FillAndExpand"
                             Color="Gray" />
+
+                        <!--  QR Code  -->
+                        <Border
+                            Padding="10"
+                            BackgroundColor="White"
+                            HorizontalOptions="Center"
+                            Stroke="#0aa59b"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="2"
+                            VerticalOptions="Center">
+                            <Image
+                                x:Name="QrImage"
+                                Aspect="AspectFit"
+                                HeightRequest="200"
+                                WidthRequest="200" />
+                        </Border>
+
                     </VerticalStackLayout>
 
-                    <!--  BOTONES AL FINAL  -->
+                    <!--  Botones al final  -->
                     <Grid
                         Grid.Row="2"
                         Padding="20"
                         ColumnDefinitions="65,*"
                         VerticalOptions="End">
-
                         <skia:SKLottieView
                             x:Name="HeartAnimation"
                             Grid.Column="0"
@@ -163,8 +170,10 @@
                             VerticalOptions="Center"
                             WidthRequest="240" />
                     </Grid>
+
                 </Grid>
             </Border>
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

@@ -27,6 +27,38 @@ public partial class PromocionDetallesPage : ContentPage
         ActualizarCorazon();
     }
 
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is Promocion promo
+            && promo.qrs != null
+            && promo.qrs.Count > 0
+            && !string.IsNullOrEmpty(promo.qrs[0].imageBase64))
+        {
+            try
+            {
+                // Quitamos el prefijo si existe
+                var base64Data = promo.qrs[0].imageBase64;
+                var commaIndex = base64Data.IndexOf(',');
+                if (commaIndex >= 0)
+                {
+                    base64Data = base64Data.Substring(commaIndex + 1);
+                }
+
+                byte[] imageBytes = Convert.FromBase64String(base64Data);
+                QrImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al cargar QR: {ex.Message}");
+            }
+        }
+    }
+
+
+
     private FormattedString ObtenerDetallesPromocion(Promocion promocion)
     {
         var formattedString = new FormattedString();

@@ -190,11 +190,11 @@
 
                                     <Grid
                                         ColumnDefinitions="Auto, *"
-                                        RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                                        RowDefinitions="Auto, Auto, Auto, Auto"
                                         RowSpacing="6"
                                         VerticalOptions="FillAndExpand">
 
-                                        <!--  Imagen con badge overlay  -->
+                                        <!--  Imagen  -->
                                         <Grid
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
@@ -209,30 +209,15 @@
                                                 Source="{Binding imagenes[0].url}"
                                                 VerticalOptions="Center"
                                                 WidthRequest="80" />
-                                            <Frame
-                                                Margin="6"
-                                                Padding="6,2"
-                                                BackgroundColor="#FFEB3B"
-                                                CornerRadius="10"
-                                                HasShadow="False"
-                                                HorizontalOptions="End"
-                                                VerticalOptions="Start">
-                                                <Label
-                                                    FontAttributes="Bold"
-                                                    FontSize="10"
-                                                    LineBreakMode="NoWrap"
-                                                    Text="LIMITED"
-                                                    TextColor="Black" />
-                                            </Frame>
                                         </Grid>
 
-                                        <!--  Título + Tipo (columna 1)  -->
+                                        <!--  Título + Empresa + Tipo  -->
                                         <VerticalStackLayout
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Spacing="2"
                                             VerticalOptions="Center">
-                                            <!--  Nombre: ahora admite 2 líneas para no cortarse  -->
+                                            <!--  Nombre promoción  -->
                                             <Label
                                                 Padding="10"
                                                 FontAttributes="Bold"
@@ -241,7 +226,17 @@
                                                 MaxLines="2"
                                                 Text="{Binding Nombre}"
                                                 TextColor="White" />
-                                            <!--  Tipo: un poco más grande  -->
+
+                                            <!--  Nombre empresa (nuevo)  -->
+                                            <Label
+                                                Padding="10,0,0,0"
+                                                FontSize="13"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="1"
+                                                Text="{Binding NombreEmpresa}"
+                                                TextColor="#F1F1F1" />
+
+                                            <!--  Tipo  -->
                                             <Label
                                                 Padding="10,0,0,0"
                                                 FontSize="13"
@@ -251,20 +246,9 @@
                                                 TextColor="White" />
                                         </VerticalStackLayout>
 
-                                        <!--  Descripción corta  -->
+                                        <!--  Descripción  -->
                                         <Label
                                             Grid.Row="1"
-                                            Grid.Column="1"
-                                            FontAttributes="Bold"
-                                            FontSize="14"
-                                            LineBreakMode="TailTruncation"
-                                            MaxLines="1"
-                                            Text="{Binding DescripcionCorta}"
-                                            TextColor="White" />
-
-                                        <!--  Descripción completa  -->
-                                        <Label
-                                            Grid.Row="2"
                                             Grid.ColumnSpan="2"
                                             Padding="10,0,0,0"
                                             FontSize="14"
@@ -273,55 +257,25 @@
                                             Text="{Binding Descripcion}"
                                             TextColor="White" />
 
-                                        <!--  Fechas / distancia (row 3)  -->
+                                        <!--  Fechas / distancia  -->
                                         <HorizontalStackLayout
-                                            Grid.Row="3"
+                                            Grid.Row="2"
                                             Grid.ColumnSpan="2"
                                             Margin="0,5"
                                             Spacing="12"
                                             VerticalOptions="Center">
-
-                                            <!--  Días restantes (texto principal)  -->
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="13"
                                                 Text="{Binding DiasRestantesTexto}"
                                                 TextColor="White"
-                                                VerticalOptions="Center">
-                                                <Label.Triggers>
-                                                    <!--  Si ya expiró, color rojo tenue  -->
-                                                    <DataTrigger
-                                                        Binding="{Binding IsExpired}"
-                                                        TargetType="Label"
-                                                        Value="True">
-                                                        <Setter Property="TextColor" Value="#FFCDD2" />
-                                                    </DataTrigger>
-
-                                                    <!--  Si falta 1 o 2 días, llamar la atención (opcional)  -->
-                                                    <DataTrigger
-                                                        Binding="{Binding DiasRestantesTexto}"
-                                                        TargetType="Label"
-                                                        Value="1">
-                                                        <Setter Property="TextColor" Value="#FFF59D" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding DiasRestantesTexto}"
-                                                        TargetType="Label"
-                                                        Value="2">
-                                                        <Setter Property="TextColor" Value="#FFF59D" />
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
-
-                                            <!--  Fecha completa como complemento  -->
+                                                VerticalOptions="Center" />
                                             <Label
                                                 FontSize="12"
                                                 Opacity="0.9"
                                                 Text="{Binding VigenciaFin, StringFormat='⏳ válido hasta {0:d}'}"
                                                 TextColor="White"
                                                 VerticalOptions="Center" />
-
-                                            <!--  Distancia (sigue igual)  -->
                                             <Label
                                                 FontSize="12"
                                                 Text="📍 Distancia N/A"
@@ -329,11 +283,9 @@
                                                 VerticalOptions="Center" />
                                         </HorizontalStackLayout>
 
-
-
                                         <!--  Botón  -->
                                         <Button
-                                            Grid.Row="4"
+                                            Grid.Row="3"
                                             Grid.ColumnSpan="2"
                                             Margin="0,8,0,0"
                                             Padding="10,6"
@@ -349,6 +301,7 @@
                                 </Frame>
                             </DataTemplate>
                         </CarouselView.ItemTemplate>
+
 
 
 
@@ -397,9 +350,10 @@
                                 BorderColor="#e0e0e0"
                                 CornerRadius="10"
                                 HasShadow="True">
-                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                                    <!--  Imagen  -->
                                     <Image
-                                        Grid.RowSpan="3"
+                                        Grid.RowSpan="4"
                                         Grid.Column="0"
                                         Margin="0,0,15,0"
                                         Aspect="AspectFill"
@@ -412,6 +366,8 @@
                                                 Uri="{Binding imagenes[0].url}" />
                                         </Image.Source>
                                     </Image>
+
+                                    <!--  Nombre promoción  -->
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
@@ -419,14 +375,26 @@
                                         FontSize="16"
                                         Text="{Binding Nombre}"
                                         TextColor="#19535F" />
+
+                                    <!--  Nombre empresa (nuevo)  -->
                                     <Label
                                         Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="13"
+                                        Text="{Binding NombreEmpresa}"
+                                        TextColor="#555" />
+
+                                    <!--  Vigencia fin  -->
+                                    <Label
+                                        Grid.Row="2"
                                         Grid.Column="1"
                                         FontSize="12"
                                         Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
                                         TextColor="#0aa59b" />
+
+                                    <!--  Tipo  -->
                                     <Label
-                                        Grid.Row="2"
+                                        Grid.Row="3"
                                         Grid.Column="1"
                                         FontSize="12"
                                         Text="{Binding Tipo}"
@@ -439,6 +407,7 @@
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+
                 </CollectionView>
 
                 <Frame
