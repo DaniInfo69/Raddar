@@ -13,6 +13,9 @@ using System.Windows.Input;
 using UraniumUI.Material.Controls;
 using UraniumUI.Material.Extensions;
 using UraniumUI.Material.Resources;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Avisen.Views
 {
@@ -24,7 +27,6 @@ namespace Avisen.Views
 
         private int currentPage = 1;
         private const int pageSize = 5;
-        
 
         public int CurrentPage
         {
@@ -50,6 +52,7 @@ namespace Avisen.Views
         private bool _isInitialized;
         private Categoria _categoriaSeleccionada;
         private IDispatcherTimer _carouselTimer;
+        private IDispatcherTimer _refreshTimer; // <-- Timer guardado para el auto-refresh
         private CancellationTokenSource _cts;
         private readonly NegocioService _negocioService;
         private List<Promocion> _todasLasPromosCache = new();
@@ -138,6 +141,7 @@ namespace Avisen.Views
 
             await InitializeAsync();
             _isInitialized = true;
+            StartTimers();
         }
 
         protected override void OnDisappearing()
@@ -251,14 +255,29 @@ namespace Avisen.Views
         {
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                // Ya NO cargamos las destacadas aquí
-                _promosFiltradas = promociones;
+                // Actualizamos la lista filtrada pero intentamos mantener la página actual
+                _promosFiltradas = promociones ?? new List<Promocion>();
 
-                CurrentPage = 1;
-                LoadPage();
-                SafeVibrate();
+                // Recalcular total de páginas
+                OnPropertyChanged(nameof(TotalPages));
+
+                // Si la página actual está fuera de rango (p.e. la lista se hizo más corta)
+                var totalPages = TotalPages;
+                if (CurrentPage > totalPages)
+                {
+                    // Ajustar a la última página disponible — esto disparará LoadPage() desde el setter
+                    CurrentPage = totalPages;
+                }
+                else
+                {
+                    // Mantener la página y recargar su contenido
+                    LoadPage();
+                }
+
+                // No vibramos en cada refresh (lo dejamos donde detectas novedades)
             });
         }
+
 
 
         void LoadPage()
@@ -382,13 +401,17 @@ namespace Avisen.Views
                 var promocionesJson = Preferences.Get("PromosGuardadas", null);
                 if (string.IsNullOrEmpty(promocionesJson)) return;
 
-                var promosGuardadas = JsonSerializer.Deserialize<List<Promocion>>(promocionesJson);
-                if (new HashSet<int>(nuevasPromos.Select(p => p.idpromocion))
-                    .SetEquals(promosGuardadas.Select(p => p.idpromocion)))
+                var promosGuardadas = JsonSerializer.Deserialize<List<Promocion>>(promocionesJson) ?? new List<Promocion>();
+
+                var nuevasIds = new HashSet<int>(nuevasPromos.Select(p => p.idpromocion));
+                var guardadasIds = new HashSet<int>(promosGuardadas.Select(p => p.idpromocion));
+
+                if (nuevasIds.SetEquals(guardadasIds))
                 {
                     return;
                 }
 
+                // -> Hay diferencias: mostrar notificación y vibrar solo aquí
                 if (await LocalNotificationCenter.Current.AreNotificationsEnabled() ||
                     await LocalNotificationCenter.Current.RequestNotificationPermission())
                 {
@@ -402,6 +425,9 @@ namespace Avisen.Views
                     });
                 }
 
+                // Vibración solamente si hay novedades
+                SafeVibrate();
+
                 Preferences.Set("PromosGuardadas", JsonSerializer.Serialize(nuevasPromos));
             }
             catch { /* Silenciar errores de notificación */ }
@@ -409,14 +435,23 @@ namespace Avisen.Views
 
         private void StartTimers()
         {
-            this.Dispatcher.StartTimer(TimeSpan.FromSeconds(
-                Preferences.Get("UpdateFrequency", 20.0)), () =>
-                {
-                    if (!_isRefreshing)
-                        _ = RefreshDataAsync();
-                    return true;
-                });
+            // Parar timer previo si existe
+            _refreshTimer?.Stop();
+            _refreshTimer = Application.Current.Dispatcher.CreateTimer();
 
+            // Obtener preferencia y clamar un mínimo (ej. 20s)
+            var freqSeconds = Preferences.Get("UpdateFrequency", 60.0);
+            freqSeconds = Math.Max(freqSeconds, 20.0);
+
+            _refreshTimer.Interval = TimeSpan.FromSeconds(freqSeconds);
+            _refreshTimer.Tick += (_, _) =>
+            {
+                if (!_isRefreshing)
+                    _ = RefreshDataAsync();
+            };
+            _refreshTimer.Start();
+
+            // Carousel: solo si no está creado y si hay más de 1 oferta destacada
             if (_carouselTimer == null && OfertasDestacadas.Count > 1)
             {
                 _carouselTimer = Application.Current.Dispatcher.CreateTimer();
@@ -440,7 +475,13 @@ namespace Avisen.Views
         {
             _carouselTimer?.Stop();
             _carouselTimer = null;
+
+            _refreshTimer?.Stop();
+            _refreshTimer = null;
+
             _cts?.Cancel();
+            _cts?.Dispose();
+            _cts = null;
         }
 
         private async Task<int> GetCurrentCarouselPosition()
@@ -465,7 +506,7 @@ namespace Avisen.Views
         {
             if (Preferences.Get("UpdateFrequency", 0.0) == 0)
             {
-                Preferences.Set("UpdateFrequency", 20.0);
+                Preferences.Set("UpdateFrequency", 60.0); // ahora 60s por defecto
                 Preferences.Set("OfferDistance", 0.5);
             }
         }
@@ -574,8 +615,6 @@ namespace Avisen.Views
                 }
                 AddPageButton(TotalPages);
             }
-
-            
 
             // Botón siguiente - Siempre visible
             var nextButton = new Button

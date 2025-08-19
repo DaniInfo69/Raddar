@@ -203,11 +203,12 @@
                                             HorizontalOptions="Start"
                                             WidthRequest="80">
                                             <Image
+                                                Margin="0,-20,0,0"
                                                 Aspect="AspectFill"
                                                 HeightRequest="80"
                                                 HorizontalOptions="Center"
                                                 Source="{Binding imagenes[0].url}"
-                                                VerticalOptions="Center"
+                                                VerticalOptions="Start"
                                                 WidthRequest="80" />
                                         </Grid>
 
@@ -250,7 +251,7 @@
                                         <Label
                                             Grid.Row="1"
                                             Grid.ColumnSpan="2"
-                                            Padding="10,0,0,0"
+                                            Padding="10,10,0,0"
                                             FontSize="14"
                                             LineBreakMode="TailTruncation"
                                             MaxLines="2"
@@ -276,11 +277,7 @@
                                                 Text="{Binding VigenciaFin, StringFormat='⏳ válido hasta {0:d}'}"
                                                 TextColor="White"
                                                 VerticalOptions="Center" />
-                                            <Label
-                                                FontSize="12"
-                                                Text="📍 Distancia N/A"
-                                                TextColor="White"
-                                                VerticalOptions="Center" />
+                                            
                                         </HorizontalStackLayout>
 
                                         <!--  Botón  -->
