@@ -73,18 +73,39 @@
                             StrokeShape="RoundRectangle 12"
                             StrokeThickness="1">
                             <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                <Label
-                                    FontSize="20"
-                                    Style="{StaticResource MaterialIcon}"
-                                    Text="{x:Static local:IconFont.Pin_drop}"
-                                    TextColor="Black"
-                                    VerticalOptions="Center" />
 
-                                <Label
-                                    FontSize="13"
-                                    Text="12 nuevas ofertas cerca de ti"
-                                    TextColor="Black"
-                                    VerticalOptions="Center" />
+
+                                <!--  Contenedor clickable que actúa como botón  -->
+                                <Border
+                                    x:Name="btnNearbyOffers"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Start"
+                                    Stroke="Transparent">
+                                    <HorizontalStackLayout
+                                        Padding="0"
+                                        Spacing="8"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontSize="20"
+                                            Style="{StaticResource MaterialIcon}"
+                                            Text="{x:Static local:IconFont.Pin_drop}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            Text="{Binding OffersNearbyText}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowNearbyOffersCommand}" NumberOfTapsRequired="1" />
+                                    </Border.GestureRecognizers>
+                                </Border>
+
+
                             </HorizontalStackLayout>
                         </Border>
                     </VerticalStackLayout>
@@ -277,7 +298,7 @@
                                                 Text="{Binding VigenciaFin, StringFormat='⏳ válido hasta {0:d}'}"
                                                 TextColor="White"
                                                 VerticalOptions="Center" />
-                                            
+
                                         </HorizontalStackLayout>
 
                                         <!--  Botón  -->

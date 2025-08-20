@@ -186,25 +186,6 @@ namespace Avisen.Services
         }
 
 
-        public async Task<List<Matriz>> ObtenerPromocionesEnRangoAsync(double lat, double lng, double rango)
-        {
-            try
-            {
-                var url = $"https://TU_API_URL/promocionRango?lat={lat}&lng={lng}&rango={rango}";
-                var response = await httpClient.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-                var json = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<List<Matriz>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error en ObtenerPromocionesEnRangoAsync: {ex.Message}");
-                return new List<Matriz>();
-            }
-        }
-
-
 
         public async Task<List<Negocio>> ObtenerNegociosConPromocionesAsync()
         {
@@ -280,6 +261,59 @@ namespace Avisen.Services
             }
         }
 
+
+        public async Task<List<Promocion>> ObtenerPromocionesPorRangoAsync(double lat, double lng, int rango = 200)
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
+                };
+
+                var payload = new
+                {
+                    lat = lat,
+                    lng = lng,
+                    rango = rango
+                };
+
+                var json = JsonSerializer.Serialize(payload, options);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync("promocionRango", content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine($"Error en promocionRango: {(int)response.StatusCode} - {response.ReasonPhrase}");
+                    return new List<Promocion>();
+                }
+
+                var responseJson = await response.Content.ReadAsStringAsync();
+                var promociones = JsonSerializer.Deserialize<List<Promocion>>(responseJson, options)
+                                 ?? new List<Promocion>();
+
+                // Enriquecer con empresa si lo necesitas (opcional)
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa", options) ?? new List<Negocio>();
+                foreach (var promo in promociones)
+                {
+                    var empresa = empresas.FirstOrDefault(e => e.idempresa == promo.empresa_idempresa);
+                    if (empresa != null)
+                    {
+                        promo.NombreEmpresa = empresa.Nombre;
+                        promo.DescripcionEmpresa = empresa.Descripcion;
+                    }
+                }
+
+                return promociones;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Excepción en ObtenerPromocionesPorRangoAsync: {ex.Message}");
+                return new List<Promocion>();
+            }
+        }
 
 
     }

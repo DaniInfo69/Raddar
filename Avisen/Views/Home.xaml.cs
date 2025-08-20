@@ -10,12 +10,10 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Windows.Input;
-using UraniumUI.Material.Controls;
-using UraniumUI.Material.Extensions;
-using UraniumUI.Material.Resources;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Maui.Devices.Sensors;    // Geolocation, Location
+using Microsoft.Maui.ApplicationModel;   // Permissions
+using System.Threading;                  // CancellationTokenSource
+
 
 namespace Avisen.Views
 {
@@ -55,8 +53,11 @@ namespace Avisen.Views
         private IDispatcherTimer _refreshTimer; // <-- Timer guardado para el auto-refresh
         private CancellationTokenSource _cts;
         private readonly NegocioService _negocioService;
+        private readonly ApiService _apiService = new ApiService();
         private List<Promocion> _todasLasPromosCache = new();
         private List<Promocion> _promosFiltradas = new();
+
+
 
         private bool _isNavigating;
         private bool _isLoadingDetalle;
@@ -109,6 +110,26 @@ namespace Avisen.Views
         }
 
 
+        private List<Promocion> _promosCercanasCache = new();
+
+        // Contador y binding para el Hero
+        private int _offersNearbyCount;
+        public int OffersNearbyCount
+        {
+            get => _offersNearbyCount;
+            set
+            {
+                if (_offersNearbyCount == value) return;
+                _offersNearbyCount = value;
+                OnPropertyChanged(nameof(OffersNearbyCount));
+                OnPropertyChanged(nameof(OffersNearbyText));
+            }
+        }
+        public string OffersNearbyText => $"{OffersNearbyCount} nuevas ofertas cerca de ti";
+
+        // Command para el botón del Hero
+        public ICommand ShowNearbyOffersCommand { get; }
+
         public Home(NegocioService negocioService)
         {
             InitializeComponent();
@@ -123,6 +144,8 @@ namespace Avisen.Views
                 if (page >= 1 && page <= TotalPages)
                     CurrentPage = page;
             });
+
+            ShowNearbyOffersCommand = new Command(async () => await ShowNearbyOffersAsync());
 
             BindingContext = this;
             SetDefaultPreferences();
@@ -165,7 +188,8 @@ namespace Avisen.Views
                     LoadUserNameAsync(_cts.Token),
                     LoadCategoriesAsync(_cts.Token),
                     LoadPromotionsAsync(_cts.Token),
-                    LoadPromotionsDestacadasAsync(_cts.Token)
+                    LoadPromotionsDestacadasAsync(_cts.Token),
+                    UpdateNearbyCountAsync()
                 };
 
                 await Task.WhenAll(loadTasks);
@@ -193,7 +217,8 @@ namespace Avisen.Views
                 _cts = new CancellationTokenSource();
                 await Task.WhenAll(
                     LoadPromotionsAsync(_cts.Token),
-                    LoadPromotionsDestacadasAsync(_cts.Token) // <-- nuevo
+                    LoadPromotionsDestacadasAsync(_cts.Token), // <-- nuevo
+                    UpdateNearbyCountAsync()
                 );
                 Debug.WriteLine($"Refresh completed in {_loadStopwatch.ElapsedMilliseconds}ms");
             }
@@ -688,5 +713,82 @@ namespace Avisen.Views
                     base.OnCollectionChanged(e);
             }
         }
+
+        private async Task<Location?> GetCurrentLocationAsync()
+        {
+            try
+            {
+                var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+                if (status != PermissionStatus.Granted)
+                {
+                    status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+                    if (status != PermissionStatus.Granted)
+                        return null; // usuario negó permisos
+                }
+
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(12));
+                var location = await Geolocation.Default.GetLocationAsync(request, cts.Token);
+                return location;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"GetCurrentLocationAsync error: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task UpdateNearbyCountAsync(int rango = 200)
+        {
+            try
+            {
+                var loc = await GetCurrentLocationAsync();
+                if (loc == null)
+                {
+                    OffersNearbyCount = 0;
+                    _promosCercanasCache = new List<Promocion>();
+                    return;
+                }
+
+                // Llamada al método que ya implementaste en ApiService
+                var promos = await _apiService.ObtenerPromocionesPorRangoAsync(loc.Latitude, loc.Longitude, rango);
+                _promosCercanasCache = promos ?? new List<Promocion>();
+                OffersNearbyCount = _promosCercanasCache.Count;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"UpdateNearbyCountAsync error: {ex.Message}");
+                OffersNearbyCount = 0;
+            }
+        }
+
+        private async Task ShowNearbyOffersAsync()
+        {
+            try
+            {
+                // Si la cache está vacía, forzamos una recarga rápida
+                if (_promosCercanasCache == null || !_promosCercanasCache.Any())
+                    await UpdateNearbyCountAsync();
+
+                if (_promosCercanasCache == null || !_promosCercanasCache.Any())
+                {
+                    await SafeDisplayAlert("Aviso", "No hay promociones cercanas por mostrar.");
+                    return;
+                }
+
+                // Aquí navegamos a la página de mapa. 
+                // - Implementa tu MapPage que reciba List<Promocion> o usa un servicio compartido.
+                // Ejemplo (comentado si no tienes MapPage aún):
+                // await Navigation.PushAsync(new MapPage(_promosCercanasCache));
+
+                // Si no tienes MapPage todavía, por ahora muestro un alert con el número de promos
+                await SafeDisplayAlert("Promociones cercanas", $"Se encontraron {_promosCercanasCache.Count} promociones cercanas.");
+            }
+            catch (Exception ex)
+            {
+                await SafeDisplayAlert("Error", $"No se pudo mostrar promociones: {ex.Message}");
+            }
+        }
+
     }
 }
