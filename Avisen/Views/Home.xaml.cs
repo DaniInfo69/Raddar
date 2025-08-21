@@ -776,13 +776,23 @@ namespace Avisen.Views
                     return;
                 }
 
-                // Aquí navegamos a la página de mapa. 
-                // - Implementa tu MapPage que reciba List<Promocion> o usa un servicio compartido.
-                // Ejemplo (comentado si no tienes MapPage aún):
-                // await Navigation.PushAsync(new MapPage(_promosCercanasCache));
+                // --- 2) Intentar Shell (si usas Shell) ---
+                try
+                {
+                    // Si registraste una ruta para la MapPage (recomendado): Routing.RegisterRoute(nameof(MapPage), typeof(MapPage));
+                    // Intentamos navegar por ruta (no falla si la ruta no existe, capturamos excepción)
+                    var routeName = "Map"; // ajusta si tu ruta es otra, por ejemplo nameof(MapPage)
+                    await Shell.Current?.GoToAsync($"//{routeName}");
+                    return;
+                }
+                catch
+                {
+                    Debug.WriteLine("No se encontró la ruta");
+                }
 
-                // Si no tienes MapPage todavía, por ahora muestro un alert con el número de promos
-                await SafeDisplayAlert("Promociones cercanas", $"Se encontraron {_promosCercanasCache.Count} promociones cercanas.");
+
+                // --- Fallback: mostrar alert con conteo (útil si no se pudo navegar) ---
+                await SafeDisplayAlert("Promociones cercanas", $"Se encontraron {_promosCercanasCache.Count} promociones cercanas, pero no se pudo navegar automáticamente al mapa. Revisa la configuración de Tabs/Shell.");
             }
             catch (Exception ex)
             {
@@ -790,5 +800,5 @@ namespace Avisen.Views
             }
         }
 
-    }
+        }
 }

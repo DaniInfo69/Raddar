@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using Avisen.Models;
 using System.Net.Http.Json;
 using System.Diagnostics;
+using Microsoft.Maui.Storage; // Preferences
 
 namespace Avisen.Services
 {
@@ -262,10 +263,21 @@ namespace Avisen.Services
         }
 
 
-        public async Task<List<Promocion>> ObtenerPromocionesPorRangoAsync(double lat, double lng, int rango = 200)
+        public async Task<List<Promocion>> ObtenerPromocionesPorRangoAsync(double lat, double lng, int? rango = null)
         {
             try
             {
+                // Leer preference correctamente (double) y manejar caso no seteado (<=0)
+                double prefDouble = Preferences.Get("OfferDistance", 0.0);
+                if (prefDouble <= 0) prefDouble = 200.0; // fallback por defecto si no hay preference guardada
+
+                // Si el llamador pasó rango explícito lo respetamos; si no, usamos la preference
+                int rangoAUsar = rango ?? (int)Math.Round(prefDouble);
+
+                // Validación de límites (ajusta si necesitas otros límites)
+                if (rangoAUsar < 50) rangoAUsar = 50;
+                if (rangoAUsar > 10000) rangoAUsar = 10000;
+
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
@@ -276,13 +288,19 @@ namespace Avisen.Services
                 {
                     lat = lat,
                     lng = lng,
-                    rango = rango
+                    rango = rangoAUsar
                 };
 
                 var json = JsonSerializer.Serialize(payload, options);
+                Debug.WriteLine($"[ObtenerPromocionesPorRangoAsync] Payload: {json}");
+
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.PostAsync("promocionRango", content);
+
+                var responseJson = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine($"[ObtenerPromocionesPorRangoAsync] Status: {(int)response.StatusCode} - {response.ReasonPhrase}");
+                Debug.WriteLine($"[ObtenerPromocionesPorRangoAsync] Response content: {responseJson}");
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -290,7 +308,6 @@ namespace Avisen.Services
                     return new List<Promocion>();
                 }
 
-                var responseJson = await response.Content.ReadAsStringAsync();
                 var promociones = JsonSerializer.Deserialize<List<Promocion>>(responseJson, options)
                                  ?? new List<Promocion>();
 
@@ -314,6 +331,8 @@ namespace Avisen.Services
                 return new List<Promocion>();
             }
         }
+
+
 
 
     }
