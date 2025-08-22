@@ -1,5 +1,8 @@
 using Avisen.Models;
 using Avisen.Services;
+using Microsoft.Maui.Controls;
+using System;
+using System.IO;
 
 namespace Avisen.Views;
 
@@ -7,30 +10,45 @@ public partial class PromocionDetallesPage : ContentPage
 {
     private readonly Location _ubicacionPromocion;
     private bool _esFavorita;
-
+    private bool _hasQr = false;
+    private bool _qrVisible = false;
 
     public PromocionDetallesPage(Promocion promocion, Location ubicacionPromocion)
     {
         InitializeComponent();
 
-        // Configuramos el BindingContext con la promoción
         BindingContext = promocion;
-
         _ubicacionPromocion = ubicacionPromocion;
 
-        // Mostramos los detalles directamente desde el Binding
-        PromocionesLabel.FormattedText = ObtenerDetallesPromocion(promocion);
-        VigenciaLabel.Text = promocion.VigenciaInicio.HasValue ? promocion.VigenciaInicio.Value.ToShortDateString() : "Sin fecha de inicio";
-        VigenciaLabel2.Text = promocion.VigenciaFin.HasValue ? promocion.VigenciaFin.Value.ToShortDateString() : "Sin fecha de fin";
+        // Rellenar textos
+        TituloPromocion.Text = promocion.Nombre ?? "Sin nombre";
+        Subtitulo.Text = promocion.NombreEmpresa ?? string.Empty;
+        DescripcionText.Text = promocion.Descripcion ?? string.Empty;
+
+        PrecioLabel.Text = string.IsNullOrWhiteSpace(promocion.Precio) ? "Oferta especial" : $"${promocion.Precio} mxn";
+        TipoBadge.Text = promocion.Tipo ?? "No especificado";
+
+        VigenciaLabel.Text = promocion.VigenciaInicio.HasValue ? promocion.VigenciaInicio.Value.ToShortDateString() : "Sin fecha";
+        VigenciaLabel2.Text = promocion.VigenciaFin.HasValue ? promocion.VigenciaFin.Value.ToShortDateString() : "Sin fecha";
+
+        // Ajustamos estilos del badge según tipo
+        AplicarEstilosTipo(promocion.Tipo);
 
         _esFavorita = FavoritosService.EsFavorita(promocion);
         ActualizarCorazon();
     }
 
-
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
+        // Intentar cargar QR y configurar disponibilidad
+        _hasQr = false;
+        LblNoQr.IsVisible = false;
+        BtnToggleQr.IsEnabled = true;
+        QrContainer.IsVisible = false;
+        _qrVisible = false;
+
 
         if (BindingContext is Promocion promo
             && promo.qrs != null
@@ -39,7 +57,6 @@ public partial class PromocionDetallesPage : ContentPage
         {
             try
             {
-                // Quitamos el prefijo si existe
                 var base64Data = promo.qrs[0].imageBase64;
                 var commaIndex = base64Data.IndexOf(',');
                 if (commaIndex >= 0)
@@ -49,58 +66,52 @@ public partial class PromocionDetallesPage : ContentPage
 
                 byte[] imageBytes = Convert.FromBase64String(base64Data);
                 QrImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                _hasQr = true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al cargar QR: {ex.Message}");
+                _hasQr = false;
             }
+        }
+
+        // Actualizamos los controles del QR
+        if (!_hasQr)
+        {
+            BtnToggleQr.IsEnabled = false;
+            LblNoQr.IsVisible = true;
+        }
+        else
+        {
+            BtnToggleQr.IsEnabled = true;
+            LblNoQr.IsVisible = false;
         }
     }
 
-
-
-    private FormattedString ObtenerDetallesPromocion(Promocion promocion)
+    private void BtnToggleQr_Clicked(object sender, EventArgs e)
     {
-        var formattedString = new FormattedString();
-
-        // Nombre en negritas
-        formattedString.Spans.Add(new Span
-        {
-            Text = (promocion.Nombre ?? "Sin nombre") + "\n\n",
-            FontAttributes = FontAttributes.Bold,
-            FontSize = 18,
-            TextColor = Color.FromArgb("#19535F"),
-        });
-
-        // Descripción normal
-        formattedString.Spans.Add(new Span
-        {
-            Text = (promocion.Descripcion ?? "Sin descripción") + "\n\n",
-            FontSize = 16,
-            TextColor = Color.FromArgb("#602020")
-        });
-
-        // Precio
-        formattedString.Spans.Add(new Span
-        {
-            Text = $"Precio: {(string.IsNullOrWhiteSpace(promocion.Precio) ? "Oferta especial" : $"${promocion.Precio} mxn")}\n\n",
-            FontSize = 16,
-            TextColor = Color.FromArgb("#19535F")
-        });
-
-        // Tipo de promoción
-        formattedString.Spans.Add(new Span
-        {
-            Text = $"Tipo de promoción: {(promocion.Tipo ?? "No especificado")}",
-            FontSize = 16,
-            TextColor = Color.FromArgb("#19535F")
-        });
-
-        return formattedString;
+        ToggleQr();
     }
 
+    private void QrBorder_Tapped(object sender, EventArgs e)
+    {
+        ToggleQr();
+    }
 
-    // Mantenemos los mismos métodos de eventos
+    private void ToggleQr()
+    {
+        if (!_hasQr)
+        {
+            DisplayAlert("QR", "No hay QR disponible para esta promoción.", "OK");
+            return;
+        }
+
+        _qrVisible = !_qrVisible;
+        QrContainer.IsVisible = _qrVisible;
+
+    }
+
+    // Mantén tus métodos existentes
     private async void CerrarModal(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("..");
@@ -118,10 +129,8 @@ public partial class PromocionDetallesPage : ContentPage
         }
 
         await Shell.Current.GoToAsync("..");
-
         await Shell.Current.GoToAsync("//Map");
     }
-
 
     private async void OnHeartTapped(object sender, EventArgs e)
     {
@@ -152,14 +161,46 @@ public partial class PromocionDetallesPage : ContentPage
         }
     }
 
-
-
     private void ActualizarCorazon()
     {
         HeartAnimation.Progress = _esFavorita ? TimeSpan.FromMilliseconds(1000) : TimeSpan.FromMilliseconds(2000);
         HeartAnimation.IsAnimationEnabled = _esFavorita;
     }
 
+    // Ajusta colores y estilos del badge según tipo de promoción
+    private void AplicarEstilosTipo(string tipo)
+    {
+        if (string.IsNullOrWhiteSpace(tipo))
+        {
+            // Estilo por defecto
+            TipoFrame.BackgroundColor = Color.FromArgb("#FFF0F0");
+            TipoFrame.BorderColor = Color.FromArgb("#F4C2C2");
+            TipoBadge.TextColor = Color.FromArgb("#C94A4A");
+            return;
+        }
 
+        var lower = tipo.ToLowerInvariant();
+
+        if (lower.Contains("venta") || lower.Contains("venta") || lower.Contains("sell"))
+        {
+            // rojo (venta)
+            TipoFrame.BackgroundColor = Color.FromArgb("#FDECEA"); // suave
+            TipoFrame.BorderColor = Color.FromArgb("#F5B4B4");
+            TipoBadge.TextColor = Color.FromArgb("#C94A4A");
+        }
+        else if (lower.Contains("informativa") || lower.Contains("informativo") || lower.Contains("info"))
+        {
+            // naranja (informativa)
+            TipoFrame.BackgroundColor = Color.FromArgb("#FFF6EA"); // suave naranja
+            TipoFrame.BorderColor = Color.FromArgb("#F8D6A6");
+            TipoBadge.TextColor = Color.FromArgb("#D97706");
+        }
+        else
+        {
+            // estilo neutro
+            TipoFrame.BackgroundColor = Color.FromArgb("#F0F7F7");
+            TipoFrame.BorderColor = Color.FromArgb("#D0EDEA");
+            TipoBadge.TextColor = Color.FromArgb("#19535F");
+        }
+    }
 }
-
