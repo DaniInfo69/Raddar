@@ -26,26 +26,25 @@
             <Border
                 Padding="0"
                 BackgroundColor="#FFFFFF"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="Fill"
                 Stroke="#E6E6E6"
                 StrokeShape="RoundRectangle 16"
                 StrokeThickness="1">
 
                 <VerticalStackLayout Padding="14" Spacing="12">
 
-                    <!--  Imagen banner (heightRequest cambiado a 200)  -->
-                    <Frame
+                    <!--  Imagen banner (sin IsClippedToBounds)  -->
+                    <Border
                         Padding="0"
                         BackgroundColor="Transparent"
-                        CornerRadius="12"
-                        HasShadow="False"
-                        IsClippedToBounds="True">
+                        StrokeShape="RoundRectangle 12"
+                        StrokeThickness="0">
                         <Image
                             x:Name="ImageBanner"
                             Aspect="AspectFill"
                             HeightRequest="200"
                             Source="{Binding imagenes[0].url}" />
-                    </Frame>
+                    </Border>
 
                     <!--  Título y subtítulo  -->
                     <Label
@@ -76,10 +75,9 @@
                         ColumnDefinitions="Auto, Auto, *"
                         VerticalOptions="Center">
                         <!--  Columna 0: Precio  -->
-                        <StackLayout
+                        <VerticalStackLayout
                             Grid.Column="0"
                             HorizontalOptions="Start"
-                            Orientation="Vertical"
                             Spacing="2">
                             <Label
                                 FontSize="12"
@@ -91,43 +89,42 @@
                                 FontSize="16"
                                 Text="{Binding Precio, StringFormat='$ {0} mxn'}"
                                 TextColor="#1E4F4E" />
-                        </StackLayout>
+                        </VerticalStackLayout>
 
                         <!--  Columna 1: Tipo (cerca del precio, con pequeño margen)  -->
-                        <StackLayout
+                        <VerticalStackLayout
                             Grid.Column="1"
                             Margin="95,0,0,0"
                             HorizontalOptions="Start"
-                            Orientation="Vertical"
                             Spacing="2">
                             <Label
                                 FontSize="12"
                                 HorizontalOptions="Start"
                                 Text="Tipo"
                                 TextColor="Gray" />
-                            <Frame
+                            <Border
                                 x:Name="TipoFrame"
                                 Padding="10,4"
                                 BackgroundColor="#FFF0F0"
-                                BorderColor="#F4C2C2"
-                                CornerRadius="12"
-                                HasShadow="False"
                                 HorizontalOptions="Start"
+                                Stroke="#F4C2C2"
+                                StrokeShape="RoundRectangle 12"
+                                StrokeThickness="1"
                                 VerticalOptions="Center">
                                 <Label
                                     x:Name="TipoBadge"
                                     FontSize="12"
                                     Text="{Binding Tipo}"
                                     TextColor="#C94A4A" />
-                            </Frame>
-                        </StackLayout>
+                            </Border>
+                        </VerticalStackLayout>
 
                         <!--  Columna 2: espacio flexible para evitar que se empuje a la derecha  -->
 
                     </Grid>
 
                     <Grid Padding="0,6" ColumnDefinitions="*,*">
-                        <StackLayout>
+                        <VerticalStackLayout>
                             <Label
                                 FontSize="12"
                                 Text="Publicada:"
@@ -136,9 +133,9 @@
                                 x:Name="VigenciaLabel"
                                 FontSize="14"
                                 TextColor="#19535F" />
-                        </StackLayout>
+                        </VerticalStackLayout>
 
-                        <StackLayout Grid.Column="1">
+                        <VerticalStackLayout Grid.Column="1">
                             <Label
                                 FontSize="12"
                                 Text="Finaliza:"
@@ -147,7 +144,7 @@
                                 x:Name="VigenciaLabel2"
                                 FontSize="14"
                                 TextColor="#19535F" />
-                        </StackLayout>
+                        </VerticalStackLayout>
                     </Grid>
 
                     <BoxView HeightRequest="1" Color="#E6E6E6" />
@@ -162,18 +159,15 @@
                             Stroke="#E6E6E6"
                             StrokeShape="RoundRectangle 10"
                             StrokeThickness="1">
-                            <!--  El Grid dentro del border contiene QR text + fecha y la flecha  -->
-                            <!--  Se eliminó HeightRequest para que el contenido se centre correctamente  -->
                             <Grid
                                 ColumnDefinitions="*, Auto"
                                 RowDefinitions="Auto"
                                 VerticalOptions="Center">
 
                                 <!--  Texto QR alineado verticalmente al centro  -->
-                                <StackLayout
+                                <VerticalStackLayout
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
-                                    Orientation="Vertical"
                                     Spacing="2"
                                     VerticalOptions="Center">
                                     <Label
@@ -181,8 +175,7 @@
                                         Text="QR Code"
                                         TextColor="#333"
                                         VerticalOptions="Center" />
-                                    <!--  si quieres mostrar la fecha en el borde, acá  -->
-                                </StackLayout>
+                                </VerticalStackLayout>
 
                                 <!--  Flecha hacia abajo: centrada vertical y horizontalmente respecto al texto  -->
                                 <Button
@@ -198,7 +191,6 @@
                                     WidthRequest="36" />
                             </Grid>
 
-                            <!--  GestureRecognizer para que tocar cualquier parte del border despliegue/oculte  -->
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="QrBorder_Tapped" />
                             </Border.GestureRecognizers>
@@ -229,8 +221,6 @@
                                 WidthRequest="200" />
                         </Border>
                     </VerticalStackLayout>
-
-
 
                     <!--  Footer con corazón + botón Ir a la oferta  -->
                     <Grid

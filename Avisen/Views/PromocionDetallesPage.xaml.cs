@@ -173,8 +173,8 @@ public partial class PromocionDetallesPage : ContentPage
         if (string.IsNullOrWhiteSpace(tipo))
         {
             // Estilo por defecto
-            TipoFrame.BackgroundColor = Color.FromArgb("#FFF0F0");
-            TipoFrame.BorderColor = Color.FromArgb("#F4C2C2");
+            TipoFrame.Background = Color.FromArgb("#FFF0F0");
+            TipoFrame.Stroke = Color.FromArgb("#F4C2C2");
             TipoBadge.TextColor = Color.FromArgb("#C94A4A");
             return;
         }
@@ -184,22 +184,22 @@ public partial class PromocionDetallesPage : ContentPage
         if (lower.Contains("venta") || lower.Contains("venta") || lower.Contains("sell"))
         {
             // rojo (venta)
-            TipoFrame.BackgroundColor = Color.FromArgb("#FDECEA"); // suave
-            TipoFrame.BorderColor = Color.FromArgb("#F5B4B4");
+            TipoFrame.Background = Color.FromArgb("#FDECEA"); // suave
+            TipoFrame.Stroke = Color.FromArgb("#F5B4B4");
             TipoBadge.TextColor = Color.FromArgb("#C94A4A");
         }
         else if (lower.Contains("informativa") || lower.Contains("informativo") || lower.Contains("info"))
         {
             // naranja (informativa)
-            TipoFrame.BackgroundColor = Color.FromArgb("#FFF6EA"); // suave naranja
-            TipoFrame.BorderColor = Color.FromArgb("#F8D6A6");
+            TipoFrame.Background = Color.FromArgb("#FFF6EA"); // suave naranja
+            TipoFrame.Stroke = Color.FromArgb("#F8D6A6");
             TipoBadge.TextColor = Color.FromArgb("#D97706");
         }
         else
         {
             // estilo neutro
-            TipoFrame.BackgroundColor = Color.FromArgb("#F0F7F7");
-            TipoFrame.BorderColor = Color.FromArgb("#D0EDEA");
+            TipoFrame.Background = Color.FromArgb("#F0F7F7");
+            TipoFrame.Stroke = Color.FromArgb("#D0EDEA");
             TipoBadge.TextColor = Color.FromArgb("#19535F");
         }
     }
