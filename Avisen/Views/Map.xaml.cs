@@ -20,7 +20,12 @@ public partial class Map : ContentPage
     private double? selectedLat = null;
     private double? selectedLng = null;
 
-
+    private List<MapPin> _pins;
+    public List<MapPin> Pins
+    {
+        get { return _pins; }
+        set { _pins = value; OnPropertyChanged(); }
+    }
 
     public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
     public static List<Negocio> OfertasActuales = new List<Negocio>();
@@ -32,9 +37,31 @@ public partial class Map : ContentPage
     public Map(NegocioService negocioService)
     {
         InitializeComponent();
+        Debug.WriteLine("[Map Page] Constructor: InitializeComponent completado.");
+
         this.negocioService = negocioService;
         LoadData();
         StartAndUpdateLocation();
+
+        BindingContext = this;
+        Debug.WriteLine("[Map Page] BindingContext asignado.");
+
+        Pins = new List<MapPin>()
+    {
+        new MapPin(MapPinClicked)
+        {
+            Id = Guid.NewGuid().ToString(),
+            Position = new Location(19.879956945376524, -103.59449397593787),
+            Icon = "pin2"
+        }
+    };
+        Debug.WriteLine($"[Map Page] Pins inicializada con {Pins.Count} elemento(s).");
+    }
+
+
+    private void MapPinClicked(MapPin pin)
+    {
+        Debug.WriteLine($"Pin clicked: {pin.Id}");
     }
 
     private bool _isRecenter;
@@ -70,24 +97,51 @@ public partial class Map : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        Debug.WriteLine("[Map Page] OnAppearing llamado.");
+
         LoadUserDataAsync();
         IsRecenter = Preferences.Get("IsRecenter", false);
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         OfferDistance = Preferences.Get("OfferDistance", 0.0);
 
-        // —————— BLOQUE “Ir a la oferta” ——————
+        Debug.WriteLine($"[Map Page] Estado inicial: Pins == null? {Pins == null}");
+
         if (NavigationService.LocationToGo is Location loc)
         {
+            Debug.WriteLine($"[Map Page] NavigationService.LocationToGo encontrada en {loc.Latitude},{loc.Longitude}");
 
-            map.Pins.Clear();
-
-            // Agrega el pin temporal
-            map.Pins.Add(new Pin
+            // Evitar manipular map.CustomPins directamente (no disparará la actualización en el handler).
+            // En su lugar actualizamos la propiedad 'Pins' y la reasignamos para forzar el cambio de binding.
+            var newPin = new MapPin(p => { /* acción al clicar */ })
             {
-                Label = "Oferta seleccionada",
-                Location = loc,
-                Type = PinType.Place
-            });
+                Id = Guid.NewGuid().ToString(),
+                Position = new Location(loc),
+                Icon = "pin2"
+            };
+
+            if (Pins == null)
+            {
+                Debug.WriteLine("[Map Page] Pins estaba null. Creando nueva lista con el pin.");
+                Pins = new List<MapPin>() { newPin };
+            }
+            else
+            {
+                Debug.WriteLine($"[Map Page] Pins tenía {Pins.Count} items. Añadiendo y reasignando lista para disparar OnPropertyChanged.");
+                Pins.Add(newPin);
+                // Reasignar para disparar OnPropertyChanged y que el binding trigue el mapper
+                Pins = new List<MapPin>(Pins);
+            }
+
+            // También para asegurar que el control en XAML se actualice, puedes asignar explícitamente:
+            try
+            {
+                Debug.WriteLine($"[Map Page] Asignando map.CustomPins = Pins; map control: {(map == null ? "null" : "ok")}");
+                map.CustomPins = Pins;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[Map Page] Error al asignar map.CustomPins: " + ex);
+            }
 
             // Centra el mapa
             map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
@@ -95,8 +149,8 @@ public partial class Map : ContentPage
             // Resetea para que no lo ejecute de nuevo
             NavigationService.LocationToGo = null;
         }
-
     }
+
 
     private async void StartAndUpdateLocation()
     {

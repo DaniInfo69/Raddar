@@ -13367,3 +13367,6 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\sp\drawable-xhdpi\logo_raddar.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxhdpi\logo_raddar.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\sp\drawable-xxxhdpi\logo_raddar.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\resizetizer\r\drawable\pin2.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\android\src\crc64e5fb54d303da6e55\CustomMapHandler_MapCallback.java
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-android\android\src\crc640a01009bad045ddd\CustomMapHandler_MapCallback.java

@@ -1,3 +1,6 @@
+CustomMapHandler+MapCallback, Avisen;crc640a01009bad045ddd.CustomMapHandler_MapCallback
+CustomMapHandler.MapCallback;crc640a01009bad045ddd.CustomMapHandler_MapCallback
+CustomMapHandler_MapCallback;crc640a01009bad045ddd.CustomMapHandler_MapCallback
 Avisen.MainActivity, Avisen;crc64be4a4d0745143da3.MainActivity
 Avisen.MainActivity;crc64be4a4d0745143da3.MainActivity
 avisen.MainActivity;crc64be4a4d0745143da3.MainActivity

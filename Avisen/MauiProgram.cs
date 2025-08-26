@@ -1,4 +1,8 @@
-﻿using Avisen.Services;
+﻿using Avisen.Controls;
+#if ANDROID
+
+#endif
+using Avisen.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
@@ -20,6 +24,13 @@ namespace Avisen
                 .UseUraniumUIMaterial()
                 .UseSkiaSharp()
                 .UseLocalNotification()
+                .ConfigureMauiHandlers(handlers =>
+                {
+#if ANDROID
+                    // Registrar handler para el tipo personalizado
+                    handlers.AddHandler<CustomMap, CustomMapHandler>();
+#endif
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
