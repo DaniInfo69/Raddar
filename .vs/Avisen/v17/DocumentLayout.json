@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\platforms\\android\\custommaphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\platforms\\android\\custommaphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\views\\map.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\platforms\\android\\custommaphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|solutionrelative:avisen\\platforms\\android\\custommaphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86482C-9635-42EE-9CC0-9CAF4B3ABC7B}|Avisen\\Avisen.csproj|c:\\users\\jardi\\onedrive\\escritorio\\proyecto raddar\\raddar\\avisen\\controls\\custommap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 110,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -46,18 +46,17 @@
               "RelativeToolTip": "Avisen\\MauiProgram.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAwwCIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T09:09:34.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T09:09:34.979Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CustomMapHandler.cs",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Platforms\\Android\\CustomMapHandler.cs",
               "RelativeDocumentMoniker": "Avisen\\Platforms\\Android\\CustomMapHandler.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Platforms\\Android\\CustomMapHandler.cs",
               "RelativeToolTip": "Avisen\\Platforms\\Android\\CustomMapHandler.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwNcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAowJQAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-26T08:59:46.659Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "Avisen\\Controls\\CustomMap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T08:53:51.978Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T08:53:51.978Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "Avisen\\Models\\MapPin.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T08:52:34.306Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T08:52:34.306Z"
             },
             {
               "$type": "Document",
@@ -98,18 +95,17 @@
               "RelativeToolTip": "Avisen\\Views\\Map.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-22T20:00:05.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-22T20:00:05.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Map.xaml.cs",
               "DocumentMoniker": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeDocumentMoniker": "Avisen\\Views\\Map.xaml.cs",
               "ToolTip": "C:\\Users\\jardi\\OneDrive\\Escritorio\\Proyecto RADDAR\\Raddar\\Avisen\\Views\\Map.xaml.cs",
               "RelativeToolTip": "Avisen\\Views\\Map.xaml.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAADwvzsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAiwG4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-22T19:59:57.937Z",
               "EditorCaption": ""

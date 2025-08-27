@@ -46,16 +46,7 @@ public partial class Map : ContentPage
         BindingContext = this;
         Debug.WriteLine("[Map Page] BindingContext asignado.");
 
-        Pins = new List<MapPin>()
-    {
-        new MapPin(MapPinClicked)
-        {
-            Id = Guid.NewGuid().ToString(),
-            Position = new Location(19.879956945376524, -103.59449397593787),
-            Icon = "pin2"
-        }
-    };
-        Debug.WriteLine($"[Map Page] Pins inicializada con {Pins.Count} elemento(s).");
+     
     }
 
 
@@ -349,17 +340,31 @@ public partial class Map : ContentPage
             OfertasVistas.Add(negocio);
         }
 
-        var promotionPin = new Pin
+        var promotionPin = new MapPin(p =>
         {
-            Label = negocio.Nombre,
-            Address = "¡Oferta!",
-            Type = PinType.Place,
-            Location = negocio.Location
+            Debug.WriteLine($"[Map Page] Click en promoción: {negocio.Nombre}");
+            DisplayPromotionDetails(negocio);
+        })
+        {
+            Id = Guid.NewGuid().ToString(),
+            Position = negocio.Location,
+            Icon = "pin_offer" // Usa tu drawable aquí
         };
 
-        promotionPin.MarkerClicked += (s, e) => DisplayPromotionDetails(negocio);
-        map.Pins.Add(promotionPin);
+        // Asegurar que Pins no es null
+        if (Pins == null)
+            Pins = new List<MapPin>();
+
+        // Agregar el pin a la lista y forzar OnPropertyChanged
+        Pins.Add(promotionPin);
+        Pins = new List<MapPin>(Pins); // << Clave para refrescar el binding
+
+        Debug.WriteLine($"[Map Page] Pin de oferta añadido: {negocio.Nombre} en {negocio.Location.Latitude},{negocio.Location.Longitude}");
+
+        // Opcional: centrar el mapa en la ubicación de la oferta
+        map.MoveToRegion(MapSpan.FromCenterAndRadius(negocio.Location, Distance.FromMeters(300)));
     }
+
 
 
     private async void DisplayPromotionDetails(Negocio negocio)

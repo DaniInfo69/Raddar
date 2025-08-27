@@ -146,7 +146,7 @@ public class CustomMapHandler : MapHandler
                 return null;
             }
 
-            var scaled = Bitmap.CreateScaledBitmap(bmp, 80, 80, false);
+            var scaled = Bitmap.CreateScaledBitmap(bmp, 180, 180, false);
             bmp.Recycle();
 
             return BitmapDescriptorFactory.FromBitmap(scaled);
