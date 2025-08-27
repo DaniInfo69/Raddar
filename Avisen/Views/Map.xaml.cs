@@ -107,7 +107,7 @@ public partial class Map : ContentPage
             {
                 Id = Guid.NewGuid().ToString(),
                 Position = new Location(loc),
-                Icon = "pin2"
+                Icon = "pin_offer"
             };
 
             if (Pins == null)
