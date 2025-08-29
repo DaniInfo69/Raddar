@@ -267,14 +267,15 @@ namespace Avisen.Services
         {
             try
             {
-                // Leer preference correctamente (double) y manejar caso no seteado (<=0)
-                double prefDouble = Preferences.Get("OfferDistance", 0.0);
-                if (prefDouble <= 0) prefDouble = 200.0; // fallback por defecto si no hay preference guardada
+                // Leer preference en KM
+                double prefKm = Preferences.Get("OfferDistance", 0.0);
+                if (prefKm <= 0) prefKm = 0.5; // fallback por defecto (0.5 km = 500 m)
 
-                // Si el llamador pasó rango explícito lo respetamos; si no, usamos la preference
-                int rangoAUsar = rango ?? (int)Math.Round(prefDouble);
+                // Si el llamador pasó rango explícito lo respetamos (se asume ya en METROS),
+                // si no, usamos la preference convertida a metros
+                int rangoAUsar = rango ?? (int)Math.Round(prefKm * 1000); // 🔑 conversión km -> m
 
-                // Validación de límites (ajusta si necesitas otros límites)
+                // Validación de límites en metros
                 if (rangoAUsar < 50) rangoAUsar = 50;
                 if (rangoAUsar > 10000) rangoAUsar = 10000;
 
@@ -297,7 +298,6 @@ namespace Avisen.Services
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.PostAsync("promocionRango", content);
-
                 var responseJson = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine($"[ObtenerPromocionesPorRangoAsync] Status: {(int)response.StatusCode} - {response.ReasonPhrase}");
                 Debug.WriteLine($"[ObtenerPromocionesPorRangoAsync] Response content: {responseJson}");
@@ -311,7 +311,7 @@ namespace Avisen.Services
                 var promociones = JsonSerializer.Deserialize<List<Promocion>>(responseJson, options)
                                  ?? new List<Promocion>();
 
-                // Enriquecer con empresa si lo necesitas (opcional)
+                // Enriquecer con empresa
                 var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa", options) ?? new List<Negocio>();
                 foreach (var promo in promociones)
                 {
@@ -332,6 +332,43 @@ namespace Avisen.Services
             }
         }
 
+
+        public async Task<List<Promocion>> ObtenerPromocionesPorCategoriaAsync(int idCategoria)
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
+                };
+
+                var promociones = await httpClient.GetFromJsonAsync<List<Promocion>>(
+                    $"promocion/categoria/{idCategoria}", options
+                ) ?? new List<Promocion>();
+
+                // Enriquecer con datos de empresa
+                var empresas = await httpClient.GetFromJsonAsync<List<Negocio>>("empresa", options)
+                              ?? new List<Negocio>();
+
+                foreach (var promo in promociones)
+                {
+                    var empresa = empresas.FirstOrDefault(e => e.idempresa == promo.empresa_idempresa);
+                    if (empresa != null)
+                    {
+                        promo.NombreEmpresa = empresa.Nombre;
+                        promo.DescripcionEmpresa = empresa.Descripcion;
+                    }
+                }
+
+                return promociones;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en ObtenerPromocionesPorCategoriaAsync: {ex.Message}");
+                return new List<Promocion>();
+            }
+        }
 
 
 

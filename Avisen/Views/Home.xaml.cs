@@ -103,7 +103,7 @@ namespace Avisen.Views
 
                     if (_categoriaSeleccionada != null)
                     {
-                        //FiltrarOfertasPorCategoria(_categoriaSeleccionada);
+                        FiltrarOfertasPorCategoria(_categoriaSeleccionada);
                     }
                 }
             }
@@ -408,15 +408,22 @@ namespace Avisen.Views
 
         #region Métodos de Soporte Optimizados
 
-        /*private void FiltrarOfertasPorCategoria(Categoria categoria)
+        private async void FiltrarOfertasPorCategoria(Categoria categoria)
         {
-            _promosFiltradas = categoria.idcategoria == -1
-                ? _todasLasPromosCache
-                : _todasLasPromosCache.Where(p => p.categoria_idcategoria == categoria.idcategoria).ToList();
+            if (categoria.idcategoria == -1) // Todas las categorías
+            {
+                _promosFiltradas = _todasLasPromosCache;
+            }
+            else
+            {
+                // Consultamos al backend el nuevo endpoint
+                _promosFiltradas = await _apiService.ObtenerPromocionesPorCategoriaAsync(categoria.idcategoria);
+            }
 
             CurrentPage = 1;
             LoadPage();
-        }*/
+        }
+
 
 
         private async Task CheckForNewPromotions(List<Promocion> nuevasPromos)
@@ -738,7 +745,7 @@ namespace Avisen.Views
             }
         }
 
-        public async Task UpdateNearbyCountAsync(int rango = 200)
+        public async Task UpdateNearbyCountAsync()
         {
             try
             {
@@ -750,8 +757,8 @@ namespace Avisen.Views
                     return;
                 }
 
-                // Llamada al método que ya implementaste en ApiService
-                var promos = await _apiService.ObtenerPromocionesPorRangoAsync(loc.Latitude, loc.Longitude, rango);
+                
+                var promos = await _apiService.ObtenerPromocionesPorRangoAsync(loc.Latitude, loc.Longitude);
                 _promosCercanasCache = promos ?? new List<Promocion>();
                 OffersNearbyCount = _promosCercanasCache.Count;
             }

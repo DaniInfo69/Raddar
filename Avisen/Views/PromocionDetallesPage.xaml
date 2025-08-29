@@ -13,14 +13,7 @@
         <VerticalStackLayout Padding="18" Spacing="18">
 
             <!--  Back button (igual que antes)  -->
-            <Button
-                BackgroundColor="Transparent"
-                Clicked="CerrarModal"
-                FontFamily="MaterialIcon"
-                FontSize="30"
-                HorizontalOptions="Start"
-                Text="{x:Static local:IconFont.Arrow_back}"
-                TextColor="#0aa59b" />
+
 
             <!--  Card principal  -->
             <Border
@@ -31,7 +24,33 @@
                 StrokeShape="RoundRectangle 16"
                 StrokeThickness="1">
 
+
+
                 <VerticalStackLayout Padding="14" Spacing="12">
+
+                    <Grid ColumnDefinitions="Auto, *" VerticalOptions="Center">
+                        <!--  Botón back  -->
+                        <Button
+                            BackgroundColor="Transparent"
+                            Clicked="CerrarModal"
+                            FontFamily="MaterialIcon"
+                            FontSize="30"
+                            HorizontalOptions="Start"
+                            Text="{x:Static local:IconFont.Arrow_back}"
+                            TextColor="#0aa59b" />
+
+                        <!--  Texto Detalles  -->
+                        <Label
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="Start"
+                            Text="Detalles de la promoción"
+                            TextColor="#0aa59b"
+                            VerticalOptions="Center" />
+                    </Grid>
+
 
                     <!--  Imagen banner (sin IsClippedToBounds)  -->
                     <Border
