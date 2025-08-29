@@ -371,6 +371,28 @@ namespace Avisen.Services
         }
 
 
+        public async Task<List<Tesoro>> ObtenerTesorosAsync()
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
+                };
+
+                var tesoros = await httpClient
+                    .GetFromJsonAsync<List<Tesoro>>("tesoro", options)
+                    ?? new List<Tesoro>();
+
+                return tesoros;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener tesoros: {ex.Message}");
+                return new List<Tesoro>();
+            }
+        }
 
     }
 }

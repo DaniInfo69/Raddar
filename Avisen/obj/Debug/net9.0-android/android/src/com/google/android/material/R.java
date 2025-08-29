@@ -3022,9 +3022,9 @@ public final class R {
 		public static final int notification_template_icon_low_bg = 0x7f070101;
 		public static final int notification_tile_bg = 0x7f070102;
 		public static final int notify_panel_notification_icon_bg = 0x7f070103;
-		public static final int test_level_drawable = 0x7f07010a;
-		public static final int tooltip_frame_dark = 0x7f07010b;
-		public static final int tooltip_frame_light = 0x7f07010c;
+		public static final int test_level_drawable = 0x7f07010b;
+		public static final int tooltip_frame_dark = 0x7f07010c;
+		public static final int tooltip_frame_light = 0x7f07010d;
 	}
 	public static final class id {
 		public static final int BOTTOM_END = 0x7f080001;

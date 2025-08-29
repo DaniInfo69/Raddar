@@ -19,6 +19,7 @@ public partial class Map : ContentPage
     private int UserId;
     private double? selectedLat = null;
     private double? selectedLng = null;
+    private List<Tesoro> tesoros = new();
 
     private List<MapPin> _pins;
     public List<MapPin> Pins
@@ -26,7 +27,7 @@ public partial class Map : ContentPage
         get { return _pins; }
         set { _pins = value; OnPropertyChanged(); }
     }
-
+    private HashSet<string> negociosAlertados = new();
     public static List<Negocio> OfertasVistas { get; private set; } = new List<Negocio>();
     public static List<Negocio> OfertasActuales = new List<Negocio>();
 
@@ -40,13 +41,13 @@ public partial class Map : ContentPage
         Debug.WriteLine("[Map Page] Constructor: InitializeComponent completado.");
 
         this.negocioService = negocioService;
-        LoadData();
+        LoadDataAsync();
         StartAndUpdateLocation();
 
         BindingContext = this;
         Debug.WriteLine("[Map Page] BindingContext asignado.");
 
-     
+
     }
 
 
@@ -154,16 +155,11 @@ public partial class Map : ContentPage
         {
             try
             {
-                Debug.WriteLine("Empieza ciclo.");
-
-                // Intentar obtener ubicación actual
                 var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best))
-                    ?? await Geolocation.GetLastKnownLocationAsync();
+                               ?? await Geolocation.GetLastKnownLocationAsync();
 
-                // Si no hay ubicación
                 if (location == null)
                 {
-                    Debug.WriteLine("Ubicación no disponible.");
                     if (!gpsAlertShown)
                     {
                         gpsAlertShown = true;
@@ -175,58 +171,51 @@ public partial class Map : ContentPage
                     continue;
                 }
 
-                gpsAlertShown = false; // Se resetea si ya obtuvimos ubicación
+                gpsAlertShown = false;
                 userLocation = new Location(location.Latitude, location.Longitude);
 
-                // Cargar datos si ya pasó el tiempo definido
+                // Control de frecuencia de recarga de datos
                 var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
                 DateTime lastLoadDataTime;
-                int frequency = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
+                int frequency = Math.Max(updateDelayFrequency * Convert.ToInt32(UpdateFrequency), 5000); // mínimo 5s
 
                 if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
                 {
                     var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
-                    if (timeSinceLastLoad.TotalSeconds >= frequency / 1000.0)
+                    if (timeSinceLastLoad.TotalMilliseconds >= frequency)
                     {
-                        LoadData();
+                        await LoadDataAsync();
                     }
                 }
                 else
                 {
-                    LoadData();
+                    await LoadDataAsync();
                 }
 
                 // Centrado del mapa
                 if (Preferences.Get("IsRecenter", false))
                 {
                     map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                    Debug.WriteLine("Mapa centrado por IsRecenter.");
                 }
                 else if (!hasCenteredMapOnce)
                 {
                     map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
                     hasCenteredMapOnce = true;
-                    Debug.WriteLine("Mapa centrado la primera vez.");
                 }
 
-                // Verificar promociones solo si hay datos
+                // Verificar promociones y tesoros
                 if (negocios != null && negocios.Any())
-                {
                     CheckForPromotions();
-                }
-                else
-                {
-                    Debug.WriteLine("No hay negocios cargados para verificar promociones.");
-                }
+
+                if (tesoros != null && tesoros.Any())
+                    CheckForTreasures();
             }
             catch (FeatureNotEnabledException)
             {
                 if (!gpsAlertShown)
                 {
                     gpsAlertShown = true;
-                    await DisplayAlert("GPS apagado",
-                        "Por favor, activa el GPS para usar el mapa.",
-                        "OK");
+                    await DisplayAlert("GPS apagado", "Activa el GPS para usar el mapa.", "OK");
                 }
             }
             catch (PermissionException)
@@ -234,103 +223,80 @@ public partial class Map : ContentPage
                 if (!gpsAlertShown)
                 {
                     gpsAlertShown = true;
-                    await DisplayAlert("Permisos denegados",
-                        "La aplicación no tiene permisos para acceder a tu ubicación. Ve a ajustes y actívalos.",
-                        "OK");
+                    await DisplayAlert("Permisos denegados", "La app no tiene permisos para la ubicación.", "OK");
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error inesperado en StartAndUpdateLocation: {ex.Message}");
+                Debug.WriteLine($"Error en StartAndUpdateLocation: {ex.Message}");
             }
 
-            int waitTime = updateDelayFrequency * Convert.ToInt32(UpdateFrequency);
-            await Task.Delay(waitTime > 0 ? waitTime : 1000); // Valor mínimo para evitar bucle rápido
+            int frequency2 = Math.Max(updateDelayFrequency * Convert.ToInt32(UpdateFrequency), 5000); // mínimo 5s
+            await Task.Delay(frequency2);
         }
     }
 
 
 
-    private async void LoadData()
+    private async Task LoadDataAsync()
     {
         try
         {
             negocios = await negocioService.ObtenerNegociosConPromocionesAsync();
-            var currentTime = DateTime.Now.ToString("o");
-            await SecureStorage.SetAsync("lastLoadDataTime", currentTime);
-            Debug.WriteLine("Cargó Datos.");
+            tesoros = await negocioService.ObtenerTesorosAsync();
+
+            await SecureStorage.SetAsync("lastLoadDataTime", DateTime.Now.ToString("o"));
+            Debug.WriteLine("Datos cargados correctamente.");
         }
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
-
-            Console.WriteLine("Error", $"Error al cargar datos: {ex.Message}", "OK");
+            Debug.WriteLine($"Error al cargar datos: {ex.Message}");
         }
     }
 
     private void CheckForPromotions()
     {
-        if (userLocation == null)
-        {
-            DisplayAlert("GPS no disponible", "No se puede verificar promociones porque el GPS no está activado o no se pudo obtener la ubicación.", "OK");
-            return;
-        }
+        if (userLocation == null) return;
 
         var negociosEnRango = new List<Negocio>();
 
         foreach (var negocio in negocios)
         {
-            if (negocio?.Ubicacion == null)
-            {
-                Debug.WriteLine($"Negocio sin ubicación: {negocio?.Nombre}");
-                Console.WriteLine($"Ubicación {negocio?.Ubicacion} en:{negocio?.Nombre} ");
-                continue;
-            }
+            if (negocio?.Ubicacion == null) continue;
 
             var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
-            Console.WriteLine($"Ubicación {negocio?.Location} en:{negocio?.Nombre} ");
-
 
             if (distance <= OfferDistance)
             {
-                if (!map.Pins.Any(pin => pin.Label == negocio.Nombre))
+                // Solo vibrar si no se ha vibrado antes por este negocio
+                if (!negociosAlertados.Contains(negocio.Nombre))
                 {
                     Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
-
                     ShowPromotionAlert(negocio);
+                    negociosAlertados.Add(negocio.Nombre);
                 }
+
                 if (!OfertasActuales.Contains(negocio))
-                {
                     OfertasActuales.Add(negocio);
-                }
+
                 negociosEnRango.Add(negocio);
             }
             else
             {
                 var pinToRemove = map.Pins.FirstOrDefault(pin => pin.Label == negocio.Nombre);
                 if (pinToRemove != null)
-                {
                     map.Pins.Remove(pinToRemove);
-                }
+
+                // Si sale del rango, permitir que vuelva a vibrar cuando entre de nuevo
+                negociosAlertados.Remove(negocio.Nombre);
             }
-
-            Debug.WriteLine("Ejecutando CheckForPromotions...");
-
-            if (userLocation == null)
-            {
-                Debug.WriteLine("Ubicación del usuario es NULL. No se pueden verificar promociones.");
-                return;
-            }
-
-            Debug.WriteLine($"Ubicación actual: {userLocation.Latitude}, {userLocation.Longitude}");
         }
 
         // Remover ofertas que ya no están en rango
         var ofertasFueraDeRango = OfertasActuales.Except(negociosEnRango).ToList();
         foreach (var oferta in ofertasFueraDeRango)
-        {
             OfertasActuales.Remove(oferta);
-        }
     }
 
     private void ShowPromotionAlert(Negocio negocio)
@@ -365,8 +331,6 @@ public partial class Map : ContentPage
         map.MoveToRegion(MapSpan.FromCenterAndRadius(negocio.Location, Distance.FromMeters(300)));
     }
 
-
-
     private async void DisplayPromotionDetails(Negocio negocio)
     {
         if (negocio?.Promociones?.Any() == true)
@@ -394,9 +358,108 @@ public partial class Map : ContentPage
     }
 
 
+    private void CheckForTreasures()
+    {
+        if (userLocation == null)
+        {
+            Debug.WriteLine("GPS no disponible para verificar tesoros.");
+            return;
+        }
+
+        foreach (var tesoro in tesoros)
+        {
+            if (string.IsNullOrEmpty(tesoro.ubicacion))
+            {
+                Debug.WriteLine($"Tesoro sin ubicación: {tesoro.nombre}");
+                continue;
+            }
+
+            try
+            {
+                // Parsear coordenadas de la ubicación estilo "POINT(-103.4621 19.7045)"
+                var coords = tesoro.ubicacion
+                    .Replace("POINT(", "")
+                    .Replace(")", "")
+                    .Split(" ");
+
+                double lng = double.Parse(coords[0], System.Globalization.CultureInfo.InvariantCulture);
+                double lat = double.Parse(coords[1], System.Globalization.CultureInfo.InvariantCulture);
+
+                var tesoroLocation = new Location(lat, lng);
+                var distance = userLocation.CalculateDistance(tesoroLocation, DistanceUnits.Kilometers);
+
+                if (distance <= OfferDistance) // mismo rango que promociones
+                {
+                    if (!map.Pins.Any(pin => pin.Label == tesoro.nombre))
+                    {
+                        Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.2));
+                        ShowTreasureAlert(tesoro, tesoroLocation);
+                    }
+                }
+                else
+                {
+                    var pinToRemove = map.Pins.FirstOrDefault(pin => pin.Label == tesoro.nombre);
+                    if (pinToRemove != null)
+                    {
+                        map.Pins.Remove(pinToRemove);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error procesando tesoro {tesoro.nombre}: {ex.Message}");
+            }
+        }
+    }
+
+    private void ShowTreasureAlert(Tesoro tesoro, Location tesoroLocation)
+    {
+        var treasurePin = new MapPin(p =>
+        {
+            Debug.WriteLine($"[Map Page] Click en Tesoro: {tesoro.nombre}");
+            DisplayTreasureDetails(tesoro);
+        })
+        {
+            Id = Guid.NewGuid().ToString(),
+            Position = tesoroLocation,
+            Icon = "pin_tesoro"
+        };
+
+        if (Pins == null)
+            Pins = new List<MapPin>();
+
+        Pins.Add(treasurePin);
+        Pins = new List<MapPin>(Pins); // refresca binding
+
+        Debug.WriteLine($"[Map Page] Pin de tesoro añadido: {tesoro.nombre} en {tesoroLocation.Latitude},{tesoroLocation.Longitude}");
+    }
+
+
+    private async void DisplayTreasureDetails(Tesoro tesoro)
+    {
+        var action = await DisplayActionSheet(
+            tesoro.nombre,
+            "Cerrar",
+            null,
+            "Ver descripción",
+            "Ver QR disponibles");
+
+        if (action == "Ver descripción")
+        {
+            await DisplayAlert(tesoro.nombre, tesoro.descripcion, "OK");
+        }
+        else if (action == "Ver QR disponibles" && tesoro.qr.Any())
+        {
+            var qrInfo = string.Join("\n", tesoro.qr.Select(q => $"- Token: {q.token} (Expira: {q.fechaexpiracion})"));
+            await DisplayAlert("QRs del Tesoro", qrInfo, "OK");
+        }
+    }
+
+
+
     private void OnAddPinClicked(object sender, EventArgs e)
     {
-        
+
         if (!isAddingPin)
         {
             turnMode(false);
