@@ -96,6 +96,8 @@ public partial class Map : ContentPage
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         OfferDistance = Preferences.Get("OfferDistance", 0.0);
 
+        isUpdatingLocation = true;
+        StartAndUpdateLocation(); // Se reactiva cuando se ve
         Debug.WriteLine($"[Map Page] Estado inicial: Pins == null? {Pins == null}");
 
         if (NavigationService.LocationToGo is Location loc)
@@ -242,9 +244,9 @@ public partial class Map : ContentPage
     {
         try
         {
+            LoadingIndicator.IsVisible = true; // Mostrar
             negocios = await negocioService.ObtenerNegociosConPromocionesAsync();
             tesoros = await negocioService.ObtenerTesorosAsync();
-
             await SecureStorage.SetAsync("lastLoadDataTime", DateTime.Now.ToString("o"));
             Debug.WriteLine("Datos cargados correctamente.");
         }
@@ -253,7 +255,20 @@ public partial class Map : ContentPage
             await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
             Debug.WriteLine($"Error al cargar datos: {ex.Message}");
         }
+        finally
+        {
+            LoadingIndicator.IsVisible = false; // Ocultar
+        }
     }
+
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        Debug.WriteLine("[Map Page] OnDisappearing llamado.");
+        isUpdatingLocation = false; // Se pausa cuando se va
+    }
+
 
     private void CheckForPromotions()
     {

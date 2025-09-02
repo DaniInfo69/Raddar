@@ -23,6 +23,17 @@
             MapType="Street"
             VerticalOptions="Fill" />
 
+        <!--  Indicador de carga  -->
+        <ActivityIndicator
+            x:Name="LoadingIndicator"
+            HeightRequest="30"
+            HorizontalOptions="Center"
+            IsRunning="True"
+            IsVisible="True"
+            VerticalOptions="End"
+            WidthRequest="60"
+            Color="Blue" />
+
         <!--  Botón para activar modo agregar pin  -->
         <Button
             x:Name="AddPin"
