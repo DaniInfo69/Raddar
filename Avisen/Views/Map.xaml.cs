@@ -314,8 +314,11 @@ public partial class Map : ContentPage
         {
             Id = Guid.NewGuid().ToString(),
             Position = negocio.Location,
-            Icon = "pin_offer" // Usa tu drawable aquí
+            Icon = "pin_offer",
+            Width = 200,  
+            Height = 200
         };
+
 
         // Asegurar que Pins no es null
         if (Pins == null)
@@ -422,8 +425,11 @@ public partial class Map : ContentPage
         {
             Id = Guid.NewGuid().ToString(),
             Position = tesoroLocation,
-            Icon = "pin_tesoro"
+            Icon = "pin_tesoro",
+            Width = 100,
+            Height = 100
         };
+
 
         if (Pins == null)
             Pins = new List<MapPin>();

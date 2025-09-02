@@ -87,7 +87,8 @@ public class CustomMapHandler : MapHandler
                     var opts = new MarkerOptions()
                         .SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
 
-                    var icon = GetIcon(pin.Icon);
+                    var icon = GetIcon(pin.Icon, pin.Width, pin.Height);
+
                     if (icon != null)
                     {
                         opts.SetIcon(icon);
@@ -121,42 +122,32 @@ public class CustomMapHandler : MapHandler
         }
     }
 
-    private BitmapDescriptor GetIcon(string iconName)
+    private BitmapDescriptor GetIcon(string iconName, int width, int height)
     {
         try
         {
             if (string.IsNullOrWhiteSpace(iconName))
-            {
-                Debug.WriteLine("[CustomMapHandler] GetIcon: iconName null o vacío.");
                 return null;
-            }
 
             int resId = Context.Resources.GetIdentifier(iconName, "drawable", Context.PackageName);
-            Debug.WriteLine($"[CustomMapHandler] GetIcon: resId para '{iconName}' = {resId}");
             if (resId == 0)
-            {
-                Debug.WriteLine($"[CustomMapHandler] Recurso drawable '{iconName}' no encontrado.");
                 return null;
-            }
 
             var bmp = BitmapFactory.DecodeResource(Context.Resources, resId);
             if (bmp == null)
-            {
-                Debug.WriteLine($"[CustomMapHandler] BitmapFactory.DecodeResource devolvió null para resId {resId}.");
                 return null;
-            }
 
-            var scaled = Bitmap.CreateScaledBitmap(bmp, 180, 180, false);
+            var scaled = Bitmap.CreateScaledBitmap(bmp, width, height, false);
             bmp.Recycle();
 
             return BitmapDescriptorFactory.FromBitmap(scaled);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Debug.WriteLine("[CustomMapHandler] Excepción en GetIcon: " + ex);
             return null;
         }
     }
+
 
     // Mapa auxiliar de marcador=>MapPin para manejar clicks
     public Dictionary<string, (Marker Marker, MapPin Pin)> MarkerMap { get; }
