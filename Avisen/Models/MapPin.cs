@@ -9,7 +9,7 @@ namespace Avisen.Models
         public string Icon { get; set; }
         public ICommand ClickedCommand { get; set; }
 
-        // NUEVO: Tamaño personalizado
+        // Tamaño personalizado
         public int Width { get; set; } = 180;  // Tamaño por defecto
         public int Height { get; set; } = 180;
 

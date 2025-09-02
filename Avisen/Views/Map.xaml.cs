@@ -269,7 +269,6 @@ public partial class Map : ContentPage
 
             if (distance <= OfferDistance)
             {
-                // Solo vibrar si no se ha vibrado antes por este negocio
                 if (!negociosAlertados.Contains(negocio.Nombre))
                 {
                     Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
@@ -284,20 +283,24 @@ public partial class Map : ContentPage
             }
             else
             {
-                var pinToRemove = map.Pins.FirstOrDefault(pin => pin.Label == negocio.Nombre);
+                // Buscar y eliminar pin de este negocio
+                var pinToRemove = Pins?.FirstOrDefault(p => p.Id == negocio.Nombre || p.Position == negocio.Location);
                 if (pinToRemove != null)
-                    map.Pins.Remove(pinToRemove);
+                {
+                    Pins.Remove(pinToRemove);
+                    Pins = new List<MapPin>(Pins); // refresca binding
+                }
 
-                // Si sale del rango, permitir que vuelva a vibrar cuando entre de nuevo
                 negociosAlertados.Remove(negocio.Nombre);
             }
         }
 
-        // Remover ofertas que ya no están en rango
+        // Remover ofertas fuera de rango
         var ofertasFueraDeRango = OfertasActuales.Except(negociosEnRango).ToList();
         foreach (var oferta in ofertasFueraDeRango)
             OfertasActuales.Remove(oferta);
     }
+
 
     private void ShowPromotionAlert(Negocio negocio)
     {
@@ -379,7 +382,6 @@ public partial class Map : ContentPage
 
             try
             {
-                // Parsear coordenadas de la ubicación estilo "POINT(-103.4621 19.7045)"
                 var coords = tesoro.ubicacion
                     .Replace("POINT(", "")
                     .Replace(")", "")
@@ -391,9 +393,9 @@ public partial class Map : ContentPage
                 var tesoroLocation = new Location(lat, lng);
                 var distance = userLocation.CalculateDistance(tesoroLocation, DistanceUnits.Kilometers);
 
-                if (distance <= OfferDistance) // mismo rango que promociones
+                if (distance <= OfferDistance)
                 {
-                    if (!map.Pins.Any(pin => pin.Label == tesoro.nombre))
+                    if (Pins?.All(p => p.Position != tesoroLocation) ?? true)
                     {
                         Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.2));
                         ShowTreasureAlert(tesoro, tesoroLocation);
@@ -401,10 +403,12 @@ public partial class Map : ContentPage
                 }
                 else
                 {
-                    var pinToRemove = map.Pins.FirstOrDefault(pin => pin.Label == tesoro.nombre);
+                    // Buscar y eliminar pin de este tesoro
+                    var pinToRemove = Pins?.FirstOrDefault(p => p.Position == tesoroLocation);
                     if (pinToRemove != null)
                     {
-                        map.Pins.Remove(pinToRemove);
+                        Pins.Remove(pinToRemove);
+                        Pins = new List<MapPin>(Pins); // refresca binding
                     }
                 }
             }
