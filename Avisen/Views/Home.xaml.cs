@@ -242,7 +242,7 @@ namespace Avisen.Views
         private async Task LoadPromotionsAsync(CancellationToken ct)
         {
             var position = await GetCurrentCarouselPosition();
-            var negocios = await _negocioService.ObtenerMatricesConPromocionesAsync();
+            var negocios = await _negocioService.ObtenerNegociosConPromocionesAsync();
 
             ct.ThrowIfCancellationRequested();
 
@@ -554,17 +554,17 @@ namespace Avisen.Views
 
             try
             {
-                var negocios = await _negocioService.ObtenerMatricesConPromocionesAsync();
-                var matriz = negocios.FirstOrDefault(m =>
+                var negocios = await _negocioService.ObtenerNegociosConPromocionesAsync();
+                var negocio = negocios.FirstOrDefault(m =>
                     m.Promociones.Any(p => p.idpromocion == promocion.idpromocion));
 
-                if (matriz == null)
+                if (negocio == null)
                 {
                     await SafeDisplayAlert("Error", "No se encontró la ubicación de la promoción.");
                     return;
                 }
 
-                await Navigation.PushAsync(new PromocionDetallesPage(promocion, matriz.Location));
+                await Navigation.PushAsync(new PromocionDetallesPage(promocion, negocio.Location));
             }
             catch (Exception ex)
             {
