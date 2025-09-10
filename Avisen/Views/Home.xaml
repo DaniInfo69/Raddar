@@ -432,13 +432,13 @@
                     Padding="10"
                     BackgroundColor="#FAFAFA"
                     BorderColor="#EEEEEE"
-                    CornerRadius="10"
+                    CornerRadius="20"
                     HasShadow="True">
 
                     <HorizontalStackLayout
                         x:Name="PaginationLayout"
                         HorizontalOptions="Center"
-                        Spacing="5"
+                        Spacing="10"
                         VerticalOptions="Center">
 
                         <!--  Loading indicator alternativo  -->

@@ -28,6 +28,7 @@ public class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"Plainer.Maui.dll",
 		"Plugin.LocalNotification.dll",
+		"QRCoder.dll",
 		"Maui.MaterialFrame.dll",
 		"Sharpnado.TaskMonitor.dll",
 		"SkiaSharp.dll",

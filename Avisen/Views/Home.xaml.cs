@@ -634,19 +634,7 @@ namespace Avisen.Views
             }
 
             // Última página con elipsis si es necesario
-            if (endPage < TotalPages)
-            {
-                if (endPage < TotalPages - 2)
-                {
-                    PaginationLayout.Children.Add(new Label
-                    {
-                        Text = "…",
-                        VerticalOptions = LayoutOptions.Center,
-                        Style = (Style)Resources["PaginationLabel"]
-                    });
-                }
-                AddPageButton(TotalPages);
-            }
+            
 
             // Botón siguiente - Siempre visible
             var nextButton = new Button
@@ -666,19 +654,22 @@ namespace Avisen.Views
 
         void AddPageButton(int pageNumber)
         {
+            var text = pageNumber.ToString();
+
             var button = new Button
             {
-                Text = pageNumber.ToString(),
+                Text = text,
                 BackgroundColor = pageNumber == CurrentPage ? Color.FromArgb("#0aa59b") : Colors.Transparent,
                 TextColor = pageNumber == CurrentPage ? Colors.White : Color.FromArgb("#0aa59b"),
                 CornerRadius = 20,
-                WidthRequest = 40,
+                WidthRequest = Math.Max(50, text.Length * 18), // <--- ancho dinámico
                 HeightRequest = 40,
                 Command = new Command(() => CurrentPage = pageNumber)
             };
 
             PaginationLayout.Children.Add(button);
         }
+
 
         public class OptimizedObservableCollection<T> : ObservableCollection<T>
         {

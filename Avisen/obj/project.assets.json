@@ -598,6 +598,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -3409,6 +3418,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -6203,6 +6221,15 @@
           "lib/net9.0-android35.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -9001,6 +9028,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -11792,6 +11828,15 @@
           "lib/net9.0-android35.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -14587,6 +14632,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -17353,6 +17407,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -18144,6 +18207,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -18909,6 +18981,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -19672,6 +19753,15 @@
           "lib/net9.0-ios18.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -20444,6 +20534,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -21212,6 +21311,15 @@
           "lib/net9.0-ios18.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -21985,6 +22093,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -22756,6 +22873,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -23519,6 +23645,15 @@
           "lib/net9.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -24286,6 +24421,15 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -25049,6 +25193,15 @@
           "lib/net9.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -25817,6 +25970,15 @@
           "lib/net9.0/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -26897,6 +27059,18 @@
           "lib/net9.0-windows10.0.19041/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -28015,6 +28189,18 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -29087,6 +29273,18 @@
           "lib/net9.0-windows10.0.19041/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -30163,6 +30361,18 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -31235,6 +31445,18 @@
           "lib/net9.0-windows10.0.19041/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -32319,6 +32541,18 @@
           "lib/net9.0-windows10.0.19041/Plugin.LocalNotification.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "QRCoder/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {}
         }
       },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -35114,6 +35348,27 @@
         "lib/net9.0/Plugin.LocalNotification.xml",
         "plugin.localnotification.12.0.1.nupkg.sha512",
         "plugin.localnotification.nuspec"
+      ]
+    },
+    "QRCoder/1.6.0": {
+      "sha512": "XmPA81eo+oRxBuyVdswsSkTGTE1d3thfF11Z1PdD7oB56A6HU4G4AAOdySmGRMb/cljwlFTMWUtosGEnwpS6GA==",
+      "type": "package",
+      "path": "qrcoder/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.6.0.nupkg.sha512",
+        "qrcoder.nuspec"
       ]
     },
     "Sharpnado.MaterialFrame.Maui/2.0.0": {
@@ -38096,6 +38351,7 @@
       "Microsoft.NET.ILLink.Tasks >= 9.0.8",
       "Newtonsoft.Json >= 13.0.3",
       "Plugin.LocalNotification >= 12.0.1",
+      "QRCoder >= 1.6.0",
       "Sharpnado.MaterialFrame.Maui >= 2.0.0",
       "SkiaSharp.Extended.UI.Maui >= 2.0.0",
       "System.Drawing.Common >= 9.0.7",
@@ -38113,6 +38369,7 @@
       "Microsoft.NET.ILLink.Tasks >= 9.0.8",
       "Newtonsoft.Json >= 13.0.3",
       "Plugin.LocalNotification >= 12.0.1",
+      "QRCoder >= 1.6.0",
       "Sharpnado.MaterialFrame.Maui >= 2.0.0",
       "SkiaSharp.Extended.UI.Maui >= 2.0.0",
       "System.Drawing.Common >= 9.0.7",
@@ -38129,6 +38386,7 @@
       "Microsoft.NET.ILLink.Tasks >= 9.0.8",
       "Newtonsoft.Json >= 13.0.3",
       "Plugin.LocalNotification >= 12.0.1",
+      "QRCoder >= 1.6.0",
       "Sharpnado.MaterialFrame.Maui >= 2.0.0",
       "SkiaSharp.Extended.UI.Maui >= 2.0.0",
       "System.Drawing.Common >= 9.0.7",
@@ -38144,6 +38402,7 @@
       "Microsoft.Maui.Maps >= 9.0.81",
       "Newtonsoft.Json >= 13.0.3",
       "Plugin.LocalNotification >= 12.0.1",
+      "QRCoder >= 1.6.0",
       "Sharpnado.MaterialFrame.Maui >= 2.0.0",
       "SkiaSharp.Extended.UI.Maui >= 2.0.0",
       "System.Drawing.Common >= 9.0.7",
@@ -38256,6 +38515,10 @@
             "target": "Package",
             "version": "[12.0.1, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "Sharpnado.MaterialFrame.Maui": {
             "target": "Package",
             "version": "[2.0.0, )"
@@ -38343,6 +38606,10 @@
             "target": "Package",
             "version": "[12.0.1, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "Sharpnado.MaterialFrame.Maui": {
             "target": "Package",
             "version": "[2.0.0, )"
@@ -38426,6 +38693,10 @@
             "target": "Package",
             "version": "[12.0.1, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "Sharpnado.MaterialFrame.Maui": {
             "target": "Package",
             "version": "[2.0.0, )"
@@ -38503,6 +38774,10 @@
           "Plugin.LocalNotification": {
             "target": "Package",
             "version": "[12.0.1, )"
+          },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.6.0, )"
           },
           "Sharpnado.MaterialFrame.Maui": {
             "target": "Package",

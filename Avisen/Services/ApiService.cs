@@ -394,5 +394,34 @@ namespace Avisen.Services
             }
         }
 
+
+        public async Task<string> ReclamarPromocionAsync(int idPromocion, int idCliente, string tokenPromocion)
+        {
+            if (string.IsNullOrEmpty(tokenPromocion))
+                throw new InvalidOperationException("La promoción no tiene código QR.");
+
+            var body = new { idcliente = idCliente, idpromocion = idPromocion };
+            var content = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
+
+            var url = $"promocion/reclamar/{tokenPromocion}";
+            var response = await httpClient.PostAsync(url, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    throw new InvalidOperationException("Promoción ya reclamada.");
+
+                throw new Exception($"Error en el servidor: {response.StatusCode}");
+            }
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            using var doc = JsonDocument.Parse(jsonResponse);
+
+            if (!doc.RootElement.TryGetProperty("qr", out var qrElement))
+                throw new Exception("No se recibió el QR en la respuesta.");
+
+            return qrElement.GetProperty("token").GetString();
+        }
+
     }
 }

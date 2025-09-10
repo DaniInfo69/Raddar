@@ -1,8 +1,12 @@
 using Avisen.Models;
 using Avisen.Services;
 using Microsoft.Maui.Controls;
+using QRCoder;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
+using System.Text.Json;
 
 namespace Avisen.Views;
 
@@ -12,11 +16,12 @@ public partial class PromocionDetallesPage : ContentPage
     private bool _esFavorita;
     private bool _hasQr = false;
     private bool _qrVisible = false;
-
+    private string _qrToken = string.Empty;
+    private readonly HttpClient _httpClient = new HttpClient();
+    private readonly ApiService _apiService = new ApiService();
     public PromocionDetallesPage(Promocion promocion, Location ubicacionPromocion)
     {
         InitializeComponent();
-
         BindingContext = promocion;
         _ubicacionPromocion = ubicacionPromocion;
 
@@ -24,14 +29,11 @@ public partial class PromocionDetallesPage : ContentPage
         TituloPromocion.Text = promocion.Nombre ?? "Sin nombre";
         Subtitulo.Text = promocion.NombreEmpresa ?? string.Empty;
         DescripcionText.Text = promocion.Descripcion ?? string.Empty;
-
         PrecioLabel.Text = string.IsNullOrWhiteSpace(promocion.Precio) ? "Oferta especial" : $"${promocion.Precio} mxn";
         TipoBadge.Text = promocion.Tipo ?? "No especificado";
+        VigenciaLabel.Text = promocion.VigenciaInicio?.ToShortDateString() ?? "Sin fecha";
+        VigenciaLabel2.Text = promocion.VigenciaFin?.ToShortDateString() ?? "Sin fecha";
 
-        VigenciaLabel.Text = promocion.VigenciaInicio.HasValue ? promocion.VigenciaInicio.Value.ToShortDateString() : "Sin fecha";
-        VigenciaLabel2.Text = promocion.VigenciaFin.HasValue ? promocion.VigenciaFin.Value.ToShortDateString() : "Sin fecha";
-
-        // Ajustamos estilos del badge según tipo
         AplicarEstilosTipo(promocion.Tipo);
 
         _esFavorita = FavoritosService.EsFavorita(promocion);
@@ -41,74 +43,88 @@ public partial class PromocionDetallesPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        // Intentar cargar QR y configurar disponibilidad
         _hasQr = false;
+        _qrVisible = false;
+        QrContainer.IsVisible = false;
         LblNoQr.IsVisible = false;
         BtnToggleQr.IsEnabled = true;
-        QrContainer.IsVisible = false;
-        _qrVisible = false;
+    }
 
 
-        if (BindingContext is Promocion promo
-            && promo.qrs != null
-            && promo.qrs.Count > 0
-            && !string.IsNullOrEmpty(promo.qrs[0].imageBase64))
+    private async Task<int> GetIdClienteAsync()
+    {
+        try
         {
-            try
-            {
-                var base64Data = promo.qrs[0].imageBase64;
-                var commaIndex = base64Data.IndexOf(',');
-                if (commaIndex >= 0)
-                {
-                    base64Data = base64Data.Substring(commaIndex + 1);
-                }
+            // Recuperar JSON del usuario almacenado
+            var userDataJson = await SecureStorage.GetAsync("UserData");
+            if (string.IsNullOrEmpty(userDataJson))
+                return 0;
 
-                byte[] imageBytes = Convert.FromBase64String(base64Data);
-                QrImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                _hasQr = true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al cargar QR: {ex.Message}");
-                _hasQr = false;
-            }
+            var userData = JsonSerializer.Deserialize<UserData>(
+                userDataJson,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            return userData?.IdCliente ?? 0;
         }
-
-        // Actualizamos los controles del QR
-        if (!_hasQr)
+        catch (Exception ex)
         {
-            BtnToggleQr.IsEnabled = false;
-            LblNoQr.IsVisible = true;
-        }
-        else
-        {
-            BtnToggleQr.IsEnabled = true;
-            LblNoQr.IsVisible = false;
+            Debug.WriteLine($"Error al obtener IdCliente: {ex.Message}");
+            return 0;
         }
     }
 
-    private void BtnToggleQr_Clicked(object sender, EventArgs e)
-    {
-        ToggleQr();
-    }
+    private async void BtnToggleQr_Clicked(object sender, EventArgs e)
+        => await HandleQrAction();
 
-    private void QrBorder_Tapped(object sender, EventArgs e)
-    {
-        ToggleQr();
-    }
+    private async void QrBorder_Tapped(object sender, EventArgs e)
+        => await HandleQrAction();
 
-    private void ToggleQr()
+    private async Task HandleQrAction()
     {
-        if (!_hasQr)
+        if (_qrVisible)
         {
-            DisplayAlert("QR", "No hay QR disponible para esta promoción.", "OK");
+            _qrVisible = false;
+            QrContainer.IsVisible = false;
             return;
         }
 
-        _qrVisible = !_qrVisible;
-        QrContainer.IsVisible = _qrVisible;
+        if (BindingContext is not Promocion promo) return;
 
+        bool confirm = await DisplayAlert("Reclamar Promoción",
+            "¿Quieres reclamar la promoción?", "Sí", "No");
+
+        if (!confirm) return;
+
+        try
+        {
+            int idCliente = await GetIdClienteAsync();
+            string tokenPromocion = promo.qrs?.FirstOrDefault()?.token ?? string.Empty;
+
+            string qrToken = await _apiService.ReclamarPromocionAsync(promo.idpromocion, idCliente, tokenPromocion);
+
+            await GenerarImagenQr(qrToken);
+        }
+        catch (InvalidOperationException ex)
+        {
+            await DisplayAlert("Aviso", ex.Message, "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"No se pudo generar el QR: {ex.Message}", "OK");
+        }
+    }
+
+    private async Task GenerarImagenQr(string token)
+    {
+        using var qrGenerator = new QRCodeGenerator();
+        using var qrData = qrGenerator.CreateQrCode(token, QRCodeGenerator.ECCLevel.Q);
+        var pngWriter = new PngByteQRCode(qrData);
+        byte[] pngBytes = pngWriter.GetGraphic(20);
+
+        QrImage.Source = ImageSource.FromStream(() => new MemoryStream(pngBytes));
+        _hasQr = true;
+        _qrVisible = true;
+        QrContainer.IsVisible = true;
     }
 
     // Mantén tus métodos existentes
