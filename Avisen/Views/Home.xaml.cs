@@ -24,7 +24,7 @@ namespace Avisen.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         private int currentPage = 1;
-        private const int pageSize = 5;
+        private const int pageSize = 6;
 
         public int CurrentPage
         {
@@ -103,7 +103,8 @@ namespace Avisen.Views
 
                     if (_categoriaSeleccionada != null)
                     {
-                        FiltrarOfertasPorCategoria(_categoriaSeleccionada);
+                        // Cambiar a llamada async
+                        _ = FiltrarOfertasPorCategoria(_categoriaSeleccionada);
                     }
                 }
             }
@@ -215,11 +216,25 @@ namespace Avisen.Views
             try
             {
                 _cts = new CancellationTokenSource();
+
+                // Guardar la categoría seleccionada actualmente
+                var categoriaActual = CategoriaSeleccionada;
+
                 await Task.WhenAll(
                     LoadPromotionsAsync(_cts.Token),
-                    LoadPromotionsDestacadasAsync(_cts.Token), // <-- nuevo
+                    LoadPromotionsDestacadasAsync(_cts.Token),
                     UpdateNearbyCountAsync()
                 );
+
+                // Restaurar el filtro después del refresh
+                if (categoriaActual != null)
+                {
+                    await MainThread.InvokeOnMainThreadAsync(() =>
+                    {
+                        CategoriaSeleccionada = categoriaActual;
+                    });
+                }
+
                 Debug.WriteLine($"Refresh completed in {_loadStopwatch.ElapsedMilliseconds}ms");
             }
             catch (OperationCanceledException) { }
@@ -252,9 +267,19 @@ namespace Avisen.Views
                 .ToList();
 
             await CheckForNewPromotions(nuevasPromos);
+
+            // Solo actualizar la cache, no aplicar filtro automáticamente
             _todasLasPromosCache = nuevasPromos;
 
-            await UpdateUI(nuevasPromos, position);
+            // Si hay un filtro activo, aplicarlo
+            if (CategoriaSeleccionada != null && CategoriaSeleccionada.idcategoria != -1)
+            {
+                await FiltrarOfertasPorCategoria(CategoriaSeleccionada);
+            }
+            else
+            {
+                await UpdateUI(nuevasPromos, position);
+            }
         }
 
         private async Task LoadPromotionsDestacadasAsync(CancellationToken ct)
@@ -408,7 +433,9 @@ namespace Avisen.Views
 
         #region Métodos de Soporte Optimizados
 
-        private async void FiltrarOfertasPorCategoria(Categoria categoria)
+
+
+        private async Task FiltrarOfertasPorCategoria(Categoria categoria)
         {
             if (categoria.idcategoria == -1) // Todas las categorías
             {

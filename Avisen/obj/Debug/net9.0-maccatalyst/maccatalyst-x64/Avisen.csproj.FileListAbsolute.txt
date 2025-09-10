@@ -659,3 +659,7 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Avisen.pdb
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Avisen.genruntimeconfig.cache
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\ref\Avisen.dll
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\QRCoder.dll
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\pin2.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\pin_tesoro.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\pin_offer.png

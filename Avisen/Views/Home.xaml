@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Avisen"
     xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
     xmlns:uranium="clr-namespace:UraniumUI;assembly=UraniumUI"
+    x:Name="RootPage"
     Title="Home"
     BackgroundColor="#FAFAFA"
     Shell.NavBarIsVisible="False">
@@ -327,6 +328,7 @@
 
 
                 <!--  Todas las ofertas  -->
+                <!--  Todas las ofertas  -->
                 <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
                     <Label
                         Grid.Column="0"
@@ -336,11 +338,17 @@
                         TextColor="#19535F" />
                 </Grid>
 
-                <!--  Lista de ofertas con paginación  -->
+                <!--  Lista de ofertas con paginación en 2 columnas  -->
+                <!--  Lista de ofertas con paginación en 2 columnas  -->
                 <CollectionView
                     x:Name="OfertasList"
                     ItemsSource="{Binding OfertasReales}"
                     SelectionMode="None">
+
+                    <!--  Configuración de grid con 2 columnas  -->
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
 
                     <CollectionView.EmptyView>
                         <VerticalStackLayout
@@ -360,72 +368,126 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame
-                                Margin="0,0,0,10"
-                                Padding="15"
+                            <Border
+                                Margin="6"
+                                Padding="0"
                                 BackgroundColor="White"
-                                BorderColor="#e0e0e0"
-                                CornerRadius="10"
-                                HasShadow="True">
-                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto">
-                                    <!--  Imagen  -->
+                                HeightRequest="180"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 16">
+
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="Gray"
+                                        Opacity="0.25"
+                                        Radius="4" />
+                                </Border.Shadow>
+
+                                <!--  Grid de la tarjeta: imagen más pequeña + contenido  -->
+                                <Grid
+                                    Padding="8"
+                                    InputTransparent="True"
+                                    RowDefinitions="100,Auto,Auto">
+                                    <!--  Imagen (fila 0)  -->
                                     <Image
-                                        Grid.RowSpan="4"
-                                        Grid.Column="0"
-                                        Margin="0,0,15,0"
+                                        Grid.Row="0"
                                         Aspect="AspectFill"
-                                        HeightRequest="80"
-                                        WidthRequest="80">
-                                        <Image.Source>
-                                            <UriImageSource
-                                                CacheValidity="1:00:00:00"
-                                                CachingEnabled="True"
-                                                Uri="{Binding imagenes[0].url}" />
-                                        </Image.Source>
+                                        HeightRequest="100"
+                                        HorizontalOptions="Fill"
+                                        Source="{Binding imagenes[0].url}"
+                                        VerticalOptions="Fill">
+                                        <Image.Clip>
+                                            <!--  radio más suave para la tarjeta compacta  -->
+                                            <RoundRectangleGeometry CornerRadius="12" Rect="0,0,300,150" />
+                                        </Image.Clip>
                                     </Image>
 
-                                    <!--  Nombre promoción  -->
-                                    <Label
+                                    <!--  Badge tipo: se coloca después de la imagen para que quede sobrepuesta  -->
+                                    <Frame
                                         Grid.Row="0"
-                                        Grid.Column="1"
+                                        Margin="8"
+                                        Padding="6,3"
+                                        BackgroundColor="#FFF6EA"
+                                        BorderColor="#F8D6A6"
+                                        CornerRadius="10"
+                                        HasShadow="False"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start">
+                                        <Frame.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Tipo}"
+                                                TargetType="Frame"
+                                                Value="Informativa">
+                                                <Setter Property="BackgroundColor" Value="#FFF6EA" />
+                                                <Setter Property="BorderColor" Value="#F8D6A6" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding Tipo}"
+                                                TargetType="Frame"
+                                                Value="Venta">
+                                                <Setter Property="BackgroundColor" Value="#FDECEA" />
+                                                <Setter Property="BorderColor" Value="#F5B4B4" />
+                                            </DataTrigger>
+                                        </Frame.Triggers>
+
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            Text="{Binding Tipo}">
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Tipo}"
+                                                    TargetType="Label"
+                                                    Value="Informativa">
+                                                    <Setter Property="TextColor" Value="#D97706" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding Tipo}"
+                                                    TargetType="Label"
+                                                    Value="Venta">
+                                                    <Setter Property="TextColor" Value="#C94A4A" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Frame>
+
+                                    <!--  Nombre promoción (fila 1)  -->
+                                    <Label
+                                        Grid.Row="1"
+                                        Margin="4,8,4,0"
                                         FontAttributes="Bold"
-                                        FontSize="16"
+                                        FontSize="14"
+                                        LineBreakMode="TailTruncation"
                                         Text="{Binding Nombre}"
                                         TextColor="#19535F" />
 
-                                    <!--  Nombre empresa (nuevo)  -->
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        FontSize="13"
-                                        Text="{Binding NombreEmpresa}"
-                                        TextColor="#555" />
-
-                                    <!--  Vigencia fin  -->
-                                    <Label
+                                    <!--  Empresa y vigencia (fila 2)  -->
+                                    <StackLayout
                                         Grid.Row="2"
-                                        Grid.Column="1"
-                                        FontSize="12"
-                                        Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
-                                        TextColor="#0aa59b" />
-
-                                    <!--  Tipo  -->
-                                    <Label
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        FontSize="12"
-                                        Text="{Binding Tipo}"
-                                        TextColor="#777" />
+                                        Margin="4,4,4,8"
+                                        Spacing="2">
+                                        <Label
+                                            FontSize="12"
+                                            LineBreakMode="TailTruncation"
+                                            Text="{Binding NombreEmpresa}"
+                                            TextColor="#666" />
+                                        <Label
+                                            FontSize="11"
+                                            Text="{Binding VigenciaFin, StringFormat='Válido hasta {0:d}'}"
+                                            TextColor="#888" />
+                                    </StackLayout>
                                 </Grid>
 
-                                <Frame.GestureRecognizers>
+                                <!--  Tap para ir a detalles (se conserva)  -->
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCommand}" CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                                </Border.GestureRecognizers>
+                            </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-
                 </CollectionView>
+
+
 
                 <Frame
                     Margin="0,20"

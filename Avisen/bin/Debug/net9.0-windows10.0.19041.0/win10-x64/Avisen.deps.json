@@ -17,6 +17,7 @@
           "Microsoft.Maui.Maps": "9.0.81",
           "Newtonsoft.Json": "13.0.3",
           "Plugin.LocalNotification": "12.0.1",
+          "QRCoder": "1.6.0",
           "Sharpnado.MaterialFrame.Maui": "2.0.0",
           "SkiaSharp.Extended.UI.Maui": "2.0.0",
           "System.Drawing.Common": "9.0.7",
@@ -618,6 +619,17 @@
           }
         }
       },
+      "QRCoder/1.6.0": {
+        "dependencies": {
+          "System.Drawing.Common": "9.0.7"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/QRCoder.dll": {
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
+          }
+        }
+      },
       "Sharpnado.MaterialFrame.Maui/2.0.0": {
         "dependencies": {
           "Sharpnado.TaskMonitor": "1.0.2"
@@ -792,7 +804,7 @@
         "runtime": {
           "Microsoft.Maui.Controls.HotReload.Forms.dll": {
             "assemblyVersion": "17.0.0.0",
-            "fileVersion": "17.14.40353.11967"
+            "fileVersion": "17.14.40460.7212"
           }
         }
       },
@@ -800,7 +812,7 @@
         "runtime": {
           "Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll": {
             "assemblyVersion": "17.0.0.0",
-            "fileVersion": "17.14.40353.11967"
+            "fileVersion": "17.14.40460.7212"
           }
         }
       },
@@ -808,7 +820,7 @@
         "runtime": {
           "Microsoft.VisualStudio.DesignTools.TapContract.dll": {
             "assemblyVersion": "17.0.0.0",
-            "fileVersion": "17.14.40353.11967"
+            "fileVersion": "17.14.40460.7212"
           }
         }
       },
@@ -816,7 +828,7 @@
         "runtime": {
           "Microsoft.VisualStudio.DesignTools.XamlTapContract.dll": {
             "assemblyVersion": "17.0.0.0",
-            "fileVersion": "17.14.40353.11967"
+            "fileVersion": "17.14.40460.7212"
           }
         }
       },
@@ -1092,6 +1104,13 @@
       "sha512": "sha512-CAVYfUEkhWe6GQH2ZICQ/KELL0bKUS7mF11SVSskcspmjL90Wi26s2+YwLN7aZhoY4xBwduF4KpLcy5FHnzLow==",
       "path": "plugin.localnotification/12.0.1",
       "hashPath": "plugin.localnotification.12.0.1.nupkg.sha512"
+    },
+    "QRCoder/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XmPA81eo+oRxBuyVdswsSkTGTE1d3thfF11Z1PdD7oB56A6HU4G4AAOdySmGRMb/cljwlFTMWUtosGEnwpS6GA==",
+      "path": "qrcoder/1.6.0",
+      "hashPath": "qrcoder.1.6.0.nupkg.sha512"
     },
     "Sharpnado.MaterialFrame.Maui/2.0.0": {
       "type": "package",

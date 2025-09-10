@@ -677,3 +677,7 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526@2x.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\sp\logo_raddar_0D743C89C881040E63DD8BEDB8C94DCADB3640F1D2651581B9812D938D468526@3x.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-ios\ios-arm64\QRCoder.dll
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\r\Resources\pin_tesoro.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\r\Resources\pin_offer.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-ios\ios-arm64\resizetizer\r\Resources\pin2.png

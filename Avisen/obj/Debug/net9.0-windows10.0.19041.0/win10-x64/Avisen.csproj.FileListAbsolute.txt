@@ -2517,3 +2517,10 @@ C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-150.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-200.png
 C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\sp\logo_raddarSplashScreen.scale-400.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\pin_tesoro.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\pin_offer.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\pin2.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\QRCoder.dll
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\pin_tesoro.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\pin_offer.scale-100.png
+C:\Users\jardi\OneDrive\Escritorio\Proyecto RADDAR\Raddar\Avisen\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\pin2.scale-100.png
