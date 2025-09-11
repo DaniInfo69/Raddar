@@ -20,6 +20,7 @@ public partial class Map : ContentPage
     private double? selectedLat = null;
     private double? selectedLng = null;
     private List<Tesoro> tesoros = new();
+    private double _lastKnownOfferDistance = 0;
 
     private List<MapPin> _pins;
     public List<MapPin> Pins
@@ -86,15 +87,21 @@ public partial class Map : ContentPage
         }
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         Debug.WriteLine("[Map Page] OnAppearing llamado.");
+
+        //  LIMPIAR TODOS LOS PINS ANTES DE CARGAR NUEVOS
+        CleanAllPins();
 
         LoadUserDataAsync();
         IsRecenter = Preferences.Get("IsRecenter", false);
         UpdateFrequency = Preferences.Get("UpdateFrequency", 0.0);
         OfferDistance = Preferences.Get("OfferDistance", 0.0);
+
+        //  CARGAR DATOS NUEVOS DESPUÉS DE LIMPIAR
+        await LoadDataAsync();
 
         isUpdatingLocation = true;
         StartAndUpdateLocation(); // Se reactiva cuando se ve
@@ -104,8 +111,6 @@ public partial class Map : ContentPage
         {
             Debug.WriteLine($"[Map Page] NavigationService.LocationToGo encontrada en {loc.Latitude},{loc.Longitude}");
 
-            // Evitar manipular map.CustomPins directamente (no disparará la actualización en el handler).
-            // En su lugar actualizamos la propiedad 'Pins' y la reasignamos para forzar el cambio de binding.
             var newPin = new MapPin(p => { /* acción al clicar */ })
             {
                 Id = Guid.NewGuid().ToString(),
@@ -115,21 +120,16 @@ public partial class Map : ContentPage
 
             if (Pins == null)
             {
-                Debug.WriteLine("[Map Page] Pins estaba null. Creando nueva lista con el pin.");
                 Pins = new List<MapPin>() { newPin };
             }
             else
             {
-                Debug.WriteLine($"[Map Page] Pins tenía {Pins.Count} items. Añadiendo y reasignando lista para disparar OnPropertyChanged.");
                 Pins.Add(newPin);
-                // Reasignar para disparar OnPropertyChanged y que el binding trigue el mapper
                 Pins = new List<MapPin>(Pins);
             }
 
-            // También para asegurar que el control en XAML se actualice, puedes asignar explícitamente:
             try
             {
-                Debug.WriteLine($"[Map Page] Asignando map.CustomPins = Pins; map control: {(map == null ? "null" : "ok")}");
                 map.CustomPins = Pins;
             }
             catch (Exception ex)
@@ -137,10 +137,7 @@ public partial class Map : ContentPage
                 Debug.WriteLine("[Map Page] Error al asignar map.CustomPins: " + ex);
             }
 
-            // Centra el mapa
             map.MoveToRegion(MapSpan.FromCenterAndRadius(loc, Distance.FromMeters(200)));
-
-            // Resetea para que no lo ejecute de nuevo
             NavigationService.LocationToGo = null;
         }
     }
@@ -175,42 +172,34 @@ public partial class Map : ContentPage
 
                 gpsAlertShown = false;
                 userLocation = new Location(location.Latitude, location.Longitude);
+                Debug.WriteLine($"[Map Page] Ubicación actual: {userLocation.Latitude}, {userLocation.Longitude}");
 
-                // Control de frecuencia de recarga de datos
-                var lastLoadDataTimeString = await SecureStorage.GetAsync("lastLoadDataTime");
-                DateTime lastLoadDataTime;
-                int frequency = Math.Max(updateDelayFrequency * Convert.ToInt32(UpdateFrequency), 5000); // mínimo 5s
-
-                if (DateTime.TryParse(lastLoadDataTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastLoadDataTime))
-                {
-                    var timeSinceLastLoad = DateTime.Now - lastLoadDataTime;
-                    if (timeSinceLastLoad.TotalMilliseconds >= frequency)
-                    {
-                        await LoadDataAsync();
-                    }
-                }
-                else
-                {
-                    await LoadDataAsync();
-                }
-
-                // Centrado del mapa
-                if (Preferences.Get("IsRecenter", false))
-                {
-                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                }
-                else if (!hasCenteredMapOnce)
-                {
-                    map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
-                    hasCenteredMapOnce = true;
-                }
-
-                // Verificar promociones y tesoros
+                // Verificar promociones y tesoros SOLO si tenemos datos
                 if (negocios != null && negocios.Any())
+                {
+                    Debug.WriteLine("[Map Page]  Verificando promociones...");
                     CheckForPromotions();
+                }
 
                 if (tesoros != null && tesoros.Any())
+                {
+                    Debug.WriteLine("[Map Page]  Verificando tesoros...");
                     CheckForTreasures();
+                }
+
+                // Centrado del mapa (solo si tenemos ubicación)
+                if (userLocation != null)
+                {
+                    if (Preferences.Get("IsRecenter", false))
+                    {
+                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                    }
+                    else if (!hasCenteredMapOnce)
+                    {
+                        map.MoveToRegion(MapSpan.FromCenterAndRadius(userLocation, Distance.FromKilometers(OfferDistance)));
+                        hasCenteredMapOnce = true;
+                    }
+                }
             }
             catch (FeatureNotEnabledException)
             {
@@ -230,34 +219,37 @@ public partial class Map : ContentPage
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error en StartAndUpdateLocation: {ex.Message}");
+                Debug.WriteLine($"[Map Page]  Error en StartAndUpdateLocation: {ex.Message}");
             }
 
-            int frequency2 = Math.Max(updateDelayFrequency * Convert.ToInt32(UpdateFrequency), 5000); // mínimo 5s
+            int frequency2 = Math.Max(updateDelayFrequency * Convert.ToInt32(UpdateFrequency), 5000);
             await Task.Delay(frequency2);
         }
     }
 
 
 
-    private async Task LoadDataAsync()
+    public async Task LoadDataAsync()
     {
         try
         {
-            LoadingIndicator.IsVisible = true; // Mostrar
+            LoadingIndicator.IsVisible = true;
+            Debug.WriteLine("[Map Page]  Cargando datos de negocios y tesoros...");
+
             negocios = await negocioService.ObtenerNegociosConPromocionesAsync();
             tesoros = await negocioService.ObtenerTesorosAsync();
+
             await SecureStorage.SetAsync("lastLoadDataTime", DateTime.Now.ToString("o"));
-            Debug.WriteLine("Datos cargados correctamente.");
+            Debug.WriteLine($"[Map Page]  Datos cargados: {negocios?.Count ?? 0} negocios, {tesoros?.Count ?? 0} tesoros");
         }
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Error al cargar datos: {ex.Message}", "OK");
-            Debug.WriteLine($"Error al cargar datos: {ex.Message}");
+            Debug.WriteLine($"[Map Page]  Error al cargar datos: {ex.Message}");
         }
         finally
         {
-            LoadingIndicator.IsVisible = false; // Ocultar
+            LoadingIndicator.IsVisible = false;
         }
     }
 
@@ -267,89 +259,126 @@ public partial class Map : ContentPage
         base.OnDisappearing();
         Debug.WriteLine("[Map Page] OnDisappearing llamado.");
         isUpdatingLocation = false; // Se pausa cuando se va
-    }
 
+        // Guardar la última distancia conocida
+        _lastKnownOfferDistance = OfferDistance;
+    }
 
     private void CheckForPromotions()
     {
-        if (userLocation == null) return;
+        if (userLocation == null)
+        {
+            Debug.WriteLine("[Map Page] userLocation es null, no se pueden verificar promociones");
+            return;
+        }
+
+        if (negocios == null || !negocios.Any())
+        {
+            Debug.WriteLine("[Map Page] No hay negocios para verificar");
+            return;
+        }
 
         var negociosEnRango = new List<Negocio>();
 
         foreach (var negocio in negocios)
         {
-            if (negocio?.Ubicacion == null) continue;
-
-            var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
-
-            if (distance <= OfferDistance)
+            if (negocio?.Location == null)
             {
-                if (!negociosAlertados.Contains(negocio.Nombre))
-                {
-                    Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
-                    ShowPromotionAlert(negocio);
-                    negociosAlertados.Add(negocio.Nombre);
-                }
-
-                if (!OfertasActuales.Contains(negocio))
-                    OfertasActuales.Add(negocio);
-
-                negociosEnRango.Add(negocio);
+                Debug.WriteLine("[Map Page] Negocio o Location es null");
+                continue;
             }
-            else
-            {
-                // Buscar y eliminar pin de este negocio
-                var pinToRemove = Pins?.FirstOrDefault(p => p.Id == negocio.Nombre || p.Position == negocio.Location);
-                if (pinToRemove != null)
-                {
-                    Pins.Remove(pinToRemove);
-                    Pins = new List<MapPin>(Pins); // refresca binding
-                }
 
-                negociosAlertados.Remove(negocio.Nombre);
+            try
+            {
+                var distance = userLocation.CalculateDistance(negocio.Location, DistanceUnits.Kilometers);
+                Debug.WriteLine($"[Map Page] Distancia a {negocio.Nombre}: {distance} km (Límite: {OfferDistance} km)");
+
+                if (distance <= OfferDistance)
+                {
+                    if (!negociosAlertados.Contains(negocio.Nombre))
+                    {
+                        Debug.WriteLine($"[Map Page]  Mostrando alerta para: {negocio.Nombre}");
+                        Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1));
+                        ShowPromotionAlert(negocio);
+                        negociosAlertados.Add(negocio.Nombre);
+                    }
+
+                    if (!OfertasActuales.Contains(negocio))
+                        OfertasActuales.Add(negocio);
+
+                    negociosEnRango.Add(negocio);
+                }
+                else
+                {
+                    // Solo remover de alertados, los pins se limpian en OnAppearing
+                    negociosAlertados.Remove(negocio.Nombre);
+                    Debug.WriteLine($"[Map Page]  {negocio.Nombre} fuera de rango");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[Map Page] Error calculando distancia para {negocio.Nombre}: {ex.Message}");
             }
         }
 
-        // Remover ofertas fuera de rango
+        // Limpiar ofertas que ya no están en rango
         var ofertasFueraDeRango = OfertasActuales.Except(negociosEnRango).ToList();
         foreach (var oferta in ofertasFueraDeRango)
+        {
             OfertasActuales.Remove(oferta);
+            Debug.WriteLine($"[Map Page] Removida oferta fuera de rango: {oferta.Nombre}");
+        }
     }
 
 
     private void ShowPromotionAlert(Negocio negocio)
     {
-        if (!OfertasVistas.Any(o => o.Nombre == negocio.Nombre))
+        try
         {
-            OfertasVistas.Add(negocio);
+            if (negocio?.Location == null)
+            {
+                Debug.WriteLine("[Map Page]  Negocio o Location es null");
+                return;
+            }
+
+            // Verificar si ya existe un pin para este negocio
+            if (Pins?.Any(p => p.Position.Latitude == negocio.Location.Latitude &&
+                              p.Position.Longitude == negocio.Location.Longitude) == true)
+            {
+                Debug.WriteLine($"[Map Page]  Pin ya existe para: {negocio.Nombre}");
+                return;
+            }
+
+            Debug.WriteLine($"[Map Page]  Agregando pin para: {negocio.Nombre}");
+
+            var promotionPin = new MapPin(p =>
+            {
+                Debug.WriteLine($"[Map Page]  Click en promoción: {negocio.Nombre}");
+                DisplayPromotionDetails(negocio);
+            })
+            {
+                Id = negocio.Nombre,
+                Position = negocio.Location,
+                Icon = "pin_offer",
+                Width = 200,
+                Height = 200
+            };
+
+            if (Pins == null)
+                Pins = new List<MapPin>();
+
+            Pins.Add(promotionPin);
+            Pins = new List<MapPin>(Pins);
+
+            //  Asegurar que el mapa se actualice
+            map.CustomPins = Pins;
+
+            Debug.WriteLine($"[Map Page]  Pin agregado: {negocio.Nombre} en {negocio.Location.Latitude},{negocio.Location.Longitude}");
         }
-
-        var promotionPin = new MapPin(p =>
+        catch (Exception ex)
         {
-            Debug.WriteLine($"[Map Page] Click en promoción: {negocio.Nombre}");
-            DisplayPromotionDetails(negocio);
-        })
-        {
-            Id = Guid.NewGuid().ToString(),
-            Position = negocio.Location,
-            Icon = "pin_offer",
-            Width = 200,  
-            Height = 200
-        };
-
-
-        // Asegurar que Pins no es null
-        if (Pins == null)
-            Pins = new List<MapPin>();
-
-        // Agregar el pin a la lista y forzar OnPropertyChanged
-        Pins.Add(promotionPin);
-        Pins = new List<MapPin>(Pins); // << Clave para refrescar el binding
-
-        Debug.WriteLine($"[Map Page] Pin de oferta añadido: {negocio.Nombre} en {negocio.Location.Latitude},{negocio.Location.Longitude}");
-
-        // Opcional: centrar el mapa en la ubicación de la oferta
-        map.MoveToRegion(MapSpan.FromCenterAndRadius(negocio.Location, Distance.FromMeters(300)));
+            Debug.WriteLine($"[Map Page]  Error en ShowPromotionAlert: {ex.Message}");
+        }
     }
 
     private async void DisplayPromotionDetails(Negocio negocio)
@@ -367,7 +396,8 @@ public partial class Map : ContentPage
                 var promocionSeleccionada = negocio.Promociones.FirstOrDefault(p => p.Nombre == action);
                 if (promocionSeleccionada != null)
                 {
-                    var detallesPage = new PromocionDetallesPage(promocionSeleccionada, default);
+                    // Pasar la ubicación REAL del negocio, no default
+                    var detallesPage = new PromocionDetallesPage(promocionSeleccionada, negocio.Location);
                     await Navigation.PushModalAsync(detallesPage);
                 }
             }
@@ -640,6 +670,46 @@ public partial class Map : ContentPage
         catch (Exception ex)
         {
             Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+
+    private void CleanAllPins()
+    {
+        try
+        {
+            Debug.WriteLine("[Map Page]  Iniciando limpieza completa de pins...");
+
+            // 1. Limpiar lista de Pins (binding property)
+            if (Pins != null)
+            {
+                Debug.WriteLine($"[Map Page] Limpiando {Pins.Count} pins de la lista");
+                Pins.Clear();
+                Pins = new List<MapPin>(); // Forzar actualización del binding
+            }
+            else
+            {
+                Pins = new List<MapPin>();
+            }
+
+            // 2. Limpiar pins nativos del mapa
+            map.Pins.Clear();
+            Debug.WriteLine("[Map Page] Pins nativos del mapa limpiados");
+
+            // 3. Limpiar todas las colecciones internas
+            negociosAlertados.Clear();
+            Debug.WriteLine($"[Map Page] negociosAlertados limpiado ({negociosAlertados.Count} items)");
+
+            OfertasActuales.Clear();
+            Debug.WriteLine($"[Map Page] OfertasActuales limpiado ({OfertasActuales.Count} items)");
+
+            // 4. Forzar actualización del mapa
+            map.CustomPins = Pins;
+
+            Debug.WriteLine("[Map Page]  Limpieza completa terminada");
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[Map Page]  Error en CleanAllPins: {ex.Message}");
         }
     }
 

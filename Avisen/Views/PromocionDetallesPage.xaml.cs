@@ -144,8 +144,8 @@ public partial class PromocionDetallesPage : ContentPage
             await NavigationService.AbrirNavegacion(_ubicacionPromocion);
         }
 
-        await Shell.Current.GoToAsync("..");
-        await Shell.Current.GoToAsync("//Map");
+        // SOLUCIÓN: Usar solo una navegación
+        await Shell.Current.GoToAsync("//Map", true); // true = animated
     }
 
     private async void OnHeartTapped(object sender, EventArgs e)
